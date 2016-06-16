@@ -1,0 +1,15 @@
+#ulMain{
+    list-style: none;
+    padding:0;
+}
+#ulMain li{
+    display: inline;
+}
+
+#ulMain:nth-child(1){
+    min-width:100px;
+    width:10%;
+}
+#ulMain:nth-child(2){
+    width:80%;
+}

@@ -1,0 +1,52 @@
+html, body{
+    margin:0;
+    padding:0;
+}
+#divMenu{
+    display: inline;
+    padding: 0;
+    margin:0;
+    background: #263240;
+    width: 100%;
+    height: 100%;
+}
+
+#divMenu ul {
+    list-style: none;
+    padding: 0px;
+}
+#divMenu ul li{
+    text-align: center;
+    display: table;
+    width:100%;
+}
+#divMenu ul li:nth-child(even){
+    background: #263240;
+}
+#divMenu ul li:nth-child(odd){
+    background: #354658;
+}
+#divMenu ul li .selected, #divMenu ul li:hover:not(:first-child){
+    background: #20242f;
+}
+#divMenu ul li div{
+    text-align: center;
+    display: table-cell;
+    vertical-align: middle;
+}
+#divMenu ul li img{
+    height:30px;
+    width:30px;
+}
+#divMenu ul li:not(:first-child){
+    height: 50px;
+}
+#divMenu ul li:first-child{
+    height: 100px;
+}
+#divMenu ul li:nth-child(2) div{
+    text-align: right;
+    padding-right:10px;
+    color:white;
+    font-weight:bolder;
+}

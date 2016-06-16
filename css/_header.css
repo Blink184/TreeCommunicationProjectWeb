@@ -1,0 +1,45 @@
+html, body{
+    margin:0;
+    padding:0;
+}
+#divHeader{
+    padding: 0;
+    margin:0;
+    background: #f3f3f3;
+    height: 100%;
+    width: 100%;
+    text-align: right;
+    display: table;
+    position: absolute;
+}
+#divHeader ul {
+    display: table-cell;
+    vertical-align: middle;
+    padding-right: 40px;
+}
+#divHeader ul li{
+    display: inline;
+}
+
+#divHeader .Element{
+    padding:10px 20px;
+}
+#divHeader .Element:not(:first-child){
+    border-left: 1px lightgray solid;
+}
+#divHeader .Element img{
+    margin: 0px 3px;
+    width: 30px;
+    height: 30px;
+    vertical-align: middle;
+    margin-top: -8px;
+}
+#divHeader .Element #imgUser{
+    border: 2px blue solid;
+    -webkit-border-radius:100%;
+    -moz-border-radius:100%;
+    border-radius:100%;
+}
+#divHeader #spnUser{
+    font-weight: bolder;
+}
