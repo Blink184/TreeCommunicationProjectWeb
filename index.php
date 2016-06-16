@@ -12,15 +12,22 @@
     </head>
     <body>
         <ul id="ulMain">
-            <li>
-<!--                --><?php //include '_menu.html';?>
-                <div>a</div>
+            <li id="liLeft">
+                <?php include '_menu.html';?>
             </li>
-            <li>
-
-<!--                --><?php //include '_header.html';?>
-
-
+            <li id="liRight">
+                <ul class="inline-block">
+                    <li id="liHeader">
+                        <?php include '_header.html';?>
+                    </li>
+                    <li id="liTitle">
+                        <div>
+                            <h2>
+                                WELCOME
+                            </h2>
+                        </div>
+                    </li>
+                </ul>
             </li>
         </ul>
     </body>
