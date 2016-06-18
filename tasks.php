@@ -23,9 +23,12 @@
                     <li id="liTitle">
                         <div>
                             <h2>
-                                WELCOME
+                                TASKS
                             </h2>
                         </div>
+                    </li>
+                    <li id="liContent">
+                        <?php include '_tasks.html';?>
                     </li>
                 </ul>
             </li>
