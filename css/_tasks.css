@@ -35,8 +35,8 @@
     vertical-align: middle;
 }
 #divTasks #ulTopList{
-    margin:0px;
-    padding:0px;
+    margin:0;
+    padding:0;
     float: right;
     display: inline-block;
 }
@@ -48,8 +48,8 @@
 
 
 #divTasks #ulMidList{
-    padding:0px;
-    margin:0px;
+    padding:0;
+    margin:0;
 }
 #divMid{
     display: table;
@@ -72,7 +72,7 @@
     -webkit-border-radius:20px;
     -moz-border-radius:20px;
     border-radius:20px;
-    border:0px;
+    border:0;
     padding:6px;
     outline:none;
     color: white;
