@@ -1,0 +1,29 @@
+#divBroadcasts #divTop{
+    background: #354658;
+    height:50px;
+}
+#divBroadcasts #divMid{
+    background: #0a0f1d;
+    height:50px;
+}
+
+#contentDiv {
+    padding: 30px;
+}
+
+#divBroadcasts #ulMidList li{
+    display: inline;
+}
+
+#divTop .spanLeft li:not(:first-child){
+    border-left: 1px lightgray solid;
+    padding-left:5px;
+}
+
+#divTop .spanLeft{
+    padding-left:30px;
+    display: table-cell;
+    vertical-align: middle;
+    padding-top: 15px;
+}
+
