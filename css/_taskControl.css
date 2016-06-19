@@ -1,0 +1,102 @@
+.divTaskControl{
+    width: 240px;
+    display: inline-block;
+    padding:20px;
+}
+.divTaskControl .header{
+    background: #a3c0ce;
+    color: white;
+    padding:2px;
+    display: inline;
+    -webkit-border-radius:6px 6px 0px 0px;
+    -moz-border-radius:6px 6px 0px 0px;
+    border-radius:6px 6px 0px 0px;
+}
+.divTaskControl .body{
+    background-color: #fff;
+    border-top:2px #a3c0ce solid;
+    -webkit-border-radius:0px 0px 6px 6px;
+    -moz-border-radius:0px 0px 6px 6px;
+    border-radius:0px 0px 6px 6px;
+}
+.divTaskControl .title{
+    padding:10px;
+    color: #878786;
+}
+.divTaskControl .title img{
+    width: 20px;
+    height: 20px;
+    padding-right:8px;
+}
+.divTaskControl .description{
+    padding:10px;
+    color: #878786;
+}
+
+.divTaskControl .dateTop{
+    width: 90%;
+    background: #f3f3f3;
+    margin: 0px 5%;
+    -webkit-border-radius:6px;
+    -moz-border-radius:6px;
+    border-radius:6px;
+    text-align: center;
+    color: #878786;
+}
+.divTaskControl .dateTop div{
+    display: inline-block;
+}
+.divTaskControl .dateTop div img{
+}
+.divTaskControl .dateTop div:first-child, .divTaskControl .dateTop div:last-child{
+    padding: 2% 1%;
+    width: 40%;
+}
+.divTaskControl .dateTop div:first-child img, .divTaskControl .dateTop div:last-child img{
+    height:26px;
+    width:26px;
+    display: inline-block;
+}
+.divTaskControl .dateTop div:nth-child(2){
+    width: 1px;
+}
+.divTaskControl .dateTop div:nth-child(2) img{
+    height:36px;
+}
+
+.divTaskControl .dateMid {
+    text-align: center;
+    margin: 4px 0px;
+}
+.divTaskControl .dateMid img{
+    height:2px;
+    width:90%;
+    background: #000;
+}
+
+
+
+
+.divTaskControl .dateBot{
+    width: 90%;
+    margin: 0px 5%;
+    -webkit-border-radius:6px;
+    -moz-border-radius:6px;
+    border-radius:6px;
+    text-align: center;
+    color: #263341;
+    font-weight: bold;
+}
+.divTaskControl .dateBot div{
+    display: inline-block;
+}
+.divTaskControl .dateBot div:first-child, .divTaskControl .dateBot div:last-child{
+    padding: 2% 1%;
+    width: 40%;
+}
+.divTaskControl .dateBot div:nth-child(2){
+    width: 1px;
+}
+.divTaskControl .dateTop div:nth-child(2) img{
+    height:36px;
+}

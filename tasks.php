@@ -28,7 +28,7 @@
                         </div>
                     </li>
                     <li id="liContent">
-                        <?php include '_tasks.html';?>
+                        <?php include '_tasks.php';?>
                     </li>
                 </ul>
             </li>

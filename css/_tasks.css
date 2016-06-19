@@ -86,27 +86,14 @@
 }
 
 #divTasks #divBot{
-    background: #f0f3f4;
+    padding:20px;
 }
 
-
-
-/*#divTasks #ulMidList{*/
-    /*margin:0px;*/
-    /*padding:0px;*/
-    /*display: inline-block;*/
-/*}*/
-/*#divTasks .spanRight{*/
-    /*float: right;*/
-/*}*/
-
-
-/*#divMid .spanLeft, #divMid .spanRight{*/
-    /*display: table-cell;*/
-    /*border:1px red solid;*/
-    /*vertical-align: middle;*/
-/*}*/
-
-/*#divTasks #ulMidList li{*/
-    /*display: inline;*/
-/*}*/
+#divTasks #divBot ul{
+    padding:0;
+    margin:0;
+    list-style: none;
+}
+#divTasks #divBot ul li{
+    display: inline;
+}
