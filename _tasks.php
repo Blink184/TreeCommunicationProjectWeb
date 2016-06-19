@@ -2,27 +2,25 @@
 <div id="divTasks">
     <div id="divTop">
         <span class="spanLeft">
-            <img/>
-            <span class="spanImgDescription">
-                Add Task
-            </span>
+            <img src="resources/images/task/add_orange.svg"/>
+            Add Task
         </span>
         <span class="spanRight">
             <ul id="ulTopList">
                 <li>
-                    <img/>
+                    <img src="resources/images/task/all_tasks.svg"/>
                     All
                 </li>
                 <li>
-                    <img/>
+                    <img src="resources/images/task/assign_white.svg"/>
                     Assign
                 </li>
                 <li>
-                    <img/>
+                    <img src="resources/images/task/in_progress.svg"/>
                     In Progress
                 </li>
                 <li>
-                    <img/>
+                    <img src="resources/images/task/finished.svg"/>
                     Finished
                 </li>
             </ul>
