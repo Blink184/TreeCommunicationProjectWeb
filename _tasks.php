@@ -47,42 +47,19 @@
         </span>
     </div>
     <div id="divBot">
-        Come to me
-        <br>In the night hours
-        <br>I will wait for you
-        <br>And I can’t sleep
-        <br>Cause thoughts devour
-        <br>Thoughts of you consume
-
-        <br>I can't help but love you
-        <br>Even though I try not to
-        <br>I can't help but want you
-        <br>I know that I'd die without you
-
-        <br>Stay with me a little longer
-        <br>I will wait for you
-        <br>Shadows creep
-        <br>And want grows stronger
-        <br>Deeper than the truth
-
-        <br>I can't help but love you
-        <br>Even though I try not to
-        <br>I can't help but want you
-        <br>I know that I'd die without you
-
-        <br>I can’t help but be wrong in the dark
-        <br>Cause I’m overcome in this war of hearts
-        <br>I can’t help but want oceans to part
-        <br>Cause I’m overcome in this war of hearts
-
-        <br>I can't help but love you
-        <br>Even though I try not to
-        <br>I can't help but want you
-        <br>I know that I'd die without you
-
-        <br>I can’t help but be wrong in the dark
-        <br>Cause I’m overcome in this war of hearts
-        <br>I can’t help but want oceans to part
-        <br>Cause I’m overcome in this war of hearts
+        <div id="taskControlsContainer">
+            <link href="css/_taskControl.css" rel="stylesheet" type="text/css"/>
+            <ul>
+                <li><?php include '_taskControl.html';?></li>
+                <li><?php include '_taskControl.html';?></li>
+                <li><?php include '_taskControl.html';?></li>
+                <li><?php include '_taskControl.html';?></li>
+                <li><?php include '_taskControl.html';?></li>
+                <li><?php include '_taskControl.html';?></li>
+                <li><?php include '_taskControl.html';?></li>
+                <li><?php include '_taskControl.html';?></li>
+                <li><?php include '_taskControl.html';?></li>
+            </ul>
+        </div>
     </div>
 </div>

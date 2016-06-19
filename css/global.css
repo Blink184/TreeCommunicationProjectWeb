@@ -1,5 +1,9 @@
+@font-face {
+    font-family: eurosti;
+    src: url('../resources/fonts/eurosti.ttf');
+}
 *{
-    font-family: "Comic Sans MS";
+    font-family: eurosti;
 }
 html, body{
     margin: 0;
@@ -61,6 +65,7 @@ html, body{
     bottom: 0px;
     left: 0;
     overflow-y: scroll;
+    background-color: #f0f3f4;
 }
 
 #ulMain #liTitle div{
