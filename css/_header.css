@@ -7,6 +7,7 @@
     min-width: 500px;
     text-align: right;
     display: inline-block;
+    color: #263341;
 }
 #divHeader ul {
     vertical-align: middle;
@@ -25,10 +26,14 @@
 }
 #divHeader .Element img{
     margin: 0px 3px;
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+    margin-top: -4px;
+}
+#divHeader .Element:first-child img{
     width: 30px;
     height: 30px;
-    vertical-align: middle;
-    margin-top: -8px;
 }
 #divHeader .Element #imgUser{
     border: 2px blue solid;

@@ -51,6 +51,7 @@ html, body{
 #liRight #liTitle {
     height: 50px;
     background: #f1f2f6;
+    color: #263341;
 }
 #liRight {
     margin: 0 auto;

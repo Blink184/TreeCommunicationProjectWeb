@@ -31,8 +31,12 @@
     vertical-align: middle;
 }
 #divMenu ul li img{
-    height:30px;
-    width:30px;
+    height:20px;
+    width:20px;
+}
+#divMenu ul li:first-child img{
+    height:40px;
+    width:40px;
 }
 #divMenu ul li:not(:first-child){
     height: 50px;
