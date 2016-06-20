@@ -13,7 +13,7 @@
 <div id="divBroadcasts">
     <div id="divTop">
         <span class="spanLeft">
-            <ul id="ulMidList">
+            <ul id="ulTopList">
                 <li>
                     Received
                 </li>
@@ -21,6 +21,9 @@
                     Sent
                 </li>
             </ul>
+        </span>
+        <span class="spanRight">
+            <button id="compose">Compose</button>
         </span>
     </div>
     <div id="divMid">

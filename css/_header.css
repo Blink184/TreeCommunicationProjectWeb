@@ -36,7 +36,7 @@
     height: 30px;
 }
 #divHeader .Element #imgUser{
-    border: 2px blue solid;
+    border: 2px #a2bfcd solid;
     -webkit-border-radius:100%;
     -moz-border-radius:100%;
     border-radius:100%;
