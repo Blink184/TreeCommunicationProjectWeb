@@ -22,10 +22,15 @@
 #divMenu ul li:nth-child(odd){
     background: #354658;
 }
-#divMenu ul li .selected, #divMenu ul li:hover:not(:first-child){
+
+#divMenu ul li:hover:not(:first-child){
     background: #20242f;
 }
-#divMenu ul li div{
+
+#divMenu ul li a{
+    text-decoration: none;
+}
+#divMenu ul li a{
     text-align: center;
     display: table-cell;
     vertical-align: middle;
@@ -44,9 +49,14 @@
 #divMenu ul li:first-child{
     height: 100px;
 }
-#divMenu ul li:nth-child(2) div{
+#divMenu ul li:nth-child(2) a{
     text-align: right;
     padding-right:10px;
     color:white;
     font-weight:bolder;
+}
+.selectedTab{
+    border-right:5px #a3c0ce solid;
+    border-left:5px transparent solid;
+    background: #20242f;
 }

@@ -8,7 +8,8 @@
 ?>
 <html>
     <head>
-        <link href="css/global.css" rel="stylesheet" type="text/css"/>
+        <?php include '_includes.html';?>
+        <script src="js/tasks.js"></script>
     </head>
     <body>
         <ul id="ulMain">
