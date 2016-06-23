@@ -16,7 +16,10 @@ html, body{
     padding: 0;
     min-width: 800px;
 }
-#ulMain li{
+#ulMain > li{
+    display: inline-block;
+}
+#ulMain #liRight > ul > li{
     display: inline-block;
 }
 
@@ -50,8 +53,9 @@ html, body{
 
 #liRight #liTitle {
     height: 50px;
-    background: #f1f2f6;
+    background: #e3e3e3;
     color: #263341;
+    /*border-bottom: 1px #aaaaaa solid;*/
 }
 #liRight {
     margin: 0 auto;
