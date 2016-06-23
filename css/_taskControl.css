@@ -60,6 +60,7 @@
 }
 .divTaskControl .dateTop div:nth-child(2){
     width: 1px;
+    background: #aaa;
 }
 .divTaskControl .dateTop div:nth-child(2) img{
     height:36px;
@@ -70,9 +71,9 @@
     margin: 4px 0px;
 }
 .divTaskControl .dateMid img{
-    height:2px;
+    height:1px;
     width:90%;
-    background: #000;
+    background: #aaa;
 }
 
 .divTaskControl .dateBot{
