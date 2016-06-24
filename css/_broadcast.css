@@ -8,10 +8,6 @@
     height:50px;
 }
 
-#contentDiv {
-    padding: 30px;
-}
-
 #divBroadcasts #ulTopList li{
     display: inline;
 }
@@ -21,11 +17,11 @@
 
 #divTop .spanLeft li:not(:first-child){
     border-left: 1px lightgray solid;
-    padding-left:5px;
+    padding-left: 5px;
 }
 
 #divTop .spanLeft{
-    padding-left:30px;
+    padding-left:10px;
     display: inline-block;
     vertical-align: middle;
     padding-top: 15px;
@@ -47,4 +43,18 @@
     text-align: center;
     color: white;
     float: right;
+}
+
+#divBroadcasts #contentDiv{
+    padding:20px;
+}
+
+#divBroadcasts #contentDiv ul{
+    padding:0;
+    margin:0;
+    list-style: none;
+}
+
+#divBroadcasts #contentDiv ul li{
+    display: inline;
 }
