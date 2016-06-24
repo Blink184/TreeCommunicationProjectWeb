@@ -1,0 +1,55 @@
+.convPreview {
+    background-color: green;
+    display: block;
+}
+
+#main{
+    padding: 10px;
+    width: 250px;
+    background-color: #333333;
+    /*display: inline;*/
+}
+
+#left {
+    float:left;
+}
+
+#mid {
+    color: white;
+    display: block;
+}
+
+#right {
+
+}
+
+#name {
+    font-size: 18px;
+    color: #a2bfcd;
+}
+
+#timeReceived {
+    font-size: 13px;
+}
+
+#content {
+    font-size: 13px;
+}
+
+#readImg {
+    width: 15px;
+    height: 15px;
+    -webkit-border-radius:100%;
+    -moz-border-radius:100%;
+    border-radius:100%;
+}
+
+#profPic {
+    margin-right: 10px;
+    width: 35px;
+    height: 35px;
+    -webkit-border-radius:100%;
+    -moz-border-radius:100%;
+    border-radius:100%;
+    border: 3px #a2bfcd solid;
+}

@@ -30,7 +30,16 @@
 
     </div>
 <div id="contentDiv">
-    <?php include '_broadcastMsg.html';?>
+    <div id="broadcastMsgContainer">
+        <ul>
+            <li><?php include '_broadcastMsg.html';?></li>
+            <li><?php include '_broadcastMsg.html';?></li>
+            <li><?php include '_broadcastMsg.html';?></li>
+            <li><?php include '_broadcastMsg.html';?></li>
+            <li><?php include '_broadcastMsg.html';?></li>
+            <li><?php include '_broadcastMsg.html';?></li>
+        </ul>
+    </div>
 </div>
 </body>
 </html>
