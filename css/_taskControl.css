@@ -1,8 +1,23 @@
 .divTaskControl{
     width: 240px;
-    display: inline-block;
+    display: none;
     padding:20px;
 }
+.divTaskControl div{
+    -webkit-transition: .5s;
+    transition: .5s;
+}
+.divTaskControl:hover{
+    cursor: pointer;
+}
+.divTaskControl:hover .body{
+    box-shadow: gray 3px 3px 3px;
+    border-top: 2px #F49A43 solid;
+}
+.divTaskControl:hover .header{
+    background-color: #F49A43;
+}
+
 .divTaskControl .header{
     background: #a3c0ce;
     color: white;
@@ -20,8 +35,12 @@
     border-radius:0px 0px 6px 6px;
 }
 .divTaskControl .title{
-    padding:10px;
+    padding:10px 10px 0px 10px;
     color: #878786;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    width:200px;
 }
 .divTaskControl .title img{
     width: 20px;
@@ -31,6 +50,8 @@
 .divTaskControl .description{
     padding:10px;
     color: #878786;
+    height:44px;
+    overflow-y: hidden;
 }
 
 .divTaskControl .dateTop{

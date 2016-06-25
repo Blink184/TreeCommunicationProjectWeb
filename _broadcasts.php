@@ -7,7 +7,7 @@
 <!--*/-->
 <html lang="en">
 <head>
-    <link href="css/_broadcast.css" rel="stylesheet" type="text/css"/>
+    <link href="css/_broadcasts.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="divBroadcasts">
@@ -32,12 +32,12 @@
 <div id="contentDiv">
     <div id="broadcastMsgContainer">
         <ul>
-            <li><?php include '_broadcastMsg.html';?></li>
-            <li><?php include '_broadcastMsg.html';?></li>
-            <li><?php include '_broadcastMsg.html';?></li>
-            <li><?php include '_broadcastMsg.html';?></li>
-            <li><?php include '_broadcastMsg.html';?></li>
-            <li><?php include '_broadcastMsg.html';?></li>
+            <li><?php include '_broadcastControl.html';?></li>
+            <li><?php include '_broadcastControl.html';?></li>
+            <li><?php include '_broadcastControl.html';?></li>
+            <li><?php include '_broadcastControl.html';?></li>
+            <li><?php include '_broadcastControl.html';?></li>
+            <li><?php include '_broadcastControl.html';?></li>
         </ul>
     </div>
 </div>

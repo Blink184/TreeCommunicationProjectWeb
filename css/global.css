@@ -14,23 +14,25 @@ html, body{
 #ulMain{
     list-style: none;
     padding: 0;
-    min-width: 800px;
+    min-width: 750px;
+    margin:0;
 }
 #ulMain > li{
-    display: inline-block;
+    height:100%;
 }
 #ulMain #liRight > ul > li{
     display: inline-block;
 }
 
 #ulMain #liLeft{
-    min-width: 50px;
-    width:8%;
+    width: 100px;
     float: left;
+    display: inline-block;
+    background: red;
+    padding:0;
 }
 #ulMain #liRight{
-    width:92%;
-    float: right;
+    margin-left: 100px;
     height:100%;
 }
 #ulMain #liRight li{
