@@ -1,4 +1,4 @@
-<div class="divTaskControl" data-type="<?=$type;?>" data-status="<?=$status;?>">
+<div class="divTaskControl" onclick="displayTask(this)" data-type="<?=$type;?>" data-status="<?=$status;?>">
     <div class="Header">
         <?=$name?>
     </div>

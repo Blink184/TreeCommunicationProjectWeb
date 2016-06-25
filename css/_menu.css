@@ -37,6 +37,15 @@
     display: table-cell;
     vertical-align: middle;
 }
+
+#divMenu ul li .menuDescription{
+    -webkit-transition: .5s;
+    transition: .5s;
+    width:0px;
+    overflow: hidden;
+    display: inline-block;
+    color: white;
+}
 #divMenu ul li img{
     height:20px;
     width:20px;
@@ -56,6 +65,7 @@
     padding-right:10px;
     color:white;
     font-weight:bolder;
+    cursor: pointer;
 }
 .selectedTab{
     border-right:5px #a3c0ce solid;

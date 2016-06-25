@@ -12,7 +12,7 @@ function addTaskControl($name, $title, $content, $type, $status){
 <link href="css/_tasks.css" rel="stylesheet" type="text/css"/>
 <div id="divTasks">
     <div id="divTop">
-        <span class="spanLeft">
+        <span class="spanLeft" onclick="addTask();">
             <img src="resources/images/task/add_orange.svg"/>
             Add Task
         </span>
@@ -69,3 +69,4 @@ function addTaskControl($name, $title, $content, $type, $status){
         </div>
     </div>
 </div>
+<?php include '_addTask.php';?>
