@@ -30,6 +30,14 @@
     padding:0px 8px;
 }
 
+#divTop .spanRight li.selected{
+    color: #F49A43;
+}
+#divTop .spanRight li:hover{
+    color: #F49A43;
+    cursor: pointer;
+}
+
 #divTop span img{
     width:20px;
     height:20px;
@@ -70,7 +78,6 @@
     padding-right:50px;
 }
 #divMid .spanRight input{
-    background: #191d2c;
     -webkit-border-radius:20px;
     -moz-border-radius:20px;
     border-radius:20px;
@@ -78,13 +85,23 @@
     padding:6px;
     outline:none;
     color: white;
-    background: url(../resources/images/task/search.svg) no-repeat scroll 7px 7px;
+    width:100%;
+    background: #191d2c url(../resources/images/task/search.svg) no-repeat 7px 5px;
     padding-left:30px;
 }
 #divMid .spanLeft li:not(:first-child){
     border-left: 1px lightgray solid;
     padding-left:5px;
 }
+#divMid .spanLeft li.selected{
+    color: #F49A43;
+}
+#divMid .spanLeft li:hover{
+    color: #F49A43;
+    cursor: pointer;
+}
+
+
 #divTasks #ulMidList li{
     display: inline;
 }

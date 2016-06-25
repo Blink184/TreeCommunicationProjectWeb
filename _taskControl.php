@@ -1,14 +1,13 @@
-<div class="divTaskControl">
+<div class="divTaskControl" data-type="<?=$type;?>" data-status="<?=$status;?>">
     <div class="Header">
-        John Smith
+        <?=$name?>
     </div>
     <div class="body">
         <div class="title">
-            <img src="resources/images/task/task.svg"/>Lorem ipsum dolor sit amet
+            <img src="resources/images/task/task.svg"/><?=$title?>
         </div>
         <div class="description">
-            Lorem ipsum dolor sit amet
-            Lorem ipsum
+            <?=$content?>
         </div>
         <div class="date">
             <div class="dateTop">
