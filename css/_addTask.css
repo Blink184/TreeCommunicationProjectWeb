@@ -1,0 +1,92 @@
+#addTask{
+    background-color: RGBA(1,1,1,.6);
+    height: 100%;
+    width: 100%;
+    display: none;
+    top:0;
+    left:0;
+    position: fixed;
+}
+#addTask .outer {
+    display: table;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+#addTask .middle {
+    display: table-cell;
+    vertical-align: middle;
+}
+#addTask .inner {
+    margin-left: auto;
+    margin-right: auto;
+    width: 500px;
+    padding: 0;
+    background-color: #f0f3f4;
+}
+#addTask #header{
+    background-color: #263240;
+    color: white;
+    padding:10px;
+}
+#addTask h2{
+    margin: 0;
+}
+#addTask #body{
+    padding: 10px;
+    text-align: center;
+}
+#addTask #body > ul > li{
+    padding-top: 10px;
+}
+#addTask #body > ul > li > ul > li:first-child label{
+    width:100px;
+    display: inline-block;
+    height:30px;
+    text-align: left;
+}
+#addTask #body > ul > li > ul > li:nth-child(2) input, #description{
+    width:350px;
+    background-color: lightgray;
+    border: 0px;
+    -webkit-border-radius:5px;
+    -moz-border-radius:5px;
+    border-radius:5px;
+    display: inline-block;
+    height:30px;
+    padding:10px;
+}
+#addTask ul{
+    padding:0;
+    margin:0;
+}
+#addTask ul li{
+    list-style: none;
+}
+#addTask ul li ul li{
+    display: inline-block;
+    vertical-align: top;
+    line-height: 30px;
+}
+#addTask #description{
+    height: 150px;
+    resize: none;
+    display: block;
+}
+#addTask #footer button{
+    width:60px;
+    padding:5px;
+    color: white;
+    border:0px;
+    background-color: #a3c0ce;
+    border-radius: 5px;
+    cursor: pointer;
+}
+#addTask #footer button:hover{
+    background-color: #F49A43;
+}
+#addTask #footer{
+    text-align: right;
+    padding: 10px;
+    margin-right: 14px;
+}
