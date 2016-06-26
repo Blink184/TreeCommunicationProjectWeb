@@ -89,7 +89,6 @@ function setSelectedStatus(object, status){
     SELECTEDSTATUS = status;
 }
 function displayTask(task){
-    //alert("not implemented yet.");
     document.getElementById('showTask').style.display = 'block';
 }
 
