@@ -1,0 +1,12 @@
+#divEmployee #divBot{
+    padding:20px;
+}
+
+#divEmployee #divBot ul{
+    padding:0;
+    margin:0;
+    list-style: none;
+}
+#divEmployee #divBot ul li{
+    display: inline;
+}

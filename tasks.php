@@ -1,5 +1,5 @@
 <?php
-    include 'global.php';
+    include '_preHtmlTag.php';
 ?>
 <html>
     <head>

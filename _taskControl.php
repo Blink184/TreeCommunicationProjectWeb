@@ -1,6 +1,20 @@
+<?php
+$ASSIGN = "ASSIGN";
+$INPROGRESS = "INPROGRESS";
+$FINISHED = "FINISHED";
+?>
 <div class="divTaskControl" onclick="displayTask(this)" data-type="<?=$type;?>" data-status="<?=$status;?>">
     <div class="Header">
         <?=$name?>
+    </div>
+    <div class="statusImage">
+        <?php
+            if($status == $INPROGRESS){
+                echo '<img src="resources/images/task/in_progress_blue.svg"/>';
+            }else if($status == $FINISHED){
+                echo '<img src="resources/images/task/finished_blue.svg"/>';
+            }
+        ?>
     </div>
     <div class="body">
         <div class="title">
