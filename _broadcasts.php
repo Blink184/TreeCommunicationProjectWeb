@@ -1,15 +1,4 @@
-<!DOCTYPE html>
-<!--/**-->
-<!--* Created by PhpStorm.-->
-<!--* User: Kirby-->
-<!--* Date: 6/16/2016-->
-<!--* Time: 11:27 PM-->
-<!--*/-->
-<html lang="en">
-<head>
-    <link href="css/_broadcasts.css" rel="stylesheet" type="text/css"/>
-</head>
-<body>
+<link href="css/_broadcasts.css" rel="stylesheet" type="text/css"/>
 <div id="divBroadcasts">
     <div id="divTop">
         <span class="spanLeft">
@@ -22,9 +11,12 @@
                 </li>
             </ul>
         </span>
-        <span class="spanRight">
-            <button id="compose">Compose</button>
-        </span>
+        <div id="btnCompose">
+            <span class="spanRight" onclick="sendBroadcast();">
+                <img id="addBtnImg" src="resources/images/task/add_orange.svg"/>
+                <span id="composeTxt">Compose</span>
+            </span>
+        </div>
     </div>
     <div id="divMid">
 
@@ -41,5 +33,4 @@
         </ul>
     </div>
 </div>
-</body>
-</html>
+<?php include '_sendBroadcast.php';?>
