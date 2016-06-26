@@ -41,18 +41,14 @@
 #divMenu ul li .menuDescription{
     -webkit-transition: .5s;
     transition: .5s;
-    width:0px;
+    width:0;
     overflow: hidden;
     display: inline-block;
     color: white;
 }
 #divMenu ul li img{
-    height:20px;
-    width:20px;
 }
 #divMenu ul li:first-child img{
-    height:40px;
-    width:40px;
 }
 #divMenu ul li:not(:first-child){
     height: 50px;

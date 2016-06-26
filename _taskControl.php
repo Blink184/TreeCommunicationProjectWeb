@@ -1,5 +1,5 @@
 <?php
-$ASSIGN = "ASSIGN";
+$NEW = "NEW";
 $INPROGRESS = "INPROGRESS";
 $FINISHED = "FINISHED";
 ?>
@@ -13,6 +13,8 @@ $FINISHED = "FINISHED";
                 echo '<img src="resources/images/task/in_progress_blue.svg"/>';
             }else if($status == $FINISHED){
                 echo '<img src="resources/images/task/finished_blue.svg"/>';
+            }else if($status == $NEW){
+                echo '<img src="resources/images/task/new_blue.svg"/>';
             }
         ?>
     </div>

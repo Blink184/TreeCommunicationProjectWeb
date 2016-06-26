@@ -13,10 +13,12 @@
                             <ul>
                                 <li><label for="to">To</label></li>
                                 <li>
-                                    <select>
+                                    <select id="to">
                                         <option>All</option>
                                         <option>Children</option>
                                         <option>Custom</option>
+                                        <!--if custom is selected, this widget should appear-->
+                                        <!--http://www.erichynds.com/examples/jquery-ui-multiselect-widget/demos/#filter-->
                                     </select>
                                 </li>
                             </ul>
