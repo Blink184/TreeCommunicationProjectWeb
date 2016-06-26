@@ -12,7 +12,7 @@
                         <li>
                             <ul>
                                 <li><label for="to">To</label></li>
-                                <li><input id="to" type="text"></li>
+                                <li><input id="to" name="to" type="text"></li>
                             </ul>
                         </li>
                         <li>

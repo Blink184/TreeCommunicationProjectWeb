@@ -1,0 +1,93 @@
+#sendMessage{
+    background-color: RGBA(1,1,1,.6);
+    height: 100%;
+    width: 100%;
+    display: none;
+    top:0;
+    left:0;
+    position: fixed;
+}
+#sendMessage .outer {
+    display: table;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+#sendMessage .middle {
+    display: table-cell;
+    vertical-align: middle;
+}
+#sendMessage .inner {
+    margin-left: auto;
+    margin-right: auto;
+    width: 500px;
+    padding: 0;
+    background-color: #f0f3f4;
+}
+#sendMessage #header{
+    background-color: #263240;
+    color: white;
+    padding:10px;
+}
+#sendMessage h2{
+    margin: 0;
+}
+#sendMessage #body{
+    padding: 10px;
+    text-align: center;
+}
+#sendMessage #body > ul > li{
+    padding-top: 10px;
+}
+#sendMessage #body > ul > li > ul > li:first-child label{
+    width:100px;
+    display: inline-block;
+    height:30px;
+    text-align: start;
+}
+#sendMessage #body > ul > li > ul > li:nth-child(2) input, #message{
+    width:350px;
+    background-color: lightgray;
+    border: 0px;
+    -webkit-border-radius:5px;
+    -moz-border-radius:5px;
+    border-radius:5px;
+    display: inline-block;
+    height:30px;
+    padding:10px;
+    text-align: start;
+}
+#sendMessage ul{
+    padding:0;
+    margin:0;
+}
+#sendMessage ul li{
+    list-style: none;
+}
+#sendMessage ul li ul li{
+    display: inline-block;
+    vertical-align: top;
+    line-height: 30px;
+}
+#sendMessage #message{
+    height: 150px;
+    resize: none;
+    display: block;
+}
+#sendMessage #footer button{
+    width:60px;
+    padding:5px;
+    color: white;
+    border:0px;
+    background-color: #a3c0ce;
+    border-radius: 5px;
+    cursor: pointer;
+}
+#sendMessage #footer button:hover{
+    background-color: #F49A43;
+}
+#sendMessage #footer{
+    text-align: right;
+    padding: 10px;
+    margin-right: 14px;
+}

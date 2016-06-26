@@ -1,0 +1,89 @@
+#showTask{
+    background-color: RGBA(1,1,1,.6);
+    height: 100%;
+    width: 100%;
+    display: none;
+    top:0;
+    left:0;
+    position: fixed;
+}
+#showTask .outer {
+    display: table;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+#showTask .middle {
+    display: table-cell;
+    vertical-align: middle;
+}
+#showTask .inner {
+    margin-left: auto;
+    margin-right: auto;
+    width: 500px;
+    padding: 0;
+    background-color: #f0f3f4;
+}
+#showTask #header{
+    background-color: #263240;
+    color: white;
+    padding:10px;
+}
+#showTask h2{
+    margin: 0;
+}
+#showTask #body{
+    padding: 10px;
+    text-align: center;
+    overflow-y: scroll;
+    max-height: 600px;
+}
+#showTask #body > ul > li{
+    padding-top: 10px;
+}
+#showTask #body > ul > li > ul > li:first-child label{
+    width:100px;
+    display: inline-block;
+    height:30px;
+    text-align: start;
+    line-height: 30px;
+}
+#showTask #body > ul > li > ul > li:nth-child(2) div{
+    width:330px;
+    background-color: lightgray;
+    border: 0px;
+    -webkit-border-radius:5px;
+    -moz-border-radius:5px;
+    border-radius:5px;
+    display: inline-block;
+    padding:10px;
+    text-align: start;
+}
+#showTask ul{
+    padding:0;
+    margin:0;
+}
+#showTask ul li{
+    list-style: none;
+}
+#showTask ul li ul li{
+    display: inline-block;
+    vertical-align: top;
+}
+#showTask #footer button{
+    width:60px;
+    padding:5px;
+    color: white;
+    border:0px;
+    background-color: #a3c0ce;
+    border-radius: 5px;
+    cursor: pointer;
+}
+#showTask #footer button:hover{
+    background-color: #F49A43;
+}
+#showTask #footer{
+    text-align: right;
+    padding: 10px;
+    margin-right: 14px;
+}

@@ -2,6 +2,13 @@
     width: 240px;
     display: none;
     padding:20px;
+    position: relative;
+}
+.divTaskControl .statusImage{
+    position: absolute;
+    right: 0;
+    margin-top: -17px;
+    margin-right: 4px;
 }
 .divTaskControl div{
     -webkit-transition: .5s;
@@ -40,7 +47,7 @@
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
-    width:200px;
+    width:220px;
 }
 .divTaskControl .title img{
     width: 20px;

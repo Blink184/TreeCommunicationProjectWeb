@@ -47,7 +47,8 @@
 .divEmployeeControl .divBody .divTitle{
     color: #333333;
 }
-.divEmployeeControl .divBody .divActions{
+.divEmployeeControl .divBody .divActions img{
+    cursor: pointer;
 }
 .divEmployeeControl .divBody input{
 }

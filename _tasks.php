@@ -59,14 +59,16 @@ function addTaskControl($name, $title, $content, $type, $status){
         <div id="taskControlsContainer">
             <link href="css/_taskControl.css" rel="stylesheet" type="text/css"/>
             <ul>
-                <li><?php addTaskControl("Ahmad Hammoud", "Meeting At 6pm Meeting At 6pm Meeting At 6pm", "Please don't forget to attend the meeting today, it's at 6pm, bring ur wife with you, we can have much fun.", $MYTASK, $ASSIGN);?></li>
-                <li><?php addTaskControl("Ahmad Hammoud", "Important", "Please get me the paper now.", $MYTASK, $INPROGRESS);?></li>
+                <li><?php addTaskControl("Azzam Mourad", "Tree Communication Project", "Finish the project", $MYTASK, $INPROGRESS);?></li>
                 <li><?php addTaskControl("Aynur Ajami", "Outdoors", "Prepare for it with your colleagues", $MYTASK, $INPROGRESS);?></li>
-                <li><?php addTaskControl("Azzam Mourad", "Registration Fees", "Please bring the fees with you", $SENTREQUEST, $FINISHED);?></li>
+                <li><?php addTaskControl("Ahmad Hammoud", "Meeting At 6pm Meeting At 6pm Meeting At 6pm", "Please don't forget to attend the meeting today, it's at 6pm, bring ur wife with you, we can have much fun.", $MYTASK, $ASSIGN);?></li>
+                <li><?php addTaskControl("Jared Leto", "Party Invitation", "I'd like you to come to this party im throwing, invite all of your friends.", $RECEIVEDREQUEST, $ASSIGN);?></li>
+                <li><?php addTaskControl("Ahmad Hammoud", "Important", "Please get me the paper now.", $MYTASK, $INPROGRESS);?></li>
                 <li><?php addTaskControl("Ahmad Hammoud", "Self Reminder", "meeting on tuesday", $MYTASK, $FINISHED);?></li>
-                <li><?php addTaskControl("Azzam Mourad", "Tree Communication Project", "Finish the project", $MYTASK, $ASSIGN);?></li>
+                <li><?php addTaskControl("Azzam Mourad", "Registration Fees", "Please bring the fees with you", $SENTREQUEST, $INPROGRESS);?></li>
             </ul>
         </div>
     </div>
 </div>
 <?php include '_addTask.php';?>
+<?php include '_showTask.php';?>
