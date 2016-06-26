@@ -1,10 +1,5 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: ahmad hammoud
- * Date: 6/16/2016
- * Time: 10:26 PM
- */
+include '_preHtmlTag.php';
 ?>
 <html>
     <head>

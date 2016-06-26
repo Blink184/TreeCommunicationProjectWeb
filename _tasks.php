@@ -1,5 +1,5 @@
 <?php
-$ASSIGN = "ASSIGN";
+$NEW = "NEW";
 $INPROGRESS = "INPROGRESS";
 $FINISHED = "FINISHED";
 $MYTASK = "MYTASK";
@@ -22,9 +22,9 @@ function addTaskControl($name, $title, $content, $type, $status){
                     <img src="resources/images/task/all_tasks.svg"/>
                     All
                 </li>
-                <li onclick="selectStatus(this, ASSIGN)">
-                    <img src="resources/images/task/assign_white.svg"/>
-                    Assign
+                <li onclick="selectStatus(this, NEW)">
+                    <img src="resources/images/task/new.svg"/>
+                    New
                 </li>
                 <li onclick="selectStatus(this, INPROGRESS)">
                     <img src="resources/images/task/in_progress.svg"/>
@@ -61,8 +61,8 @@ function addTaskControl($name, $title, $content, $type, $status){
             <ul>
                 <li><?php addTaskControl("Azzam Mourad", "Tree Communication Project", "Finish the project", $MYTASK, $INPROGRESS);?></li>
                 <li><?php addTaskControl("Aynur Ajami", "Outdoors", "Prepare for it with your colleagues", $MYTASK, $INPROGRESS);?></li>
-                <li><?php addTaskControl("Ahmad Hammoud", "Meeting At 6pm Meeting At 6pm Meeting At 6pm", "Please don't forget to attend the meeting today, it's at 6pm, bring ur wife with you, we can have much fun.", $MYTASK, $ASSIGN);?></li>
-                <li><?php addTaskControl("Jared Leto", "Party Invitation", "I'd like you to come to this party im throwing, invite all of your friends.", $RECEIVEDREQUEST, $ASSIGN);?></li>
+                <li><?php addTaskControl("Ahmad Hammoud", "Meeting At 6pm Meeting At 6pm Meeting At 6pm", "Please don't forget to attend the meeting today, it's at 6pm, bring ur wife with you, we can have much fun.", $MYTASK, $NEW);?></li>
+                <li><?php addTaskControl("Jared Leto", "Party Invitation", "I'd like you to come to this party im throwing, invite all of your friends.", $RECEIVEDREQUEST, $NEW);?></li>
                 <li><?php addTaskControl("Ahmad Hammoud", "Important", "Please get me the paper now.", $MYTASK, $INPROGRESS);?></li>
                 <li><?php addTaskControl("Ahmad Hammoud", "Self Reminder", "meeting on tuesday", $MYTASK, $FINISHED);?></li>
                 <li><?php addTaskControl("Azzam Mourad", "Registration Fees", "Please bring the fees with you", $SENTREQUEST, $INPROGRESS);?></li>

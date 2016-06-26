@@ -1,5 +1,5 @@
 var ALL = "ALL";
-var ASSIGN = "ASSIGN";
+var NEW = "NEW";
 var INPROGRESS = "INPROGRESS";
 var FINISHED = "FINISHED";
 var MYTASK = "MYTASK";
@@ -16,7 +16,7 @@ window.onload = function () {
     SELECTEDSTATUS = ALL;
     SEARCH = "";
     filterTasks();
-}
+};
 
 
 function search(value){
@@ -65,7 +65,7 @@ function filterTasks(){
             if(isSearching() && !matchSearch(elements[i])){
                 elements[i].style.display = "none";
             }else{
-                elements[i].style.display = "table-cell";
+                elements[i].style.display = "inline-block";
             }
         }else{
             elements[i].style.display = "none";
@@ -87,13 +87,6 @@ function setSelectedStatus(object, status){
     }
     object.className = "selected";
     SELECTEDSTATUS = status;
-}
-function displayTask(task){
-    document.getElementById('showTask').style.display = 'block';
-}
-
-function addTask(task){
-    document.getElementById('addTask').style.display = 'block';
 }
 
 

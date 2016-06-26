@@ -12,7 +12,7 @@
                         <li>
                             <ul>
                                 <li><label for="to">To</label></li>
-                                <li><input id="to" name="to" type="text"></li>
+                                <li><input id="to" name="addTask_to" type="text"></li>
                             </ul>
                         </li>
                         <li>
@@ -36,9 +36,9 @@
                     </ul>
                 </div>
                 <div id="footer">
-                    <button onclick="cancel()">Cancel</button>
-                    <button onclick="cancel()">Attach</button>
-                    <button onclick="cancel()">Add</button>
+                    <button onclick="cancelAddTask()">Cancel</button>
+                    <button onclick="cancelAddTask()">Attach</button>
+                    <button onclick="cancelAddTask()">Add</button>
                 </div>
             </div>
         </div>

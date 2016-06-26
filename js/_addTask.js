@@ -1,7 +1,13 @@
-function cancel(){
+function cancelAddTask(){
     document.getElementById("addTask").style.display = "none";
 }
 function setAddTaskTarget(target){
-    var input = document.getElementsByName('to')[0];
-    input.value = target;
+    document.getElementsByName('addTask_to')[0].value = target;
+}
+
+function addTask(target){
+    if(target !== undefined){
+        setAddTaskTarget(target);
+    }
+    document.getElementById('addTask').style.display = 'block';
 }
