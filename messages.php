@@ -24,7 +24,7 @@ include '_preHtmlTag.php';
                         </div>
                     </li>
                     <li id="liContent">
-
+                        <?php include '_messages.php';?>
                     </li>
                 </ul>
             </li>

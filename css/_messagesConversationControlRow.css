@@ -1,0 +1,44 @@
+#messagesConversationControlRow{
+    padding:10px 0;
+    width: 100%;
+    -webkit-transition: .5s;
+    transition: .5s;
+}
+
+#messagesConversationControlRow table{
+    border-collapse: collapse;
+}
+#messagesConversationControlRow.rotated{
+    border-collapse: collapse;
+    direction: rtl;
+}
+
+#messagesConversationControlRow #messagesConversationControlRow_picture{
+    padding: 5px;
+    vertical-align: top;
+}
+
+#messagesConversationControlRow #messagesConversationControlRow_picture img{
+    width: 40px;
+    height: 40px;
+    border:2px #a2bfcd solid;
+    -webkit-border-radius:100%;
+    -moz-border-radius:100%;
+    border-radius:100%;
+}
+#messagesConversationControlRow #messagesConversationControlRow_time{
+    padding-left: 10px;
+    margin-left: 10px;
+    font-size: 12px;
+    color: #a2bfcd;
+}
+
+#messagesConversationControlRow #messagesConversationControlRow_message{
+    padding-left: 10px;
+    color: white;
+    color: #333333;
+}
+#messagesConversationControlRow #messagesConversationControlRow_files{
+    padding-left: 10px;
+    color: lightcoral;
+}

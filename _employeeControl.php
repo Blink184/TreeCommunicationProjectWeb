@@ -2,7 +2,7 @@
     <li>
         <div class="divEmployeeControl">
             <div class="hexagon">
-                <img src="resources/images/profile_picture.jpg"/>
+                <img src="resources/images/pp_jl.jpg"/>
                 <img src="resources/images/employee/hexagon.svg"/>
             </div>
             <div class="divBody">
