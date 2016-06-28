@@ -83,12 +83,11 @@
     -moz-border-radius:20px;
     border-radius:20px;
     border:0;
-    padding:6px;
+    padding:6px 6px 6px 30px;
     outline:none;
     color: white;
     width:100%;
     background: #191d2c url(../resources/images/task/search.svg) no-repeat 7px 5px;
-    padding-left:30px;
 }
 #divMid .spanLeft li:not(:first-child){
     border-left: 1px lightgray solid;
