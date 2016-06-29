@@ -86,8 +86,7 @@
 }
 
 #divBroadcasts #broadcastMsgContainer ul li{
-    display: inline-block;
-    margin: 10px;
+    display: inline;
 }
 
 /*#divTop .spanLeft, #divTop .spanRight{*/

@@ -2,6 +2,7 @@ var isMenuExpanded = false;
 var EXPANDARROW = "&#10095;";
 var COLLAPSEARROW = "&#10094;";
 
+
 function setSelectedTab(tab){
     document.getElementById(tab).className = "selectedTab";
 }
@@ -35,5 +36,4 @@ function setMenuWidth(width){
     var right = document.getElementById("liRight");
     left.style.width = width;
     right.style.marginLeft = width;
-
 }

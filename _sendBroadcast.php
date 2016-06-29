@@ -13,12 +13,22 @@
                             <ul>
                                 <li><label for="to">To</label></li>
                                 <li>
-                                    <select id="to">
-                                        <option>All</option>
-                                        <option>Children</option>
-                                        <option>Custom</option>
-                                        <!--if custom is selected, this widget should appear-->
-                                        <!--http://www.erichynds.com/examples/jquery-ui-multiselect-widget/demos/#filter-->
+                                    <select id="to" onchange="sendBroadcastToSelectionChanged(this.value);">
+                                        <option value="0">All</option>
+                                        <option value="1">Children</option>
+                                        <option value="2">Custom</option>
+                                    </select>
+                                </li>
+                            </ul>
+                        </li>
+                        <li id="liCustom">
+                            <ul>
+                                <li><label for="toCustom">Custom</label></li>
+                                <li>
+                                    <select id="toCustom" multiple="multiple">
+                                        <option>Aynur Ajami</option>
+                                        <option>Ahmad Hammoud</option>
+                                        <option>Azzam Mourad</option>
                                     </select>
                                 </li>
                             </ul>

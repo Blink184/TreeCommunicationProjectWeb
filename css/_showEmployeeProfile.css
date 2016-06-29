@@ -1,4 +1,4 @@
-#sendBroadcast{
+#showEmployeeProfile{
     background-color: RGBA(1,1,1,.6);
     height: 100%;
     width: 100%;
@@ -7,86 +7,75 @@
     left:0;
     position: fixed;
 }
-#sendBroadcast .outer {
+#showEmployeeProfile .outer {
     display: table;
     position: absolute;
     height: 100%;
     width: 100%;
 }
-#sendBroadcast .middle {
+#showEmployeeProfile .middle {
     display: table-cell;
     vertical-align: middle;
 }
-#sendBroadcast .inner {
+#showEmployeeProfile .inner {
     margin-left: auto;
     margin-right: auto;
     width: 500px;
     padding: 0;
     background-color: #f0f3f4;
 }
-#sendBroadcast #header{
-    background-color: #263240;
+
+#showEmployeeProfile #header{
     color: white;
-    padding:10px;
-}
-#sendBroadcast h2{
-    margin: 0;
-}
-#sendBroadcast #body{
-    padding: 10px;
+    padding-top: 10px;
     text-align: center;
 }
-#sendBroadcast #body > ul > li{
+#showEmployeeProfile #header img{
+    -webkit-border-radius:100%;
+    -moz-border-radius:100%;
+    border-radius:100%;
+    width:100px;
+    height:100px;
+}
+
+#showEmployeeProfile #body{
+    padding: 10px;
+    text-align: center;
+    max-height: 600px;
+}
+#showEmployeeProfile #body > ul > li{
     padding-top: 10px;
 }
-#sendBroadcast #body > ul > li > ul > li:first-child label{
-    width:100px;
+#showEmployeeProfile #body > ul > li > ul > li:first-child label{
+    width:120px;
     display: inline-block;
     height:30px;
     text-align: start;
+    line-height: 30px;
 }
-#sendBroadcast #body > ul > li > ul > li:nth-child(2) input, #sendBroadcast #body > ul > li > ul > li:nth-child(2) select, #message{
-    width:350px;
+#showEmployeeProfile #body > ul > li > ul > li:nth-child(2) div{
+    width:310px;
     background-color: lightgray;
     border: 0px;
     -webkit-border-radius:5px;
     -moz-border-radius:5px;
     border-radius:5px;
     display: inline-block;
-    height:30px;
     padding:10px;
     text-align: start;
 }
-#sendBroadcast #body > ul > li > ul > li:nth-child(2) select{
-    padding:0px;
-}
-#liCustom{
-    display: none;
-}
-#toCustom_ms{
-    background-color: lightgray;
-    -webkit-border-radius:5px;
-    -moz-border-radius:5px;
-    border-radius:5px;
-}
-#sendBroadcast ul{
+#showEmployeeProfile ul{
     padding:0;
     margin:0;
 }
-#sendBroadcast ul li{
+#showEmployeeProfile ul li{
     list-style: none;
 }
-#sendBroadcast ul li ul li{
+#showEmployeeProfile ul li ul li{
     display: inline-block;
     vertical-align: top;
-    line-height: 30px;
 }
-#sendBroadcast #message{
-    height: 150px;
-    resize: none;
-    display: block;
-}
-#sendBroadcast #footer button{
+#showEmployeeProfile #footer button{
     width:60px;
     padding:5px;
     color: white;
@@ -95,10 +84,10 @@
     border-radius: 5px;
     cursor: pointer;
 }
-#sendBroadcast #footer button:hover{
+#showEmployeeProfile #footer button:hover{
     background-color: #F49A43;
 }
-#sendBroadcast #footer{
+#showEmployeeProfile #footer{
     text-align: right;
     padding: 10px;
     margin-right: 14px;
