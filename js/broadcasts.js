@@ -11,7 +11,7 @@ window.onload = function () {
 
 function selectType(object, type){
     setSelectedType(object, type);
-    filterTasks();
+    filterBroadcasts();
 }
 
 function setSelectedType(object, type){
@@ -29,6 +29,8 @@ function filterBroadcasts() {
         var elementType = elements[i].getAttribute('data-type');
         if (elementType == SELECTEDTYPE) {
             elements[i].style.display = "inline-block";
+        } else {
+            elements[i].style.display = "none";
         }
     }
 }

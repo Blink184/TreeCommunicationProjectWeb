@@ -1,6 +1,6 @@
 <link href="css/_broadcastControl.css" rel="stylesheet" type="text/css"/>
-<div class="brdcastMsg" data-type="<?=$type;?> style="">
-    <div id="top">
+<div class="brdcastMsg" data-type="<?=$type;?>">
+    <div class="top">
         <div id="theImg">
             <img src="resources/images/pp_jl.jpg" id="profPicBrd"/>
         </div>
@@ -14,7 +14,7 @@
             <?=$timeReceived?>
         </span>
     </div>
-    <div id="content">
+    <div class="content">
         <div id="title"><?=$title?></div>
         <div id="msgContent">
             <?=$msgContent?>
