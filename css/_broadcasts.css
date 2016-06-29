@@ -11,6 +11,11 @@
 #divBroadcasts #ulTopList li{
     display: inline;
 }
+
+#ulTopList li.selected {
+    color: #F49A43;
+}
+
 #divBroadcasts #ulTopList{
     display: inline-block;
 }

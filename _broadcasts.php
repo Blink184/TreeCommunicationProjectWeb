@@ -1,12 +1,20 @@
+<?php
+$RECEIVEDBROADCAST = "RECEIVEDBROADCAST";
+$SENTBROADCAST = "SENTBROADCAST";
+
+function addBroadcastControl ($empName, $empRole, $timeReceived, $title, $msgContent, $type) {
+    include '_broadcastControl.php';
+}
+?>
 <link href="css/_broadcasts.css" rel="stylesheet" type="text/css"/>
 <div id="divBroadcasts">
     <div id="divTop">
         <span class="spanLeft">
             <ul id="ulTopList">
-                <li>
+                <li class="selected" onclick="selectType(this, RECEIVED);">
                     Received
                 </li>
-                <li>
+                <li onclick="selectType(this, SENT);">
                     Sent
                 </li>
             </ul>
@@ -24,12 +32,27 @@
 <div id="contentDiv">
     <div id="broadcastMsgContainer">
         <ul>
-            <li><?php include '_broadcastControl.html';?></li>
-            <li><?php include '_broadcastControl.html';?></li>
-            <li><?php include '_broadcastControl.html';?></li>
-            <li><?php include '_broadcastControl.html';?></li>
-            <li><?php include '_broadcastControl.html';?></li>
-            <li><?php include '_broadcastControl.html';?></li>
+            <li><?php addBroadcastControl("Jared Leto", "Singer", "5 minutes ago", "Gentle Reminder", "Don't 
+            forget our meeting at 5 pm", $SENTBROADCAST);?></li>
+            <li><?php addBroadcastControl("Jared Leto", "Singer", "5 minutes ago", "Gentle Reminder", "Don't 
+            forget our meeting at 5 pm", $SENTBROADCAST);?></li>
+            <li><?php addBroadcastControl("Jared Leto", "Singer", "5 minutes ago", "Gentle Reminder", "Don't 
+            forget our meeting at 5 pm", $SENTBROADCAST);?></li>
+            <li><?php addBroadcastControl("Jared Leto", "Singer", "5 minutes ago", "Gentle Reminder", "Don't 
+            forget our meeting at 5 pm", $SENTBROADCAST);?></li>
+            <li><?php addBroadcastControl("Jared Leto", "Singer", "5 minutes ago", "Gentle Reminder", "Don't 
+            forget our meeting at 5 pm", $SENTBROADCAST);?></li>
+            <li><?php addBroadcastControl("Aynur Ajami", "Head of Department", "20 minutes ago", "Hi", "I am testing
+            this new fantastic application!", $RECEIVEDBROADCAST);?></li>
+            <li><?php addBroadcastControl("Ahmad Hammoud", "IT Administrator", "1 day ago", "Information", "Do not
+            share your passwords.", $RECEIVEDBROADCAST);?></li>
+            <li><?php addBroadcastControl("Azzam Mourad", "Head of IT", "55 minutes ago", "Congratulations!", "Well done!
+            You are now proud members of Batikha Inc.", $RECEIVEDBROADCAST);?></li>
+            <li><?php addBroadcastControl("Jack Black", "Guitarist", "3 hours ago", "New Solo", "Check out my new solo.", $RECEIVEDBROADCAST);?></li>
+            <li><?php addBroadcastControl("Jared Leto", "Singer", "5 minutes ago", "Gentle Reminder", "Don't 
+            forget our meeting at 5 pm", $RECEIVEDBROADCAST);?></li>
+            <li><?php addBroadcastControl("Jared Leto", "Singer", "5 minutes ago", "Gentle Reminder", "Don't 
+            forget our meeting at 5 pm", $RECEIVEDBROADCAST);?></li>
         </ul>
     </div>
 </div>
