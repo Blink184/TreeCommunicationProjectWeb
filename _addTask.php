@@ -30,7 +30,7 @@
                         <li>
                             <ul>
                                 <li><label for="dueDate">Due Date</label></li>
-                                <li><input id="dueDate" type="text"></li>
+                                <li><input id="dueDate" class="datetimepicker" type="text"></li>
                             </ul>
                         </li>
                     </ul>

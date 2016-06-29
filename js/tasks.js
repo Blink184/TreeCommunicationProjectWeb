@@ -12,6 +12,17 @@ var SEARCH;
 
 window.onload = function () {
     setSelectedTab('tabTask');
+
+    $('.datetimepicker').datetimepicker({
+        yearOffset:0,
+        lang:'ch',
+        timepicker:false,
+        format:'Y/m/d',
+        formatDate:'Y/m/d',
+        mask:'9999/19/39',
+        value: new Date()
+    });
+
     SELECTEDTYPE = MYTASK;
     SELECTEDSTATUS = ALL;
     SEARCH = "";
