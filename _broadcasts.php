@@ -11,10 +11,10 @@ function addBroadcastControl ($empName, $empRole, $timeReceived, $title, $msgCon
     <div id="divTop">
         <span class="spanLeft">
             <ul id="ulTopList">
-                <li class="selected" onclick="selectType(this, RECEIVED);">
+                <li class="selected" onclick="selectType(this, RECEIVEDBROADCAST);">
                     Received
                 </li>
-                <li onclick="selectType(this, SENT);">
+                <li onclick="selectType(this, SENTBROADCAST);">
                     Sent
                 </li>
             </ul>

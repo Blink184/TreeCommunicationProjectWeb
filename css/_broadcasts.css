@@ -1,3 +1,14 @@
+#divBroadcasts {
+    height: 100%;
+}
+
+#contentDiv {
+    height: 100%;
+}
+
+#broadcastMsgContainer {
+    height: 100%;
+}
 
 #divBroadcasts #divTop{
     background: #354658;
@@ -16,7 +27,7 @@
     color: #F49A43;
 }
 
-#divBroadcasts #ulTopList{
+#divBroadcasts #ulTopList {
     display: inline-block;
 }
 
@@ -31,6 +42,7 @@
     color: white;
     vertical-align: middle;
     display: inline-block;
+    cursor: pointer;
 }
 
 #divTop .spanRight{
@@ -67,13 +79,13 @@
     padding:20px;
 }
 
-#divBroadcasts #contentDiv ul{
+#divBroadcasts #broadcastMsgContainer ul{
     padding:0;
     margin:0;
     list-style: none;
 }
 
-#divBroadcasts #contentDiv ul li{
+#divBroadcasts #broadcastMsgContainer ul li{
     display: inline-block;
     margin: 10px;
 }
