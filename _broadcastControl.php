@@ -1,25 +1,23 @@
 <link href="css/_broadcastControl.css" rel="stylesheet" type="text/css"/>
-<div id="brdcastMsg">
+<div id="brdcastMsg" data-type="<?=$type;?> style="">
     <div id="top">
         <div id="theImg">
             <img src="resources/images/pp_jl.jpg" id="profPicBrd"/>
         </div>
         <div id="empName">
-            Jared Leto
+            <?=$empName?>
         </div>
         <span id="empRole">
-            Administrator
+            <?=$empRole?>
         </span>
         <span id="timeReceived">
-            5 minutes ago
+            <?=$timeReceived?>
         </span>
     </div>
     <div id="content">
-        <div id="title">Gentle Reminder</div>
+        <div id="title"><?=$title?></div>
         <div id="msgContent">
-            Please do not forget our meeting today at 5 p.m.
-            We will discuss the weather.
-            And my favorite color.
+            <?=$msgContent?>
         </div>
     </div>
 </div>
