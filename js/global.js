@@ -28,12 +28,12 @@ function expandMenu(object){
 function setMenuDescriptionWidth(width){
     var desc = document.getElementsByClassName("menuDescription");
     for(var i = 0; i < desc.length; i++){
-        desc[i].style.width = width;
+        desc[i].style.width = width + "px";
     }
 }
 function setMenuWidth(width){
     var left = document.getElementById("liLeft");
     var right = document.getElementById("liRight");
-    left.style.width = width;
-    right.style.marginLeft = width;
+    left.style.width = width + "px";
+    right.style.marginLeft = width + "px";
 }

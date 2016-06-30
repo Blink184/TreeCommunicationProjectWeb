@@ -1,12 +1,5 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: Kirby
- * Date: 6/19/2016
- * Time: 3:20 PM
- */
-include '_preHtmlTag.php';
-?>
+<?php include '_preHtmlTag.php'; ?>
+<!DOCTYPE html>
 <html>
     <head>
         <?php include '_includes.html';?>
