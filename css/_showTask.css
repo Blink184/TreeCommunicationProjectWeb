@@ -35,7 +35,7 @@
 #showTask #body{
     padding: 10px;
     text-align: center;
-    overflow-y: scroll;
+    overflow-y: auto;
     max-height: 600px;
 }
 #showTask #body > ul > li{
@@ -51,7 +51,7 @@
 #showTask #body > ul > li > ul > li:nth-child(2) div{
     width:330px;
     background-color: lightgray;
-    border: 0px;
+    border: 0;
     -webkit-border-radius:5px;
     -moz-border-radius:5px;
     border-radius:5px;
@@ -74,7 +74,7 @@
     width:60px;
     padding:5px;
     color: white;
-    border:0px;
+    border:0;
     background-color: #a3c0ce;
     border-radius: 5px;
     cursor: pointer;

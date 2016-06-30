@@ -23,7 +23,11 @@
     display: inline;
 }
 
-#ulTopList li.selected {
+#ulTopList > li.selected {
+    color: #F49A43;
+}
+
+#ulTopList > li:hover {
     color: #F49A43;
 }
 

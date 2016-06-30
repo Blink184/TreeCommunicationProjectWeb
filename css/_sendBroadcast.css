@@ -48,17 +48,13 @@
 #sendBroadcast #body > ul > li > ul > li:nth-child(2) input, #sendBroadcast #body > ul > li > ul > li:nth-child(2) select, #message{
     width:350px;
     background-color: lightgray;
-    border: 0px;
+    border: 0;
     -webkit-border-radius:5px;
     -moz-border-radius:5px;
     border-radius:5px;
     display: inline-block;
     height:30px;
-    padding:10px;
     text-align: start;
-}
-#sendBroadcast #body > ul > li > ul > li:nth-child(2) select{
-    padding:0px;
 }
 #liCustom{
     display: none;
@@ -90,7 +86,7 @@
     width:60px;
     padding:5px;
     color: white;
-    border:0px;
+    border:0;
     background-color: #a3c0ce;
     border-radius: 5px;
     cursor: pointer;

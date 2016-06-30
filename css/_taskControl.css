@@ -30,19 +30,19 @@
     color: white;
     padding:2px;
     display: inline;
-    -webkit-border-radius:6px 6px 0px 0px;
-    -moz-border-radius:6px 6px 0px 0px;
-    border-radius:6px 6px 0px 0px;
+    -webkit-border-radius:6px 6px 0 0;
+    -moz-border-radius:6px 6px 0 0;
+    border-radius:6px 6px 0 0;
 }
 .divTaskControl .body{
     background-color: #fff;
     border-top:2px #a3c0ce solid;
-    -webkit-border-radius:0px 0px 6px 6px;
-    -moz-border-radius:0px 0px 6px 6px;
-    border-radius:0px 0px 6px 6px;
+    -webkit-border-radius:0 0 6px 6px;
+    -moz-border-radius:0 0 6px 6px;
+    border-radius:0 0 6px 6px;
 }
 .divTaskControl .title{
-    padding:10px 10px 0px 10px;
+    padding:10px 10px 0 10px;
     color: #878786;
     text-overflow: ellipsis;
     overflow: hidden;
@@ -64,7 +64,7 @@
 .divTaskControl .dateTop{
     width: 90%;
     background: #f3f3f3;
-    margin: 0px 5%;
+    margin: 0 5%;
     -webkit-border-radius:6px;
     -moz-border-radius:6px;
     border-radius:6px;
@@ -86,8 +86,10 @@
     width:26px;
     display: inline-block;
 }
-.divTaskControl .dateTop div:nth-child(2){
+.divTaskControl .dateTop div label{
+    display: inline-block;
     width: 1px;
+    height:34px;
     background: #aaa;
 }
 .divTaskControl .dateTop div:nth-child(2) img{
@@ -96,9 +98,10 @@
 
 .divTaskControl .dateMid {
     text-align: center;
-    margin: 4px 0px;
+    /*margin: 4px 0;*/
 }
-.divTaskControl .dateMid img{
+.divTaskControl .dateMid label{
+    display: inline-block;
     height:1px;
     width:90%;
     background: #aaa;
@@ -106,7 +109,7 @@
 
 .divTaskControl .dateBot{
     width: 90%;
-    margin: 0px 5%;
+    margin: 0 5%;
     -webkit-border-radius:6px;
     -moz-border-radius:6px;
     border-radius:6px;
@@ -121,9 +124,11 @@
     padding: 2% 1%;
     width: 40%;
 }
-.divTaskControl .dateBot div:nth-child(2){
-    width: 1px;
-}
-.divTaskControl .dateTop div:nth-child(2) img{
-    height:36px;
-}
+/*.divTaskControl .dateBot label{*/
+    /*margin-left: 9px;*/
+    /*margin-right: 6px;*/
+    /*width: 1px;*/
+    /*height:20px;*/
+    /*display: inline-block;*/
+    /*background-color: #aaa;*/
+/*}*/

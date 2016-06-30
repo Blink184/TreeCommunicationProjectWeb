@@ -1,10 +1,11 @@
 #messagesContactsControl{
-    width: 100%;
+    width:350px;
     height:100%;
     background: #253240;
+    position: absolute;
 }
 #messagesContactsControl #innerDiv{
-    padding:20px 0px;
+    padding:20px 0;
 }
 
 #messagesContactsControl #innerDiv > div{
@@ -59,5 +60,5 @@
     margin: 0;
 }
 #messagesContactsControl #ulContacts li{
-    margin:0px 0px;
+    margin:0;
 }
