@@ -82,7 +82,8 @@ html, body{
 
 #loginMain #body {
     padding: 10px;
-    text-align: justify;
+    text-align: start;
+    margin-left: 10px;
 }
 
 #loginMain #body > ul > li {
@@ -112,7 +113,7 @@ html, body{
 #loginMain #body #keepSignedInCB {
     width: 17px;
     height: 17px;
-    margin-left: 40px;
+    margin-left: 35px;
     margin-right: 10px;
 }
 

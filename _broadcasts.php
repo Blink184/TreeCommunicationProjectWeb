@@ -7,6 +7,7 @@ function addBroadcastControl ($empName, $empRole, $timeReceived, $title, $msgCon
 }
 ?>
 <link href="css/_broadcasts.css" rel="stylesheet" type="text/css"/>
+<script src="js/_showBroadcast.js"></script>
 <div id="divBroadcasts">
     <div id="divTop">
         <span class="spanLeft">
@@ -57,3 +58,4 @@ function addBroadcastControl ($empName, $empRole, $timeReceived, $title, $msgCon
     </div>
 </div>
 <?php include '_sendBroadcast.php';?>
+<?php include '_showBroadcast.php';?>

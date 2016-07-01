@@ -1,5 +1,5 @@
 <link href="css/_broadcastControl.css" rel="stylesheet" type="text/css"/>
-<div class="brdcastMsg" data-type="<?=$type;?>">
+<div class="brdcastMsg" data-type="<?=$type;?>" onclick="displayBroadcast(this)">
     <div id="top">
         <div id="theImg">
             <img src="resources/images/pp_jl.jpg" id="profPicBrd"/>
