@@ -8,13 +8,17 @@
 *{
     font-family: eurostileregular, "Bell MT", serif;
 }
-
+html, body{
+    width:100%;
+    height:100%;
+    padding:0;
+    margin:0;
+}
 #loginMain {
     height: 100%;
     width: 100%;
     top: 0;
     left: 0;
-    position: fixed;
 }
 
 #loginMain .outer {
@@ -49,13 +53,15 @@
 #loginMain #header #middleHeader {
     position: relative;
     text-align: center;
+    padding:10px;
+}
+#loginMain #header #middleHeader h3 {
+    margin:0;
 }
 
 #loginMain #header #middleHeader #treeMidImg {
-    width: 60px;
     height: 60px;
     padding: 0;
-    margin-bottom: -20px;
 }
 
 #loginMain #header #treeLeftImg {
@@ -72,11 +78,6 @@
     right: 0;
     width: 22%;
     height: 100%;
-}
-
-#loginMain h2{
-    margin:0;
-    text-align: center;
 }
 
 #loginMain #body {
@@ -98,16 +99,13 @@
 }
 
 #loginMain #body > ul > li > ul > li:nth-child(2) input{
-    width: 390px;
+    width: 340px;
     height: 40px;
     border: 0;
     outline: 0;
     border-bottom: 2px solid black;
-    -webkit-border-radius:5px;
-    -moz-border-radius:5px;
-    border-radius:5px;
     display: inline-block;
-    padding:10px;
+    padding:0 10px;
     text-align: start;
 }
 
@@ -129,8 +127,7 @@
 
 #loginMain ul li ul li {
     display: inline-block;
-    vertical-align: center;
-    line-height: 30px;
+    vertical-align: middle;
 }
 
 #loginMain #footer button {
