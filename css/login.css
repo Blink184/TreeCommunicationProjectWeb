@@ -30,18 +30,18 @@
 }
 
 #loginMain .inner {
-    box-shadow: 5px 5px 5px #888888;
+    box-shadow: 1px 1px 5px 3px #888888;
     margin-left: auto;
     margin-right: auto;
-    width: 450px;
+    width: 455px;
     padding: 0;
 }
 
 #loginMain #header {
     background-color: #243140;
+    border-bottom: 7px solid #a7c2ce;
     color: white;
     padding: 10px;
-    /*height: 50px;*/
     position: relative;
     vertical-align: middle;
 }
@@ -59,16 +59,19 @@
 }
 
 #loginMain #header #treeLeftImg {
+    left: 0;
+    top: 0;
     position: absolute;
-    width: 20%;
-    height: 90%;
+    width: 22%;
+    height: 100%;
 }
 
 #loginMain #header #treeRightImg {
+    top: 0;
     position: absolute;
     right: 0;
-    width: 20%;
-    height: 90%;
+    width: 22%;
+    height: 100%;
 }
 
 #loginMain h2{
@@ -95,7 +98,7 @@
 }
 
 #loginMain #body > ul > li > ul > li:nth-child(2) input{
-    width: 385px;
+    width: 390px;
     height: 40px;
     border: 0;
     outline: 0;
@@ -131,7 +134,7 @@
 }
 
 #loginMain #footer button {
-    width: 130px;
+    width: 280px;
     padding: 5px;
     color: white;
     background-color: #a1bfcd;
@@ -139,7 +142,7 @@
     cursor: pointer;
     outline: none;
     border: none;
-    font-size: 100%;
+    font-size: 120%;
 }
 
 #loginMain #footer button:hover {

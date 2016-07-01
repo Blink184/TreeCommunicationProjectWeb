@@ -3,5 +3,5 @@
  */
 
 function goToEmployeesPage() {
-    window.location="http://localhost:63342/TreeCommunicationProjectWeb/employees.php"
+    window.location="employees.php"
 }
