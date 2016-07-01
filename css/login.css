@@ -1,0 +1,172 @@
+@font-face {
+    font-family: 'eurostileregular';
+    src: url('../resources/fonts/eurosti-webfont.woff2') format('woff2'),
+    url('../resources/fonts/eurosti-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+*{
+    font-family: eurostileregular, "Bell MT", serif;
+}
+
+#loginMain {
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    position: fixed;
+}
+
+#loginMain .outer {
+    display: table;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+
+#loginMain .middle {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+#loginMain .inner {
+    box-shadow: 5px 5px 5px #888888;
+    margin-left: auto;
+    margin-right: auto;
+    width: 450px;
+    padding: 0;
+}
+
+#loginMain #header {
+    background-color: #243140;
+    color: white;
+    padding: 10px;
+    /*height: 50px;*/
+    position: relative;
+    vertical-align: middle;
+}
+
+#loginMain #header #middleHeader {
+    position: relative;
+    text-align: center;
+}
+
+#loginMain #header #middleHeader #treeMidImg {
+    width: 60px;
+    height: 60px;
+    padding: 0;
+    margin-bottom: -20px;
+}
+
+#loginMain #header #treeLeftImg {
+    position: absolute;
+    width: 20%;
+    height: 90%;
+}
+
+#loginMain #header #treeRightImg {
+    position: absolute;
+    right: 0;
+    width: 20%;
+    height: 90%;
+}
+
+#loginMain h2{
+    margin:0;
+    text-align: center;
+}
+
+#loginMain #body {
+    padding: 10px;
+    text-align: justify;
+}
+
+#loginMain #body > ul > li {
+    margin-top: 10px;
+    padding-top: 10px;
+    padding-bottom: 8px;
+}
+
+#loginMain #body > ul > li > ul > li:first-child img{
+    width: 35px;
+    height: 35px;
+    text-align: start;
+    display: inline-block;
+}
+
+#loginMain #body > ul > li > ul > li:nth-child(2) input{
+    width: 385px;
+    height: 40px;
+    border: 0;
+    outline: 0;
+    border-bottom: 2px solid black;
+    -webkit-border-radius:5px;
+    -moz-border-radius:5px;
+    border-radius:5px;
+    display: inline-block;
+    padding:10px;
+    text-align: start;
+}
+
+#loginMain #body #keepSignedInCB {
+    width: 17px;
+    height: 17px;
+    margin-left: 40px;
+    margin-right: 10px;
+}
+
+#loginMain ul {
+    padding:0;
+    margin:0;
+}
+
+#loginMain ul li {
+    list-style: none;
+}
+
+#loginMain ul li ul li {
+    display: inline-block;
+    vertical-align: center;
+    line-height: 30px;
+}
+
+#loginMain #footer button {
+    width: 130px;
+    padding: 5px;
+    color: white;
+    background-color: #a1bfcd;
+    border-radius: 0;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    font-size: 100%;
+}
+
+#loginMain #footer button:hover {
+    background-color: #f39943;
+}
+
+#loginMain #footer button::-moz-focus-inner{
+    border: 0;
+}
+
+#loginMain #footer a {
+    color: black;
+    border: 0;
+    outline: 0;
+    text-decoration: none;
+}
+
+#loginMain #footer a:focus{
+    outline: 0;
+    border:0;
+}
+
+#loginMain #footer a:hover {
+    color: #f39943;
+}
+
+#loginMain #footer {
+    text-align: center;
+    padding: 35px;
+}
