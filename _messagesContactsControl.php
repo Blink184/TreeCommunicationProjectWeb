@@ -1,19 +1,19 @@
 <link href="css/_messagesContactsControl.css" rel="stylesheet" type="text/css"/>
 <div id="messagesContactsControl">
     <div id="innerDiv">
-        <div>
+        <div id="header">
             <div>
-                <input type="text" onkeyup="search(this.value)" placeholder="search..."/>
+                <input type="text" onkeyup="searchContacts(this.value)" placeholder="search..."/>
             </div><!--
          --><div>
-                <div id="divCompose">
+                <div id="divCompose" onclick="sendMessage(null)">
                     <div>
                         Compose
                     </div>
                 </div>
             </div>
         </div>
-        <div>
+        <div id="body">
             <ul id="ulContacts">
                 <li><?php addMessageRow("Ahmad Hammoud", "pp_tm.PNG", "5 mins ago", "Is this the place we used to love? is this the place that I have been dreaming of", false);?></li>
                 <li><?php addMessageRow("Aynur Ajami", "pp_ws.PNG", "5 mins ago", "ensa", false);?></li>
@@ -22,7 +22,7 @@
             </ul>
         </div>
     </div>
-<div>
+</div>
 <?php
 function addMessageRow($name, $img, $time, $lastMessage, $isRead){
     include '_messagesContactsControlRow.php';

@@ -1,5 +1,5 @@
 <link href="css/_messagesContactsControlRow.css" rel="stylesheet" type="text/css"/>
-<div id="messagesContactsControlRow" <?php if(!$isRead) echo 'class="new"';?>>
+<div class="messagesContactsControlRow <?php if(!$isRead) echo 'new';?>" data-name="<?=$name?>">
     <table>
         <tr>
             <td rowspan="2" id="messagesContactsControlRow_picture">
