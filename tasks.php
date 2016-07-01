@@ -1,6 +1,5 @@
-<?php
-    include '_preHtmlTag.php';
-?>
+<?php include '_preHtmlTag.php'; ?>
+<!DOCTYPE html>
 <html>
     <head>
         <?php include '_includes.html';?>
@@ -12,7 +11,7 @@
                 <?php include '_menu.html';?>
             </li>
             <li id="liRight">
-                <ul class="inline-block">
+                <ul>
                     <li id="liHeader">
                         <?php include '_header.html';?>
                     </li>

@@ -1,6 +1,5 @@
-<?php
-include '_preHtmlTag.php';
-?>
+<?php include '_preHtmlTag.php'; ?>
+<!DOCTYPE html>
 <html>
     <head>
         <?php include '_includes.html';?>

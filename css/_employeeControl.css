@@ -10,6 +10,7 @@
     position: relative;
     width: 80px;
     height: 90px;
+    cursor: pointer;
 }
 
 .divEmployeeControl > div{
@@ -40,6 +41,7 @@
 
 .divEmployeeControl .divBody .divName{
     margin-top:20px;
+    cursor: pointer;
     color: #a3c0ce;
     font-weight: bold;
     font-size: 120%;
@@ -88,14 +90,14 @@ ol.tree li input + ol
     margin: -60px 0 0 -44px;
     padding: 41px 0 0 100px;
     height: 20px;
-    background: url(../resources/images/employee/arrow2.svg) 25px 0px no-repeat;
+    background: url(../resources/images/employee/arrow2.svg) 25px 0 no-repeat;
 }
 
 ol.tree li input + ol > li
 {
     display: none;
-    margin-left: 0px !important;
-    padding-left: 0px;
+    margin-left: 0 !important;
+    padding-left: 0;
 }
 
 ol.tree li input:checked + ol
@@ -103,7 +105,7 @@ ol.tree li input:checked + ol
     margin: -52px 0 0 -44px;
     padding: 55px 0 0 100px;
     height: auto;
-    background: url(../resources/images/employee/arrow.svg) 20px 0px no-repeat;
+    background: url(../resources/images/employee/arrow.svg) 20px 0 no-repeat;
 }
 
 ol.tree li input:checked + ol > li

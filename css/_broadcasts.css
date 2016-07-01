@@ -23,7 +23,11 @@
     display: inline;
 }
 
-#ulTopList li.selected {
+#ulTopList > li.selected {
+    color: #F49A43;
+}
+
+#ulTopList > li:hover {
     color: #F49A43;
 }
 
@@ -86,8 +90,7 @@
 }
 
 #divBroadcasts #broadcastMsgContainer ul li{
-    display: inline-block;
-    margin: 10px;
+    display: inline;
 }
 
 /*#divTop .spanLeft, #divTop .spanRight{*/
