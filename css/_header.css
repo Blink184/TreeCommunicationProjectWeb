@@ -20,6 +20,7 @@
 
 #divHeader .element{
     padding:10px 20px;
+    cursor: pointer;
 }
 #divHeader .element:not(:first-child){
     border-left: 1px lightgray solid;
