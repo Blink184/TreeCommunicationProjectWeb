@@ -37,3 +37,11 @@ function setMenuWidth(width){
     left.style.width = width + "px";
     right.style.marginLeft = width + "px";
 }
+
+function logout(){
+    location = "index.php";
+}
+function profile(){
+}
+function settings(){
+}

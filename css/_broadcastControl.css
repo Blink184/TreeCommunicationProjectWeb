@@ -3,6 +3,8 @@
     padding-right: 10px;
     padding-bottom: 15px;
     padding-top: 6px;
+    overflow: hidden;
+    height: 100px;
     background-color: #e1e4e5;
     width: 320px;
     display: inline-block;
@@ -10,6 +12,23 @@
     position: relative;
     margin: 10px;
     vertical-align: top;
+
+    -webkit-transition: .5s;
+    transition: .5s;
+}
+
+.brdcastMsg:hover{
+    box-shadow: gray 3px 3px 3px;
+}
+.brdcastMsg:hover #profPicBrd{
+    border: 2px #F49A43 solid;
+}
+.brdcastMsg:hover #timeReceived, .brdcastMsg:hover #empName{
+    color: #F49A43;
+}
+
+.brdcastMsg:hover{
+    cursor: pointer;
 }
 
 #profPicBrd {
@@ -23,10 +42,16 @@
     float: left;
 }
 
+#profPicBrd, #empName, #timeReceived{
+    -webkit-transition: .5s;
+    transition: .5s;
+}
+
 #empName {
     margin-left: 42px;
     font-size: 16px;
     color: #a2bfcd;
+    font-weight: bold;
 }
 
 #empRole {
@@ -43,16 +68,20 @@
 
 .content {
     margin-top: 5px;
-    font-size: 15px;
+    font-size: 12px;
 }
 
 #title {
     padding-bottom: 5px;
+    font-size: 13px;
     padding-top: 2px;
-    font-weight: bolder;
+    font-weight: bold;
 }
 
 #msgContent {
     padding-bottom: 5px;
-    line-height: 15px;
+    /*line-height: 12px;*/
+    font-size: 13px;
+    height: 40px;
+    overflow-y: hidden;
 }

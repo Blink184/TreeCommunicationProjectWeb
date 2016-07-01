@@ -13,7 +13,7 @@
             <li id="liRight">
                 <ul class="inline-block">
                     <li id="liHeader">
-                        <?php include '_header.html';?>
+                        <?php include '_header.php';?>
                     </li>
                     <li id="liTitle">
                         <div>

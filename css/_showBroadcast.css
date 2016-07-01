@@ -1,92 +1,88 @@
-#sendMessage{
+#showBroadcast {
     background-color: RGBA(1,1,1,.6);
     height: 100%;
     width: 100%;
     display: none;
-    top:0;
-    left:0;
+    top: 0;
+    left: 0;
     position: fixed;
 }
-#sendMessage .outer {
+#showBroadcast .outer {
     display: table;
     position: absolute;
     height: 100%;
     width: 100%;
 }
-#sendMessage .middle {
+#showBroadcast .middle {
     display: table-cell;
     vertical-align: middle;
 }
-#sendMessage .inner {
+#showBroadcast .inner {
     margin-left: auto;
     margin-right: auto;
     width: 500px;
     padding: 0;
     background-color: #f0f3f4;
 }
-#sendMessage #header{
+#showBroadcast #header{
     background-color: #263240;
     color: white;
     padding:10px;
 }
-#sendMessage h2{
+#showBroadcast h2{
     margin: 0;
 }
-#sendMessage #body{
+#showBroadcast #body{
     padding: 10px;
     text-align: center;
+    overflow-y: auto;
+    max-height: 600px;
 }
-#sendMessage #body > ul > li{
+#showBroadcast #body > ul > li{
     padding-top: 10px;
 }
-#sendMessage #body > ul > li > ul > li:first-child label{
+#showBroadcast #body > ul > li > ul > li:first-child label{
     width:100px;
     display: inline-block;
     height:30px;
     text-align: start;
+    line-height: 30px;
 }
-#sendMessage #body > ul > li > ul > li:nth-child(2) input, #message{
-    width:350px;
+#showBroadcast #body > ul > li > ul > li:nth-child(2) div{
+    width:330px;
     background-color: lightgray;
-    border: 0px;
+    border: 0;
     -webkit-border-radius:5px;
     -moz-border-radius:5px;
     border-radius:5px;
     display: inline-block;
-    height:30px;
-    /*padding:10px;*/
+    padding:10px;
     text-align: start;
 }
-#sendMessage ul{
+#showBroadcast ul{
     padding:0;
     margin:0;
 }
-#sendMessage ul li{
+#showBroadcast ul li{
     list-style: none;
 }
-#sendMessage ul li ul li{
+#showBroadcast ul li ul li{
     display: inline-block;
     vertical-align: top;
-    line-height: 30px;
 }
-#sendMessage #message{
-    height: 150px;
-    resize: none;
-    display: block;
-}
-#sendMessage #footer button{
+#showBroadcast #footer button{
     width:60px;
     padding:5px;
     color: white;
-    border:0px;
+    border:0;
     background-color: #a3c0ce;
     border-radius: 5px;
     cursor: pointer;
 }
-#sendMessage #footer button:hover{
+#showBroadcast #footer button:hover{
     background-color: #F49A43;
 }
-#sendMessage #footer{
+#showBroadcast #footer{
     text-align: right;
     padding: 10px;
     margin-right: 14px;
