@@ -1,27 +1,17 @@
 #divMessages{
-}
-
-#divMessages > ul{
-    padding:0;
-    margin:0;
-    list-style: none;
-    height:100%;
-    overflow-y: hidden;
-}
-#divMessages > ul > li{
-    height:100%;
-    display: inline-block;
-}
-
-#divMessages #contacts{
-    width: 350px;
-    margin-left: 10px;
-    padding:0;
-    background-color: #fff;
-    display: inline-block;
+    position: relative;
+    display: table;
+    width:100%;
     height:100%;
 }
-#divMessages #conversation{
-    width:600px;
+#divMessages > div{
+    display: table-cell;
     height:100%;
+    vertical-align: top;
+}
+#d1{
+    width:30%;
+}
+#d2{
+    width:70%;
 }

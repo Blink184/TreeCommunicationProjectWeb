@@ -1,16 +1,20 @@
 #messagesContactsControl{
-    width:350px;
     height:100%;
-    background: #253240;
-    position: absolute;
+    background-color: #253240;
+    margin:0 10px;
 }
 #messagesContactsControl #innerDiv{
-    padding:20px 0;
+    position: relative;
+    height:100%;
+    width:100%;
+    overflow: hidden;
 }
 
 #messagesContactsControl #innerDiv > div{
-    width:100%;
-    padding:10px 0;
+    padding-top:10px;
+    position: absolute;
+    overflow: hidden;
+    left:0;
 }
 
 #messagesContactsControl #innerDiv > div > div{
@@ -28,11 +32,11 @@
     color: white;
     background: #191d2c url(../resources/images/task/search.svg) no-repeat 7px 5px;
 }
-#messagesContactsControl #innerDiv > div > div:first-child{
+#messagesContactsControl #innerDiv #header > div:first-child{
     padding-left:4%;
     width:66%;
 }
-#messagesContactsControl #innerDiv > div > div:nth-child(2){
+#messagesContactsControl #innerDiv #header > div:nth-child(2){
     padding-right:4%;
     width:26%;
 }
@@ -54,10 +58,26 @@
     text-align: center;
 }
 
+#messagesContactsControl #innerDiv #header{
+    top:0;
+    height:40px;
+    width:100%;
+}
+
+#messagesContactsControl #innerDiv #body{
+    top:40px;
+    bottom:0;
+    width:100%;
+}
+
 #messagesContactsControl #ulContacts{
     list-style: none;
     padding: 0;
     margin: 0;
+    height:100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    width:100%;
 }
 #messagesContactsControl #ulContacts li{
     margin:0;
