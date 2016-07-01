@@ -33,7 +33,7 @@
     box-shadow: 1px 1px 5px 3px #888888;
     margin-left: auto;
     margin-right: auto;
-    width: 450px;
+    width: 455px;
     padding: 0;
 }
 
@@ -98,7 +98,7 @@
 }
 
 #loginMain #body > ul > li > ul > li:nth-child(2) input{
-    width: 385px;
+    width: 390px;
     height: 40px;
     border: 0;
     outline: 0;
