@@ -1,4 +1,4 @@
-#messagesContactsControlRow{
+.messagesContactsControlRow{
     padding:10px 0;
     width: 100%;
     -webkit-transition: .5s;
@@ -6,22 +6,22 @@
     cursor: pointer;
     background-color: #253240;
 }
-#messagesContactsControlRow.new:hover, #messagesContactsControlRow:hover{
+.messagesContactsControlRow.new:hover, .messagesContactsControlRow:hover{
     background-color: #667a8f;
 }
-#messagesContactsControlRow.new{
+.messagesContactsControlRow.new{
     background-color: #3b4753;
 }
 
-#messagesContactsControlRow table{
+.messagesContactsControlRow table{
     border-collapse: collapse;
 }
 
-#messagesContactsControlRow #messagesContactsControlRow_picture{
+.messagesContactsControlRow #messagesContactsControlRow_picture{
     width: 15%;
     padding-left: 10px;
 }
-#messagesContactsControlRow #messagesContactsControlRow_picture img{
+.messagesContactsControlRow #messagesContactsControlRow_picture img{
     width: 40px;
     height: 40px;
     border:2px #a2bfcd solid;
@@ -29,23 +29,23 @@
     -moz-border-radius:100%;
     border-radius:100%;
 }
-#messagesContactsControlRow #messagesContactsControlRow_nameAndTime{
+.messagesContactsControlRow #messagesContactsControlRow_nameAndTime{
     padding-left: 10px;
     width: 80%;
 }
-#messagesContactsControlRow #messagesContactsControlRow_name{
+.messagesContactsControlRow #messagesContactsControlRow_name{
     color: #a2bfcd;
 }
-#messagesContactsControlRow #messagesContactsControlRow_time{
+.messagesContactsControlRow #messagesContactsControlRow_time{
     margin-left: 10px;
     color: white;
     font-size: 12px;
 }
-#messagesContactsControlRow #messagesContactsControlRow_status{
+.messagesContactsControlRow #messagesContactsControlRow_status{
     width: 15px;
     padding-right: 10px;
 }
-#messagesContactsControlRow #messagesContactsControlRow_lastMessage{
+.messagesContactsControlRow #messagesContactsControlRow_lastMessage{
     padding-left: 10px;
     color: white;
     text-overflow: ellipsis;

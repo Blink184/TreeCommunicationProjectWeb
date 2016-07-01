@@ -1,16 +1,10 @@
 <link href="css/_messages.css" rel="stylesheet" type="text/css"/>
 <div id="divMessages">
-    <ul>
-        <li>
-            <div id="contacts">
-                <?php include "_messagesContactsControl.php";?>
-            </div>
-        </li>
-        <li>
-            <div id="conversation">
-                <?php include "_messagesConversationControl.php";?>
-            </div>
-        </li>
-    </ul>
+    <div id="d1">
+        <?php include "_messagesContactsControl.php";?>
+    </div>
+    <div id="d2">
+        <?php include "_messagesConversationControl.php";?>
+    </div>
 </div>
 <?php include '_sendMessage.php';?>
