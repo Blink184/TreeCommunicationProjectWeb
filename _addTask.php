@@ -12,7 +12,13 @@
                         <li>
                             <ul>
                                 <li><label for="to">To</label></li>
-                                <li><input id="to" name="addTask_to" type="text"></li>
+                                <li>
+                                    <select id="toEmp">
+                                        <option>Aynur Ajami</option>
+                                        <option>Ahmad Hammoud</option>
+                                        <option>Azzam Mourad</option>
+                                    </select>
+                                </li>
                             </ul>
                         </li>
                         <li>
@@ -38,7 +44,7 @@
                 <div id="footer">
                     <button onclick="cancelAddTask()">Cancel</button>
                     <button onclick="cancelAddTask()">Attach</button>
-                    <button onclick="cancelAddTask()">Add</button>
+                    <button onclick="submitAddTask()">Add</button>
                 </div>
             </div>
         </div>

@@ -11,3 +11,7 @@ function addTask(target){
     }
     document.getElementById('addTask').style.display = 'block';
 }
+
+function submitAddTask() {
+    
+}
