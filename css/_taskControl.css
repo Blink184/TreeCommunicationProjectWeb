@@ -121,6 +121,7 @@
     display: inline-block;
 }
 .divTaskControl .dateBot div:first-child, .divTaskControl .dateBot div:last-child{
+    font-size: 12px;
     padding: 2% 1%;
     width: 40%;
 }
