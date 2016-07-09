@@ -1,0 +1,87 @@
+#addRole{
+    background-color: RGBA(1,1,1,.6);
+    height: 100%;
+    width: 100%;
+    display: none;
+    top:0;
+    left:0;
+    position: fixed;
+}
+#addRole .outer {
+    display: table;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+#addRole .middle {
+    display: table-cell;
+    vertical-align: middle;
+}
+#addRole .inner {
+    margin-left: auto;
+    margin-right: auto;
+    width: 500px;
+    padding: 0;
+    background-color: #f0f3f4;
+}
+#addRole #header{
+    background-color: #263240;
+    color: white;
+    padding:10px;
+}
+#addRole h2{
+    margin: 0;
+}
+#addRole #body{
+    padding: 10px;
+    text-align: center;
+}
+#addRole #body > ul > li{
+    padding-top: 10px;
+}
+#addRole #body > ul > li > ul > li:first-child label{
+    width:100px;
+    display: inline-block;
+    height:30px;
+    text-align: left;
+}
+#addRole #body > ul > li > ul > li:nth-child(2) input{
+    width:350px;
+    background-color: lightgray;
+    border: 0;
+    -webkit-border-radius:5px;
+    -moz-border-radius:5px;
+    border-radius:5px;
+    display: inline-block;
+    height:30px;
+}
+#addRole ul{
+    padding:0;
+    margin:0;
+}
+#addRole ul li{
+    list-style: none;
+}
+#addRole ul li ul li{
+    display: inline-block;
+    vertical-align: top;
+    line-height: 30px;
+}
+
+#addRole #footer button{
+    width:60px;
+    padding:5px;
+    color: white;
+    border:0;
+    background-color: #a3c0ce;
+    border-radius: 5px;
+    cursor: pointer;
+}
+#addRole #footer button:hover{
+    background-color: #F49A43;
+}
+#addRole #footer{
+    text-align: right;
+    padding: 10px;
+    margin-right: 14px;
+}

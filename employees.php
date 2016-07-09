@@ -25,6 +25,9 @@
                         <button onclick="addUser();">
                             Add User
                         </button>
+                        <button onclick="addRole();">
+                            Add Role
+                        </button>
                     </li>
                     <li id="liContent">
                         <?php include '_employees.php';?>
