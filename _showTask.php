@@ -5,44 +5,44 @@
         <div class="middle">
             <div class="inner">
                 <div id="header">
-                    <h2>This is a title</h2>
+                    <h2 id="showTask_Title"></h2>
                 </div>
                 <div id="body">
                     <ul>
                         <li>
                             <ul>
                                 <li><label for="to">Assignee</label></li>
-                                <li><div>Azzam Mourad</div></li>
+                                <li><div id="showTask_empNameFrom"></div></li>
                             </ul>
                         </li>
                         <li>
                             <ul>
                                 <li><label for="title">Assigned To</label></li>
-                                <li><div>Jared Leto</div></li>
+                                <li><div id="showTask_empNameTo"></div></li>
                             </ul>
                         </li>
                         <li class="liTextArea">
                             <ul>
                                 <li><label for="description">Description</label></li>
-                                <li><div>This is the description of this task. This is the description of this task. This is the description of this task. This is the description of this task.</div></li>
+                                <li><div id="showTask_Description"></div></li>
                             </ul>
                         </li>
                         <li>
                             <ul>
                                 <li><label for="attachments">Attachments</label></li>
-                                <li><div><a href="">Image01.png</a> | <a href="">document01.doc</a></div></li>
+                                <li><div id="showTask_Attachments"></div></li>
                             </ul>
                         </li>
                         <li>
                             <ul>
                                 <li><label for="startDate">Start Date</label></li>
-                                <li><div>24/6/2016</div></li>
+                                <li><div id="showTask_StartDate"></div></li>
                             </ul>
                         </li>
                         <li>
                             <ul>
                                 <li><label for="dueDate">Due Date</label></li>
-                                <li><div>26/6/2016</div></li>
+                                <li><div id="showTask_DueDate"></div></li>
                             </ul>
                         </li>
                     </ul>
