@@ -79,4 +79,5 @@ html, body{
 #ulMain #liTitle div{
     margin-top: -10px;
     padding: 0 50px;
+    display: inline-block;
 }

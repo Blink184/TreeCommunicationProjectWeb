@@ -21,6 +21,10 @@
                                 EMPLOYEES
                             </h2>
                         </div>
+
+                        <button onclick="addUser();">
+                            Add User
+                        </button>
                     </li>
                     <li id="liContent">
                         <?php include '_employees.php';?>
