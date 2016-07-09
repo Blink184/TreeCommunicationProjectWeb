@@ -13,7 +13,6 @@ var TASKS = [];
 
 window.onload = function () {
     setSelectedTab('tabTask');
-
     loadTasks();
 
     $('.datetimepicker').datetimepicker({
@@ -32,7 +31,6 @@ window.onload = function () {
     filterTasks();
 
 };
-
 
 function search(value){
     SEARCH = value.trim();
@@ -104,10 +102,11 @@ function setSelectedStatus(object, status){
     SELECTEDSTATUS = status;
 }
 
-function task (taskid, empNameTo, taskTitle, content, type, status, startdate, duedate) {
+function task (taskid, empNameTo, empNameFrom, taskTitle, content, type, status, startdate, duedate) {
     var task = {
-        Id: taskid,
-        EmpName: empNameTo,
+        TaskId: taskid,
+        EmpNameTo: empNameTo,
+        EmpNameFrom: empNameFrom,
         TaskTitle: taskTitle,
         Content: content,
         Type: type,
@@ -121,18 +120,17 @@ function task (taskid, empNameTo, taskTitle, content, type, status, startdate, d
 function loadTasks() {
     //db
     TASKS = [
-        task(1, "Dalia Al Ali", "Documents", "Please print the documents", SENTREQUEST, INPROGRESS, "29/12/2016", "02/02/2017"),
-        task(2, "Karen Shall", "Documents", "Please send the documents", SENTREQUEST, FINISHED, "12/10/2016", "15/10/2016"),
-        task(3, "Sarah Majzoub", "Documents", "Please receive the documents", RECEIVEDREQUEST, FINISHED, "15/08/2016", "09/09/2016"),
-        task(4, "Farah Kassem", "Documents", "Please email the documents", SENTREQUEST, INPROGRESS, "02/10/2016", "12/10/2016"),
-        task(5, "Mariam Derbas", "Documents", "Please attach the documents", SENTREQUEST, NEW,"22/11/2016", "26/11/2016"),
-        task(6, "Jared Leto", "Documents", "Please kebb the documents", MYTASK, NEW, "12/12/2016", "12/12/2016"),
-        task(7, "Jared Leto", "Documents", "Please move away", MYTASK, NEW, "07/10/2016", "30/11/2016"),
-        task(8, "Jared Leto", "Documents", "Please shower", MYTASK, NEW, "07/08/2016", "22/08/2016"),
-        task(9, "Jared Leto", "Documents", "Please sleep", MYTASK, NEW, "12/09/2016", "12/10/2016"),
-        task(10, "Jared Leto", "Documents", "Please eat", MYTASK, INPROGRESS, "12/09/2016", "12/01/2017"),
+        task(1, "Jared Leto", "George T. Arz", "Documents", "Please print the documents", SENTREQUEST, INPROGRESS, "29/12/2016", "02/02/2017"),
+        task(2, "Jared Leto", "George T. Arz", "Documents", "Please send the documents", SENTREQUEST, FINISHED, "12/10/2016", "15/10/2016"),
+        task(3, "Sarah Majzoub", "Jared Leto", "Documents", "Please receive the documents", RECEIVEDREQUEST, FINISHED, "15/08/2016", "09/09/2016"),
+        task(4, "Jared Leto", "Karen Shall", "Documents", "Please email the documents", SENTREQUEST, INPROGRESS, "02/10/2016", "12/10/2016"),
+        task(5, "Jared Leto", "Mariam Derbas", "Documents", "Please attach the documents", SENTREQUEST, NEW,"22/11/2016", "26/11/2016"),
+        task(6, "Jared Leto", "Jared Leto", "Documents", "Please kebb the documents", MYTASK, NEW, "12/12/2016", "12/12/2016"),
+        task(7, "Jared Leto", "Jared Leto", "Documents", "Please move away", MYTASK, NEW, "07/10/2016", "30/11/2016"),
+        task(8, "Jared Leto", "Jared Leto","Documents", "Please shower", MYTASK, NEW, "07/08/2016", "22/08/2016"),
+        task(9, "Jared Leto", "Jared Leto","Documents", "Please sleep", MYTASK, NEW, "12/09/2016", "12/10/2016"),
+        task(10, "Jared Leto", "Jared Leto","Documents", "Please eat", MYTASK, INPROGRESS, "12/09/2016", "12/01/2017"),
     ];
-
     extractArrayTasks();
 }
 
@@ -168,13 +166,15 @@ function parseTask(task) {
     }
 
     var tmp = '<li>'
-                +'<div class="divTaskControl" onclick="displayTask(this)" data-type="'
+                +'<div class="divTaskControl" onclick="displayTask('
+                +task.TaskId
+                +')" data-type="'
                 +task.Type
                 +'" data-status="'
                 +task.Status
                 +'">'
                 +'<div class="header">'
-                +task.EmpName
+                +task.EmpNameFrom
                 +'</div>'
                 +'<div class="statusImage">'
                 +img
