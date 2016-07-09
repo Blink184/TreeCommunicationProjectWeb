@@ -1,6 +1,7 @@
 function cancelAddUser(){
     getObject("addUser").style.display = "none";
 }
+
 function addUser(){
     getObject('addUser').style.display = 'block';
 }
@@ -20,9 +21,6 @@ function submitAddUser(){
     }
 }
 
-
-
-
 function insertUser(firstname, lastname, username, password){
     $.post("database/api/insertUser.php",
         {
@@ -37,10 +35,7 @@ function insertUser(firstname, lastname, username, password){
             if(status == "success"){
                 if(jsonSuccess(data)){
                     setSuccessLog(log, "Process completed");
-                    clearValue("addUser_firstName");
-                    clearValue("addUser_lastName");
-                    clearValue("addUser_username");
-                    clearValue("addUser_password");
+                    clearAddUserForm();
                 }else{
                     setFailureLog(log, jsonData(data));
                 }
@@ -49,4 +44,11 @@ function insertUser(firstname, lastname, username, password){
             }
         }
     );
+}
+
+function clearAddUserForm(){
+    clearValue("addUser_firstName");
+    clearValue("addUser_lastName");
+    clearValue("addUser_username");
+    clearValue("addUser_password");
 }

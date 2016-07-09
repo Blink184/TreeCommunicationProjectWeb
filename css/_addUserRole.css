@@ -1,0 +1,88 @@
+#addUserRole{
+    background-color: RGBA(1,1,1,.6);
+    height: 100%;
+    width: 100%;
+    display: none;
+    top:0;
+    left:0;
+    position: fixed;
+}
+#addUserRole .outer {
+    display: table;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+#addUserRole .middle {
+    display: table-cell;
+    vertical-align: middle;
+}
+#addUserRole .inner {
+    margin-left: auto;
+    margin-right: auto;
+    width: 500px;
+    padding: 0;
+    background-color: #f0f3f4;
+}
+#addUserRole #header{
+    background-color: #263240;
+    color: white;
+    padding:10px;
+}
+#addUserRole h2{
+    margin: 0;
+}
+#addUserRole #body{
+    padding: 10px;
+    text-align: center;
+}
+#addUserRole #body > ul > li{
+    padding-top: 10px;
+}
+#addUserRole #body > ul > li > ul > li:first-child label{
+    width:100px;
+    display: inline-block;
+    height:30px;
+    text-align: left;
+}
+#addUserRole #body > ul > li > ul > li:nth-child(2) input, #addUserRole #body > ul > li > ul > li:nth-child(2) select{
+    width:350px;
+    background-color: lightgray;
+    border: 0;
+    -webkit-border-radius:5px;
+    -moz-border-radius:5px;
+    border-radius:5px;
+    display: inline-block;
+    height:30px;
+}
+
+#addUserRole ul{
+    padding:0;
+    margin:0;
+}
+#addUserRole ul li{
+    list-style: none;
+}
+#addUserRole ul li ul li{
+    display: inline-block;
+    vertical-align: top;
+    line-height: 30px;
+}
+
+#addUserRole #footer button{
+    width:60px;
+    padding:5px;
+    color: white;
+    border:0;
+    background-color: #a3c0ce;
+    border-radius: 5px;
+    cursor: pointer;
+}
+#addUserRole #footer button:hover{
+    background-color: #F49A43;
+}
+#addUserRole #footer{
+    text-align: right;
+    padding: 10px;
+    margin-right: 14px;
+}

@@ -54,11 +54,11 @@ function notEmpty(string){
 }
 
 function jsonSuccess(data){
-    result = JSON.parse(data);
+    var result = JSON.parse(data);
     return result.s == 1;
 }
 function jsonData(data){
-    result = JSON.parse(data);
+    var result = JSON.parse(data);
     return result.i;
 }
 
@@ -70,6 +70,15 @@ function setValue(objectId, value){
 }
 function clearValue(objectId){
     setValue(objectId, "");
+}
+function clearChecked(objectId){
+    setChecked(objectId, false);
+}
+function getChecked(objectId){
+    return getObject(objectId).checked;
+}
+function setChecked(objectId, isChecked){
+    getObject(objectId).checked = isChecked;
 }
 function getValue(objectId){
     return getObject(objectId).value;

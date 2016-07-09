@@ -52,7 +52,7 @@ function generateDataFor(employee){
         + '<div class="divActions">'
         + '<img src="resources/images/employee/add_task.svg" onclick="addTask(\''+employee.Name+'\', ' + employee.EmployeeId + ');"/> '
         + '<img src="resources/images/employee/message.svg" onclick="sendMessage(\''+employee.Name+'\', ' + employee.EmployeeId + ');"/> '
-        + '<img src="resources/images/employee/add_child.svg" onclick="addChild(\''+employee.Name+'\', ' + employee.EmployeeId + ');" width="16"/> '
+        + '<img src="resources/images/employee/add_child.svg" onclick="addUserRole(\''+employee.Name+'\', ' + employee.EmployeeId + ');" width="16"/> '
         + '</div>'
         + '</div>'
         + '</div>'

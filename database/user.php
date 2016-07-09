@@ -15,10 +15,10 @@ function getUser($id){
     $q = "select * from user where UserId = $id";
     return execute($q);
 }
-function getUserByUsernamae($username){
+function getUserByUsername($username){
     $q = "select * from user where Username = '$username' and IsDeleted = 0";
     return execute($q);
 }
 function usernameExists($username){
-    return any(getUserByUsernamae($username));
+    return any(getUserByUsername($username));
 }
