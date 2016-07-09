@@ -37,6 +37,50 @@ function setMenuWidth(width){
     left.style.width = width + "px";
     right.style.marginLeft = width + "px";
 }
+function setSuccessLog(object, text){
+    object.innerHTML = text;
+    object.style.color = "Green";
+}
+function setFailureLog(object, text){
+    object.innerHTML = text;
+    object.style.color = "Red";
+}
+function setProcessingLog(object, text){
+    object.innerHTML = "Processing...";
+    object.style.color = "blue";
+}
+function notEmpty(string){
+    return string !== undefined && string.length > 0;
+}
+
+function jsonSuccess(data){
+    result = JSON.parse(data);
+    return result.s == 1;
+}
+function jsonData(data){
+    result = JSON.parse(data);
+    return result.i;
+}
+
+function getObject(objectId){
+    return document.getElementById(objectId);
+}
+function setValue(objectId, value){
+    getObject(objectId).value = value;
+}
+function clearValue(objectId){
+    setValue(objectId, "");
+}
+function getValue(objectId){
+    return getObject(objectId).value;
+}
+
+function disable(objectId){
+    getObject(objectId).disabled = true;
+}
+function enable(objectId){
+    getObject(objectId).disabled = false;
+}
 
 function logout(){
     location = "index.php";

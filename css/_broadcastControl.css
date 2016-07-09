@@ -32,7 +32,6 @@
 }
 
 #profPicBrd {
-    postion: absolute;
     width: 28px;
     height: 28px;
     border: 2px #a2bfcd solid;
