@@ -45,7 +45,7 @@
     height:30px;
     text-align: left;
 }
-#addTask #body > ul > li > ul > li:nth-child(2) input, #description{
+#addTask #body > ul > li > ul > li:nth-child(2) input, #addTask_description,  #addTask #body > ul > li > ul > li:nth-child(2) select{
     width:350px;
     background-color: lightgray;
     border: 0;
@@ -54,6 +54,11 @@
     border-radius:5px;
     display: inline-block;
     height:30px;
+    padding:0 10px;
+}
+
+#addTask #body > ul > li > ul > li:nth-child(2) select{
+    width:370px;
 }
 #addTask ul{
     padding:0;
@@ -67,7 +72,7 @@
     vertical-align: top;
     line-height: 30px;
 }
-#addTask #description{
+#addTask #addTask_description{
     height: 150px;
     resize: none;
     display: block;

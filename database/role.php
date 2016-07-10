@@ -25,10 +25,12 @@ function getRole($id){
     $q = "select * from role where RoleId = $id";
     return execute($q);
 }
+
 function getRoleByDescription($description){
     $q = "select * from role where Description = '$description' and IsDeleted = 0";
     return execute($q);
 }
+
 function roleExists($description){
     return any(getRoleByDescription($description));
 }
