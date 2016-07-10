@@ -1,28 +1,57 @@
 window.onload = function () {
     setSelectedTab('tabEmployee');
-    extractArray();
+    loadTree();
 };
-function employee(employeeId, name, title, children){
+function employee(employeeId, name, title, image, children){
     var employee = {
             EmployeeId: employeeId,
             Name: name,
             Title: title,
-            Children: children
+            Children: children,
+            Image: image
         };
     return employee;
 }
 
-var Employee =
-    employee(1, "Ahmad Hammoud", "President", [
-            employee(2, "Azzam Mourad", "Vice President"),
-            employee(3, "Aynur Ajami", "Advisor IT")
-        ]
+var TREE;
+
+function loadTree(){
+    $.post("database/api/getUserRoleTree.php",
+        {
+            parentid: 1
+        },
+        function(data, status){
+            if(status == "success"){
+                if(jsonSuccess(data)){
+                    var obj = JSON.parse(data).i;
+                    addChildToTree(obj);
+                    extractArray();
+                }else{
+                    console.log(jsonData(data));
+                }
+            }else{
+                console.log(status);
+            }
+        }
     );
+}
+
+function addChildToTree(userrole){
+    TREE = employee(userrole.UserRoleId, userrole.Name, userrole.Role, userrole.Image, getChildrenObjects(userrole));
+}
+
+function getChildrenObjects(userrole){
+    var arr = [];
+    for(var i = 0; i < userrole.Children.length; i++){
+        arr.push(employee(userrole.Children[i].UserRoleId, userrole.Children[i].Name, userrole.Children[i].Role, userrole.Children[i].Image, getChildrenObjects(userrole.Children[i])));
+    }
+    return arr;
+}
 
 
 function extractArray(){
     var employeeControlContainer = document.getElementById("employeeControlContainer");
-    var data = '<ol class="tree">' + getData(Employee) + '</ol>';
+    var data = '<ol class="tree">' + getData(TREE) + '</ol>';
     employeeControlContainer.innerHTML = data;
 }
 
@@ -43,7 +72,7 @@ function getData(employee){
 function generateDataFor(employee){
     return '<li><div class="divEmployeeControl" data-employeeId="'+employee.EmployeeId+'">'
         + '<div class="hexagon" onclick="displayEmployeeProfile('+employee.EmployeeId+')">'
-        + '<img src="resources/images/pp_sc.PNG"/>'
+        + '<img src="resources/images/employee/users/'+employee.Image+'"/>'
         + '<img src="resources/images/employee/hexagon.svg"/>'
         + '</div>'
         + '<div class="divBody">'
@@ -52,7 +81,8 @@ function generateDataFor(employee){
         + '<div class="divActions">'
         + '<img src="resources/images/employee/add_task.svg" onclick="addTask(\''+employee.Name+'\', ' + employee.EmployeeId + ');"/> '
         + '<img src="resources/images/employee/message.svg" onclick="sendMessage(\''+employee.Name+'\', ' + employee.EmployeeId + ');"/> '
-        + '<img src="resources/images/employee/add_child.svg" onclick="addUserRole(\''+employee.Name+'\', ' + employee.EmployeeId + ');" width="16"/> '
+        + '<img src="resources/images/employee/add.png" onclick="addUserRole(\''+employee.Name+'\', ' + employee.EmployeeId + ');" height="18" width="18"/> '
+        + '<img src="resources/images/employee/delete.png" onclick="deleteUserRole(' + employee.EmployeeId + ');" width="18" height="18"/> '
         + '</div>'
         + '</div>'
         + '</div>'

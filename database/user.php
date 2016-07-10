@@ -11,6 +11,17 @@ function insertUser($firstname, $lastname, $username, $password, $phone, $addres
     }
 }
 
+function getUsers(){
+    $q = "select * from user where IsDeleted = 0 and IsAdmin = 0";
+    $tmp = execute($q);
+    $users = array();
+    while ($row = $tmp->fetch_assoc()) {
+        array_push($users, $row);
+    }
+    $users = json_encode($users);
+    return encode(true, $users);
+}
+
 function getUser($id){
     $q = "select * from user where UserId = $id";
     return execute($q);

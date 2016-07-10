@@ -62,6 +62,11 @@ function jsonData(data){
     return result.i;
 }
 
+function jsonArrayData(data){
+    var result = JSON.parse(JSON.parse(data).i);
+    return result;
+}
+
 function getObject(objectId){
     return document.getElementById(objectId);
 }
