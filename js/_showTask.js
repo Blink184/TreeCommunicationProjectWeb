@@ -11,13 +11,13 @@ function displayTask(taskid){
         }
     }
     
-    setInnerHtml('showTask_Title', task.TaskTitle);
+    setInnerHtml('showTask_title', task.TaskTitle);
     setInnerHtml('showTask_empNameFrom', task.EmpNameFrom);
     setInnerHtml('showTask_empNameTo', task.EmpNameTo);
-    setInnerHtml('showTask_Description', task.Content);
-    setInnerHtml('showTask_Attachments', "No Attachments");
-    setInnerHtml('showTask_StartDate', task.StartDate);
-    setInnerHtml('showTask_DueDate', task.DueDate);
+    setInnerHtml('showTask_description', task.Content);
+    setInnerHtml('showTask_attachments', "No Attachments");
+    setInnerHtml('showTask_startDate', task.StartDate);
+    setInnerHtml('showTask_dueDate', task.DueDate);
     document.getElementById('showTask').style.display = 'block';
 }
 

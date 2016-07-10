@@ -5,7 +5,7 @@
         <div class="middle">
             <div class="inner">
                 <div id="header">
-                    <h2 id="showTask_Title"></h2>
+                    <h2 id="showTask_title"></h2>
                 </div>
                 <div id="body">
                     <ul>
@@ -24,25 +24,25 @@
                         <li class="liTextArea">
                             <ul>
                                 <li><label for="description">Description</label></li>
-                                <li><div id="showTask_Description"></div></li>
+                                <li><div id="showTask_description"></div></li>
                             </ul>
                         </li>
                         <li>
                             <ul>
                                 <li><label for="attachments">Attachments</label></li>
-                                <li><div id="showTask_Attachments"></div></li>
+                                <li><div id="showTask_attachments"></div></li>
                             </ul>
                         </li>
                         <li>
                             <ul>
                                 <li><label for="startDate">Start Date</label></li>
-                                <li><div id="showTask_StartDate"></div></li>
+                                <li><div id="showTask_startDate"></div></li>
                             </ul>
                         </li>
                         <li>
                             <ul>
                                 <li><label for="dueDate">Due Date</label></li>
-                                <li><div id="showTask_DueDate"></div></li>
+                                <li><div id="showTask_dueDate"></div></li>
                             </ul>
                         </li>
                     </ul>
