@@ -1,8 +1,32 @@
+var ROLES = [];
+
 function cancelAddRole(){
     getObject("addRole").style.display = "none";
 }
+
 function addRole(){
     getObject('addRole').style.display = 'block';
+}
+
+function updateRolesList(){
+    $.post("database/api/getRoles.php",
+        function(data, status){
+            if(status == "success"){
+                if(jsonSuccess(data)){
+                    var obj = jsonArrayData(data);
+                    ROLES = [];
+                    for(var i = 0; i < obj.length; i++){
+                        ROLES.push(obj[i]);
+                    }
+                    updateRolesCombobox();
+                }else{
+                    console.log(jsonData(data));
+                }
+            }else{
+                console.log(status);
+            }
+        }
+    );
 }
 
 function submitAddRole(){

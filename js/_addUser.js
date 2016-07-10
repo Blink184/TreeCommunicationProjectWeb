@@ -1,9 +1,32 @@
+var USERS = [];
+
 function cancelAddUser(){
     getObject("addUser").style.display = "none";
 }
 
 function addUser(){
     getObject('addUser').style.display = 'block';
+}
+
+function updateUsersList(){
+    $.post("database/api/getUsers.php",
+        function(data, status){
+            if(status == "success"){
+                if(jsonSuccess(data)){
+                    var obj = jsonArrayData(data);
+                    USERS = [];
+                    for(var i = 0; i < obj.length; i++){
+                        USERS.push(obj[i]);
+                    }
+                    updateUsersCombobox();
+                }else{
+                    console.log(jsonData(data));
+                }
+            }else{
+                console.log(status);
+            }
+        }
+    );
 }
 
 function submitAddUser(){
