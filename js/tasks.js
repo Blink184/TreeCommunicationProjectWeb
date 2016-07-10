@@ -85,6 +85,7 @@ function filterTasks(){
         }
     }
 }
+
 function setSelectedType(object, type){
     var lis = object.parentNode.childNodes;
     for(var i = 0; i < lis.length; i++){

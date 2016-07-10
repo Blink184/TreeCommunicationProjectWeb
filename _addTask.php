@@ -8,15 +8,16 @@
                     <h2>Add New Task</h2>
                 </div>
                 <div id="body">
+                    <span id="addTask_log"></span>
                     <ul>
                         <li>
                             <ul>
                                 <li><label for="to">To</label></li>
                                 <li>
-                                    <select id="toEmp">
-                                        <option>Aynur Ajami</option>
-                                        <option>Ahmad Hammoud</option>
-                                        <option>Azzam Mourad</option>
+                                    <select id="addTask_empNameTo">
+                                        <option value="1">Aynur Ajami</option>
+                                        <option value="2">Ahmad Hammoud</option>
+                                        <option value="3">Azzam Mourad</option>
                                     </select>
                                 </li>
                             </ul>
@@ -24,19 +25,19 @@
                         <li>
                             <ul>
                                 <li><label for="title">Title</label></li>
-                                <li><input id="title" type="text"></li>
+                                <li><input id="addTask_title" type="text"></li>
                             </ul>
                         </li>
                         <li class="liTextArea">
                             <ul>
                                 <li><label for="description">Description</label></li>
-                                <li><textarea id="description" type="text"></textarea></li>
+                                <li><textarea id="addTask_description" type="text"></textarea></li>
                             </ul>
                         </li>
                         <li>
                             <ul>
                                 <li><label for="dueDate">Due Date</label></li>
-                                <li><input id="dueDate" class="datetimepicker" type="text"></li>
+                                <li><input id="addTask_dueDate" class="datetimepicker" type="text"></li>
                             </ul>
                         </li>
                     </ul>
@@ -44,7 +45,7 @@
                 <div id="footer">
                     <button onclick="cancelAddTask()">Cancel</button>
                     <button onclick="cancelAddTask()">Attach</button>
-                    <button onclick="submitAddTask()">Add</button>
+                    <button id="addTask_btnAdd" onclick="submitAddTask()">Add</button>
                 </div>
             </div>
         </div>
