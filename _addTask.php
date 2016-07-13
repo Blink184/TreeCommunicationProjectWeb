@@ -15,9 +15,6 @@
                                 <li><label for="to">To</label></li>
                                 <li>
                                     <select id="addTask_empNameTo">
-                                        <option value="1">Aynur Ajami</option>
-                                        <option value="2">Ahmad Hammoud</option>
-                                        <option value="3">Azzam Mourad</option>
                                     </select>
                                 </li>
                             </ul>
