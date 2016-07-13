@@ -44,17 +44,6 @@ function deleteUserRole($userRoleId){
     return encode(execute($q), '');
 }
 
-function getUserRoles(){
-    $q = "select UserRoleId, FirstName, LastName from userrole ur, user u where ur.IsDeleted = 0 and u.IsDeleted = 0 and u.UserId = ur.UserId";
-
-    $res = array();
-    $rows = execute($q);
-    while ($row = $rows->fetch_assoc()) {
-        array_push($res, $row);
-    }
-
-    return encode(true, $res);
-}
 
 
 function getUserRoleTree($id){

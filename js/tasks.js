@@ -6,8 +6,6 @@ var MYTASK = "MYTASK";
 var RECEIVEDREQUEST = "RECEIVEDREQUEST";
 var SENTREQUEST = "SENTREQUEST";
 
-var CURRENTUSERROLEID = 1;
-
 var SELECTEDSTATUS;
 var SELECTEDTYPE;
 var SEARCH;
@@ -30,6 +28,7 @@ window.onload = function () {
     SELECTEDTYPE = MYTASK;
     SELECTEDSTATUS = ALL;
     SEARCH = "";
+    filterTasks();
 
 };
 
@@ -104,13 +103,11 @@ function setSelectedStatus(object, status){
     SELECTEDSTATUS = status;
 }
 
-function task (taskid, empNameTo, empNameToId, empNameFrom, empNameFromId, taskTitle, content, type, status, startdate, duedate) {
+function task (taskid, empNameTo, empNameFrom, taskTitle, content, type, status, startdate, duedate) {
     var task = {
         TaskId: taskid,
         EmpNameTo: empNameTo,
         EmpNameFrom: empNameFrom,
-        EmpNameToId: empNameToId,
-        EmpNameFromId: empNameFromId,
         TaskTitle: taskTitle,
         Content: content,
         Type: type,
@@ -122,73 +119,31 @@ function task (taskid, empNameTo, empNameToId, empNameFrom, empNameFromId, taskT
 }
 
 function loadTasks() {
-    getTasks();
+    //db
+    TASKS = [
+        task(1, "Jared Leto", "George T. Arz", "Documents", "Please print the documents", SENTREQUEST, INPROGRESS, "29/12/2016", "02/02/2017"),
+        task(2, "Jared Leto", "George T. Arz", "Documents", "Please send the documents", SENTREQUEST, FINISHED, "12/10/2016", "15/10/2016"),
+        task(3, "Sarah Majzoub", "Jared Leto", "Documents", "Please receive the documents", RECEIVEDREQUEST, FINISHED, "15/08/2016", "09/09/2016"),
+        task(4, "Jared Leto", "Karen Shall", "Documents", "Please email the documents", SENTREQUEST, INPROGRESS, "02/10/2016", "12/10/2016"),
+        task(5, "Jared Leto", "Mariam Derbas", "Documents", "Please attach the documents", SENTREQUEST, NEW,"22/11/2016", "26/11/2016"),
+        task(6, "Jared Leto", "Jared Leto", "Documents", "Please kebb the documents", MYTASK, NEW, "12/12/2016", "12/12/2016"),
+        task(7, "Jared Leto", "Jared Leto", "Documents", "Please move away", MYTASK, NEW, "07/10/2016", "30/11/2016"),
+        task(8, "Jared Leto", "Jared Leto","Documents", "Please shower", MYTASK, NEW, "07/08/2016", "22/08/2016"),
+        task(9, "Jared Leto", "Jared Leto","Documents", "Please sleep", MYTASK, NEW, "12/09/2016", "12/10/2016"),
+        task(10, "Jared Leto", "Jared Leto","Documents", "Please eat", MYTASK, INPROGRESS, "12/09/2016", "12/01/2017"),
+    ];
+    extractArrayTasks();
 }
 
-function getTasks() {
-    var res = [];
-    $.post("database/api/getTasks.php",
-        {
-            userroleid: CURRENTUSERROLEID
-        },
-        function(data, status){
-            if(status == "success"){
-                if(jsonSuccess(data)) {
-                    res = jsonData(data);
-                    TASKS = [];
-                    for(var i = 0; i < res.length; i++){
-                        console.log(res[i]);
-                        var o = res[i];
-
-                        var toUserRole;
-                        var fromUserRole;
-
-                        var type;
-                        if(o.FromUserRole == o.ToUserRole){
-                            type = MYTASK;
-                            fromUserRole = o.ToUserRole;
-                            toUserRole = o.FromUserRole;
-                        }else if(o.FromUserRoleId == CURRENTUSERROLEID){
-                            type = SENTREQUEST;
-                            fromUserRole = o.ToUserRole;
-                            toUserRole = o.FromUserRole;
-                        }else{
-                            type = RECEIVEDREQUEST;
-                            fromUserRole = o.FromUserRole;
-                            toUserRole = o.ToUserRole;
-
-                        }
-
-                        var status;
-                        if(o.TaskState == 1){
-                            status = NEW;
-                        }else if(o.TaskState == 2){
-                            status = INPROGRESS;
-                        }else if(o.TaskState == 3){
-                            status = FINISHED;
-                        }
-
-                        TASKS.push(task(o.TaskId, toUserRole, o.ToUserRoleId, fromUserRole, o.FromUserRoleId, o.Title, o.Description, type, status, o.StartDate, o.DueDate));
-                        extractArrayTasks();
-                    }
-                } else {
-                    console.log(data)
-                }
-            }else{
-                console.log(status)
-            }
-            console.log(res);
-        }
-    );
+function addTask(from, to, title, content, startdate, duedate) {
+    
 }
-
 
 function extractArrayTasks() {
     var taskContainer = document.getElementById("taskControlsUl");
     var data = getData(TASKS);
     taskContainer.innerHTML = data;
-
-    filterTasks();
+    console.log(taskContainer);
 }
 
 function getData(tasks) {
