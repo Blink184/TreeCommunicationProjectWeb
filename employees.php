@@ -18,14 +18,14 @@
                     <li id="liTitle">
                         <div>
                             <h2>
-                                EMPLOYEES
+                                E-Tree
                             </h2>
                         </div>
 
-                        <button onclick="addUser();">
+                        <button class="showOnTreeEdit" onclick="addUser();">
                             Add User
                         </button>
-                        <button onclick="addRole();">
+                        <button class="showOnTreeEdit" onclick="addRole();">
                             Add Role
                         </button>
                     </li>

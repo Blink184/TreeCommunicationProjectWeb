@@ -1,8 +1,30 @@
 function cancelAddTask(){
     document.getElementById("addTask").style.display = "none";
+    loadTasks();
 }
 function setAddTaskTarget(target){
     document.getElementsByName('addTask_to')[0].value = target;
+}
+
+function loadUserRoles(){
+    $.post("database/api/getUserRoles.php",
+        function(data, status){
+            if(status == "success"){
+                if(jsonSuccess(data)){
+                    var users = jsonData(data);
+                    var tmp = '';
+                    for(var i = 0; i < users.length; i++){
+                        tmp += '<option value="'+users[i].UserRoleId+'">'+users[i].FirstName + ' ' + users[i].LastName+'</option>';
+                    }
+                    getObject("addTask_empNameTo").innerHTML = tmp;
+                }else{
+                    console.log(jsonData(data));
+                }
+            }else{
+                console.log(status);
+            }
+        }
+    );
 }
 
 function addTask(target){
@@ -10,22 +32,17 @@ function addTask(target){
         setAddTaskTarget(target);
     }
     document.getElementById('addTask').style.display = 'block';
+    loadUserRoles();
 }
 
 function submitAddTask() {
     var empNameTo = getValue("addTask_empNameTo");
-    console.log(empNameTo);
     var title = getValue("addTask_title");
-    console.log(title);
     var desc = getValue("addTask_description");
-    console.log(desc);
     var dueDate = getValue("addTask_dueDate");
-    console.log(dueDate);
     var log = getObject("addTask_log");
     if(notEmpty(desc) && notEmpty(empNameTo) && notEmpty(title) && notEmpty(dueDate)){
-        console.log('6.5');
         disable("addTask_btnAdd");
-        console.log('7');
         setProcessingLog(log);
         insertTask(empNameTo, 1, title, desc, dueDate);
     }else{
@@ -37,12 +54,6 @@ function submitAddTask() {
 
 
 function insertTask(empNameTo, empNameFrom, title, desc, dueDate){
-    console.log(empNameTo);
-    console.log(empNameFrom);
-    console.log(title);
-    console.log(desc);
-    console.log(dueDate);
-
     $.post("database/api/insertTask.php",
         {
             empnameto: empNameTo,
@@ -73,5 +84,5 @@ function clearAddTaskForm(){
     clearValue("addTask_title");
     clearValue("addTask_empNameTo");
     clearValue("addTask_description");
-    clearValue("addTask_dueDate");
+    //clearValue("addTask_dueDate");
 }

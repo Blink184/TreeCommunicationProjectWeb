@@ -10,3 +10,7 @@
 #divEmployee #divBot ul li{
     display: inline;
 }
+
+.showOnTreeEdit{
+    visibility: hidden;
+}

@@ -33,3 +33,8 @@ function getUserByUsername($username){
 function usernameExists($username){
     return any(getUserByUsername($username));
 }
+
+function updateUserImage($userId, $image){
+    $q = "update user set Image = '$image' where UserId = $userId";
+    return execute($q);
+}
