@@ -41,7 +41,7 @@ function updateUsersCombobox(){
     var cmb = getObject("addUserRole_user");
     var tmp = "";
     for(var i = 0; i < USERS.length; i++){
-        tmp += "<option value='"+USERS[i].UserId+"'>"+USERS[i].FirstName+"</option>";
+        tmp += "<option value='"+USERS[i].UserId+"'>"+USERS[i].FirstName+ ' ' +USERS[i].LastName+"</option>";
     }
     cmb.innerHTML = tmp;
 }

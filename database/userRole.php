@@ -45,7 +45,7 @@ function deleteUserRole($userRoleId){
 }
 
 function getUserRoles(){
-    $q = "select UserRoleId, FirstName, LastName from userrole ur, user u where ur.IsDeleted = 0 and u.IsDeleted = 0 and u.UserId = ur.UserId";
+    $q = "select ur.UserRoleId, u.FirstName, u.LastName, r.Description as Role from userrole ur, user u, Role r where ur.IsDeleted = 0 and ur.RoleId = r.RoleId and u.IsDeleted = 0 and u.UserId = ur.UserId ORDER BY FirstName, LastName";
 
     $res = array();
     $rows = execute($q);
@@ -62,6 +62,8 @@ function getUserRoleTree($id){
 
     $row = execute($sql)->fetch_assoc();
     $o['UserRoleId'] = $row['UserRoleId'];
+    $o['FirstName'] = $row['FirstName'];
+    $o['LastName'] = $row['LastName'];
     $o['Name'] = $row['FirstName'] . ' ' . $row['LastName'];
     $o['Role'] = $row['Description'];
     $o['Image'] = $row['Image'];
@@ -80,6 +82,8 @@ function getUserRoleChildren($children, $parentId) {
     $result = execute($sql);
     while ($row = $result->fetch_assoc()) {
         $o['UserRoleId'] = $row['UserRoleId'];
+        $o['FirstName'] = $row['FirstName'];
+        $o['LastName'] = $row['LastName'];
         $o['Name'] = $row['FirstName'] . ' ' . $row['LastName'];
         $o['Role'] = $row['Description'];
         $o['Title'] = $row['Title'];

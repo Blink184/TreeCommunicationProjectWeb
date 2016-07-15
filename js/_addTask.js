@@ -1,9 +1,11 @@
+var SELECTEDTARGET;
 function cancelAddTask(){
     document.getElementById("addTask").style.display = "none";
-    loadTasks();
+    onAddTaskPopupClosed();
 }
 function setAddTaskTarget(target){
-    document.getElementsByName('addTask_to')[0].value = target;
+    //document.getElementsByName('addTask_to')[0].value = target;
+    SELECTEDTARGET = target;
 }
 
 function loadUserRoles(){
@@ -14,8 +16,13 @@ function loadUserRoles(){
                     var users = jsonData(data);
                     var tmp = '';
                     for(var i = 0; i < users.length; i++){
-                        tmp += '<option value="'+users[i].UserRoleId+'">'+users[i].FirstName + ' ' + users[i].LastName+'</option>';
+                        if(SELECTEDTARGET !== undefined && users[i].UserRoleId == SELECTEDTARGET){
+                            tmp += '<option selected value="'+users[i].UserRoleId+'">'+users[i].FirstName + ' ' + users[i].LastName + ' (' + users[i].Role + ')'+'</option>';
+                        }else{
+                            tmp += '<option value="'+users[i].UserRoleId+'">'+users[i].FirstName + ' ' + users[i].LastName + ' (' + users[i].Role + ')'+'</option>';
+                        }
                     }
+                    SELECTEDTARGET = undefined;
                     getObject("addTask_empNameTo").innerHTML = tmp;
                 }else{
                     console.log(jsonData(data));

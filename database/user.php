@@ -12,7 +12,7 @@ function insertUser($firstname, $lastname, $username, $password, $phone, $addres
 }
 
 function getUsers(){
-    $q = "select * from user where IsDeleted = 0 and IsAdmin = 0";
+    $q = "select * from user where IsDeleted = 0 and IsAdmin = 0 ORDER BY FirstName, LastName";
     $tmp = execute($q);
     $users = array();
     while ($row = $tmp->fetch_assoc()) {

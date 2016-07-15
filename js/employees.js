@@ -1,12 +1,16 @@
 window.onload = function () {
     setSelectedTab('tabEmployee');
     loadTree();
+    setDateTimePicker('.datetimepicker');
 };
-function employee(userRoleId, userId, name, title, image, children){
+function employee(userRoleId, userId, firstName, lastName, role, title, image, children){
     var employee = {
         UserRoleId: userRoleId,
         UserId: userId,
-        Name: name,
+        FirstName: firstName,
+        LastName: lastName,
+        Name: firstName + ' ' + lastName,
+        Role: role,
         Title: title,
         Children: children,
         Image: image
@@ -38,13 +42,14 @@ function loadTree(){
 }
 
 function addChildToTree(userrole){
-    TREE = employee(userrole.UserRoleId, userrole.UserId, userrole.Name, userrole.Role, userrole.Image, getChildrenObjects(userrole));
+    TREE = employee(userrole.UserRoleId, userrole.UserId, userrole.FirstName, userrole.LastName, userrole.Role, userrole.Title, userrole.Image, getChildrenObjects(userrole));
 }
 
 function getChildrenObjects(userrole){
     var arr = [];
     for(var i = 0; i < userrole.Children.length; i++){
-        arr.push(employee(userrole.Children[i].UserRoleId, userrole.Children[i].UserId, userrole.Children[i].Name, userrole.Children[i].Role, userrole.Children[i].Image, getChildrenObjects(userrole.Children[i])));
+        var tmp = userrole.Children[i];
+        arr.push(employee(tmp.UserRoleId, tmp.UserId, tmp.FirstName, tmp.LastName, tmp.Role, tmp.Title, tmp.Image, getChildrenObjects(tmp)));
     }
     return arr;
 }
@@ -60,7 +65,7 @@ function extractArray(){
 function getData(employee){
     var tmp = '';
     tmp += generateDataFor(employee);
-    if(employee.Children !== undefined){
+    if(employee.Children !== undefined && employee.Children.length > 0){
         tmp += '<ol class="tree">';
         for(var i = 0; i < employee.Children.length; i++){
             tmp += getData(employee.Children[i]);
@@ -73,15 +78,15 @@ function getData(employee){
 
 function generateDataFor(employee){
     return '<li><div class="divEmployeeControl" data-employeeId="'+employee.UserRoleId+'">'
-        + '<div class="hexagon" onclick="displayEmployeeProfile('+employee.UserRoleId+')">'
+        + '<div class="hexagon" onclick="displayEmployeeProfile('+employee.UserRoleId+', \''+employee.FirstName+'\', \''+employee.LastName+'\', \''+employee.Image+'\')">'
         + '<img src="resources/images/employee/users/'+employee.Image+'"/>'
-        + '<img src="resources/images/employee/hexagon.svg"/>'
+        + '<img src="resources/images/employee/hexagon.svg  "/>'
         + '</div>'
         + '<div class="divBody">'
         + '<div class="divName" onclick="displayEmployeeProfile('+employee.UserRoleId+')">'+employee.Name+'</div>'
-        + '<div class="divTitle">'+employee.Title+'</div>'
+        + '<div class="divTitle">'+employee.Role + ' / ' + employee.Title+'</div>'
         + '<div class="divActions">'
-        + '<img src="resources/images/employee/add_task.svg" onclick="addTask(\''+employee.Name+'\', ' + employee.UserRoleId + ');"/> '
+        + '<img src="resources/images/employee/add_task.svg" onclick="addTask(' + employee.UserRoleId + ');"/> '
         + '<img src="resources/images/employee/message.svg" onclick="sendMessage(\''+employee.Name+'\', ' + employee.UserRoleId + ');"/> '
         + '<img class="showOnTreeEdit" src="resources/images/employee/add.png" onclick="addUserRole(\''+employee.Name+'\', ' + employee.UserRoleId + ');" height="18" width="18"/> '
         + '<img class="showOnTreeEdit" src="resources/images/employee/delete.png" onclick="deleteUserRole(' + employee.UserRoleId+ ');" width="18" height="18"/> '
@@ -103,4 +108,8 @@ function editTree(){
     for(var i = 0; i < elmnts.length; i++){
         elmnts[i].style.visibility = value;
     }
+}
+
+function onAddTaskPopupClosed(){
+
 }

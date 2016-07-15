@@ -16,16 +16,7 @@ var TASKS = [];
 window.onload = function () {
     setSelectedTab('tabTask');
     loadTasks();
-
-    $('.datetimepicker').datetimepicker({
-        yearOffset:0,
-        lang:'ch',
-        timepicker:false,
-        format:'Y/m/d',
-        formatDate:'Y/m/d',
-        mask:'9999/19/39',
-        value: new Date()
-    });
+    setDateTimePicker('.datetimepicker');
 
     SELECTEDTYPE = MYTASK;
     SELECTEDSTATUS = ALL;
@@ -120,7 +111,9 @@ function task (taskid, empNameTo, empNameToId, empNameFrom, empNameFromId, taskT
     };
     return task;
 }
-
+function onAddTaskPopupClosed(){
+    loadTasks();
+}
 function loadTasks() {
     getTasks();
 }
