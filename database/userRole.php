@@ -19,12 +19,25 @@ function insertUserRole($userId, $roleId, $parentId, $title, $isDeleted){
     }
 }
 
+function updateUserRole($userRoleId, $userId, $roleId, $title){
+    if(userRoleExistsWithId($userRoleId, $userId, $roleId) || !userRoleExists($userId, $roleId)){
+        $q = "update userrole set UserId = $userId, RoleId = $roleId, Title = '$title' where UserRoleId = $userRoleId";
+        return encode(execute($q), '');
+    }else{
+        return encode(false, 'User already has this role');
+    }
+}
+
 
 function getLastUserRole(){
     $q = "select * from UserRole where IsDeleted = 0 order by UserRoleId desc limit 1";
     return execute($q);
 }
 
+function getUserRoleWithId($userRoleId, $userId, $roleId){
+    $q = "select * from UserRole where UserId = $userId and RoleId = $roleId and UserRoleId = $userRoleId and IsDeleted = 0";
+    return execute($q);
+}
 function getUserRole($userId, $roleId){
     $q = "select * from UserRole where UserId = $userId and RoleId = $roleId and IsDeleted = 0";
     return execute($q);
@@ -36,6 +49,9 @@ function getUserRoleById($userRoleId){
 
 function userRoleExists($userId, $roleId){
     return any(getUserRole($userId, $roleId));
+}
+function userRoleExistsWithId($userRoleId, $userId, $roleId){
+    return any(getUserRoleWithId($userRoleId, $userId, $roleId));
 }
 
 
@@ -65,8 +81,11 @@ function getUserRoleTree($id){
     $o['FirstName'] = $row['FirstName'];
     $o['LastName'] = $row['LastName'];
     $o['Name'] = $row['FirstName'] . ' ' . $row['LastName'];
+    $o['Address'] = $row['Address'];
+    $o['Phone'] = $row['Phone'];
     $o['Role'] = $row['Description'];
     $o['Image'] = $row['Image'];
+    $o['LastActiveDate'] = $row['LastActiveDate'];
     $o['Title'] = $row['Title'];
     $o['UserId'] = $row['UserId'];
     $o['IsAssigned'] = !empty($row['UserId']);
@@ -85,9 +104,12 @@ function getUserRoleChildren($children, $parentId) {
         $o['FirstName'] = $row['FirstName'];
         $o['LastName'] = $row['LastName'];
         $o['Name'] = $row['FirstName'] . ' ' . $row['LastName'];
+        $o['Address'] = $row['Address'];
+        $o['Phone'] = $row['Phone'];
         $o['Role'] = $row['Description'];
         $o['Title'] = $row['Title'];
         $o['Image'] = $row['Image'];
+        $o['LastActiveDate'] = $row['LastActiveDate'];
         $o['UserId'] = $row['UserId'];
         $o['IsAssigned'] = !empty($row['UserId']);
         $o['NumberOfParents'] = $row['NumberOfParents'];

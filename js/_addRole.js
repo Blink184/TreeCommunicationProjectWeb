@@ -8,7 +8,7 @@ function addRole(){
     getObject('addRole').style.display = 'block';
 }
 
-function updateRolesList(){
+function updateRolesList(selectedRole){
     $.post("database/api/getRoles.php",
         function(data, status){
             if(status == "success"){
@@ -18,7 +18,7 @@ function updateRolesList(){
                     for(var i = 0; i < obj.length; i++){
                         ROLES.push(obj[i]);
                     }
-                    updateRolesCombobox();
+                    updateRolesCombobox(selectedRole);
                 }else{
                     console.log(jsonData(data));
                 }

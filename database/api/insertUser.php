@@ -15,5 +15,5 @@
     $un = $_REQUEST['username'];
     $pw = $_REQUEST['password'];
 
-    echo insertUser($fn, $ln, $un, $pw, "" ,"" ,"" ,0 ,date('Y-m-d H:i:s'), 0 , 0, 0);
+    echo insertUser($fn, $ln, $un, $pw, "-" ,"-" ,"-" ,0 ,date('Y-m-d H:i:s'), 0 , 0, 0);
 ?>

@@ -45,6 +45,7 @@
     color: #a3c0ce;
     font-weight: bold;
     font-size: 120%;
+    white-space: nowrap;
 }
 .divEmployeeControl .divBody .divTitle{
     color: #333333;

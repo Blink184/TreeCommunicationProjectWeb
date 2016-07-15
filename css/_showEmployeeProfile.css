@@ -53,7 +53,7 @@
     text-align: start;
     line-height: 30px;
 }
-#showEmployeeProfile #body > ul > li > ul > li:nth-child(2) div{
+#showEmployeeProfile #body > ul > li > ul > li:nth-child(2) div, #showEmployeeProfile #body > ul > li > ul > li:nth-child(2) input{
     width:310px;
     background-color: lightgray;
     border: 0px;
