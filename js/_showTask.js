@@ -1,6 +1,12 @@
 function cancelShowTask(){
     document.getElementById("showTask").style.display = "none";
 }
+
+function delegateTask() {
+
+}
+
+
 function displayTask(taskid){
     var task;
     for (var i=0; i < TASKS.length; i++) {

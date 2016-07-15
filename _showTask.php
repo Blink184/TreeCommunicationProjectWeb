@@ -48,6 +48,7 @@
                     </ul>
                 </div>
                 <div id="footer">
+                    <button onclick="delegateTask()">Delegate</button>
                     <button onclick="cancelShowTask()">Cancel</button>
                     <button onclick="cancelShowTask()">Accept</button>
                 </div>
