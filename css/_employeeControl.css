@@ -1,5 +1,5 @@
 .divEmployeeControl{
-    width: 300px;
+    width: 400px;
     height: 90px;
     display: inline-block;
     padding:5px;
@@ -29,7 +29,7 @@
 
 .divEmployeeControl .divBody{
     vertical-align: top;
-    width:210px;
+    width:310px;
     height:90px;
     overflow: hidden;
 }
@@ -48,6 +48,7 @@
 }
 .divEmployeeControl .divBody .divTitle{
     color: #333333;
+    white-space: nowrap;
 }
 .divEmployeeControl .divBody .divActions img{
     cursor: pointer;
