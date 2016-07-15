@@ -8,7 +8,7 @@ function addUser(){
     getObject('addUser').style.display = 'block';
 }
 
-function updateUsersList(){
+function updateUsersList(selectedUser){
     $.post("database/api/getUsers.php",
         function(data, status){
             if(status == "success"){
@@ -18,7 +18,7 @@ function updateUsersList(){
                     for(var i = 0; i < obj.length; i++){
                         USERS.push(obj[i]);
                     }
-                    updateUsersCombobox();
+                    updateUsersCombobox(selectedUser);
                 }else{
                     console.log(jsonData(data));
                 }

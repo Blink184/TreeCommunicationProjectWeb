@@ -1,6 +1,30 @@
 <?php
-/*if(isset($_POST["userId"])) {
-    echo $_POST["userId"];
+
+include dirname(__DIR__).'../user.php';
+
+if(empty($_REQUEST['userId'])
+    || empty($_REQUEST['firstName'])
+    || empty($_REQUEST['lastName'])
+    || empty($_REQUEST['address'])
+    || empty($_REQUEST['phone']))
+{
+    echo 'missing parameters';
+    return;
+}
+
+$userid = $_REQUEST['userId'];
+$firstname = $_REQUEST['firstName'];
+$lastname = $_REQUEST['lastName'];
+$address = $_REQUEST['address'];
+$phone = $_REQUEST['phone'];
+
+if(updateUser($userid, $firstname, $lastname, $phone, $address))
+    echo '<script>console.log("user updated");</script>';
+else
+    echo '<script>console.log("updated failed");</script>';
+
+
+if(!empty($_FILES['file-input']['name'])){
     $name = $_POST["userId"].'_'.date('Y-m-d_H-i-s');
     $target_dir = "resources/images/employee/users/";
     $target_file = $target_dir . $name . '.';
@@ -33,40 +57,14 @@
     // Check if $uploadOk is set to 0 by an error
     if ($uploadOk == 0) {
         echo "Sorry, your file was not uploaded.";
-    // if everything is ok, try to upload file
+        // if everything is ok, try to upload file
     } else {
         if (move_uploaded_file($_FILES["file-input"]["tmp_name"], $target_file)) {
-            include 'database/user.php';
             if(updateUserImage($_POST["userId"], $name . '.' . $imageFileType))
                 echo "image updated";
         } else {
             echo "Sorry, there was an error uploading your file.";
         }
     }
-}*/
-?>
-
-
-
-
-<link href="css/_employees.css" rel="stylesheet" type="text/css"/>
-<link href="css/_employeeControl.css" rel="stylesheet" type="text/css"/>
-<div id="divEmployee">
-    <div align="right">
-        <input type="checkbox" id="cbEditTree" onclick="editTree()"/>
-    </div>
-
-    <div id="divBot">
-        <div id="employeeControlContainer">
-        </div>
-    </div>
-</div>
-<?php include '_addTask.php';?>
-<?php include '_sendMessage.php';?>
-<?php include '_showEmployeeProfile.php';?>
-<?php include '_addUser.php';?>
-<?php include '_addRole.php';?>
-<?php include '_addUserRole.php';?>
-<?php function addEmployeeControl($name, $img, $title, $isOpened = false){
-    include '_employeeControl.php';
 }
+?>

@@ -1,4 +1,9 @@
+var ADD = "ADD";
+var EDIT = "EDIT";
+
+var MODE;
 var CurrentUserRoleParentId;
+var CurrentUserRoleId;
 
 function cancelAddUserRole(){
     getObject("addUserRole").style.display = "none";
@@ -7,9 +12,20 @@ function cancelAddUserRole(){
 function addUserRole(parentName, parentId){
     getObject('addUserRole').style.display = 'block';
     CurrentUserRoleParentId = parentId;
-    updateUsersList();
-    updateRolesList();
+    MODE = ADD;
+    updateUsersList(-1);
+    updateRolesList(-1);
 }
+
+function editUserRole(userRoleId, userId, roleId, title){
+    getObject('addUserRole').style.display = 'block';
+    CurrentUserRoleId = userRoleId;
+    MODE = EDIT;
+    updateUsersList(userId);
+    updateRolesList(roleId);
+    setValue("addUserRole_title", title);
+}
+
 function deleteUserRole(userRoleId){
     $.post("database/api/deleteUserRole.php",
         {
@@ -29,19 +45,27 @@ function deleteUserRole(userRoleId){
     );
 }
 
-function updateRolesCombobox(){
+function updateRolesCombobox(selectedRole){
     var cmb = getObject("addUserRole_role");
     var tmp = "";
     for(var i = 0; i < ROLES.length; i++){
-        tmp += "<option value='"+ROLES[i].RoleId+"'>"+ROLES[i].Description+"</option>";
+        if(ROLES[i].RoleId == selectedRole){
+            tmp += "<option selected value='"+ROLES[i].RoleId+"'>"+ROLES[i].Description+"</option>";
+        }else{
+            tmp += "<option value='"+ROLES[i].RoleId+"'>"+ROLES[i].Description+"</option>";
+        }
     }
     cmb.innerHTML = tmp;
 }
-function updateUsersCombobox(){
+function updateUsersCombobox(selectedUser){
     var cmb = getObject("addUserRole_user");
     var tmp = "";
     for(var i = 0; i < USERS.length; i++){
-        tmp += "<option value='"+USERS[i].UserId+"'>"+USERS[i].FirstName+ ' ' +USERS[i].LastName+"</option>";
+        if(USERS[i].UserId == selectedUser){
+            tmp += "<option selected value='"+USERS[i].UserId+"'>"+USERS[i].FirstName+ ' ' +USERS[i].LastName+"</option>";
+        }else{
+            tmp += "<option value='"+USERS[i].UserId+"'>"+USERS[i].FirstName+ ' ' +USERS[i].LastName+"</option>";
+        }
     }
     cmb.innerHTML = tmp;
 }
@@ -54,7 +78,11 @@ function submitAddUserRole(){
     if(notEmpty(roleId) && notEmpty(userId) && notEmpty(title)){
         disable("addUserRole_btnAdd");
         setProcessingLog(log);
-        insertUserRole(roleId, userId, CurrentUserRoleParentId, title);
+        if(MODE == ADD){
+            insertUserRole(roleId, userId, CurrentUserRoleParentId, title);
+        }else if(MODE == EDIT){
+            updateUserRole(CurrentUserRoleId, roleId, userId, title);
+        }
     }else{
         setFailureLog(log, "Please fill all the fields");
     }
@@ -69,7 +97,32 @@ function insertUserRole(roleId, userId, parentId, title){
             title: title
         },
         function(data, status){
-            console.log(data);
+            enable("addUserRole_btnAdd");
+            var log = getObject("addUserRole_log");
+            if(status == "success"){
+                if(jsonSuccess(data)){
+                    setSuccessLog(log, "Process completed");
+                    clearAddUserRoleForm();
+                    cancelAddUserRole();
+                    loadTree();
+                }else{
+                    setFailureLog(log, jsonData(data));
+                }
+            }else{
+                setFailureLog(log, status);
+            }
+        }
+    );
+}
+function updateUserRole(userRoleId, roleId, userId, title){
+    $.post("database/api/updateUserRole.php",
+        {
+            userroleid: userRoleId,
+            roleid: roleId,
+            userid: userId,
+            title: title
+        },
+        function(data, status){
             enable("addUserRole_btnAdd");
             var log = getObject("addUserRole_log");
             if(status == "success"){
