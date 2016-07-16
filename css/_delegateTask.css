@@ -1,4 +1,4 @@
-#showEmployeeProfile{
+#showTask{
     background-color: RGBA(1,1,1,.6);
     height: 100%;
     width: 100%;
@@ -7,56 +7,51 @@
     left:0;
     position: fixed;
 }
-#showEmployeeProfile .outer {
+#showTask .outer {
     display: table;
     position: absolute;
     height: 100%;
     width: 100%;
 }
-#showEmployeeProfile .middle {
+#showTask .middle {
     display: table-cell;
     vertical-align: middle;
 }
-#showEmployeeProfile .inner {
+#showTask .inner {
     margin-left: auto;
     margin-right: auto;
     width: 500px;
     padding: 0;
     background-color: #f0f3f4;
 }
-
-#showEmployeeProfile #header{
+#showTask #header{
+    background-color: #263240;
     color: white;
-    padding-top: 10px;
-    text-align: center;
+    padding:10px;
 }
-#showEmployeeProfile #header img{
-    -webkit-border-radius:100%;
-    -moz-border-radius:100%;
-    border-radius:100%;
-    width:100px;
-    height:100px;
+#showTask h2{
+    margin: 0;
 }
-
-#showEmployeeProfile #body{
+#showTask #body{
     padding: 10px;
     text-align: center;
+    overflow-y: auto;
     max-height: 600px;
 }
-#showEmployeeProfile #body > ul > li{
+#showTask #body > ul > li{
     padding-top: 10px;
 }
-#showEmployeeProfile #body > ul > li > ul > li:first-child label{
-    width:120px;
+#showTask #body > ul > li > ul > li:first-child label{
+    width:100px;
     display: inline-block;
     height:30px;
     text-align: start;
     line-height: 30px;
 }
-#showEmployeeProfile #body > ul > li > ul > li:nth-child(2) div, #showEmployeeProfile #body > ul > li > ul > li:nth-child(2) input{
-    width:310px;
+#showTask #body > ul > li > ul > li:nth-child(2) div{
+    width:330px;
     background-color: lightgray;
-    border: 0px;
+    border: 0;
     -webkit-border-radius:5px;
     -moz-border-radius:5px;
     border-radius:5px;
@@ -64,30 +59,30 @@
     padding:10px;
     text-align: start;
 }
-#showEmployeeProfile ul{
+#showTask ul{
     padding:0;
     margin:0;
 }
-#showEmployeeProfile ul li{
+#showTask ul li{
     list-style: none;
 }
-#showEmployeeProfile ul li ul li{
+#showTask ul li ul li{
     display: inline-block;
     vertical-align: top;
 }
-#showEmployeeProfile #footer button{
-    width:60px;
+#showTask #footer button{
+    width:70px;
     padding:5px;
     color: white;
-    border:0px;
+    border:0;
     background-color: #a3c0ce;
     border-radius: 5px;
     cursor: pointer;
 }
-#showEmployeeProfile #footer button:hover{
+#showTask #footer button:hover{
     background-color: #F49A43;
 }
-#showEmployeeProfile #footer{
+#showTask #footer{
     text-align: right;
     padding: 10px;
     margin-right: 14px;

@@ -34,7 +34,12 @@ function usernameExists($username){
     return any(getUserByUsername($username));
 }
 
+function updateUser($userId, $firstname, $lastname, $phone, $address){
+    $q = "update user set FirstName = '$firstname', LastName = '$lastname', Phone = '$phone', Address = '$address' where UserId = $userId";
+    return execute($q);
+}
 function updateUserImage($userId, $image){
     $q = "update user set Image = '$image' where UserId = $userId";
     return execute($q);
 }
+

@@ -12,7 +12,7 @@ function insertRole($description, $isMaster, $isDeleted){
 }
 
 function getRoles(){
-    $q = "select * from role WHERE IsDeleted = 0";
+    $q = "select * from role WHERE IsDeleted = 0 ORDER BY Description";
     $tmp = execute($q);
     $roles = array();
     while ($row = $tmp->fetch_assoc()) {

@@ -3,13 +3,17 @@ window.onload = function () {
     loadTree();
     setDateTimePicker('.datetimepicker');
 };
-function employee(userRoleId, userId, firstName, lastName, role, title, image, children){
+function employee(userRoleId, userId, roleId, firstName, lastName, phone, address, lastActiveDate, role, title, image, children){
     var employee = {
         UserRoleId: userRoleId,
         UserId: userId,
+        RoleId: roleId,
         FirstName: firstName,
         LastName: lastName,
         Name: firstName + ' ' + lastName,
+        Phone: phone,
+        Address: address,
+        LastActiveDate: lastActiveDate,
         Role: role,
         Title: title,
         Children: children,
@@ -42,16 +46,19 @@ function loadTree(){
 }
 
 function addChildToTree(userrole){
-    TREE = employee(userrole.UserRoleId, userrole.UserId, userrole.FirstName, userrole.LastName, userrole.Role, userrole.Title, userrole.Image, getChildrenObjects(userrole));
+    TREE = extractUserRole(userrole);
 }
 
 function getChildrenObjects(userrole){
     var arr = [];
     for(var i = 0; i < userrole.Children.length; i++){
         var tmp = userrole.Children[i];
-        arr.push(employee(tmp.UserRoleId, tmp.UserId, tmp.FirstName, tmp.LastName, tmp.Role, tmp.Title, tmp.Image, getChildrenObjects(tmp)));
+        arr.push(extractUserRole(tmp));
     }
     return arr;
+}
+function extractUserRole(userrole){
+    return employee(userrole.UserRoleId, userrole.UserId, userrole.RoleId, userrole.FirstName, userrole.LastName, userrole.Phone, userrole.Address, userrole.LastActiveDate, userrole.Role, userrole.Title, userrole.Image, getChildrenObjects(userrole));
 }
 
 
@@ -78,19 +85,19 @@ function getData(employee){
 
 function generateDataFor(employee){
     return '<li><div class="divEmployeeControl" data-employeeId="'+employee.UserRoleId+'">'
-        + '<div class="hexagon" onclick="displayEmployeeProfile('+employee.UserRoleId+', \''+employee.FirstName+'\', \''+employee.LastName+'\', \''+employee.Image+'\')">'
+        + '<div class="hexagon" onclick="displayEmployeeProfile('+employee.UserId+', \''+employee.FirstName+'\', \''+employee.LastName+'\',\''+employee.Phone+'\', \''+employee.Address+'\', \''+employee.Image+'\')">'
         + '<img src="resources/images/employee/users/'+employee.Image+'"/>'
         + '<img src="resources/images/employee/hexagon.svg  "/>'
         + '</div>'
         + '<div class="divBody">'
-        + '<div class="divName" onclick="displayEmployeeProfile('+employee.UserRoleId+')">'+employee.Name+'</div>'
+        + '<div class="divName" onclick="displayEmployeeProfile('+employee.UserId+', \''+employee.FirstName+'\', \''+employee.LastName+'\',\''+employee.Phone+'\', \''+employee.Address+'\', \''+employee.Image+'\')">'+employee.Name+'</div>'
         + '<div class="divTitle">'+employee.Role + ' / ' + employee.Title+'</div>'
         + '<div class="divActions">'
         + '<img src="resources/images/employee/add_task.svg" onclick="addTask(' + employee.UserRoleId + ');"/> '
         + '<img src="resources/images/employee/message.svg" onclick="sendMessage(\''+employee.Name+'\', ' + employee.UserRoleId + ');"/> '
-        + '<img class="showOnTreeEdit" src="resources/images/employee/add.png" onclick="addUserRole(\''+employee.Name+'\', ' + employee.UserRoleId + ');" height="18" width="18"/> '
-        + '<img class="showOnTreeEdit" src="resources/images/employee/delete.png" onclick="deleteUserRole(' + employee.UserRoleId+ ');" width="18" height="18"/> '
-        + '<span class="showOnTreeEdit" class="image-upload"><label for="file-input'+employee.UserRoleId+'"><img src="resources/images/user.png" width="16" height="18"/></label><form method="post" enctype="multipart/form-data"><input id="file-input'+employee.UserRoleId+'" name="file-input" onchange="fileSelected(this)" type="file"/><input type="hidden" name="userId" value="'+employee.UserId+'"/></form></span>'
+        + '<img class="showOnTreeEdit" src="resources/images/employee/add.png" onclick="addUserRole(' + employee.UserRoleId + ');" height="18" width="18"/> '
+        + '<img class="showOnTreeEdit" src="resources/images/employee/delete.png" onclick="deleteUserRole(' + employee.UserRoleId + ');" width="18" height="18"/> '
+        + '<img class="showOnTreeEdit" src="resources/images/employee/edit.png" onclick="editUserRole(' + employee.UserRoleId + ', ' + employee.UserId + ', ' + employee.RoleId + ', \'' + employee.Title + '\');" width="18" height="18"/> '
         + '</div>'
         + '</div>'
         + '</div>'
