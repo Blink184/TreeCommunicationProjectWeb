@@ -32,3 +32,13 @@ function getTasks($userroleid) {
     }
     return encode(true, $res);
 }
+
+function acceptTask($taskId, $date){
+    $q = "UPDATE task SET AcceptedDate = '$date', TaskState = 2 where TaskId = $taskId";
+    return encode(execute($q), '');
+}
+
+function finishTask($taskId, $date){
+    $q = "UPDATE task SET DoneDate = '$date', TaskState = 3 where TaskId = $taskId";
+    return encode(execute($q), '');
+}
