@@ -4,7 +4,10 @@
     <div class="outer">
         <div class="middle">
             <div class="inner">
+                <div id="header">
+                </div>
                 <div id="body">
+                    <span id="delegateTask_log"></span>
                     <ul>
                         <li>
                             <ul>
@@ -18,7 +21,8 @@
                     </ul>
                 </div>
                 <div id="footer">
-                    <button onclick="submitDelegateTask()">Accept</button>
+                    <button onclick="cancelDelegateTask()">Cancel</button>
+                    <button id="delegateTask_btnAccept" onclick="submitDelegateTaskButton()">Accept</button>
                 </div>
             </div>
         </div>

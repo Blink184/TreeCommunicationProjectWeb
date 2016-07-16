@@ -6,8 +6,6 @@ var MYTASK = "MYTASK";
 var RECEIVEDREQUEST = "RECEIVEDREQUEST";
 var SENTREQUEST = "SENTREQUEST";
 
-var CURRENTUSERROLEID = 1;
-
 var SELECTEDSTATUS;
 var SELECTEDTYPE;
 var SEARCH;
@@ -95,13 +93,14 @@ function setSelectedStatus(object, status){
     SELECTEDSTATUS = status;
 }
 
-function task (taskid, empNameTo, empNameToId, empNameFrom, empNameFromId, taskTitle, content, type, status, startdate, duedate) {
+function task (taskid, empNameTo, empNameToId, empNameFrom, empNameFromId, delegatedByUserRoleId, taskTitle, content, type, status, startdate, duedate) {
     var task = {
         TaskId: taskid,
         EmpNameTo: empNameTo,
         EmpNameFrom: empNameFrom,
         EmpNameToId: empNameToId,
         EmpNameFromId: empNameFromId,
+        DelegatedByUserRoleId: delegatedByUserRoleId,
         TaskTitle: taskTitle,
         Content: content,
         Type: type,
@@ -122,7 +121,7 @@ function getTasks() {
     var res = [];
     $.post("database/api/getTasks.php",
         {
-            userroleid: CURRENTUSERROLEID
+            userroleid: LOGGEDUSERROLEID
         },
         function(data, status){
             if(status == "success"){
@@ -130,7 +129,6 @@ function getTasks() {
                     res = jsonData(data);
                     TASKS = [];
                     for(var i = 0; i < res.length; i++){
-                        console.log(res[i]);
                         var o = res[i];
 
                         var toUserRole;
@@ -141,7 +139,7 @@ function getTasks() {
                             type = MYTASK;
                             fromUserRole = o.ToUserRole;
                             toUserRole = o.FromUserRole;
-                        }else if(o.FromUserRoleId == CURRENTUSERROLEID){
+                        }else if(o.FromUserRoleId == LOGGEDUSERROLEID){
                             type = SENTREQUEST;
                             fromUserRole = o.ToUserRole;
                             toUserRole = o.FromUserRole;
@@ -149,7 +147,6 @@ function getTasks() {
                             type = RECEIVEDREQUEST;
                             fromUserRole = o.FromUserRole;
                             toUserRole = o.ToUserRole;
-
                         }
 
                         var status;
@@ -161,7 +158,8 @@ function getTasks() {
                             status = FINISHED;
                         }
 
-                        TASKS.push(task(o.TaskId, toUserRole, o.ToUserRoleId, fromUserRole, o.FromUserRoleId, o.Title, o.Description, type, status, o.StartDate, o.DueDate));
+                        console.log(o.DelegatedByUserRoleId);
+                        TASKS.push(task(o.TaskId, toUserRole, o.ToUserRoleId, fromUserRole, o.FromUserRoleId, o.DelegatedByUserRoleId, o.Title, o.Description, type, status, o.StartDate, o.DueDate));
                         extractArrayTasks();
                     }
                 } else {

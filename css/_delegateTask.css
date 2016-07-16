@@ -20,7 +20,7 @@
 #delegateTask .inner {
     margin-left: auto;
     margin-right: auto;
-    width: 350px;
+    width: 400px;
     padding: 0;
     background-color: #f0f3f4;
 }
@@ -54,7 +54,7 @@
     width: 150px;
 }
 
-#delegateTask #body > ul > li > ul > li:nth-child(1) div{
+#delegateTask #body > ul > li > ul > li:nth-child(2) div{
     width:330px;
     background-color: lightgray;
     border: 0;

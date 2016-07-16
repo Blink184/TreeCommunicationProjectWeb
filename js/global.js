@@ -1,7 +1,7 @@
 var isMenuExpanded = false;
 var EXPANDARROW = "&#10095;";
 var COLLAPSEARROW = "&#10094;";
-
+var LOGGEDUSERROLEID = 1;
 
 function setSelectedTab(tab){
     document.getElementById(tab).className = "selectedTab";

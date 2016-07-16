@@ -48,9 +48,9 @@
                     </ul>
                 </div>
                 <div id="footer">
-                    <button onclick="delegateTask()">Delegate</button>
+                    <button id="showTask_btnDelegate" onclick="delegateTask()">Delegate</button>
                     <button onclick="cancelShowTask()">Cancel</button>
-                    <button onclick="cancelShowTask()">Accept</button>
+                    <button id="showTask_btnSubmit" onclick="submitShowTaskStatus()">Accept</button>
                 </div>
             </div>
         </div>
