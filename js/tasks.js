@@ -93,14 +93,15 @@ function setSelectedStatus(object, status){
     SELECTEDSTATUS = status;
 }
 
-function task (taskid, empNameTo, empNameToId, empNameFrom, empNameFromId, delegatedByUserRoleId, taskTitle, content, type, status, startdate, duedate) {
+function task (taskid, toUserRole, toUserRoleId, fromUserRole, fromUserRoleId, delegatedToUserRole, delegatedToUserRoleId, taskTitle, content, type, status, startdate, duedate) {
     var task = {
         TaskId: taskid,
-        EmpNameTo: empNameTo,
-        EmpNameFrom: empNameFrom,
-        EmpNameToId: empNameToId,
-        EmpNameFromId: empNameFromId,
-        DelegatedByUserRoleId: delegatedByUserRoleId,
+        ToUserRole: toUserRole,
+        ToUserRoleId: toUserRoleId,
+        FromUserRole: fromUserRole,
+        FromUserRoleId: fromUserRoleId,
+        DelegatedToUserRole: delegatedToUserRole,
+        DelegatedToUserRoleId: delegatedToUserRoleId,
         TaskTitle: taskTitle,
         Content: content,
         Type: type,
@@ -131,28 +132,17 @@ function getTasks() {
                     for(var i = 0; i < res.length; i++){
                         var o = res[i];
 
-                        var toUserRole;
-                        var fromUserRole;
-
                         var type;
-                        if(o.FromUserRole == o.ToUserRole){
+                        if(o.DelegatedToUserRoleId != null && o.FromUserRoleId == LOGGEDUSERROLEID){
+                            type = SENTREQUEST;
+                        }
+                        else if(o.FromUserRoleId == o.ToUserRoleId){
                             type = MYTASK;
-                            fromUserRole = o.ToUserRole;
-                            toUserRole = o.FromUserRole;
                         }else if(o.FromUserRoleId == LOGGEDUSERROLEID){
                             type = SENTREQUEST;
-                            fromUserRole = o.ToUserRole;
-                            toUserRole = o.FromUserRole;
                         }else {
                             type = RECEIVEDREQUEST;
-                            if (o.DelegatedByUserRoleId == 0)
-                                toUserRole = o.ToUserRole;
-                            else
-                                toUserRole = o.DelegatedByUserRoleId
-                            fromUserRole = o.FromUserRole;
                         }
-
-                        console.log(o.DelegatedByUserRoleId);
 
                         var status;
                         if(o.TaskState == 1){
@@ -163,8 +153,7 @@ function getTasks() {
                             status = FINISHED;
                         }
 
-                        console.log(o.DelegatedByUserRoleId);
-                        TASKS.push(task(o.TaskId, toUserRole, o.ToUserRoleId, fromUserRole, o.FromUserRoleId, o.DelegatedByUserRoleId, o.Title, o.Description, type, status, o.StartDate, o.DueDate));
+                        TASKS.push(task(o.TaskId, o.ToUserRole, o.ToUserRoleId, o.FromUserRole, o.FromUserRoleId, o.DelegatedToUserRole, o.DelegatedToUserRoleId, o.Title, o.Description, type, status, o.StartDate, o.DueDate));
                         extractArrayTasks();
                     }
                 } else {
@@ -173,7 +162,6 @@ function getTasks() {
             }else{
                 console.log(status)
             }
-            console.log(res);
         }
     );
 }
@@ -207,6 +195,13 @@ function parseTask(task) {
         img = '<img src="resources/images/task/finished_blue.svg"/>';
     }
 
+    var header;
+    if(task.DelegatedToUserRoleId == null){
+        header = task.Type == SENTREQUEST ? task.ToUserRole : task.FromUserRole;
+    }else{
+        header = task.DelegatedToUserRole;
+    }
+
     var tmp = '<li>'
                 +'<div class="divTaskControl" onclick="displayTask('
                 +task.TaskId
@@ -216,7 +211,7 @@ function parseTask(task) {
                 +task.Status
                 +'">'
                 +'<div class="header">'
-                +task.EmpNameFrom
+                +header
                 +'</div>'
                 +'<div class="statusImage">'
                 +img
@@ -254,21 +249,3 @@ function parseTask(task) {
 
     return tmp;
 }
-
-//function getTasks(){
-//    var array = [];
-//    for(var i = 0; i < 20; i++){
-//        var item =
-//        {
-//            title: "this is a title",
-//            content: "this is a content, once you click on it, you get to see it in a pop up",
-//            status: ASSIGN,
-//            type: MYTASKS,
-//            user: "John Smith",
-//            dateStart: "19/6/2016",
-//            dateEnd: "21/6/2016"
-//        }
-//        array.push(item);
-//    }
-//    return array;
-//}

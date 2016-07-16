@@ -3,6 +3,10 @@ var EXPANDARROW = "&#10095;";
 var COLLAPSEARROW = "&#10094;";
 var LOGGEDUSERROLEID = 1;
 
+function getDateFormatted(){
+    return new Date().toISOString().slice(0, 19).replace('T', ' ');
+}
+
 function setSelectedTab(tab){
     document.getElementById(tab).className = "selectedTab";
 }
@@ -67,6 +71,15 @@ function jsonArrayData(data){
     return result;
 }
 
+function hideObject(objectId){
+    getObject(objectId).style.display = "none";
+}
+function displayObject(objectId){
+    getObject(objectId).style.display = "block";
+}
+function displayInlineObject(objectId){
+    getObject(objectId).style.display = "inline-block";
+}
 function getObject(objectId){
     return document.getElementById(objectId);
 }

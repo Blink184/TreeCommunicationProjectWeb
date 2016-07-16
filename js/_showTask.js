@@ -7,11 +7,9 @@ function cancelShowTask(){
 
 function submitShowTaskStatus() {
     if (CURRENTTASKSTATUS == NEW) {
-        //accept
-        acceptTask(CURRENTTASKID, Date());
+        acceptTask(CURRENTTASKID, getDateFormatted());
     } else if (CURRENTTASKSTATUS == INPROGRESS) {
-        //finish
-        finishTask(CURRENTTASKID, Date());
+        finishTask(CURRENTTASKID, getDateFormatted());
     }
     cancelShowTask();
     loadTasks();
@@ -71,41 +69,45 @@ function displayTask(taskid){
         }
     }
     setInnerHtml('showTask_title', task.TaskTitle);
-    setInnerHtml('showTask_empNameFrom', task.EmpNameFrom);
-    setInnerHtml('showTask_empNameTo', task.EmpNameTo);
+    setInnerHtml('showTask_empNameFrom', task.FromUserRole);
+    setInnerHtml('showTask_empNameTo', task.ToUserRole);
     setInnerHtml('showTask_description', task.Content);
     setInnerHtml('showTask_attachments', "No Attachments");
     setInnerHtml('showTask_startDate', task.StartDate);
     setInnerHtml('showTask_dueDate', task.DueDate);
+    if(task.DelegatedToUserRoleId !== null){
+        setInnerHtml('showTask_delegatedTo', task.DelegatedToUserRole);
+        getObject('showTask_liDelegatedTo').style.display = "block";
+    }else{
+        getObject('showTask_liDelegatedTo').style.display = "none";
+    }
 
     document.getElementById('showTask_btnCancel').style.display = "inline-block";
     document.getElementById('showTask_btnSubmit').style.display = "inline-block";
-    document.getElementById('showTask_btnDelegate').style.display = "inline-block";
+    hideObject('showTask_btnDelegate');
 
     //hi
 
+    CURRENTTASKSTATUS = task.Status;
     if (task.Type != SENTREQUEST) {
-        if (task.Status == NEW) {
+
+        if (CURRENTTASKSTATUS == NEW) {
             setInnerHtml('showTask_btnSubmit', 'Accept');
-            CURRENTTASKSTATUS = NEW;
-        } else if (task.Status == INPROGRESS) {
+            if(task.DelegatedToUserRoleId === null){
+                displayInlineObject("showTask_btnDelegate");
+            }
+        } else if (CURRENTTASKSTATUS == INPROGRESS) {
             setInnerHtml('showTask_btnSubmit', 'Finish');
-            CURRENTTASKSTATUS = INPROGRESS;
         } else {
-            setInnerHtml('showTask_btnSubmit', 'Okay');
-            document.getElementById('showTask_btnSubmit').style.display = "none";
-            CURRENTTASKSTATUS = FINISHED;
+            getObject('showTask_btnSubmit').style.display = "none";
         }
 
-        if (task.DelegatedByUserRoleId != 0 || task.Status != NEW) {
-            document.getElementById("showTask_btnDelegate").style.display = "none";
-        }
     } else {
-        document.getElementById("showTask_btnDelegate").style.display = "none";
-        document.getElementById("showTask_btnSubmit").style.display = "none";
+        getObject("showTask_btnDelegate").style.display = "none";
+        getObject("showTask_btnSubmit").style.display = "none";
     }
 
-    document.getElementById('showTask').style.display = 'block';
+    getObject('showTask').style.display = 'block';
 }
 
 function setInnerHtml(id, value) {

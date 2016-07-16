@@ -77,6 +77,7 @@ function insertTask(empNameTo, empNameFrom, title, desc, dueDate){
                 if(jsonSuccess(data)){
                     setSuccessLog(log, "Process completed");
                     clearAddTaskForm();
+                    cancelAddTask();
                 }else{
                     setFailureLog(log, jsonData(data));
                 }
