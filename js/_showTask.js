@@ -26,7 +26,6 @@ function finishTask(taskid, date){
         function(data, status){
             if(status == "success"){
                 if(jsonSuccess(data)){
-                    console.log("Process completed");
                 }else{
                     console.log(jsonData(data));
                 }
@@ -46,7 +45,6 @@ function acceptTask(taskid, date){
         function(data, status){
             if(status == "success"){
                 if(jsonSuccess(data)){
-                    console.log("Process completed");
                 }else{
                     console.log(jsonData(data));
                 }
@@ -80,20 +78,29 @@ function displayTask(taskid){
     setInnerHtml('showTask_startDate', task.StartDate);
     setInnerHtml('showTask_dueDate', task.DueDate);
 
-    console.log(task.Status);
-    if (task.Status == NEW) {
-        setInnerHtml('showTask_btnSubmit', 'Accept');
-        CURRENTTASKSTATUS = NEW;
-    } else if (task.Status == INPROGRESS) {
-        setInnerHtml('showTask_btnSubmit', 'Finish');
-        CURRENTTASKSTATUS = INPROGRESS;
-    } else {
-        setInnerHtml('showTask_btnSubmit', 'Okay');
-        CURRENTTASKSTATUS = FINISHED;
-    }
+    document.getElementById('showTask_btnCancel').style.display = "inline-block";
+    document.getElementById('showTask_btnSubmit').style.display = "inline-block";
+    document.getElementById('showTask_btnDelegate').style.display = "inline-block";
 
-    if (task.DelegatedByUserRoleId != 0) {
+    if (task.Type != SENTREQUEST) {
+        if (task.Status == NEW) {
+            setInnerHtml('showTask_btnSubmit', 'Accept');
+            CURRENTTASKSTATUS = NEW;
+        } else if (task.Status == INPROGRESS) {
+            setInnerHtml('showTask_btnSubmit', 'Finish');
+            CURRENTTASKSTATUS = INPROGRESS;
+        } else {
+            setInnerHtml('showTask_btnSubmit', 'Okay');
+            document.getElementById('showTask_btnSubmit').style.display = "none";
+            CURRENTTASKSTATUS = FINISHED;
+        }
+
+        if (task.DelegatedByUserRoleId != 0 || task.Status != NEW) {
+            document.getElementById("showTask_btnDelegate").style.display = "none";
+        }
+    } else {
         document.getElementById("showTask_btnDelegate").style.display = "none";
+        document.getElementById("showTask_btnSubmit").style.display = "none";
     }
 
     document.getElementById('showTask').style.display = 'block';

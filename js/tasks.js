@@ -143,10 +143,13 @@ function getTasks() {
                             type = SENTREQUEST;
                             fromUserRole = o.ToUserRole;
                             toUserRole = o.FromUserRole;
-                        }else{
+                        }else {
                             type = RECEIVEDREQUEST;
+                            if (o.DelegatedByUserRoleId == 0)
+                                toUserRole = o.ToUserRole;
+                            else
+                                toUserRole = o.DelegatedByUserRoleId
                             fromUserRole = o.FromUserRole;
-                            toUserRole = o.ToUserRole;
                         }
 
                         var status;
