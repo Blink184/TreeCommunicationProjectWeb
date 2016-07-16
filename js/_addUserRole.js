@@ -9,7 +9,7 @@ function cancelAddUserRole(){
     getObject("addUserRole").style.display = "none";
 }
 
-function addUserRole(parentName, parentId){
+function addUserRole(parentId){
     getObject('addUserRole').style.display = 'block';
     CurrentUserRoleParentId = parentId;
     MODE = ADD;

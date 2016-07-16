@@ -2,7 +2,7 @@
 <div id="divHeader">
     <ul>
         <span class="element" onclick="profile()">
-            <img src="resources/images/pp_jl.jpg" id="imgUser"/>
+            <img src="resources/images/1.jpg" id="imgUser"/>
             <span id="spnUser">Admin Admin</span>
         </span>
         <span class="element" onclick="settings()">

@@ -11,10 +11,11 @@ if(isset($_REQUEST['updateUserForm'])){
             <div class="inner">
                 <form method="post" enctype="multipart/form-data">
                     <div id="header">
-                        <label for="file-input">
+                        <label for="file-input" style="cursor: pointer">
                             <img id="showEmployeeProfile_image" src="resources/images/1.jpg"/>
                         </label>
-                        <input style="display: none;" id="file-input" name="file-input" type="file"/>
+                        <br>
+                        <input style="color:black" id="file-input" name="file-input" type="file"/>
                     </div>
                     <div id="body">
                         <span id="showEmployeeProfile_log"></span>
