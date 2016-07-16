@@ -49,7 +49,7 @@
                 </div>
                 <div id="footer">
                     <button id="showTask_btnDelegate" onclick="delegateTask()">Delegate</button>
-                    <button onclick="cancelShowTask()">Cancel</button>
+                    <button id="showTask_btnCancel" onclick="cancelShowTask()">Cancel</button>
                     <button id="showTask_btnSubmit" onclick="submitShowTaskStatus()">Accept</button>
                 </div>
             </div>
@@ -57,3 +57,4 @@
     </div>
 </div>
 <?php include '_delegateTask.php';?>
+<!--hi-->
