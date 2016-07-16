@@ -152,6 +152,8 @@ function getTasks() {
                             fromUserRole = o.FromUserRole;
                         }
 
+                        console.log(o.DelegatedByUserRoleId);
+
                         var status;
                         if(o.TaskState == 1){
                             status = NEW;
