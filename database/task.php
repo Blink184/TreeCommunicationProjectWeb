@@ -17,8 +17,8 @@ function getTasks($userroleid) {
     select
       t.TaskId,
       t.FromUserRoleId,
-      (case when t.DelegatedToUserRoleId is NULL then t.ToUserRoleId else t.DelegatedToUserRoleId end) as ToUserRoleId,
-      (case when t.DelegatedToUserRoleId is NULL then 0 else t.ToUserRoleId end) as DelegatedByUserRoleId,
+      t.DelegatedToUserRoleId,
+      t.ToUserRoleId,
       Date(t.StartDate) as StartDate,
       t.TaskState,
       Date(t.DueDate) as DueDate,
@@ -27,7 +27,8 @@ function getTasks($userroleid) {
       t.ToUserRoleId,
       t.FromUserRoleId,
       Concat(u1.FirstName, ' ', u1.LastName) as 'FromUserRole',
-      Concat(u2.FirstName, ' ', u2.LastName) as 'ToUserRole'
+      Concat(u2.FirstName, ' ', u2.LastName) as 'ToUserRole',
+      Concat(u3.FirstName, ' ', u3.LastName) as 'DelegatedToUserRole'
       from task t
       left join userrole ur1 on ur1.UserRoleId = t.FromUserRoleId
       left join user u1 on u1.UserId = ur1.UserId
@@ -35,7 +36,7 @@ function getTasks($userroleid) {
       left join user u2 on u2.UserId = ur2.UserId
       left join userrole ur3 on ur3.UserRoleId = t.DelegatedToUserRoleId
       left join user u3 on u3.UserId = ur3.UserId
-      where (DelegatedToUserRoleId = $userroleid or ((FromUserRoleId = $userroleid or ToUserRoleId = $userroleid) and DelegatedToUserRoleId is NULL)) and t.IsDeleted = 0
+      where (DelegatedToUserRoleId = $userroleid or FromUserRoleId = $userroleid or (ToUserRoleId = $userroleid and DelegatedToUserRoleId is NULL)) and t.IsDeleted = 0
     ";
     $res = array();
     $rows = execute($q);

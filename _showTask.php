@@ -21,6 +21,12 @@
                                 <li><div id="showTask_empNameTo"></div></li>
                             </ul>
                         </li>
+                        <li id="showTask_liDelegatedTo">
+                            <ul>
+                                <li><label for="showTask_delegatedTo">delegated To</label></li>
+                                <li><div id="showTask_delegatedTo"></div></li>
+                            </ul>
+                        </li>
                         <li class="liTextArea">
                             <ul>
                                 <li><label for="description">Description</label></li>
