@@ -1,4 +1,4 @@
-#showTask{
+#delegateTask{
     background-color: RGBA(1,1,1,.6);
     height: 100%;
     width: 100%;
@@ -7,48 +7,54 @@
     left:0;
     position: fixed;
 }
-#showTask .outer {
+#delegateTask .outer {
     display: table;
     position: absolute;
     height: 100%;
     width: 100%;
 }
-#showTask .middle {
+#delegateTask .middle {
     display: table-cell;
     vertical-align: middle;
 }
-#showTask .inner {
+#delegateTask .inner {
     margin-left: auto;
     margin-right: auto;
-    width: 500px;
+    width: 350px;
     padding: 0;
     background-color: #f0f3f4;
 }
-#showTask #header{
+#delegateTask #header{
     background-color: #263240;
     color: white;
     padding:10px;
 }
-#showTask h2{
+#delegateTask h2{
     margin: 0;
 }
-#showTask #body{
+#delegateTask #body{
     padding: 10px;
     text-align: center;
     overflow-y: auto;
     max-height: 600px;
 }
-#showTask #body > ul > li{
+#delegateTask #body > ul > li{
     padding-top: 10px;
 }
-#showTask #body > ul > li > ul > li:first-child label{
+
+#delegateTask #body > ul > li > ul > li:first-child label{
     width:100px;
     display: inline-block;
     height:30px;
     text-align: start;
     line-height: 30px;
 }
-#showTask #body > ul > li > ul > li:nth-child(2) div{
+
+#delegateTask #body #delegateTask_empNameTo {
+    width: 150px;
+}
+
+#delegateTask #body > ul > li > ul > li:nth-child(1) div{
     width:330px;
     background-color: lightgray;
     border: 0;
@@ -59,18 +65,18 @@
     padding:10px;
     text-align: start;
 }
-#showTask ul{
+#delegateTask ul{
     padding:0;
     margin:0;
 }
-#showTask ul li{
+#delegateTask ul li{
     list-style: none;
 }
-#showTask ul li ul li{
+#delegateTask ul li ul li{
     display: inline-block;
     vertical-align: top;
 }
-#showTask #footer button{
+#delegateTask #footer button{
     width:70px;
     padding:5px;
     color: white;
@@ -79,10 +85,10 @@
     border-radius: 5px;
     cursor: pointer;
 }
-#showTask #footer button:hover{
+#delegateTask #footer button:hover{
     background-color: #F49A43;
 }
-#showTask #footer{
+#delegateTask #footer{
     text-align: right;
     padding: 10px;
     margin-right: 14px;

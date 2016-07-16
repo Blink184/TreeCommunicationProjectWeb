@@ -3,7 +3,7 @@ function cancelShowTask(){
 }
 
 function delegateTask() {
-
+    document.getElementById("delegateTask").style.display = "block";
 }
 
 
