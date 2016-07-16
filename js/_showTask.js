@@ -82,6 +82,8 @@ function displayTask(taskid){
     document.getElementById('showTask_btnSubmit').style.display = "inline-block";
     document.getElementById('showTask_btnDelegate').style.display = "inline-block";
 
+    //hi
+
     if (task.Type != SENTREQUEST) {
         if (task.Status == NEW) {
             setInnerHtml('showTask_btnSubmit', 'Accept');
