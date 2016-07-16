@@ -60,8 +60,8 @@ if(!empty($_FILES['file-input']['name'])){
         // if everything is ok, try to upload file
     } else {
         if (move_uploaded_file($_FILES["file-input"]["tmp_name"], $target_file)) {
-            if(updateUserImage($_POST["userId"], $name . '.' . $imageFileType))
-                echo "image updated";
+            if(!updateUserImage($_POST["userId"], $name . '.' . $imageFileType))
+                echo "image failed to upload";
         } else {
             echo "Sorry, there was an error uploading your file.";
         }
