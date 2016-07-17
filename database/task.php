@@ -36,7 +36,7 @@ function getTasks($userroleid) {
       left join user u2 on u2.UserId = ur2.UserId
       left join userrole ur3 on ur3.UserRoleId = t.DelegatedToUserRoleId
       left join user u3 on u3.UserId = ur3.UserId
-      where (DelegatedToUserRoleId = $userroleid or FromUserRoleId = $userroleid or (ToUserRoleId = $userroleid and DelegatedToUserRoleId is NULL)) and t.IsDeleted = 0
+      where (DelegatedToUserRoleId = $userroleid or FromUserRoleId = $userroleid or (ToUserRoleId = $userroleid and DelegatedToUserRoleId is NULL)) and t.IsDeleted = 0 and t.IsCanceled = 0
     ";
     $res = array();
     $rows = execute($q);
@@ -53,5 +53,10 @@ function acceptTask($taskId, $date){
 
 function finishTask($taskId, $date){
     $q = "UPDATE task SET DoneDate = '$date', TaskState = 3 where TaskId = $taskId";
+    return encode(execute($q), '');
+}
+
+function cancelTask($taskId, $date){
+    $q = "UPDATE task SET IsCanceled = 1 where TaskId = $taskId";
     return encode(execute($q), '');
 }
