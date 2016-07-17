@@ -111,13 +111,15 @@ function fileSelected(obj){
     obj.parentNode.submit();
 }
 
+var btnEditTreeActivated = false;
 function editTree(){
-    var chb = getObject("cbEditTree");
-    var value = chb.checked ? "visible" : "hidden";
+    var value = btnEditTreeActivated ? "visible" : "hidden";
     var elmnts = document.getElementsByClassName("showOnTreeEdit");
     for(var i = 0; i < elmnts.length; i++){
         elmnts[i].style.visibility = value;
     }
+    btnEditTreeActivated = !btnEditTreeActivated;
+    getObject("btnEditTree").innerHTML = btnEditTreeActivated ? "Allow Edit " : "Finish Edit";
 }
 
 function onAddTaskPopupClosed(){
