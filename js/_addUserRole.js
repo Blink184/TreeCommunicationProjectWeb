@@ -11,6 +11,7 @@ function cancelAddUserRole(){
 
 function addUserRole(parentId){
     getObject('addUserRole').style.display = 'block';
+    getObject("addUserRole_popupTitle").innerHTML = "Add";
     CurrentUserRoleParentId = parentId;
     MODE = ADD;
     updateUsersList(-1);
@@ -19,6 +20,7 @@ function addUserRole(parentId){
 
 function editUserRole(userRoleId, userId, roleId, title){
     getObject('addUserRole').style.display = 'block';
+    getObject("addUserRole_popupTitle").innerHTML = "Edit";
     CurrentUserRoleId = userRoleId;
     MODE = EDIT;
     updateUsersList(userId);

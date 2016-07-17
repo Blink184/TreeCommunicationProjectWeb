@@ -1,7 +1,5 @@
 <?php
 
-include dirname(__DIR__).'../user.php';
-
 if(empty($_REQUEST['userId'])
     || empty($_REQUEST['firstName'])
     || empty($_REQUEST['lastName'])

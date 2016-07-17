@@ -11,10 +11,6 @@
     display: inline;
 }
 
-#divEmployee .showOnTreeEdit{
+.showOnTreeEdit{
     visibility: hidden;
-}
-
-#cbEditTree{
-    margin-right: 20px;
 }

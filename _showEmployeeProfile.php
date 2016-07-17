@@ -1,5 +1,6 @@
 <?php
 if(isset($_REQUEST['updateUserForm'])){
+    include 'database/user.php';
     include 'database/api/updateUser.php';
 }
 ?>

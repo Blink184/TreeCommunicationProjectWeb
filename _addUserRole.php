@@ -5,7 +5,7 @@
         <div class="middle">
             <div class="inner">
                 <div id="header">
-                    <h2>Add New Child</h2>
+                    <h2 id="addUserRole_popupTitle">Add</h2>
                 </div>
                 <div id="body">
                     <span id="addUserRole_log"></span>
