@@ -18,8 +18,6 @@ function submitBtnEvent() {
             finishTask(CURRENTTASKID, getDateFormatted());
         }
     }
-    closeShowTask();
-    loadTasks();
 }
 
 
@@ -32,6 +30,8 @@ function cancelTask(taskid, date) {
         function(data, status){
             if(status == "success"){
                 if(jsonSuccess(data)){
+                    closeShowTask();
+                    loadTasks();
                 }else{
                     console.log(jsonData(data));
                 }
@@ -51,6 +51,8 @@ function finishTask(taskid, date){
         function(data, status){
             if(status == "success"){
                 if(jsonSuccess(data)){
+                    closeShowTask();
+                    loadTasks();
                 }else{
                     console.log(jsonData(data));
                 }
@@ -70,6 +72,8 @@ function acceptTask(taskid, date){
         function(data, status){
             if(status == "success"){
                 if(jsonSuccess(data)){
+                    closeShowTask();
+                    loadTasks();
                 }else{
                     console.log(jsonData(data));
                 }
