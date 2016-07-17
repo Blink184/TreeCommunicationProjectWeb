@@ -29,7 +29,7 @@ function submitDelegateTask(CURRENTTASKID, empNameTo){
                 if(jsonSuccess(data)){
                     setSuccessLog(log, "Process completed");
                     cancelDelegateTask();
-                    cancelShowTask();
+                    closeShowTask();
                     loadTasks();
                 }else{
                     setFailureLog(log, jsonData(data));
