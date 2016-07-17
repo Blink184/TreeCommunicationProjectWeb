@@ -41,7 +41,7 @@
                 </div>
                 <div id="footer">
                     <button onclick="cancelAddTask()">Cancel</button>
-                    <button onclick="cancelAddTask()">Attach</button>
+                    <button>Attach</button>
                     <button id="addTask_btnAdd" onclick="submitAddTask()">Add</button>
                 </div>
             </div>

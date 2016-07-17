@@ -11,19 +11,19 @@
                     <ul>
                         <li>
                             <ul>
-                                <li><label for="to">Assignee</label></li>
+                                <li><label for="to">From</label></li>
                                 <li><div id="showTask_empNameFrom"></div></li>
                             </ul>
                         </li>
                         <li>
                             <ul>
-                                <li><label for="title">Assigned To</label></li>
+                                <li><label for="title">To</label></li>
                                 <li><div id="showTask_empNameTo"></div></li>
                             </ul>
                         </li>
                         <li id="showTask_liDelegatedTo">
                             <ul>
-                                <li><label for="showTask_delegatedTo">delegated To</label></li>
+                                <li><label for="showTask_delegatedTo">Delegated To</label></li>
                                 <li><div id="showTask_delegatedTo"></div></li>
                             </ul>
                         </li>
@@ -55,8 +55,8 @@
                 </div>
                 <div id="footer">
                     <button id="showTask_btnDelegate" onclick="delegateTask()">Delegate</button>
-                    <button id="showTask_btnCancel" onclick="cancelShowTask()">Cancel</button>
-                    <button id="showTask_btnSubmit" onclick="submitShowTaskStatus()">Accept</button>
+                    <button id="showTask_btnCancel" onclick="closeShowTask()">Close</button>
+                    <button id="showTask_btnSubmit" onclick="submitBtnEvent()">Accept</button>
                 </div>
             </div>
         </div>

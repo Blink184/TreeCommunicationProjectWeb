@@ -3,14 +3,13 @@ function cancelDelegateTask() {
 }
 
 function submitDelegateTaskButton() {
-    console.log(CURRENTTASKID);
     var empNameTo = getValue("delegateTask_empNameTo");
-    console.log(empNameTo);
     var log = getObject("delegateTask_log");
     if(notEmpty(empNameTo)){
         disable("delegateTask_btnAccept");
         setProcessingLog(log);
         submitDelegateTask(CURRENTTASKID, empNameTo);
+        hideObject('showTask');
     }else{
         setFailureLog(log, "Please fill all the fields");
     }
@@ -48,10 +47,10 @@ function delegateTask(target) {
         setAddTaskTarget(target);
     }
     document.getElementById('delegateTask').style.display = 'block';
-    loadUserRolesMinusCurrent();
+    loadUserRolesMinusFromAndTo();
 }
 
-function loadUserRolesMinusCurrent(){
+function loadUserRolesMinusFromAndTo(){
     $.post("database/api/getUserRoles.php",
         function(data, status){
             if(status == "success"){
@@ -59,7 +58,7 @@ function loadUserRolesMinusCurrent(){
                     var users = jsonData(data);
                     var tmp = '';
                     for(var i = 0; i < users.length; i++){
-                        if(users[i].UserRoleId != LOGGEDUSERROLEID){
+                        if(users[i].UserRoleId != LOGGEDUSERROLEID && users[i].UserRoleId != CURRENTTASK.FromUserRoleId){
                             tmp += '<option value="'+users[i].UserRoleId+'">'+users[i].FirstName + ' ' + users[i].LastName + ' (' + users[i].Role + ')'+'</option>';
                         }
                     }
