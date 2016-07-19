@@ -12,3 +12,6 @@ function encode($bool, $info){
 function any($obj){
     return $obj->num_rows > 0;
 }
+function firstRow($obj){
+    return $obj->fetch_assoc();
+}
