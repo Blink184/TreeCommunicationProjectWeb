@@ -27,7 +27,7 @@ var TREE;
 function loadTree(){
     $.post("database/api/getUserRoleTree.php",
         {
-            parentid: 1
+            parentid: LOGGEDUSERROLEID
         },
         function(data, status){
             if(status == "success"){

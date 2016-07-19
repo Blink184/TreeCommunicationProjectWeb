@@ -33,7 +33,7 @@ function checkLogin(user, pwd) {
         function(data, status){
             if(status == "success"){
                 if(jsonSuccess(data)){
-                    goToEmployeesPage(data);
+                    loginSuccess(user, pwd);
                 }else{
                     setFailureLog(log, "Invalid Username or Password");
                     console.log(data);
@@ -43,4 +43,7 @@ function checkLogin(user, pwd) {
             }
         }
     );
+}
+function loginSuccess(user, pass){
+    post('\index.php', {user: user, pass: pass, login: 1});
 }
