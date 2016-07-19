@@ -10,6 +10,8 @@
 <html>
     <head>
         <link href="css/login.css" rel="stylesheet" type="text/css"/>
+        <script type="text/javascript" src="js/global.js"></script>
+        <script type="text/javascript" src="js/libraries/jquery-3.0.0.min.js"></script>
         <script src="js/login.js"></script>
     </head>
     <body>
@@ -26,6 +28,7 @@
                             </div>
                         </div>
                         <div id="body">
+                            <span id="login_log"></span>
                             <ul>
                                 <li>
                                     <ul>
@@ -53,7 +56,7 @@
                             </ul>
                         </div>
                         <div id="footer">
-                            <button onclick="goToEmployeesPage();">Sign in</button>
+                            <button id="btnLogin" onclick="login();">Sign in</button>
                             <br>
                             <br>
                             <a href="">Forgot Password?</a>
