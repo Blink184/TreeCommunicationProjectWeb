@@ -28,7 +28,7 @@
                             </div>
                         </div>
                         <div id="body">
-                            <span id="login_log"></span>
+                            <span id="login_log">Enter your username and password:</span>
                             <ul>
                                 <li>
                                     <ul>

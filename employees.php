@@ -1,14 +1,14 @@
-<?php include '_preHtmlTag.php'; ?>
+<?php include 'sessionChecker.php'; ?>
 <!DOCTYPE html>
 <html>
     <head>
-        <?php include '_includes.html';?>
+        <?php include '_includes.php';?>
         <script src="js/employees.js"></script>
     </head>
     <body>
         <ul id="ulMain">
             <li id="liLeft">
-                <?php include '_menu.html';?>
+                <?php include '_menu.php';?>
             </li>
             <li id="liRight">
                 <ul class="inline-block">
