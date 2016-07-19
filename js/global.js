@@ -1,7 +1,7 @@
 var isMenuExpanded = false;
 var EXPANDARROW = "&#10095;";
 var COLLAPSEARROW = "&#10094;";
-var LOGGEDUSERROLEID = 1;
+var LOGGEDUSERROLEID = 2;
 
 function getDateFormatted(){
     return new Date().toISOString().slice(0, 19).replace('T', ' ');

@@ -11,6 +11,15 @@ function insertUser($firstname, $lastname, $username, $password, $phone, $addres
     }
 }
 
+function validateUser($username, $password) {
+    $q = "select * from user where Username ='$username' and BINARY Password = '$password'";
+    $res = execute($q);
+    if(any($res)){
+        return encode(true, firstRow($res));
+    }
+    return encode(false, 'invalid username/password');
+}
+
 function getUsers(){
     $q = "select * from user where IsDeleted = 0 and IsAdmin = 0 ORDER BY FirstName, LastName";
     $tmp = execute($q);
