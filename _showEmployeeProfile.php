@@ -12,7 +12,7 @@ if(isset($_REQUEST['updateUserForm'])){
             <div class="inner">
                 <form method="post" enctype="multipart/form-data">
                     <div id="header">
-                        <label for="file-input" style="cursor: pointer">
+                        <label>
                             <img id="showEmployeeProfile_image" src="resources/images/1.jpg"/>
                         </label>
                         <br>
@@ -49,14 +49,14 @@ if(isset($_REQUEST['updateUserForm'])){
                             <li>
                                 <ul>
                                     <li><label for="showEmployeeProfile_lastActiveDate">Last Active Date</label></li>
-                                    <li><div id="showEmployeeProfile_lastActiveDate">26/6/2016</div></li>
+                                    <li><input type="text" id="showEmployeeProfile_lastActiveDate" value="26/6/2016" disabled/></li>
                                 </ul>
                             </li>
                         </ul>
                     </div>
                     <div id="footer">
                         <button type="button" onclick="cancelShowEmployeeProfile()">Close</button>
-                        <button type="submit" name="updateUserForm">Update</button>
+                        <button type="submit" id="showEmployeeProfile_submitButton" name="updateUserForm">Update</button>
                     </div>
                 </form>
             </div>

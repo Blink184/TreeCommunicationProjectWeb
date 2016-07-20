@@ -45,13 +45,13 @@ function addTask(target){
 function submitAddTask() {
     var empNameTo = getValue("addTask_empNameTo");
     var title = getValue("addTask_title");
-    var desc = getValue("addTask_description");
+    var content = getValue("addTask_description");
     var dueDate = getValue("addTask_dueDate");
     var log = getObject("addTask_log");
-    if(notEmpty(desc) && notEmpty(empNameTo) && notEmpty(title) && notEmpty(dueDate)){
+    if(notEmpty(content) && notEmpty(empNameTo) && notEmpty(title) && notEmpty(dueDate)){
         disable("addTask_btnAdd");
         setProcessingLog(log);
-        insertTask(empNameTo, 1, title, desc, dueDate);
+        insertTask(empNameTo, LOGGEDUSERROLEID, title, content, dueDate);
     }else{
         setFailureLog(log, "Please fill all the fields");
     }
@@ -60,13 +60,13 @@ function submitAddTask() {
 
 
 
-function insertTask(empNameTo, empNameFrom, title, desc, dueDate){
+function insertTask(empNameTo, empNameFrom, title, content, dueDate){
     $.post("database/api/insertTask.php",
         {
             empnameto: empNameTo,
             empnamefrom: empNameFrom,
             title: title,
-            desc: desc,
+            content: content,
             duedate: dueDate
         },
         function(data, status){

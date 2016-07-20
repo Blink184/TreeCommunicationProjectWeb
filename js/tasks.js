@@ -153,7 +153,7 @@ function getTasks() {
                             status = FINISHED;
                         }
 
-                        TASKS.push(task(o.TaskId, o.ToUserRole, o.ToUserRoleId, o.FromUserRole, o.FromUserRoleId, o.DelegatedToUserRole, o.DelegatedToUserRoleId, o.Title, o.Description, type, status, o.StartDate, o.DueDate));
+                        TASKS.push(task(o.TaskId, o.ToUserRole, o.ToUserRoleId, o.FromUserRole, o.FromUserRoleId, o.DelegatedToUserRole, o.DelegatedToUserRoleId, o.Title, o.Content, type, status, o.StartDate, o.DueDate));
                         extractArrayTasks();
                     }
                 } else {

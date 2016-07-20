@@ -2,8 +2,8 @@
 
 require 'connection.php';
 
-function insertTask($from, $to, $title, $desc, $duedate, $startdate){
-    $q = "INSERT INTO task (FromUserRoleId, ToUserRoleId, Title, Description, TaskState, DueDate, StartDate, IsDeleted) VALUES ($from, $to, '$title', '$desc', 1, '$duedate', '$startdate', 0)";
+function insertTask($from, $to, $title, $content, $duedate, $startdate){
+    $q = "INSERT INTO task (FromUserRoleId, ToUserRoleId, Title, Content, TaskState, DueDate, StartDate, IsDeleted) VALUES ($from, $to, '$title', '$content', 1, '$duedate', '$startdate', 0)";
     return encode(execute($q), '');
 }
 
@@ -23,7 +23,7 @@ function getTasks($userroleid) {
       t.TaskState,
       Date(t.DueDate) as DueDate,
       t.Title,
-      t.Description,
+      t.Content,
       t.ToUserRoleId,
       t.FromUserRoleId,
       Concat(u1.FirstName, ' ', u1.LastName) as 'FromUserRole',
@@ -57,6 +57,6 @@ function finishTask($taskId, $date){
 }
 
 function cancelTask($taskId, $date){
-    $q = "UPDATE task SET IsCanceled = 1 where TaskId = $taskId";
+    $q = "UPDATE task SET IsCanceled = 1, CancelDate = '$date' where TaskId = $taskId";
     return encode(execute($q), '');
 }

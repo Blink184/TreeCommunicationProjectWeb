@@ -21,16 +21,22 @@
                                 E-Tree
                             </h2>
                         </div>
-
-                        <button class="showOnTreeEdit" onclick="addUser();">
-                            Add User
-                        </button>
-                        <button class="showOnTreeEdit" onclick="addRole();">
-                            Add Role
-                        </button>
-                        <button id="btnEditTree" style="float: right; margin: 13px 4px 0 0;" onclick="editTree()">
-                            Allow Edit
-                        </button>
+                        <?php
+                            if($LOGGED_IN_USER_ROLE_IS_MASTER == '1'){
+                                echo
+                                    '<button class="showOnTreeEdit" onclick="addUser();">
+                                        Add User
+                                    </button>
+                                    <button class="showOnTreeEdit" onclick="addRole();">
+                                        Add Role
+                                    </button>
+                                    <button id="btnEditTree" style="float: right; margin: 13px 4px 0 0;" onclick="editTree()">
+                                        Allow Edit
+                                    </button>
+                                    <script>VIEW = 2;</script>'
+                                ;
+                            }
+                        ?>
                     </li>
                     <li id="liContent">
                         <?php include '_employees.php';?>

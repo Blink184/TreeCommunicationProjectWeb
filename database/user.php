@@ -12,7 +12,7 @@ function insertUser($firstname, $lastname, $username, $password, $phone, $addres
 }
 
 function validateUser($username, $password) {
-    $q = "select u.*, ur.UserRoleId from user u, userrole ur where ur.UserId = u.UserId and u.Username ='$username' and BINARY u.Password = '$password'";
+    $q = "select u.*, ur.UserRoleId, r.IsMaster from user u, userrole ur, role r where ur.UserId = u.UserId and ur.RoleId = r.RoleId and u.Username ='$username' and BINARY u.Password = '$password'";
     $res = execute($q);
     if(any($res)){
         return encode(true, firstRow($res));

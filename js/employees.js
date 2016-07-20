@@ -1,3 +1,6 @@
+var TREE;
+var VIEW = 1;
+
 window.onload = function () {
     setSelectedTab('tabEmployee');
     loadTree();
@@ -22,7 +25,6 @@ function employee(userRoleId, userId, roleId, firstName, lastName, phone, addres
     return employee;
 }
 
-var TREE;
 
 function loadTree(){
     $.post("database/api/getUserRoleTree.php",
@@ -85,8 +87,16 @@ function getData(employee){
 
 function generateDataFor(employee){
     var title = employee.Role;
-    if(employee.Title.length > 0)
+    var tmpView = '';
+    if(employee.Title.length > 0) {
         title += ' / ' + employee.Title;
+    }
+    if(VIEW == 2){
+        tmpView = '<img class="showOnTreeEdit" title="Add Child" src="resources/images/employee/add.png" onclick="addUserRole(' + employee.UserRoleId + ');" height="18" width="18"/> '
+        + '<img class="showOnTreeEdit" title="Delete User Role" src="resources/images/employee/delete.png" onclick="deleteUserRole(' + employee.UserRoleId + ');" width="18" height="18"/> '
+        + '<img class="showOnTreeEdit" title="Edit User Role" src="resources/images/employee/edit.png" onclick="editUserRole(' + employee.UserRoleId + ', ' + employee.UserId + ', ' + employee.RoleId + ', \'' + employee.Title + '\');" width="18" height="18"/> ';
+    }
+
     return '<li><div class="divEmployeeControl" data-employeeId="'+employee.UserRoleId+'">'
         + '<div class="hexagon" onclick="displayEmployeeProfile('+employee.UserId+', \''+employee.FirstName+'\', \''+employee.LastName+'\',\''+employee.Phone+'\', \''+employee.Address+'\', \''+employee.Image+'\')">'
         + '<img src="resources/images/employee/users/'+employee.Image+'"/>'
@@ -98,9 +108,7 @@ function generateDataFor(employee){
         + '<div class="divActions">'
         + '<img title="Assign Task" src="resources/images/employee/add_task.svg" onclick="addTask(' + employee.UserRoleId + ');"/> '
         + '<img title="Send Message" src="resources/images/employee/message.svg" onclick="sendMessage(\''+employee.Name+'\', ' + employee.UserRoleId + ');"/> '
-        + '<img class="showOnTreeEdit" title="Add Child" src="resources/images/employee/add.png" onclick="addUserRole(' + employee.UserRoleId + ');" height="18" width="18"/> '
-        + '<img class="showOnTreeEdit" title="Delete User Role" src="resources/images/employee/delete.png" onclick="deleteUserRole(' + employee.UserRoleId + ');" width="18" height="18"/> '
-        + '<img class="showOnTreeEdit" title="Edit User Role" src="resources/images/employee/edit.png" onclick="editUserRole(' + employee.UserRoleId + ', ' + employee.UserId + ', ' + employee.RoleId + ', \'' + employee.Title + '\');" width="18" height="18"/> '
+        + tmpView
         + '</div>'
         + '</div>'
         + '</div>'
