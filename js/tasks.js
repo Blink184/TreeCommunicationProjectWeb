@@ -154,8 +154,8 @@ function getTasks() {
                         }
 
                         TASKS.push(task(o.TaskId, o.ToUserRole, o.ToUserRoleId, o.FromUserRole, o.FromUserRoleId, o.DelegatedToUserRole, o.DelegatedToUserRoleId, o.Title, o.Content, type, status, o.StartDate, o.DueDate));
-                        extractArrayTasks();
                     }
+                    extractArrayTasks();
                 } else {
                     console.log(data)
                 }

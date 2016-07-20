@@ -1,4 +1,5 @@
 <link href="css/_messagesContactsControl.css" rel="stylesheet" type="text/css"/>
+<link href="css/_messagesContactsControlRow.css" rel="stylesheet" type="text/css"/>
 <div id="messagesContactsControl">
     <div id="innerDiv">
         <div id="header">

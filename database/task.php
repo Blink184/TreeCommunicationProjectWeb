@@ -57,6 +57,6 @@ function finishTask($taskId, $date){
 }
 
 function cancelTask($taskId, $date){
-    $q = "UPDATE task SET IsCanceled = 1, CancelDate = '$date' where TaskId = $taskId";
+    $q = "UPDATE task SET IsCanceled = 1 where TaskId = $taskId";
     return encode(execute($q), '');
 }

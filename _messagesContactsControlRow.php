@@ -1,4 +1,3 @@
-<link href="css/_messagesContactsControlRow.css" rel="stylesheet" type="text/css"/>
 <div class="messagesContactsControlRow <?php if(!$isRead) echo 'new';?>" data-name="<?=$name?>">
     <table>
         <tr>
