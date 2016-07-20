@@ -8,7 +8,6 @@ $(document).ready(function(){
         if(e.keyCode==13)
             $('#btnLogin').click();
     });
-    console.log('asd');
 });
 
 

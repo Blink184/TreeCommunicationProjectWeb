@@ -23,12 +23,14 @@
         $ln = $res->i->LastName;
         $img = $res->i->Image;
         $userRoleId = $res->i->UserRoleId;
+        $isMaster = $res->i->IsMaster;
         session_start();
         $_SESSION['isLoggedIn'] = '1';
         $_SESSION['firstName'] = $fn;
         $_SESSION['lastName'] = $ln;
         $_SESSION['img'] = $img;
         $_SESSION['userRoleId'] = $userRoleId;
+        $_SESSION['isMaster'] = $isMaster;
         header('Location: employees.php');
     }
 ?>
