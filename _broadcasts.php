@@ -32,28 +32,28 @@ function addBroadcastControl ($empName, $empRole, $timeReceived, $title, $msgCon
     </div>
 <div id="contentDiv">
     <div id="broadcastMsgContainer">
-        <ul>
-            <li><?php addBroadcastControl("Jared Leto", "Singer", "5 minutes ago", "Gentle Reminder", "Don't 
-            forget our meeting at 5 pm", $SENTBROADCAST);?></li>
-            <li><?php addBroadcastControl("Jared Leto", "Singer", "5 minutes ago", "Gentle Reminder", "Don't 
-            forget our meeting at 5 pm", $SENTBROADCAST);?></li>
-            <li><?php addBroadcastControl("Jared Leto", "Singer", "5 minutes ago", "Gentle Reminder", "Don't 
-            forget our meeting at 5 pm", $SENTBROADCAST);?></li>
-            <li><?php addBroadcastControl("Jared Leto", "Singer", "5 minutes ago", "Gentle Reminder", "Don't 
-            forget our meeting at 5 pm", $SENTBROADCAST);?></li>
-            <li><?php addBroadcastControl("Jared Leto", "Singer", "5 minutes ago", "Gentle Reminder", "Don't 
-            forget our meeting at 5 pm", $SENTBROADCAST);?></li>
-            <li><?php addBroadcastControl("Aynur Ajami", "Head of Department", "20 minutes ago", "Hi", "I am testing
-            this new fantastic application!", $RECEIVEDBROADCAST);?></li>
-            <li><?php addBroadcastControl("Ahmad Hammoud", "IT Administrator", "1 day ago", "Information", "Do not
-            share your passwords.", $RECEIVEDBROADCAST);?></li>
-            <li><?php addBroadcastControl("Jack Black", "Guitarist", "3 hours ago", "New Solo", "Check out my new solo.", $RECEIVEDBROADCAST);?></li>
-            <li><?php addBroadcastControl("Jared Leto", "Singer", "5 minutes ago", "Gentle Reminder", "Don't
-            forget our meeting at 5 pm", $RECEIVEDBROADCAST);?></li>
-            <li><?php addBroadcastControl("Jared Leto", "Singer", "5 minutes ago", "Gentle Reminder", "Don't
-            forget our meeting at 5 pm", $RECEIVEDBROADCAST);?></li>
-            <li><?php addBroadcastControl("Azzam Mourad", "Head of IT", "55 minutes ago", "Congratulations!", "Well done!
-                You are now proud members of Batikha Inc. This is a very long broadcast, read it carefully please. I want you to be more serious about what happened yesterday", $RECEIVEDBROADCAST);?></li>
+        <ul id="broadcastMsgContainerUl">
+<!--            <li>--><?php //addBroadcastControl("Jared Leto", "Singer", "5 minutes ago", "Gentle Reminder", "Don't
+//            forget our meeting at 5 pm", $SENTBROADCAST);?><!--</li>-->
+<!--            <li>--><?php //addBroadcastControl("Jared Leto", "Singer", "5 minutes ago", "Gentle Reminder", "Don't
+//            forget our meeting at 5 pm", $SENTBROADCAST);?><!--</li>-->
+<!--            <li>--><?php //addBroadcastControl("Jared Leto", "Singer", "5 minutes ago", "Gentle Reminder", "Don't
+//            forget our meeting at 5 pm", $SENTBROADCAST);?><!--</li>-->
+<!--            <li>--><?php //addBroadcastControl("Jared Leto", "Singer", "5 minutes ago", "Gentle Reminder", "Don't
+//            forget our meeting at 5 pm", $SENTBROADCAST);?><!--</li>-->
+<!--            <li>--><?php //addBroadcastControl("Jared Leto", "Singer", "5 minutes ago", "Gentle Reminder", "Don't
+//            forget our meeting at 5 pm", $SENTBROADCAST);?><!--</li>-->
+<!--            <li>--><?php //addBroadcastControl("Aynur Ajami", "Head of Department", "20 minutes ago", "Hi", "I am testing
+//            this new fantastic application!", $RECEIVEDBROADCAST);?><!--</li>-->
+<!--            <li>--><?php //addBroadcastControl("Ahmad Hammoud", "IT Administrator", "1 day ago", "Information", "Do not
+//            share your passwords.", $RECEIVEDBROADCAST);?><!--</li>-->
+<!--            <li>--><?php //addBroadcastControl("Jack Black", "Guitarist", "3 hours ago", "New Solo", "Check out my new solo.", $RECEIVEDBROADCAST);?><!--</li>-->
+<!--            <li>--><?php //addBroadcastControl("Jared Leto", "Singer", "5 minutes ago", "Gentle Reminder", "Don't
+//            forget our meeting at 5 pm", $RECEIVEDBROADCAST);?><!--</li>-->
+<!--            <li>--><?php //addBroadcastControl("Jared Leto", "Singer", "5 minutes ago", "Gentle Reminder", "Don't
+//            forget our meeting at 5 pm", $RECEIVEDBROADCAST);?><!--</li>-->
+<!--            <li>--><?php //addBroadcastControl("Azzam Mourad", "Head of IT", "55 minutes ago", "Congratulations!", "Well done!
+//                You are now proud members of Batikha Inc. This is a very long broadcast, read it carefully please. I want you to be more serious about what happened yesterday", $RECEIVEDBROADCAST);?><!--</li>-->
         </ul>
     </div>
 </div>

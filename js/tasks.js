@@ -111,6 +111,7 @@ function task (taskid, toUserRole, toUserRoleId, fromUserRole, fromUserRoleId, d
     };
     return task;
 }
+
 function onAddTaskPopupClosed(){
     loadTasks();
 }
