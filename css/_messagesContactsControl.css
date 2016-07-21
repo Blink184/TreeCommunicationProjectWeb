@@ -83,3 +83,11 @@
 #messagesContactsControl #ulContacts li{
     margin:0;
 }
+#messagesContactsControl #ulContacts #liLoadingContact{
+    height:42px;
+    background: #667a8f;
+    color: white;
+    font-size: 18px;
+    text-align: center;
+    padding-top:24px;
+}

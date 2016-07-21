@@ -10,5 +10,5 @@ if(empty($_REQUEST['userroleid']))
 $userroleid = $_REQUEST['userroleid'];
 
 
-echo getLastMessages($userroleid);
+echo getLastMessagePerContact($userroleid);
 ?>

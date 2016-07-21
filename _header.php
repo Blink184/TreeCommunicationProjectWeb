@@ -2,7 +2,7 @@
 <div id="divHeader">
     <ul>
         <span class="element" onclick="profile()">
-            <img src="resources/images/<?=$LOGGED_IN_USER_ROLE_IMAGE?>" id="imgUser"/>
+            <img src="resources/images/employee/users/<?=$LOGGED_IN_USER_ROLE_IMAGE?>" id="imgUser"/>
             <span id="spnUser"><?=$LOGGED_IN_USER_ROLE_FIRST_NAME?> <?=$LOGGED_IN_USER_ROLE_LAST_NAME?></span>
         </span>
         <span class="element" onclick="settings()">
