@@ -9,6 +9,5 @@ if(empty($_REQUEST['userroleid']))
 
 $userroleid = $_REQUEST['userroleid'];
 
-
 echo getBroadcasts($userroleid);
 ?>

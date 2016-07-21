@@ -83,7 +83,7 @@
     padding:20px;
 }
 
-#divBroadcasts #broadcastMsgContainer ul{
+#divBroadcasts #broadcastMsgContainerUl{
     padding:0;
     margin:0;
     list-style: none;

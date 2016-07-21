@@ -11,15 +11,10 @@ require 'connection.php';
 
 
 function getBroadcasts($userroleid) {
-    $q = "
-    select b.BroadcastId, b.FromUserRoleId, b.AttachmentId, b.Title, b.Content, b.DateSent
-    from broadcast b, broadcastline
-    where (b.FromUserRoleId = $userroleid or broadcastline.ToUserRoleId = $userroleid) and b.IsDeleted = 0";
+    $q = "select b.BroadcastId, b.FromUserRoleId, b.Title, b.Content, b.DateSent from broadcast b, broadcastline where (b.FromUserRoleId = $userroleid or broadcastline.ToUserRoleId = $userroleid) and b.IsDeleted = 0";
 
     $res = array();
-    echo execute($q);
     $rows = execute($q);
-
 
     while ($row = $rows->fetch_assoc()) {
         array_push($res, $row);

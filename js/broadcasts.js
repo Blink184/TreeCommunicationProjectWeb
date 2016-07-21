@@ -8,6 +8,7 @@ window.onload = function () {
     setSelectedTab('tabBroadcast');
     $("#toCustom").multiselect().multiselectfilter();
     SELECTEDTYPE = RECEIVEDBROADCAST;
+    //filterBroadcasts();
     getBroadcasts();
 };
 
@@ -37,16 +38,15 @@ function filterBroadcasts() {
     }
 }
 
-function broadcast(broadcastId, fromUserRole, fromRole, fromUserRoleId, toUserRole, toUserRoleId, title, content, dateSent, isDeleted) {
+function broadcast(broadcastId, fromUserRoleId, title, content, dateSent) {
     var broadcast = {
         BroadcastId: broadcastId,
-        FromUserRole: fromUserRole,
-        FromRole: fromRole,
         FromUserRoleId: fromUserRoleId,
         Title: title,
         Content: content,
         DateSent: dateSent
     }
+
     return broadcast;
 }
 
@@ -59,16 +59,18 @@ function getBroadcasts() {
         function(data, status){
             if(status == "success"){
                 if(jsonSuccess(data)) {
+                    console.log(data);
                     res = jsonData(data);
                     BROADCASTS = [];
-                    for(var i = 0; i < res.length; i++){
+                    console.log(res.length);
+                    for(var i = 0; i < res.length; i++) {
                         var o = res[i];
 
 
-
-                        BROADCASTS.push(broadcast(o.BroadcastId, o.FromUserRole, o.FromUserRoleId, o.Title, o.Content, o.DateSent));
-                        extractArrayBroadcasts();
+                        BROADCASTS.push(broadcast(o.BroadcastId, o.FromUserRoleId, o.Title, o.Content, o.DateSent));
                     }
+                    extractArrayBroadcasts();
+
                 } else {
                     console.log(data)
                 }
@@ -98,11 +100,16 @@ function getData(broadcasts) {
 function parseBroadcast(broadcast) {
     var type = "";
 
-    if (broadcast.FromUserRoleId == LOGGEDUSERROLEID) {
+    console.log(broadcast);
+    console.log(broadcast.FromUserRoleId);
+
+    if (broadcast.FromUserRoleId == 2) {
         type = SENTBROADCAST;
     } else {
         type = RECEIVEDBROADCAST;
     }
+
+    console.log(type);
 
     var tmp = '<li>'
             +'<div class="brdcastMsg" data-type="'
@@ -115,10 +122,10 @@ function parseBroadcast(broadcast) {
             +'<img src="resources/images/pp_jl.jpg" id="profPicBrd"/>'
             +'</div>'
             +'<div id="empName">'
-            +broadcast.FromUserRole
+            +broadcast.FromUserRoleId
             +'</div>'
             +'<span id="empRole">'
-            +broadcast.FromRole
+            +broadcast.FromUserRoleId
             +'</span>'
             +'<span id="timeSent">'
             +timeSince(broadcast.DateSent)
@@ -134,6 +141,7 @@ function parseBroadcast(broadcast) {
             +'</div>'
             +'</div>'
             +'</li>';
+
 
     return tmp;
 }
