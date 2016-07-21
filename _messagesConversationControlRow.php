@@ -1,4 +1,3 @@
-<link href="css/_messagesConversationControlRow.css" rel="stylesheet" type="text/css"/>
 <div id="messagesConversationControlRow" <?php if(!$isSender) echo 'class="rotated"';?>>
     <table>
         <tr>

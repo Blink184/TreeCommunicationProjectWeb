@@ -6,8 +6,7 @@
         $LOGGED_IN_USER_ROLE_USER_ROLE_ID = $_SESSION['userRoleId'];
         $LOGGED_IN_USER_ROLE_IMAGE = $_SESSION['img'];
         $LOGGED_IN_USER_ROLE_IS_MASTER = $_SESSION['isMaster'];
-        echo '<script>LOGGEDUSERROLEID = '.$LOGGED_IN_USER_ROLE_USER_ROLE_ID.'</script>';
-        //echo '<script>console.log("LOGGEDUSERROLEID = '.$LOGGED_IN_USER_ROLE_USER_ROLE_ID.'");</script>';
+        echo '<script>LOGGEDUSERROLEID = '.$LOGGED_IN_USER_ROLE_USER_ROLE_ID.';LOGGEDUSERROLEIMAGE = "'.$LOGGED_IN_USER_ROLE_IMAGE.'";</script>';
     }else{
         header('Location: login.php');
     }
