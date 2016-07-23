@@ -2,10 +2,10 @@
 
 require 'connection.php';
 
-/*function insertMessage($from, $to, $title, $content, $duedate, $startdate){
-    $q = "INSERT INTO task (FromUserRoleId, ToUserRoleId, Title, Content, TaskState, DueDate, StartDate, IsDeleted) VALUES ($from, $to, '$title', '$content', 1, '$duedate', '$startdate', 0)";
+function insertMessage($from, $to, $content, $dateSent, $isDeleted){
+    $q = "INSERT INTO message (FromUserRoleId, ToUserRoleId, Content, DateSent, IsDeleted) VALUES ($from, $to, '$content', '$dateSent', $isDeleted)";
     return encode(execute($q), '');
-}*/
+}
 
 function getMessages($userRoleId, $contactId){
     $q = "

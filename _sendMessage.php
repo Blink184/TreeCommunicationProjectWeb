@@ -12,7 +12,17 @@
                         <li>
                             <ul>
                                 <li><label for="to">To</label></li>
-                                <li><input id="to" name="sendMessage_to" type="text"></li>
+                                <li>
+                                    <select name="sendMessage_to" id="addUserRole_role">
+                                        <?php
+                                        include "database/userRole.php";
+                                        $res = json_decode(getUserRoles())->i;
+                                        for($i = 0; $i < sizeof($res); $i++){
+//                                            echo "<option value=''>$res[$i]->FirstName</option>";
+                                        }
+                                        ?>
+                                    </select>
+                                </li>
                             </ul>
                         </li>
                         <li class="liTextArea">
