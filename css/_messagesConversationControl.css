@@ -1,6 +1,7 @@
 #messagesConversationControl{
     height:100%;
     position: relative;
+    visibility: hidden;
 }
 #messagesConversationControl #innerDiv{
     position: relative;

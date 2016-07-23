@@ -7,7 +7,7 @@
                 <input type="text" onkeyup="searchContacts(this.value)" placeholder="search..."/>
             </div><!--
          --><div>
-                <div id="divCompose" onclick="sendMessage(null)">
+                <div id="divCompose" onclick="composeNewMessage(null)">
                     <div>
                         Compose
                     </div>

@@ -75,7 +75,6 @@ function getMessages(contactId, userFullName){
                         MESSAGES = [];
                         for (var i = 0; i < res.length; i++) {
                             var o = res[i];
-                            console.log(o);
                             MESSAGES.push(message(o.MessageId, o.FromUserRoleId, o.ToUserRoleId, o.AttachmentId, o.Content, o.DateReceived, o.DateSent));
                         }
                         getObject('messagesConversationControl_contactName').innerHTML = "Conversation with " + userFullName;
@@ -151,7 +150,7 @@ function extractContact(contact) {
         _dotPath = "unread_message_blue_dot.svg";
     }
 
-    return "<div class='messagesContactsControlRow "+_new+"' onclick='loadConversation("+contact.UserRoleId+", \""+contact.Name+"\", \""+contact.Image+"\")' data-name='"+contact.Name+"'>"
+    return "<div class='messagesContactsControlRow "+_new+"' onclick='loadConversation(this, "+contact.UserRoleId+", \""+contact.Name+"\", \""+contact.Image+"\")' data-name='"+contact.Name+"'>"
                 + "<table>"
                     + "<tr>"
                         + "<td rowspan='2' id='messagesContactsControlRow_picture'>"
@@ -175,10 +174,17 @@ function extractContact(contact) {
 
 }
 
-function loadConversation(userRoleId, userFullName, userImage){
+function loadConversation(sender, userRoleId, userFullName, userImage){
+    setSelectedContactStyle(sender);
+    getObject('messagesConversationControl').style.visibility = "visible";
     getObject('messagesConversationControl_contactName').innerHTML = "<i>Loading...</i>";
     SELECTEDCONTACT = {UserRoleId: userRoleId, Image: userImage, Name: userFullName};
     getMessages(userRoleId, userFullName);;
+}
+
+function setSelectedContactStyle(contact){
+    $(".messagesContactsControlRow").removeClass('selectedRow');
+    contact.className += ' selectedRow';
 }
 
 function isSearching(){
@@ -202,4 +208,16 @@ function matchSearch(element){
         return true;
     }
     return false;
+}
+
+function replyToContact(){
+    var from = LOGGEDUSERROLEID;
+    var to = SELECTEDCONTACT.UserRoleId;
+    var message = getValue('messagesConversationControl_textArea');
+    sendMessage(from, to, message, onReplyToContact);
+}
+
+function onReplyToContact(){
+    clearValue('messagesConversationControl_textArea');
+    getMessages(SELECTEDCONTACT.UserRoleId, SELECTEDCONTACT.Name);
 }

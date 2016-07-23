@@ -56,3 +56,9 @@
 .newHorizontalLine{
     background-color: #3b4753;
 }
+.selectedRow{
+    background-color: #1a4153;
+}
+.selectedRow:hover{
+    background-color: #1a4153;
+}
