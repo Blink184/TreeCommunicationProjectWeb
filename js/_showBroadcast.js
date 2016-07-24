@@ -20,10 +20,14 @@ function displayBroadcast(broadcastid) {
         }
     }
 
-    setInnerHtml('showBroadcast_empNameFrom', broadcast.FromUserRole);
+    setInnerHtml('showBroadcast_empNameFrom', broadcast.UFirstName + ' ' + broadcast.ULastName);
     setInnerHtml('showBroadcast_title', broadcast.Title);
     setInnerHtml('showBroadcast_content', broadcast.Content);
-    setInnerHtml('showBroadcast_attachments', '');
+    setInnerHtml('showBroadcast_attachments', 'none');
 
     document.getElementById('showBroadcast').style.display = 'block';
+}
+
+function setInnerHtml(id, value) {
+    document.getElementById(id).innerHTML = value;
 }

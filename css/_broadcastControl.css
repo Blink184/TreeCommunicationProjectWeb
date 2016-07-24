@@ -60,19 +60,19 @@
 
 #timeSent {
     float: right;
-    font-size: 12px;
+    font-size: 15px;
     margin-top: 2px;
     color: #a2bfcd;
 }
 
 .content {
     margin-top: 5px;
-    font-size: 12px;
+    font-size: 15px;
 }
 
 #title {
     padding-bottom: 5px;
-    font-size: 13px;
+    font-size: 16px;
     padding-top: 2px;
     font-weight: bold;
 }
@@ -80,7 +80,7 @@
 #msgContent {
     padding-bottom: 5px;
     /*line-height: 12px;*/
-    font-size: 13px;
+    font-size: 16px;
     height: 40px;
     overflow-y: hidden;
 }

@@ -8,6 +8,7 @@
                     <h2>Compose Broadcast</h2>
                 </div>
                 <div id="body">
+                    <span id="sentBroadcast_log"></span>
                     <ul>
                         <li>
                             <ul>
@@ -43,7 +44,7 @@
                         <li>
                             <ul>
                                 <li><label for="title">Title</label></li>
-                                <li><input id="title" name="sendBroadcast_title" type="text"></li>
+                                <li><input id="sendBroadcast_Title" name="sendBroadcast_title" type="text"></li>
                             </ul>
                         </li>
                         <li class="liTextArea">
@@ -57,7 +58,7 @@
                 <div id="footer">
                     <button onclick="closeSendBroadcast()">Close</button>
                     <button onclick="">Attach</button>
-                    <button onclick="submitSendBroadcast()">Send</button>
+                    <button id="btnSubmitSendBroadcast" onclick="submitSendBroadcast()">Send</button>
                 </div>
             </div>
         </div>
