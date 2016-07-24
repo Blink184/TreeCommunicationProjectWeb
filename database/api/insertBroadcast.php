@@ -1,6 +1,6 @@
 <?php
 
-include '../message.php';
+include '../broadcast.php';
 
 if(empty($_REQUEST['fromuserroleid'])
     || empty($_REQUEST['title'])
@@ -11,7 +11,7 @@ if(empty($_REQUEST['fromuserroleid'])
     return;
 } else if (($_REQUEST['totype'])=='custom') {
     if (empty($_REQUEST['touserroleids'])) {
-        echo encode(false, 'missing parameters');
+        echo encode(false, 'missing parameter: to');
         return;
     }
 }

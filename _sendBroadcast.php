@@ -44,7 +44,7 @@
                         <li>
                             <ul>
                                 <li><label for="title">Title</label></li>
-                                <li><input id="title" name="sendBroadcast_title" type="text"></li>
+                                <li><input id="sendBroadcast_Title" name="sendBroadcast_title" type="text"></li>
                             </ul>
                         </li>
                         <li class="liTextArea">

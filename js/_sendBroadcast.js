@@ -20,8 +20,9 @@ function submitSendBroadcast(){
         toType = 'all';
     }
 
-    var title = getValue('title');
+    var title = getValue('sendBroadcast_Title');
     var content = getValue('message');
+
     insertBroadcast(toType, values, title, content);
 }
 
@@ -46,8 +47,10 @@ function insertBroadcast(toType, toValues, title, content) {
             content: content
         },
         function(data, status){
+            console.log(status, data);
             if (status == "success") {
                 if (jsonSuccess(data)) {
+                    console.log(data)
                 } else {
                     console.log(data)
                 }
