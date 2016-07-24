@@ -1,4 +1,6 @@
 <?php
+    date_default_timezone_set('Asia/Beirut');
+
     session_start();
     if(isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn'] == '1'){
         $LOGGED_IN_USER_ROLE_FIRST_NAME = $_SESSION['firstName'];
