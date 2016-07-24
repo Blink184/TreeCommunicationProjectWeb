@@ -1,4 +1,5 @@
 var SELECTEDTARGET;
+
 function cancelAddTask(){
     document.getElementById("addTask").style.display = "none";
     onAddTaskPopupClosed();
