@@ -2,12 +2,16 @@
 
 require 'connection.php';
 
-//function insertBroadcast($from, $title, $content, $sentDate, $toType, $to){
-//    $q1 = "INSERT INTO broadcast (FromUserRoleId, Title, Content, SentDate, IsDeleted) VALUES ($from, '$title', '$content', 0)";
-//    $res1 = execute($q1);
+function insertBroadcast($from, $to, $totype, $title, $content, $sentDate, $isDeleted){
+    $brQ = "insert into broadcast(FromUserRoleId, Title, Content, SentDate, IsDeleted) VALUES ($from, '$title', '$content', $sentDate, 0)";
+    execute($brQ);
+    $selectLast = "SELECT * FROM broadcast where FromUserRoleId = $from ORDER BY BroadcastId DESC LIMIT 1";
+    $lastRow = FirstRow(execute($selectLast));
+
+
 //    $q2 = "insert into broadcastline (BroadcastId, ToUserRoleId) values ($res1.BroadcastId, $to)";
 //    $res2 = execute ($q2);
-//}
+}
 
 
 function getBroadcasts($userroleid) {

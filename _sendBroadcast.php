@@ -26,9 +26,16 @@
                                 <li><label for="toCustom">Custom</label></li>
                                 <li>
                                     <select id="toCustom" multiple="multiple">
-                                        <option>Aynur Ajami</option>
-                                        <option>Ahmad Hammoud</option>
-                                        <option>Azzam Mourad</option>
+                                        <?php
+                                        include "database/userRole.php";
+                                        $res = json_decode(getUserRoles())->i;
+                                        for($i = 0; $i < sizeof($res); $i++){
+                                            echo "<option value='".$res[$i]->UserRoleId."'>".$res[$i]->FirstName." ".$res[$i]->LastName." [".$res[$i]->Role."]</option>";
+                                        }
+                                        ?>
+<!--                                        <option>Aynur Ajami</option>-->
+<!--                                        <option>Ahmad Hammoud</option>-->
+<!--                                        <option>Azzam Mourad</option>-->
                                     </select>
                                 </li>
                             </ul>
@@ -48,9 +55,9 @@
                     </ul>
                 </div>
                 <div id="footer">
-                    <button onclick="cancelSendBroadcast()">Cancel</button>
-                    <button onclick="cancelSendBroadcast()">Attach</button>
-                    <button onclick="cancelSendBroadcast()">Send</button>
+                    <button onclick="closeSendBroadcast()">Close</button>
+                    <button onclick="">Attach</button>
+                    <button onclick="submitSendBroadcast()">Send</button>
                 </div>
             </div>
         </div>
