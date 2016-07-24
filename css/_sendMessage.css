@@ -45,7 +45,7 @@
     height:30px;
     text-align: start;
 }
-#sendMessage #body > ul > li > ul > li:nth-child(2) input, #message{
+#sendMessage #body > ul > li > ul > li:nth-child(2) input, #sendMessage #body > ul > li > ul > li:nth-child(2) select, #sendMessage_textArea{
     width:350px;
     background-color: lightgray;
     border: 0px;
@@ -56,6 +56,12 @@
     height:30px;
     /*padding:10px;*/
     text-align: start;
+}
+
+#sendMessage_textArea{
+    height: 150px;
+    resize: none;
+    display: block;
 }
 #sendMessage ul{
     padding:0;

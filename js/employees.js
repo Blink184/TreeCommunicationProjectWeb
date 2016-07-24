@@ -107,7 +107,7 @@ function generateDataFor(employee){
         + '<div class="divTitle">'+ title +'</div>'
         + '<div class="divActions">'
         + '<img title="Assign Task" src="resources/images/employee/add_task.svg" onclick="addTask(' + employee.UserRoleId + ');"/> '
-        + '<img title="Send Message" src="resources/images/employee/message.svg" onclick="sendMessage(\''+employee.Name+'\', ' + employee.UserRoleId + ');"/> '
+        + '<img title="Send Message" src="resources/images/employee/message.svg" onclick="composeNewMessage(' + employee.UserRoleId + ');"/> '
         + tmpView
         + '</div>'
         + '</div>'
@@ -127,9 +127,14 @@ function editTree(){
         elmnts[i].style.visibility = value;
     }
     btnEditTreeActivated = !btnEditTreeActivated;
-    getObject("btnEditTree").innerHTML = btnEditTreeActivated ? "Allow Edit " : "Finish Edit";
+    if(getObject("btnEditTree") != null)
+        getObject("btnEditTree").innerHTML = btnEditTreeActivated ? "Allow Edit " : "Finish Edit";
 }
 
 function onAddTaskPopupClosed(){
 
+}
+
+function onSubmitSendMessageSuccess(){
+    cancelSendMessage();
 }

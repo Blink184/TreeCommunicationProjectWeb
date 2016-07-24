@@ -42,6 +42,8 @@ function getContacts(){
         function(data, status){
             if(status == "success"){
                 if(jsonSuccess(data)) {
+                    getObject('ulMessages').innerHTML = "";
+                    getObject('messagesConversationControl').style.visibility = "hidden";
                     var res = jsonData(data);
                     CONTACTS = [];
                     for(var i = 0; i < res.length; i++){
@@ -79,6 +81,8 @@ function getMessages(contactId, userFullName){
                         }
                         getObject('messagesConversationControl_contactName').innerHTML = "Conversation with " + userFullName;
                         extractArrayMessages();
+                        var ulMessages = getObject("ulMessages");
+                        ulMessages.scrollTop = ulMessages.scrollHeight;
                     } else {
                         console.log(data)
                     }
@@ -161,7 +165,7 @@ function extractContact(contact) {
                             + "<span id='messagesContactsControlRow_time'>("+timeSince(dateObject)+")</span>"
                         + "</td>"
                         + "<td id='messagesContactsControlRow_status' align='right'>"
-                            + "<img src=\'resources/images/message/"+_dotPath+"\'/>"
+                            + "<img id='messagesContactsControlRow_status_image' src=\'resources/images/message/"+_dotPath+"\'/>"
                         + "</td>"
                     + "</tr>"
                     + "<tr>"
@@ -179,7 +183,7 @@ function loadConversation(sender, userRoleId, userFullName, userImage){
     getObject('messagesConversationControl').style.visibility = "visible";
     getObject('messagesConversationControl_contactName').innerHTML = "<i>Loading...</i>";
     SELECTEDCONTACT = {UserRoleId: userRoleId, Image: userImage, Name: userFullName};
-    getMessages(userRoleId, userFullName);;
+    getMessages(userRoleId, userFullName);
 }
 
 function setSelectedContactStyle(contact){
@@ -220,4 +224,14 @@ function replyToContact(){
 function onReplyToContact(){
     clearValue('messagesConversationControl_textArea');
     getMessages(SELECTEDCONTACT.UserRoleId, SELECTEDCONTACT.Name);
+}
+
+
+function onSubmitSendMessageSuccess(){
+    cancelSendMessage();
+    getContacts();
+}
+
+function setAsRead(img){
+    img.src = "resources/images/message/read_message_blue_tick.svg";
 }
