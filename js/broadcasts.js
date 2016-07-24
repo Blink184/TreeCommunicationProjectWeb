@@ -38,8 +38,12 @@ function filterBroadcasts() {
     }
 }
 
-function broadcast(broadcastId, fromUserRoleId, title, content, dateSent) {
+function broadcast(firstname, lastname, roledescription, userroletitle, broadcastId, fromUserRoleId, title, content, dateSent) {
     var broadcast = {
+        UFirstName: firstname,
+        ULastName: lastname,
+        RoleDescription: roledescription,
+        UserRoleTitle: userroletitle,
         BroadcastId: broadcastId,
         FromUserRoleId: fromUserRoleId,
         Title: title,
@@ -52,6 +56,7 @@ function broadcast(broadcastId, fromUserRoleId, title, content, dateSent) {
 
 function getBroadcasts() {
     var res = [];
+    //this is an ajax post
     $.post("database/api/getBroadcasts.php",
         {
             userroleid: LOGGEDUSERROLEID
@@ -59,15 +64,12 @@ function getBroadcasts() {
         function(data, status){
             if(status == "success"){
                 if(jsonSuccess(data)) {
-                    console.log(data);
                     res = jsonData(data);
                     BROADCASTS = [];
-                    console.log(res.length);
                     for(var i = 0; i < res.length; i++) {
                         var o = res[i];
 
-
-                        BROADCASTS.push(broadcast(o.BroadcastId, o.FromUserRoleId, o.Title, o.Content, o.DateSent));
+                        BROADCASTS.push(broadcast(o.FirstName, o.LastName, o.Description, o.RoleTitle, o.BroadcastId, o.FromUserRoleId, o.Title, o.Content, o.DateSent));
                     }
                     extractArrayBroadcasts();
 
@@ -100,16 +102,11 @@ function getData(broadcasts) {
 function parseBroadcast(broadcast) {
     var type = "";
 
-    console.log(broadcast);
-    console.log(broadcast.FromUserRoleId);
-
     if (broadcast.FromUserRoleId == 2) {
         type = SENTBROADCAST;
     } else {
         type = RECEIVEDBROADCAST;
     }
-
-    console.log(type);
 
     var tmp = '<li>'
             +'<div class="brdcastMsg" data-type="'
@@ -122,13 +119,13 @@ function parseBroadcast(broadcast) {
             +'<img src="resources/images/pp_jl.jpg" id="profPicBrd"/>'
             +'</div>'
             +'<div id="empName">'
-            +broadcast.FromUserRoleId
+            +broadcast.UFirstName+ ' ' + broadcast.ULastName
             +'</div>'
             +'<span id="empRole">'
-            +broadcast.FromUserRoleId
+            +broadcast.RoleDescription + ' ' + broadcast.UserRoleTitle
             +'</span>'
             +'<span id="timeSent">'
-            +timeSince(broadcast.DateSent)
+            +timeSince(new Date(broadcast.DateSent))+ ' ago'
             +'</span>'
             +'</div>'
             +'<div id="content">'

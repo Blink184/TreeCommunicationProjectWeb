@@ -1,6 +1,7 @@
 <?php
+    session_start();
     if(isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn'] == '1'){
-        header('Location: login.php');
+        header('Location: employees.php');
     }else if(isset($_POST['login']) && $_POST['login'] == '1'){
         if(isset($_POST['user']) && isset($_POST['pass'])){
             $u = $_POST['user'];
@@ -8,7 +9,6 @@
             checkLogin($u, $p);
         }
     }else if(isset($_POST['logout']) && $_POST['logout'] == '1'){
-        session_start();
         session_destroy();
         header('Location: login.php');
     }else{
@@ -24,7 +24,6 @@
         $img = $res->i->Image;
         $userRoleId = $res->i->UserRoleId;
         $isMaster = $res->i->IsMaster;
-        session_start();
         $_SESSION['isLoggedIn'] = '1';
         $_SESSION['firstName'] = $fn;
         $_SESSION['lastName'] = $ln;
