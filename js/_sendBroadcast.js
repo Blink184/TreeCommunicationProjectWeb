@@ -8,6 +8,7 @@ function sendBroadcastToSelectionChanged(value){
     document.getElementById('liCustom').style.display = (value == 2) ? 'block' : 'none';
 }
 function submitSendBroadcast(){
+    disable('btnSubmitSendBroadcast');
     var toType = '';
     var values = [];
     if (document.getElementById('to').value == 2) {
@@ -25,6 +26,7 @@ function submitSendBroadcast(){
 }
 
 function insertBroadcast(toType, toValues, title, content) {
+
     var to = '';
     if (toType == 'custom') {
         for (var i = 0; i < toValues.length; i++) {
@@ -46,8 +48,6 @@ function insertBroadcast(toType, toValues, title, content) {
         function(data, status){
             if (status == "success") {
                 if (jsonSuccess(data)) {
-                    onSuccess();
-                    enable('sendMessage_submitButton');
                 } else {
                     console.log(data)
                 }
@@ -56,6 +56,8 @@ function insertBroadcast(toType, toValues, title, content) {
             }
         }
     );
+    enable('btnSubmitSendBroadcast');
+    closeSendBroadcast();
 }
 
 function getSelectedValues() {

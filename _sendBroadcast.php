@@ -8,6 +8,7 @@
                     <h2>Compose Broadcast</h2>
                 </div>
                 <div id="body">
+                    <span id="sentBroadcast_log"></span>
                     <ul>
                         <li>
                             <ul>
@@ -57,7 +58,7 @@
                 <div id="footer">
                     <button onclick="closeSendBroadcast()">Close</button>
                     <button onclick="">Attach</button>
-                    <button onclick="submitSendBroadcast()">Send</button>
+                    <button id="btnSubmitSendBroadcast" onclick="submitSendBroadcast()">Send</button>
                 </div>
             </div>
         </div>

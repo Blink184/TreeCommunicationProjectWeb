@@ -8,9 +8,32 @@ function insertBroadcast($from, $to, $totype, $title, $content, $sentDate, $isDe
     $selectLast = "SELECT * FROM broadcast where FromUserRoleId = $from ORDER BY BroadcastId DESC LIMIT 1";
     $lastRow = FirstRow(execute($selectLast));
 
+    //get all userroles now because there is no validation
+    $getAll = "select * from userrole where IsDeleted = 0";
+    $all = execute($getAll);
 
-//    $q2 = "insert into broadcastline (BroadcastId, ToUserRoleId) values ($res1.BroadcastId, $to)";
-//    $res2 = execute ($q2);
+    if ($totype == 'All') {
+        //send to all
+        foreach ($all->fetch_row() as $row) {
+            $q = "insert into broadcastline (BroadcastId, ToUserRoleId, DateReceived, IsReceived) values ($lastRow->BroadcastId, $row->UserRoleId, $sentDate, 1)";
+            execute($q);
+        }
+    } else if ($to == 'children') {
+        //to children only
+        foreach ($all->fetch_row() as $row) {
+            $q = "insert into broadcastline (BroadcastId, ToUserRoleId, DateReceived, IsReceived) values ($lastRow->BroadcastId, $row->UserRoleId, $sentDate, 1)";
+            execute($q);
+        }
+    } else {
+        //to custom
+        $toIds = explode(',', $to);
+        foreach ($toIds as $ur) {
+            $q = "insert into broadcastline (BroadcastId, ToUserRoleId, DateReceived, IsReceived) values ($lastRow->BroadcastId, $ur, $sentDate, 1)";
+            execute($q);
+        }
+    }
+
+    return encode(true, '');
 }
 
 
