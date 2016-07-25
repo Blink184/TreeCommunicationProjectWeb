@@ -8,7 +8,6 @@ window.onload = function () {
     setSelectedTab('tabBroadcast');
     $("#toCustom").multiselect().multiselectfilter();
     SELECTEDTYPE = RECEIVEDBROADCAST;
-    //filterBroadcasts();
     getBroadcasts();
 };
 

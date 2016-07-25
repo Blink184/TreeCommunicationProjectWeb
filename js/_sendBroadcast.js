@@ -61,6 +61,7 @@ function insertBroadcast(toType, toValues, title, content) {
     );
     enable('btnSubmitSendBroadcast');
     closeSendBroadcast();
+    getBroadcasts();
 }
 
 function getSelectedValues() {

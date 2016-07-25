@@ -32,8 +32,6 @@ function insertBroadcast($from, $to, $totype, $title, $content, $sentDate, $isDe
         //to custom
         $toIds = explode(',', $to);
         foreach ($toIds as $ur) {
-            echo $ur;
-            print_r($ur);
             $q = "insert into broadcastline (BroadcastId, ToUserRoleId, DateReceived, IsReceived) values ($lastRow[BroadcastId], $ur, '$sentDate', 1)";
             execute($q);
         }
