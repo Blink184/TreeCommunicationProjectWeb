@@ -81,7 +81,8 @@ function getBroadcasts($userroleid) {
                 and b.IsDeleted = 0
                 and ur.UserRoleId = b.FromUserRoleId
                 and ur.RoleId = r.RoleId
-                and ur.UserId = u.UserId";
+                and ur.UserId = u.UserId
+          order by DateSent desc";
 
     $res = array();
     $rows = execute($q);
