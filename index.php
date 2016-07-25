@@ -1,6 +1,9 @@
 <?php
     session_start();
-    if(isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn'] == '1'){
+    if(isset($_POST['logout']) && $_POST['logout'] == '1'){
+        session_destroy();
+        header('Location: login.php');
+    }else if(isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn'] == '1'){
         header('Location: employees.php');
     }else if(isset($_POST['login']) && $_POST['login'] == '1'){
         if(isset($_POST['user']) && isset($_POST['pass'])){
@@ -8,9 +11,6 @@
             $p = $_POST['pass'];
             checkLogin($u, $p);
         }
-    }else if(isset($_POST['logout']) && $_POST['logout'] == '1'){
-        session_destroy();
-        header('Location: login.php');
     }else{
         header('Location: login.php');
     }

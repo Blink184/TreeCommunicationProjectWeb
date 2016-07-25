@@ -26,6 +26,7 @@ function submitSendBroadcast(){
     insertBroadcast(toType, values, title, content);
 }
 
+
 function insertBroadcast(toType, toValues, title, content) {
 
     var to = '';
@@ -47,10 +48,11 @@ function insertBroadcast(toType, toValues, title, content) {
             content: content
         },
         function(data, status){
-            console.log(status, data);
             if (status == "success") {
                 if (jsonSuccess(data)) {
-                    console.log(data)
+                    closeSendBroadcast();
+                    enable('btnSubmitSendBroadcast');
+                    getBroadcasts();
                 } else {
                     console.log(data)
                 }
@@ -59,8 +61,6 @@ function insertBroadcast(toType, toValues, title, content) {
             }
         }
     );
-    enable('btnSubmitSendBroadcast');
-    closeSendBroadcast();
 }
 
 function getSelectedValues() {

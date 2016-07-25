@@ -156,13 +156,7 @@ function post(path, params, method) {
 
 function timeSince(date) {
     var seconds = Math.floor((new Date() - date) / 1000);
-    console.log(new Date());
-
-    console.log(date);
-    console.log(seconds);
-
     var interval = Math.floor(seconds / 31536000);
-    console.log(interval);
 
     if (interval > 1) {
         return interval + " years";
@@ -186,3 +180,7 @@ function timeSince(date) {
     return Math.floor(seconds) + " seconds";
 }
 
+String.prototype.replaceAll = function(search, replacement) {
+    var target = this;
+    return target.split(search).join(replacement);
+};

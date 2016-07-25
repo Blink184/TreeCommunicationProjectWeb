@@ -23,7 +23,7 @@ html, body{
 }
 #ulMain > li{
     height:100%;
-    -webkit-transition: .5s;
+    /*-webkit-transition: .5s;*/
     transition: .5s;
 }
 #ulMain #liRight > ul > li{

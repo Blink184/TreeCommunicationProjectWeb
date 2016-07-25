@@ -31,12 +31,11 @@
                                         include "database/userRole.php";
                                         $res = json_decode(getUserRoles())->i;
                                         for($i = 0; $i < sizeof($res); $i++){
+                                            if ($res[$i]->UserRoleId != $LOGGED_IN_USER_ROLE_USER_ROLE_ID) {
                                             echo "<option value='".$res[$i]->UserRoleId."'>".$res[$i]->FirstName." ".$res[$i]->LastName." [".$res[$i]->Role."]</option>";
+                                            }
                                         }
                                         ?>
-<!--                                        <option>Aynur Ajami</option>-->
-<!--                                        <option>Ahmad Hammoud</option>-->
-<!--                                        <option>Azzam Mourad</option>-->
                                     </select>
                                 </li>
                             </ul>

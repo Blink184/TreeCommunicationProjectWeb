@@ -20,7 +20,7 @@ function displayBroadcast(broadcastid) {
         }
     }
 
-    setInnerHtml('showBroadcast_empNameFrom', broadcast.UFirstName + ' ' + broadcast.ULastName);
+    setInnerHtml('showBroadcast_empNameFrom', broadcast.FullName);
     setInnerHtml('showBroadcast_title', broadcast.Title);
     setInnerHtml('showBroadcast_content', broadcast.Content);
     setInnerHtml('showBroadcast_attachments', 'none');
