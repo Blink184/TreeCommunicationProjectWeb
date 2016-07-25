@@ -1,7 +1,7 @@
 #messagesConversationControlRow{
     padding:10px 0;
     width: 100%;
-    -webkit-transition: .5s;
+    /*-webkit-transition: .5s;*/
     transition: .5s;
 }
 

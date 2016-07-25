@@ -11,7 +11,7 @@
     margin-right: 4px;
 }
 .divTaskControl div{
-    -webkit-transition: .5s;
+    /*-webkit-transition: .5s;*/
     transition: .5s;
 }
 .divTaskControl:hover{

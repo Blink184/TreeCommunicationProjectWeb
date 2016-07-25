@@ -37,17 +37,19 @@ function filterBroadcasts() {
     }
 }
 
-function broadcast(firstname, lastname, roledescription, userroletitle, broadcastId, fromUserRoleId, title, content, dateSent) {
+function broadcast(firstname, lastname, roledescription, userroletitle, broadcastId, fromUserRoleId, title, content, dateSent, isSender) {
     var broadcast = {
-        UFirstName: firstname,
-        ULastName: lastname,
+        FirstName: firstname,
+        LastName: lastname,
+        FullName: firstname + ' ' + lastname,
         RoleDescription: roledescription,
         UserRoleTitle: userroletitle,
         BroadcastId: broadcastId,
         FromUserRoleId: fromUserRoleId,
         Title: title,
         Content: content,
-        DateSent: dateSent
+        DateSent: dateSent.replaceAll("-", "/"),
+        IsSender: isSender
     }
 
     return broadcast;
@@ -68,7 +70,7 @@ function getBroadcasts() {
                     for(var i = 0; i < res.length; i++) {
                         var o = res[i];
 
-                        BROADCASTS.push(broadcast(o.FirstName, o.LastName, o.Description, o.RoleTitle, o.BroadcastId, o.FromUserRoleId, o.Title, o.Content, o.DateSent));
+                        BROADCASTS.push(broadcast(o.FirstName, o.LastName, o.Role, o.RoleTitle, o.BroadcastId, o.UserRoleId, o.Title, o.Content, o.DateSent, o.IsSender));
                     }
                     extractArrayBroadcasts();
 
@@ -101,11 +103,17 @@ function getData(broadcasts) {
 function parseBroadcast(broadcast) {
     var type = "";
 
-    if (broadcast.FromUserRoleId == 2) {
+    if (broadcast.IsSender == '1') {
         type = SENTBROADCAST;
     } else {
         type = RECEIVEDBROADCAST;
     }
+
+    var tmpUserRoleTitle = "";
+    if(broadcast.UserRoleTitle.length > 0){
+        tmpUserRoleTitle = ' / ' + broadcast.UserRoleTitle;
+    }
+
 
     var tmp = '<li>'
             +'<div class="brdcastMsg" data-type="'
@@ -118,10 +126,10 @@ function parseBroadcast(broadcast) {
             +'<img src="resources/images/pp_jl.jpg" id="profPicBrd"/>'
             +'</div>'
             +'<div id="empName">'
-            +broadcast.UFirstName+ ' ' + broadcast.ULastName
+            +broadcast.FullName
             +'</div>'
             +'<span id="empRole">'
-            +broadcast.RoleDescription + ' ' + broadcast.UserRoleTitle
+            +broadcast.RoleDescription + tmpUserRoleTitle
             +'</span>'
             +'<span id="timeSent">'
             +timeSince(new Date(broadcast.DateSent))+ ' ago'

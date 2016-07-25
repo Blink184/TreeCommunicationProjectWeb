@@ -39,7 +39,7 @@
 }
 
 #divMenu ul li .menuDescription{
-    -webkit-transition: .5s;
+    /*-webkit-transition: .5s;*/
     transition: .5s;
     width:0;
     overflow: hidden;

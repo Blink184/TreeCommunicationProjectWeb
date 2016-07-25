@@ -14,7 +14,7 @@ function contact(userRoleId, name, role, date, image, lastMessage, isRead, isSen
         UserRoleId: userRoleId,
         Name: name,
         Role: role,
-        Date: date,
+        Date: date.replaceAll("-", "/"),
         Image: image,
         LastMessage: lastMessage,
         IsRead: isRead,

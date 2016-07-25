@@ -180,3 +180,7 @@ function timeSince(date) {
     return Math.floor(seconds) + " seconds";
 }
 
+String.prototype.replaceAll = function(search, replacement) {
+    var target = this;
+    return target.split(search).join(replacement);
+};
