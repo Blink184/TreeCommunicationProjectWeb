@@ -32,9 +32,10 @@
                                     </button>
                                     <button id="btnEditTree" style="float: right; margin: 13px 4px 0 0;" onclick="editTree()">
                                         Allow Edit
-                                    </button>
-                                    <script>VIEW = 2;</script>'
+                                    </button>'
                                 ;
+                            }else{
+                                echo '<script>VIEW = 2;</script>';
                             }
                         ?>
                     </li>

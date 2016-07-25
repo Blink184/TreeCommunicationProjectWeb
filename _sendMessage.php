@@ -13,17 +13,7 @@
                             <ul>
                                 <li><label for="to">To</label></li>
                                 <li>
-                                    <select name="sendMessage_to" id="sendMessage_to">
-                                        <?php
-                                        include "database/userRole.php";
-                                        $res = json_decode(getUserRoles())->i;
-                                        for($i = 0; $i < sizeof($res); $i++){
-                                            if ($res[$i]->UserRoleId != $LOGGED_IN_USER_ROLE_USER_ROLE_ID) {
-                                                echo "<option value='" . $res[$i]->UserRoleId . "'>" . $res[$i]->FirstName . " " . $res[$i]->LastName . " [" . $res[$i]->Role . "]</option>";
-                                            }
-                                        }
-                                        ?>
-                                    </select>
+                                    <select name="sendMessage_to" id="sendMessage_to"></select>
                                 </li>
                             </ul>
                         </li>
