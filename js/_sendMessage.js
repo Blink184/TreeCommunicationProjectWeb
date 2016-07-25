@@ -1,7 +1,10 @@
+var USERROLES = [];
 function cancelSendMessage(){
     document.getElementById("sendMessage").style.display = "none";
     clearValue('sendMessage_textArea');
 }
+
+
 function submitSendMessage(){
     disable('sendMessage_submitButton');
     var from = LOGGEDUSERROLEID;
@@ -21,7 +24,7 @@ function setSendMessageTarget(target){
     }
 }
 function composeNewMessage(target){
-    setSendMessageTarget(target);
+    getUserRoles(target);
     document.getElementById('sendMessage').style.display = 'block';
 }
 
@@ -45,4 +48,38 @@ function sendMessage(from, to, content, onSuccess){
             }
         }
     );
+}
+
+function getUserRoles(selectedUserRole){
+    $.post("database/api/getUserRoles.php",
+        function(data, status){
+            if (status == "success") {
+                if (jsonSuccess(data)) {
+                    var obj = jsonData(data);
+                    USERROLES = [];
+                    for(var i = 0; i < obj.length; i++){
+                        USERROLES.push(obj[i]);
+                    }
+                    updateUserRolesComboBox(selectedUserRole);
+                } else {
+                    console.log(data)
+                }
+            } else {
+                console.log(status)
+            }
+        }
+    );
+}
+
+function updateUserRolesComboBox(selectedUserRole){
+    var cmb = getObject("sendMessage_to");
+    var tmp = "";
+    for(var i = 0; i < USERROLES.length; i++){
+        if(USERROLES[i].UserRoleId == selectedUserRole){
+            tmp += "<option selected value='"+USERROLES[i].UserRoleId+"'>"+USERROLES[i].FirstName+ ' ' +USERROLES[i].LastName+"</option>";
+        }else{
+            tmp += "<option value='"+USERROLES[i].UserRoleId+"'>"+USERROLES[i].FirstName+ ' ' +USERROLES[i].LastName+"</option>";
+        }
+    }
+    cmb.innerHTML = tmp;
 }

@@ -51,7 +51,6 @@ function insertBroadcast(toType, toValues, title, content) {
             if (status == "success") {
                 if (jsonSuccess(data)) {
                     closeSendBroadcast();
-                    enable('btnSubmitSendBroadcast');
                     getBroadcasts();
                 } else {
                     console.log(data)
@@ -59,6 +58,7 @@ function insertBroadcast(toType, toValues, title, content) {
             } else {
                 console.log(status)
             }
+            enable('btnSubmitSendBroadcast');
         }
     );
 }
