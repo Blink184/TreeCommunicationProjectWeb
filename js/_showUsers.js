@@ -7,16 +7,12 @@ function showUsers(){
     getUnassignedUsers();
 }
 
-function submitBtnEvent() {
-}
-
-
 function getUnassignedUsers() {
     $.post("database/api/getUnassignedUsers.php",
         function(data, status){
             if(status == "success"){
                 if(jsonSuccess(data)){
-                    fillunassignedUsersTable(jsonArrayData(data));
+                    fillUnassignedUsersTable(jsonArrayData(data));
                 }else{
                     console.log(jsonData(data));
                 }
@@ -27,7 +23,7 @@ function getUnassignedUsers() {
     );
 }
 
-function fillunassignedUsersTable(a){
+function fillUnassignedUsersTable(a){
     var tmp = "";
     if(a !== undefined) {
         for (var i = 0; i < a.length; i++) {
