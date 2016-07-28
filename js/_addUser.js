@@ -34,23 +34,27 @@ function submitAddUser(){
     var ln = getValue("addUser_lastName");
     var un = getValue("addUser_username");
     var pw = getValue("addUser_password");
+    var tel = getValue("addUser_phoneNumber");
+    var em = getValue("addUser_email");
     var log = getObject("addUser_log");
     if(notEmpty(fn) && notEmpty(ln) && notEmpty(un) && notEmpty(pw)){
         disable("addUser_btnAdd");
         setProcessingLog(log);
-        insertUser(fn, ln, un, pw);
+        insertUser(fn, ln, un, pw, tel, em);
     }else{
         setFailureLog(log, "Please fill all the fields");
     }
 }
 
-function insertUser(firstname, lastname, username, password){
+function insertUser(firstname, lastname, username, password, telephone, email){
     $.post("database/api/insertUser.php",
         {
             firstname: firstname,
             lastname: lastname,
             username: username,
-            password: password
+            password: password,
+            telephone: telephone,
+            email: email
         },
         function(data, status){
             enable("addUser_btnAdd");
@@ -74,4 +78,6 @@ function clearAddUserForm(){
     clearValue("addUser_lastName");
     clearValue("addUser_username");
     clearValue("addUser_password");
+    clearValue("addUser_phoneNumber");
+    clearValue("addUser_email");
 }

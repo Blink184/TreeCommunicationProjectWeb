@@ -6,7 +6,6 @@ var BROADCASTS = [];
 
 window.onload = function () {
     setSelectedTab('tabBroadcast');
-    $("#toCustom").multiselect().multiselectfilter();
     SELECTEDTYPE = RECEIVEDBROADCAST;
     getBroadcasts();
 };

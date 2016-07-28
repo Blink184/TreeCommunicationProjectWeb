@@ -54,7 +54,7 @@
     line-height: 30px;
 }
 #showEmployeeProfile #body > ul > li > ul > li:nth-child(2) div, #showEmployeeProfile #body > ul > li > ul > li:nth-child(2) input{
-    width:310px;
+    width:320px;
     background-color: lightgray;
     border: 0px;
     -webkit-border-radius:5px;
@@ -76,7 +76,7 @@
     vertical-align: top;
 }
 #showEmployeeProfile #footer button{
-    width:60px;
+    width:75px;
     padding:5px;
     color: white;
     border:0px;

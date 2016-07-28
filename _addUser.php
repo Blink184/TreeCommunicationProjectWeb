@@ -12,14 +12,24 @@
                     <ul>
                         <li>
                             <ul>
-                                <li><label for="addUser_firstName">Firstname</label></li>
+                                <li><label for="addUser_firstName">First Name</label></li>
                                 <li><input id="addUser_firstName" name="addUser_firstName" type="text"></li>
                             </ul>
                         </li>
                         <li>
                             <ul>
-                                <li><label for="addUser_lastName">Lastname</label></li>
+                                <li><label for="addUser_lastName">Last Name</label></li>
                                 <li><input id="addUser_lastName" name="addUser_lastName" type="text"></li>
+                            </ul>
+                        </li><li>
+                            <ul>
+                                <li><label for="addUser_phoneNumber">Telephone</label></li>
+                                <li><input id="addUser_phoneNumber" name="addUser_phoneNumber" type="tel"></li>
+                            </ul>
+                        </li><li>
+                            <ul>
+                                <li><label for="addUser_email">E-mail</label></li>
+                                <li><input id="addUser_email" name="addUser_email" type="email"></li>
                             </ul>
                         </li>
                         <li>

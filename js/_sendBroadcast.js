@@ -2,6 +2,7 @@ function closeSendBroadcast(){
     document.getElementById("sendBroadcast").style.display = "none";
 }
 function sendBroadcast(){
+    loadUserRoles();
     document.getElementById('sendBroadcast').style.display = 'block';
 }
 function sendBroadcastToSelectionChanged(value){
@@ -73,4 +74,29 @@ function getSelectedValues() {
     }
 
     return values;
+}
+
+function loadUserRoles(){
+    console.log("inside load user roles");
+    $.post("database/api/getUserRoles.php",
+        function(data, status){
+            if(status == "success"){
+                if(jsonSuccess(data)){
+                    var users = jsonData(data);
+                    var tmp = '';
+                    for(var i = 0; i < users.length; i++){
+                        if(users[i].UserRoleId != LOGGEDUSERROLEID){
+                            tmp += '<option value="'+users[i].UserRoleId+'">'+users[i].FirstName + ' ' + users[i].LastName + ' (' + users[i].Role + ')'+'</option>';
+                        }
+                    }
+                    getObject("toCustom").innerHTML = tmp;
+                    $("#toCustom").multiselect().multiselectfilter();
+                }else{
+                    console.log(jsonData(data));
+                }
+            }else{
+                console.log(status);
+            }
+        }
+    );
 }

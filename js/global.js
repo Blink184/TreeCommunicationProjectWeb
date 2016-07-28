@@ -112,8 +112,11 @@ function logout(){
     post('\index.php', {logout: 1});
 }
 function profile(){
+    displayEmployeeProfile(LOGGEDUSERROLEID, LOGGEDUSERFN, LOGGEDUSERLN, LOGGEDUSERTEL, LOGGEDUSEREMAIL, LOGGEDUSERROLEIMAGE);
 }
+
 function settings(){
+
 }
 
 function setDateTimePicker(selector) {
