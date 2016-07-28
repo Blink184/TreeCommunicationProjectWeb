@@ -122,7 +122,7 @@ function parseBroadcast(broadcast) {
             +')">'
             +'<div id="top">'
             +'<div id="theImg">'
-            +'<img src="resources/images/pp_jl.jpg" id="profPicBrd"/>'
+            +'<img id="profPicBrd"/>'
             +'</div>'
             +'<div id="empName">'
             +broadcast.FullName

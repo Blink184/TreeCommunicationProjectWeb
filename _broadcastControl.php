@@ -2,7 +2,7 @@
 <div class="brdcastMsg" data-type="<?=$type;?>" onclick="displayBroadcast(this)">
     <div id="top">
         <div id="theImg">
-            <img src="resources/images/pp_jl.jpg" id="profPicBrd"/>
+            <img id="profPicBrd"/>
         </div>
         <div id="empName">
             <?=$empName?>

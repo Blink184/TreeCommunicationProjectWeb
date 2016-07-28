@@ -2,7 +2,7 @@
     <table>
         <tr>
             <td rowspan="3" id="messagesConversationControlRow_picture">
-                <img src="resources/images/pp_tm.PNG">
+                <img/>
             </td>
             <td id="messagesConversationControlRow_time">
                 (<?=$time?>)

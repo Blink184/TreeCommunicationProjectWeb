@@ -31,6 +31,17 @@ function getUsers(){
     return encode(true, $users);
 }
 
+function getUnassignedUsers(){
+    $q = "select * from user where IsDeleted = 0 and IsAdmin = 0 and UserId not in (select ur.UserId from userrole ur where ur.IsDeleted = 0) ORDER BY FirstName, LastName";
+    $tmp = execute($q);
+    $users = array();
+    while ($row = $tmp->fetch_assoc()) {
+        array_push($users, $row);
+    }
+    $users = json_encode($users);
+    return encode(true, $users);
+}
+
 function getUser($id){
     $q = "select * from user where UserId = $id";
     return execute($q);
@@ -50,5 +61,9 @@ function updateUser($userId, $firstname, $lastname, $phone, $address){
 function updateUserImage($userId, $image){
     $q = "update user set Image = '$image' where UserId = $userId";
     return execute($q);
+}
+function deleteUser($userId){
+    $q = "update user set IsDeleted = 1 where UserId = $userId";
+    return encode(execute($q), '');
 }
 
