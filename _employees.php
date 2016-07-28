@@ -12,6 +12,7 @@
 <?php include '_addUser.php';?>
 <?php include '_addRole.php';?>
 <?php include '_showUsers.php';?>
+<?php include '_showRoles.php';?>
 <?php include '_addUserRole.php';?>
 <?php function addEmployeeControl($name, $img, $title, $isOpened = false){
     include '_employeeControl.php';

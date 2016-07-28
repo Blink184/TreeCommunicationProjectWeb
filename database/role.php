@@ -34,3 +34,18 @@ function getRoleByDescription($description){
 function roleExists($description){
     return any(getRoleByDescription($description));
 }
+
+function getUnusedRoles(){
+    $q = "select * from role where IsDeleted = 0 and RoleId not in (select ur.RoleId from userrole ur where ur.IsDeleted = 0)";
+    $tmp = execute($q);
+    $roles = array();
+    while ($row = $tmp->fetch_assoc()) {
+        array_push($roles, $row);
+    }
+    return encode(true, json_encode($roles));
+}
+
+function deleteRole($roleId){
+    $q = "update role set IsDeleted = 1 where RoleId = $roleId";
+    return encode(execute($q), '');
+}
