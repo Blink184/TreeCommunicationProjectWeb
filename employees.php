@@ -30,6 +30,12 @@
                                     <button class="showOnTreeEdit" onclick="addRole();">
                                         Add Role
                                     </button>
+                                    <button class="showOnTreeEdit" onclick="showUsers();">
+                                        Show Users
+                                    </button>
+                                    <button class="showOnTreeEdit" onclick="showRoles();">
+                                        Show Roles
+                                    </button>
                                     <button id="btnEditTree" style="float: right; margin: 13px 4px 0 0;" onclick="editTree()">
                                         Allow Edit
                                     </button>'

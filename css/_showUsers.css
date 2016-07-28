@@ -1,0 +1,73 @@
+#showUsers{
+    background-color: RGBA(1,1,1,.6);
+    height: 100%;
+    width: 100%;
+    display: none;
+    top:0;
+    left:0;
+    position: fixed;
+}
+#showUsers .outer {
+    display: table;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+#showUsers .middle {
+    display: table-cell;
+    vertical-align: middle;
+}
+#showUsers .inner {
+    margin-left: auto;
+    margin-right: auto;
+    width: 400px;
+    max-height:500px;
+    overflow-y: auto;
+    padding: 0;
+    background-color: #f0f3f4;
+}
+#showUsers #header{
+    background-color: #263240;
+    color: white;
+    padding:10px;
+}
+#showUsers h2{
+    margin: 0;
+}
+#showUsers #body{
+    padding: 10px;
+    text-align: center;
+    overflow-y: auto;
+    max-height: 600px;
+}
+
+#showUsers table{
+    width: 97%;
+}
+#showUsers table tr{
+    width: 100%;
+}
+#showUsers table tr td{
+    width: 40%;
+}
+#showUsers table tr td:nth-child(3){
+    width: 20%;
+}
+
+#showUsers #footer button{
+    width:70px;
+    padding:5px;
+    color: white;
+    border:0;
+    background-color: #a3c0ce;
+    border-radius: 5px;
+    cursor: pointer;
+}
+#showUsers #footer button:hover{
+    background-color: #F49A43;
+}
+#showUsers #footer{
+    text-align: right;
+    padding: 10px;
+    margin-right: 14px;
+}
