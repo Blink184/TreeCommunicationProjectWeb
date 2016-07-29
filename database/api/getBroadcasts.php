@@ -1,5 +1,5 @@
 <?php
-include '../broadcast.php';
+require_once '../broadcast.php';
 
 if(empty($_REQUEST['userroleid']))
 {

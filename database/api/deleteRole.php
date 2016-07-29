@@ -1,6 +1,6 @@
 <?php
 
-    include '../role.php';
+require_once '../role.php';
 
     if(empty($_REQUEST['roleid'])){
         echo encode(false, 'missing parameters');

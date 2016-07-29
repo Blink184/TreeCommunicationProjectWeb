@@ -1,9 +1,3 @@
-<?php
-if(isset($_REQUEST['updateUserForm'])){
-    include 'database/user.php';
-    include 'database/api/updateUser.php';
-}
-?>
 <link href="css/_showEmployeeProfile.css" rel="stylesheet" type="text/css"/>
 <script src="js/_showEmployeeProfile.js"></script>
 <div id="showEmployeeProfile">

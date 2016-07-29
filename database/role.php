@@ -1,6 +1,6 @@
 <?php
 
-require 'connection.php';
+require_once 'connection.php';
 
 function insertRole($description, $isMaster, $isDeleted){
     if(!roleExists($description)){

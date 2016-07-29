@@ -1,6 +1,6 @@
 <?php
 
-    include '../userRole.php';
+require_once '../userRole.php';
 
     if(empty($_REQUEST['userid'])
         || empty($_REQUEST['roleid'])

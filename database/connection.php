@@ -1,7 +1,7 @@
 <?php
 date_default_timezone_set('Asia/Beirut');
 
-include 'functions.php';
+require_once 'functions.php';
 
 function connect(){
     return new mysqli('localhost', 'root', '', 'treecommunicationproject');

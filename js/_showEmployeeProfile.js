@@ -8,13 +8,20 @@ function displayEmployeeProfile(userId, firstName, lastName, phone, address, ima
     setValue("showEmployeeProfile_address", address);
     setValue("showEmployeeProfile_userId", userId);
     getObject("showEmployeeProfile_image").src = 'resources/images/employee/users/' + image;
-    if(VIEW != 1){
+    if(VIEW != 1 && userId != LOGGEDUSERID){
         disable("showEmployeeProfile_firstName");
         disable("showEmployeeProfile_lastName");
         disable("showEmployeeProfile_phone");
         disable("showEmployeeProfile_address");
         hideObject("file-input");
         hideObject("showEmployeeProfile_submitButton");
+    }else{
+        enable("showEmployeeProfile_firstName");
+        enable("showEmployeeProfile_lastName");
+        enable("showEmployeeProfile_phone");
+        enable("showEmployeeProfile_address");
+        displayInlineObject("file-input");
+        displayInlineObject("showEmployeeProfile_submitButton");
     }
     document.getElementById('showEmployeeProfile').style.display = 'block';
 }

@@ -1,6 +1,6 @@
 <?php
 
-require 'connection.php';
+require_once 'connection.php';
 
 function insertBroadcast($from, $to, $totype, $title, $content, $sentDate, $isDeleted){
     $brQ = "insert into broadcast(FromUserRoleId, Title, Content, DateSent, IsDeleted) VALUES ($from, '$title', '$content', '$sentDate', $isDeleted)";

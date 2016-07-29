@@ -1,6 +1,6 @@
 <?php
 
-include_once 'connection.php';
+require_once 'connection.php';
 
 function insertUserRoleHierarchy($parentId, $childId){
     if(any(getUserRoleHierarchy($parentId, $childId))){

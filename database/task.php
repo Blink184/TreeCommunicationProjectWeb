@@ -1,6 +1,6 @@
 <?php
 
-require 'connection.php';
+require_once 'connection.php';
 
 function insertTask($from, $to, $title, $content, $duedate, $startdate){
     $q = "INSERT INTO task (FromUserRoleId, ToUserRoleId, Title, Content, TaskState, DueDate, StartDate, IsDeleted) VALUES ($from, $to, '$title', '$content', 1, '$duedate', '$startdate', 0)";

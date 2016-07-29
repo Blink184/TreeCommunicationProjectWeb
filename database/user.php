@@ -1,6 +1,6 @@
 <?php
 
-require 'connection.php';
+require_once 'connection.php';
 
 function insertUser($firstname, $lastname, $username, $password, $phone, $address, $email, $isAdmin, $lastActiveDate, $isLoggedIn, $isBanned, $isDeleted){
     if(!usernameExists($username)){
@@ -44,7 +44,7 @@ function getUnassignedUsers(){
 
 function getUser($id){
     $q = "select * from user where UserId = $id";
-    return execute($q);
+    return encode(true, firstRow(execute($q)));
 }
 function getUserByUsername($username){
     $q = "select * from user where Username = '$username' and IsDeleted = 0";

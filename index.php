@@ -27,13 +27,13 @@
         $userRoleId = $res->i->UserRoleId;
         $isMaster = $res->i->IsMaster;
         $_SESSION['isLoggedIn'] = '1';
-        $_SESSION['firstName'] = $fn;
-        $_SESSION['lastName'] = $ln;
-        $_SESSION['telephone'] = $tel;
-        $_SESSION['email'] = $em;
-        $_SESSION['img'] = $img;
+//        $_SESSION['firstName'] = $fn;
+//        $_SESSION['lastName'] = $ln;
+//        $_SESSION['telephone'] = $tel;
+//        $_SESSION['email'] = $em;
+//        $_SESSION['img'] = $img;
         $_SESSION['userRoleId'] = $userRoleId;
-        $_SESSION['isMaster'] = $isMaster;
+//        $_SESSION['isMaster'] = $isMaster;
         header('Location: employees.php');
     }
 ?>
