@@ -1,6 +1,6 @@
 <?php
 
-    include '../user.php';
+require_once '../user.php';
 
     if(empty($_REQUEST['firstname'])
         || empty($_REQUEST['lastname'])

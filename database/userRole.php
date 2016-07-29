@@ -1,7 +1,7 @@
 <?php
 
-require 'connection.php';
-require 'userRoleHierarchy.php';
+require_once 'connection.php';
+require_once 'userRoleHierarchy.php';
 
 function insertUserRole($userId, $roleId, $parentId, $title, $isDeleted){
     if(!userRoleExists($userId, $roleId)){
@@ -43,8 +43,8 @@ function getUserRole($userId, $roleId){
     return execute($q);
 }
 function getUserRoleById($userRoleId){
-    $q = "select * from UserRole where UserRoleId = $userRoleId";
-    return execute($q);
+    $q = "select * from userrole ur, user u, role r where u.UserId = ur.UserId and r.RoleId = ur.RoleId and UserRoleId = $userRoleId";
+    return encode(true, firstRow(execute($q)));
 }
 
 function userRoleExists($userId, $roleId){

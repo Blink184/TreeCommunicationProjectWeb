@@ -1,6 +1,6 @@
 <?php
 
-require 'connection.php';
+require_once 'connection.php';
 
 function insertMessage($from, $to, $content, $dateSent, $isDeleted){
     $q = "INSERT INTO message (FromUserRoleId, ToUserRoleId, Content, DateSent, IsDeleted) VALUES ($from, $to, '$content', '$dateSent', $isDeleted)";

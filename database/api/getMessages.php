@@ -1,5 +1,5 @@
 <?php
-include '../message.php';
+require_once '../message.php';
 
 if(empty($_REQUEST['userroleid'])
     ||empty($_REQUEST['contactid']))

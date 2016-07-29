@@ -1,6 +1,6 @@
 <?php
 
-include '../task.php';
+require_once '../task.php';
 
 if(empty($_REQUEST['title'])
     || empty($_REQUEST['content'])

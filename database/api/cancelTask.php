@@ -1,6 +1,6 @@
 <?php
 
-include '../task.php';
+require_once '../task.php';
 
 if(empty($_REQUEST['taskid'])
     || empty($_REQUEST['date']))

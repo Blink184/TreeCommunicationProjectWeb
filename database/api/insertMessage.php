@@ -1,6 +1,6 @@
 <?php
 
-include '../message.php';
+require_once '../message.php';
 
 if(empty($_REQUEST['content'])
     || empty($_REQUEST['fromuserroleid'])
