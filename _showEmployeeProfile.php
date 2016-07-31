@@ -42,6 +42,24 @@
                             </li>
                             <li>
                                 <ul>
+                                    <li><label for="showEmployeeProfile_username">Username</label></li>
+                                    <li><input type="text" id="showEmployeeProfile_username" name="username"/></li>
+                                </ul>
+                            </li>
+                            <li id="showEmployeeProfile_liPassword">
+                                <ul>
+                                    <li><label for="showEmployeeProfile_password">Password</label></li>
+                                    <li><input type="password"  onkeyup="newPasswordChanged(this.value)" id="showEmployeeProfile_password" name="password"/></li>
+                                </ul>
+                            </li>
+                            <li id="showEmployeeProfile_liOldPassword">
+                                <ul>
+                                    <li><label for="showEmployeeProfile_oldPassword">Old Password</label></li>
+                                    <li><input type="password" id="showEmployeeProfile_oldPassword" name="oldPassword"/></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <ul>
                                     <li><label for="showEmployeeProfile_lastActiveDate">Last Active Date</label></li>
                                     <li><input type="text" id="showEmployeeProfile_lastActiveDate" value="26/6/2016" disabled/></li>
                                 </ul>

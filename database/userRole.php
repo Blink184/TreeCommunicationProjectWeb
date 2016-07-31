@@ -81,6 +81,7 @@ function getUserRoleTree($id){
     $o['FirstName'] = $row['FirstName'];
     $o['LastName'] = $row['LastName'];
     $o['Name'] = $row['FirstName'] . ' ' . $row['LastName'];
+    $o['Username'] = $row['Username'];
     $o['Address'] = $row['Address'];
     $o['Phone'] = $row['Phone'];
     $o['Role'] = $row['Description'];
@@ -104,6 +105,7 @@ function getUserRoleChildren($children, $parentId) {
         $o['FirstName'] = $row['FirstName'];
         $o['LastName'] = $row['LastName'];
         $o['Name'] = $row['FirstName'] . ' ' . $row['LastName'];
+        $o['Username'] = $row['Username'];
         $o['Address'] = $row['Address'];
         $o['Phone'] = $row['Phone'];
         $o['Role'] = $row['Description'];

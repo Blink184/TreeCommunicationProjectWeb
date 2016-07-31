@@ -21,15 +21,23 @@
                                 <li><label for="addUser_lastName">Last Name</label></li>
                                 <li><input id="addUser_lastName" name="addUser_lastName" type="text"></li>
                             </ul>
-                        </li><li>
+                        </li>
+                        <li>
                             <ul>
                                 <li><label for="addUser_phoneNumber">Telephone</label></li>
                                 <li><input id="addUser_phoneNumber" name="addUser_phoneNumber" type="tel"></li>
                             </ul>
-                        </li><li>
+                        </li>
+                        <li>
                             <ul>
                                 <li><label for="addUser_email">E-mail</label></li>
                                 <li><input id="addUser_email" name="addUser_email" type="email"></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <ul>
+                                <li><label for="addUser_address">Address</label></li>
+                                <li><input id="addUser_address" name="addUser_address" type="text"></li>
                             </ul>
                         </li>
                         <li>

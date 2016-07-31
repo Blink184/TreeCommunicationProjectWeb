@@ -3,10 +3,9 @@
 if(empty($_REQUEST['userId'])
     || empty($_REQUEST['firstName'])
     || empty($_REQUEST['lastName'])
-    || empty($_REQUEST['address'])
-    || empty($_REQUEST['phone']))
+    || empty($_REQUEST['username']))
 {
-    echo 'missing parameters';
+    echo 'missing fields';
     return;
 }
 
@@ -15,11 +14,37 @@ $firstname = $_REQUEST['firstName'];
 $lastname = $_REQUEST['lastName'];
 $address = $_REQUEST['address'];
 $phone = $_REQUEST['phone'];
+$username = $_REQUEST['username'];
 
-if(updateUser($userid, $firstname, $lastname, $phone, $address))
-    echo '<script>console.log("user updated");</script>';
-else
-    echo '<script>console.log("updated failed");</script>';
+$real_old_pass = json_decode(getUser($userid))->i->Password;
+
+$is_old_password_wrong = false;
+$change_password = false;
+if(!empty($_REQUEST['oldPassword']) && !empty($_REQUEST['password'])){
+    $change_password = true;
+    if($real_old_pass != $_REQUEST['oldPassword']){
+        $is_old_password_wrong = true;
+    }
+}
+
+if(checkUsernameAvailability($userid, $username)){
+    if($is_old_password_wrong) {
+        echo '<script>alert("Wrong password");</script>';
+    }else{
+        if($change_password){
+            $user_updated = updateUser($userid, $firstname, $lastname, $phone, $address, $username, $_REQUEST['password']);
+        } else{
+            $user_updated = updateUser($userid, $firstname, $lastname, $phone, $address, $username, $real_old_pass);
+        }
+        if($user_updated)
+            echo '<script>console.log("User updated");</script>';
+        else
+            echo '<script>alert("Update failed");</script>';
+    }
+}else{
+    echo '<script>alert("Username exists");</script>';
+}
+
 
 
 if(!empty($_FILES['file-input']['name'])){

@@ -16,6 +16,7 @@ require_once '../user.php';
     $pw = $_REQUEST['password'];
     $tel = $_REQUEST['telephone'];
     $em = $_REQUEST['email'];
+    $add = $_REQUEST['address'];
 
-    echo insertUser($fn, $ln, $un, $pw, $tel, $em, "-", 0, date('Y-m-d H:i:s'), 0 , 0, 0);
+    echo insertUser($fn, $ln, $un, $pw, $tel, $add, $em, 0, date('Y-m-d H:i:s'), 0 , 0, 0);
 ?>

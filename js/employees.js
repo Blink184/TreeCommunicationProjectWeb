@@ -6,7 +6,7 @@ window.onload = function () {
     loadTree();
     setDateTimePicker('.datetimepicker');
 };
-function employee(userRoleId, userId, roleId, firstName, lastName, phone, address, lastActiveDate, role, title, image, children){
+function employee(userRoleId, userId, roleId, firstName, lastName, username, phone, address, lastActiveDate, role, title, image, children){
     var employee = {
         UserRoleId: userRoleId,
         UserId: userId,
@@ -14,6 +14,7 @@ function employee(userRoleId, userId, roleId, firstName, lastName, phone, addres
         FirstName: firstName,
         LastName: lastName,
         Name: firstName + ' ' + lastName,
+        Username: username,
         Phone: phone,
         Address: address,
         LastActiveDate: lastActiveDate,
@@ -60,7 +61,7 @@ function getChildrenObjects(userrole){
     return arr;
 }
 function extractUserRole(userrole){
-    return employee(userrole.UserRoleId, userrole.UserId, userrole.RoleId, userrole.FirstName, userrole.LastName, userrole.Phone, userrole.Address, userrole.LastActiveDate, userrole.Role, userrole.Title, userrole.Image, getChildrenObjects(userrole));
+    return employee(userrole.UserRoleId, userrole.UserId, userrole.RoleId, userrole.FirstName, userrole.LastName, userrole.Username, userrole.Phone, userrole.Address, userrole.LastActiveDate, userrole.Role, userrole.Title, userrole.Image, getChildrenObjects(userrole));
 }
 
 
@@ -98,12 +99,12 @@ function generateDataFor(employee){
     }
 
     return '<li><div class="divEmployeeControl" data-employeeId="'+employee.UserRoleId+'">'
-        + '<div class="hexagon" onclick="displayEmployeeProfile('+employee.UserId+', \''+employee.FirstName+'\', \''+employee.LastName+'\',\''+employee.Phone+'\', \''+employee.Address+'\', \''+employee.Image+'\')">'
+        + '<div class="hexagon" onclick="displayEmployeeProfile('+employee.UserId+', \''+employee.FirstName+'\', \''+employee.LastName+'\', \''+employee.Username+'\',\''+employee.Phone+'\', \''+employee.Address+'\', \''+employee.Image+'\')">'
         + '<img src="resources/images/employee/users/'+employee.Image+'"/>'
         + '<img src="resources/images/employee/hexagon.svg  "/>'
         + '</div>'
         + '<div class="divBody">'
-        + '<div class="divName" onclick="displayEmployeeProfile('+employee.UserId+', \''+employee.FirstName+'\', \''+employee.LastName+'\',\''+employee.Phone+'\', \''+employee.Address+'\', \''+employee.Image+'\')">'+employee.Name+'</div>'
+        + '<div class="divName" id="divNameOfUserRole'+employee.UserRoleId+'" onclick="displayEmployeeProfile('+employee.UserId+', \''+employee.FirstName+'\', \''+employee.LastName+'\', \''+employee.Username+'\',\''+employee.Phone+'\', \''+employee.Address+'\', \''+employee.Image+'\')">'+employee.Name+'</div>'
         + '<div class="divTitle">'+ title +'</div>'
         + '<div class="divActions">'
         + '<img title="Assign Task" src="resources/images/employee/add_task.svg" onclick="addTask(' + employee.UserRoleId + ');"/> '
@@ -137,4 +138,37 @@ function onAddTaskPopupClosed(){
 
 function onSubmitSendMessageSuccess(){
     cancelSendMessage();
+}
+
+function search(value){
+    $('.divName').removeClass('search');
+    if(value.length != 0){
+        _search(value, TREE);
+    }
+}
+function _search(value, obj){
+
+    for(var i = 0; i < obj.Children.length; i++){
+        _search(value, obj.Children[i]);
+    }
+
+    var thisIsTheOne;
+    if(value.indexOf(' ') > -1){
+        thisIsTheOne = obj.Name.toLowerCase().startsWith(value.toLowerCase());
+    }else{
+        thisIsTheOne = obj.FirstName.toLowerCase().startsWith(value.toLowerCase()) || obj.LastName.toLowerCase().startsWith(value.toLowerCase());
+    }
+
+    if(thisIsTheOne) {
+        scrollToEmployee(obj.UserRoleId);
+    }
+
+}
+function scrollToEmployee(userRoleId){
+    $('#liContent').scrollTop(0);
+    var control = $('.divEmployeeControl[data-employeeId="' + userRoleId + '"');
+    if(control !== undefined && control != null){
+        $('#liContent').scrollTop(control.offset().top - 200);
+        $('#divNameOfUserRole' + userRoleId).addClass('search');
+    }
 }
