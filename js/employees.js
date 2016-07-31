@@ -1,11 +1,20 @@
 var TREE;
 var VIEW = 1;
 
+var BROADCAST = "broadcast";
+var MESSAGE = "message";
+var TASK = "task";
+
 window.onload = function () {
     setSelectedTab('tabEmployee');
     loadTree();
     setDateTimePicker('.datetimepicker');
+    notify("New Message from Ahmad Hammoud", MESSAGE);
 };
+function notify(content, type){
+    $.notify("New Message from Ahmad Hammoud", {position: 'right bottom', className: type});
+}
+
 function employee(userRoleId, userId, roleId, firstName, lastName, username, phone, address, lastActiveDate, role, title, image, children){
     var employee = {
         UserRoleId: userRoleId,
