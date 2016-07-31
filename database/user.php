@@ -54,9 +54,13 @@ function usernameExists($username){
     return any(getUserByUsername($username));
 }
 
-function updateUser($userId, $firstname, $lastname, $phone, $address){
-    $q = "update user set FirstName = '$firstname', LastName = '$lastname', Phone = '$phone', Address = '$address' where UserId = $userId";
+function updateUser($userId, $firstname, $lastname, $phone, $address, $username, $password){
+    $q = "update user set FirstName = '$firstname', LastName = '$lastname', Phone = '$phone', Password = '$password', Username = '$username', Address = '$address' where UserId = $userId";
     return execute($q);
+}
+function checkUsernameAvailability($userId, $username){
+    $q = "select * from user where UserId <> $userId and Username = '$username'";
+    return !any(execute($q));
 }
 function updateUserImage($userId, $image){
     $q = "update user set Image = '$image' where UserId = $userId";

@@ -47,6 +47,10 @@
     font-size: 120%;
     white-space: nowrap;
 }
+.divEmployeeControl .divBody .divName.search{
+    background-color: yellow;
+    color: red;
+}
 .divEmployeeControl .divBody .divTitle{
     color: #333333;
     white-space: nowrap;

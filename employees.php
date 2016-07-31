@@ -51,6 +51,10 @@ include 'sessionChecker.php';
                                 echo '<script>VIEW = 2;</script>';
                             }
                         ?>
+
+                        <span class="spanRight">
+                            <input type="text" onkeyup="search(this.value)" style="float: right; margin: 13px 4px 0 0;" placeholder="search..."/>
+                        </span>
                     </li>
                     <li id="liContent">
                         <?php include '_employees.php';?>
