@@ -11,3 +11,4 @@
 <script type="text/javascript" src="js/libraries/datetimepicker.js"></script>
 <script type="text/javascript" src="js/libraries/multiselect.js"></script>
 <script type="text/javascript" src="js/libraries/multiselect.filter.js"></script>
+<script type="text/javascript" src="js/libraries/notify.js"></script>
