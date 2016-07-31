@@ -103,7 +103,7 @@ function generateDataFor(employee){
     }
     if(VIEW == 1){
         tmpView = '<img class="showOnTreeEdit" title="Add Child" src="resources/images/employee/add.png" onclick="addUserRole(' + employee.UserRoleId + ');" height="18" width="18"/> '
-        + '<img class="showOnTreeEdit" title="Delete User Role" src="resources/images/employee/delete.png" onclick="deleteUserRole(' + employee.UserRoleId + ');" width="18" height="18"/> '
+        + '<img class="showOnTreeEdit" title="Delete User Role" src="resources/images/employee/delete.png" onclick="confirmAction(deleteUserRole, ' + employee.UserRoleId + ');" width="18" height="18"/> '
         + '<img class="showOnTreeEdit" title="Edit User Role" src="resources/images/employee/edit.png" onclick="editUserRole(' + employee.UserRoleId + ', ' + employee.UserId + ', ' + employee.RoleId + ', \'' + employee.Title + '\');" width="18" height="18"/> ';
     }
 

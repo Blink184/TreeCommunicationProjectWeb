@@ -27,7 +27,7 @@ function fillUnusedRolesTable(a){
     var tmp = "";
     if(a !== undefined) {
         for (var i = 0; i < a.length; i++) {
-            tmp += '<tr><td>' + a[i].Description + '</td><td><button onclick="deleteRole(' + a[i].RoleId + ')">Delete</button></td></tr>';
+            tmp += '<tr><td>' + a[i].Description + '</td><td><button onclick="confirmAction(deleteRole, ' + a[i].RoleId + ')">Delete</button></td></tr>';
         }
     }
     getObject('unusedRoles').innerHTML = tmp;

@@ -14,12 +14,9 @@ function submitAction(){
 function showConfirmDialog(f, value, title, content) {
     ACTION = f;
     VALUE = value;
-    setInnerHtml('confirmDialog_title', "this is a title");
-    setInnerHtml('confirmDialog_content', "this is the content");
-
-    console.log(getObject('confirmDialog'));
+    setInnerHtml('confirmDialog_title', title);
+    setInnerHtml('confirmDialog_content', content);
     getObject('confirmDialog').style.display = 'block';
-    console.log(getObject('confirmDialog'));
 }
 
 function setInnerHtml(id, value) {
