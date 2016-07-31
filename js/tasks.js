@@ -11,6 +11,8 @@ var SELECTEDTYPE;
 var SEARCH;
 var TASKS = [];
 
+var TSLIMIT = DISPLAYNUMBERITEMS;
+
 window.onload = function () {
     setSelectedTab('tabTask');
     loadTasks();
@@ -123,7 +125,8 @@ function getTasks() {
     var res = [];
     $.post("database/api/getTasks.php",
         {
-            userroleid: LOGGEDUSERROLEID
+            userroleid: LOGGEDUSERROLEID,
+            limit: TSLIMIT
         },
         function(data, status){
             if(status == "success"){

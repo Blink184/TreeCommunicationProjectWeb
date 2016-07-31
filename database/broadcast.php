@@ -43,7 +43,7 @@ function insertBroadcast($from, $to, $totype, $title, $content, $sentDate, $isDe
 }
 
 
-function getBroadcasts($userroleid) {
+function getBroadcasts($userroleid, $limit) {
 //    $q = "select DISTINCT (b.BroadcastId), u.FirstName, u.LastName, r.Description as Description, ur.Title as RoleTitle, b.FromUserRoleId, b.Title, b.Content, b.DateSent from role r, userrole ur,broadcast b, broadcastline br, user u where (b.FromUserRoleId = $userroleid or br.ToUserRoleId = $userroleid) and b.IsDeleted = 0 and (ur.UserRoleId = $userroleid and ur.UserId = u.UserId and r.RoleId = ur.RoleId)";
 
     $q = "select  b.BroadcastId,
@@ -82,7 +82,7 @@ function getBroadcasts($userroleid) {
                 and ur.UserRoleId = b.FromUserRoleId
                 and ur.RoleId = r.RoleId
                 and ur.UserId = u.UserId
-          order by DateSent desc";
+          order by DateSent desc limit $limit";
 
     $res = array();
     $rows = execute($q);
