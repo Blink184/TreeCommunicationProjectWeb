@@ -119,6 +119,10 @@ function settings(){
 
 }
 
+function confirmAction(f, value) {
+    showConfirmDialog(f, value, "Warning Dialog", "Are you sure you wish to delete?");
+}
+
 function setDateTimePicker(selector) {
     $(selector).datetimepicker({
         yearOffset:0,

@@ -27,7 +27,9 @@ function fillUnassignedUsersTable(a){
     var tmp = "";
     if(a !== undefined) {
         for (var i = 0; i < a.length; i++) {
-            tmp += '<tr><td>' + a[i].FirstName + '</td><td>' + a[i].LastName + '</td><td><button onclick="deleteUser(' + a[i].UserId + ')">Delete</button></td></tr>';
+            tmp += '<tr><td>' + a[i].FirstName + '</td><td>' + a[i].LastName + '</td><td><button onclick="confirmAction(deleteUser, ' + a[i].UserId + ')">Delete</button></td></tr>';
+
+            //tmp += '<tr><td>' + a[i].FirstName + '</td><td>' + a[i].LastName + '</td><td><button onclick="deleteUser(' + a[i].UserId + ')">Delete</button></td></tr>';
         }
     }
     getObject('unassignedUsers').innerHTML = tmp;

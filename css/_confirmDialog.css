@@ -1,0 +1,132 @@
+/*#confirmDialog{*/
+    /*background-color: RGBA(1,1,1,.6);*/
+    /*height: 100%;*/
+    /*width: 100%;*/
+    /*display: none;*/
+    /*top:0;*/
+    /*left:0;*/
+    /*position: fixed;*/
+    /*!*z-index: 1;*!*/
+/*}*/
+
+/*#confirmDialog .outer {*/
+    /*display: table;*/
+    /*position: absolute;*/
+    /*height: 100%;*/
+    /*width: 100%;*/
+/*}*/
+/*#confirmDialog .middle {*/
+    /*display: table-cell;*/
+    /*vertical-align: middle;*/
+/*}*/
+/*#confirmDialog .inner {*/
+    /*margin-left: auto;*/
+    /*margin-right: auto;*/
+    /*width: 450px;*/
+    /*padding: 0;*/
+    /*background-color: #f0f3f4;*/
+/*}*/
+/*#confirmDialog #header{*/
+    /*background-color: #263240;*/
+    /*color: white;*/
+    /*padding:10px;*/
+/*}*/
+/*#confirmDialog h2{*/
+    /*margin: 0;*/
+/*}*/
+/*#confirmDialog #body{*/
+    /*margin: 10px;*/
+    /*max-height: 400px;*/
+    /*display: inline-block;*/
+/*}*/
+
+/*#confirmDialog #body div{*/
+    /*text-align: justify;*/
+    /*width: 380px;*/
+/*}*/
+
+/*div#confirmDialog_content {*/
+    /*overflow-wrap: break-word;*/
+/*}*/
+
+/*#confirmDialog #footer button {*/
+    /*width:70px;*/
+    /*padding:5px;*/
+    /*color: white;*/
+    /*border:0;*/
+    /*background-color: #a3c0ce;*/
+    /*border-radius: 5px;*/
+    /*cursor: pointer;*/
+/*}*/
+
+/*#confirmDialog #footer button:hover{*/
+    /*background-color: #F49A43;*/
+/*}*/
+/*#confirmDialog #footer{*/
+    /*text-align: right;*/
+    /*padding: 10px;*/
+    /*margin-right: 14px;*/
+/*}*/
+
+
+#confirmDialog{
+    background-color: RGBA(1,1,1,.6);
+    height: 100%;
+    width: 100%;
+    display: none;
+    top:0;
+    left:0;
+    position: fixed;
+}
+#confirmDialog .outer {
+    display: table;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+#confirmDialog .middle {
+    display: table-cell;
+    vertical-align: middle;
+}
+#confirmDialog .inner {
+    margin-left: auto;
+    margin-right: auto;
+    width: 400px;
+    padding: 0;
+    background-color: #f0f3f4;
+}
+#confirmDialog #header{
+    background-color: #263240;
+    color: white;
+    padding:10px;
+}
+#confirmDialog h2{
+    margin: 0;
+}
+#confirmDialog #body{
+    padding: 10px;
+    text-align: center;
+    overflow-y: auto;
+    max-height: 600px;
+}
+#confirmDialog #body div{
+    padding-top: 10px;
+}
+
+#confirmDialog #footer button{
+    width:70px;
+    padding:5px;
+    color: white;
+    border:0;
+    background-color: #a3c0ce;
+    border-radius: 5px;
+    cursor: pointer;
+}
+#confirmDialog #footer button:hover{
+    background-color: #F49A43;
+}
+#confirmDialog #footer{
+    text-align: right;
+    padding: 10px;
+    margin-right: 14px;
+}
