@@ -1,5 +1,6 @@
 var SENTBROADCAST = "SENTBROADCAST";
 var RECEIVEDBROADCAST = "RECEIVEDBROADCAST";
+var BRLIMIT = DISPLAYNUMBERITEMS;
 
 var SELECTEDTYPE;
 var BROADCASTS = [];
@@ -56,10 +57,13 @@ function broadcast(firstname, lastname, roledescription, userroletitle, broadcas
 
 function getBroadcasts() {
     var res = [];
+
+    console.log(BRLIMIT);
     //this is an ajax post
     $.post("database/api/getBroadcasts.php",
         {
-            userroleid: LOGGEDUSERROLEID
+            userroleid: LOGGEDUSERROLEID,
+            limit: BRLIMIT
         },
         function(data, status){
             if(status == "success"){

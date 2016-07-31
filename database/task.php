@@ -12,7 +12,7 @@ function delegateTask($taskid, $delegatetouserroleid) {
     return encode(execute($q), '');
 }
 
-function getTasks($userroleid) {
+function getTasks($userroleid, $limit) {
     $q = "
     select
       t.TaskId,
@@ -36,7 +36,7 @@ function getTasks($userroleid) {
       left join user u2 on u2.UserId = ur2.UserId
       left join userrole ur3 on ur3.UserRoleId = t.DelegatedToUserRoleId
       left join user u3 on u3.UserId = ur3.UserId
-      where (DelegatedToUserRoleId = $userroleid or FromUserRoleId = $userroleid or (ToUserRoleId = $userroleid and DelegatedToUserRoleId is NULL)) and t.IsDeleted = 0 and t.IsCanceled = 0
+      where (DelegatedToUserRoleId = $userroleid or FromUserRoleId = $userroleid or (ToUserRoleId = $userroleid and DelegatedToUserRoleId is NULL)) and t.IsDeleted = 0 and t.IsCanceled = 0 limit $limit
     ";
     $res = array();
     $rows = execute($q);
