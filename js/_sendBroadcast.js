@@ -77,7 +77,6 @@ function getSelectedValues() {
 }
 
 function loadUserRoles(){
-    console.log("inside load user roles");
     $.post("database/api/getUserRoles.php",
         function(data, status){
             if(status == "success"){
