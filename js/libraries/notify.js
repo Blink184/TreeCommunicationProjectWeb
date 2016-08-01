@@ -186,7 +186,7 @@
         }
     };
 
-    var pluginOptions = {
+        var pluginOptions = {
         clickToHide: true,
         autoHide: true,
         autoHideDelay: 5000,
@@ -296,6 +296,8 @@
             this.elem.before(this.wrapper);
         }
         this.container.hide();
+        this.onClick = options.onClick;
+        this.onLoad = options.onLoad;
         this.run(data);
     }
 
@@ -346,7 +348,7 @@
         var align = positions[pAlign];
         var key = pMain + "|" + pAlign;
         var anchor = globalAnchors[key];
-        if (!anchor || !document.contains(anchor[0])) {
+        if (!anchor || !$(document).has(anchor[0])) {
             anchor = globalAnchors[key] = createElem("div");
             var css = {};
             css[main] = 0;
@@ -528,6 +530,9 @@
             clearTimeout(this.autohideTimer);
             this.autohideTimer = setTimeout(this.show.bind(this, false), this.options.autoHideDelay);
         }
+        if(typeof this.onLoad === "function"){
+            this.onLoad();
+        }
     };
 
     Notification.prototype.destroy = function() {
@@ -633,6 +638,9 @@
             var elem = $(this).data(pluginClassName);
             if(elem) {
                 elem.show(false);
+                if(typeof elem.onClick === "function") {
+                    elem.onClick();
+                }
             }
         });
     });
