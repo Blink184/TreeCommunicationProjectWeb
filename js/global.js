@@ -188,7 +188,39 @@ function timeSince(date) {
     return Math.floor(seconds) + " seconds";
 }
 
+var BROADCAST = "broadcast";
+var MESSAGE = "message";
+var TASK = "task";
+function notify(content, type, onClickListener, onLoadListener){
+    if(type !== undefined && onClickListener === undefined){
+        switch(type) {
+            case BROADCAST:
+                onClickListener = goToBroadcasts;
+                break;
+            case MESSAGE:
+                onClickListener = goToMessages;
+                break;
+            case TASK:
+                onClickListener = goToTasks;
+                break;
+        }
+    }
+    $.notify(content, {position: 'right bottom', className: type, onClick: onClickListener, onLoad: onLoadListener});
+}
+function goToMessages(){
+    location = "messages.php";
+}
+function goToTasks(){
+    location = "tasks.php";
+}
+function goToBroadcasts(){
+    location = "broadcasts.php";
+}
+
 String.prototype.replaceAll = function(search, replacement) {
     var target = this;
     return target.split(search).join(replacement);
 };
+String.prototype.startsWith = function (str) {
+    return this.indexOf(str) == 0;
+}

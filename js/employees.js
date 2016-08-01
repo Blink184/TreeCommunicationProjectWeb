@@ -1,19 +1,15 @@
 var TREE;
 var VIEW = 1;
 
-var BROADCAST = "broadcast";
-var MESSAGE = "message";
-var TASK = "task";
-
 window.onload = function () {
     setSelectedTab('tabEmployee');
     loadTree();
     setDateTimePicker('.datetimepicker');
     notify("New Message from Ahmad Hammoud", MESSAGE);
+    notify("New Broadcast from Ahmad Hammoud", BROADCAST);
+    notify("New Task from Ahmad Hammoud", TASK);
+
 };
-function notify(content, type){
-    $.notify("New Message from Ahmad Hammoud", {position: 'right bottom', className: type});
-}
 
 function employee(userRoleId, userId, roleId, firstName, lastName, username, phone, address, lastActiveDate, role, title, image, children){
     var employee = {
@@ -175,7 +171,7 @@ function _search(value, obj){
 }
 function scrollToEmployee(userRoleId){
     $('#liContent').scrollTop(0);
-    var control = $('.divEmployeeControl[data-employeeId="' + userRoleId + '"');
+    var control = $('.divEmployeeControl[data-employeeId="' + userRoleId + '"]');
     if(control !== undefined && control != null){
         $('#liContent').scrollTop(control.offset().top - 200);
         $('#divNameOfUserRole' + userRoleId).addClass('search');
