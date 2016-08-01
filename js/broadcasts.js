@@ -4,12 +4,20 @@ var BRLIMIT = DISPLAYNUMBERITEMS;
 
 var SELECTEDTYPE;
 var BROADCASTS = [];
+var RELOADINTERVAL = 5000;
 
 window.onload = function () {
     setSelectedTab('tabBroadcast');
     SELECTEDTYPE = RECEIVEDBROADCAST;
     getBroadcasts();
+    reload(getBroadcasts);
 };
+
+function reload(func) {
+    window.setInterval(function(){
+        func();
+    }, RELOADINTERVAL);
+}
 
 function selectType(object, type){
     setSelectedType(object, type);
@@ -57,8 +65,6 @@ function broadcast(firstname, lastname, roledescription, userroletitle, broadcas
 
 function getBroadcasts() {
     var res = [];
-
-    console.log(BRLIMIT);
     //this is an ajax post
     $.post("database/api/getBroadcasts.php",
         {

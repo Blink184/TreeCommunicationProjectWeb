@@ -3,6 +3,7 @@ var EXPANDARROW = "&#10095;";
 var COLLAPSEARROW = "&#10094;";
 var DISPLAYNUMBERITEMS = 9;
 
+
 function getDateFormatted(){
     return new Date().toISOString().slice(0, 19).replace('T', ' ');
 }
