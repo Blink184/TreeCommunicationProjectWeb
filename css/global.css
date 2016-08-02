@@ -81,3 +81,23 @@ html, body{
     padding: 0 50px;
     display: inline-block;
 }
+
+#bottomLoading{
+    display: none;
+    z-index: 1;
+    position:fixed;
+    bottom:0;
+    width:90%;
+}
+#bottomLoadingChild{
+    text-align: center;
+    width:100px;
+    margin:2px auto 2px auto;
+    padding:4px 1px;
+    font-weight: bold;
+    color: white;
+    background-color: rgba(0,127,255,.5);
+    -webkit-border-radius:10px;
+    -moz-border-radius:10px;
+    border-radius:10px;
+}

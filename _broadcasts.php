@@ -40,4 +40,3 @@ function addBroadcastControl ($empName, $empRole, $timeReceived, $title, $msgCon
 </div>
 <?php include '_sendBroadcast.php';?>
 <?php include '_showBroadcast.php';?>
-<?php include '_extraIncludes.php';?>

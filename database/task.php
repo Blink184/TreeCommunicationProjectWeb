@@ -14,7 +14,7 @@ function delegateTask($taskid, $delegatetouserroleid) {
 
 function getTasks($userroleid, $limit) {
     $q = "
-    select
+    (select
       t.TaskId,
       t.FromUserRoleId,
       t.DelegatedToUserRoleId,
@@ -36,7 +36,63 @@ function getTasks($userroleid, $limit) {
       left join user u2 on u2.UserId = ur2.UserId
       left join userrole ur3 on ur3.UserRoleId = t.DelegatedToUserRoleId
       left join user u3 on u3.UserId = ur3.UserId
-      where (DelegatedToUserRoleId = $userroleid or FromUserRoleId = $userroleid or (ToUserRoleId = $userroleid and DelegatedToUserRoleId is NULL)) and t.IsDeleted = 0 and t.IsCanceled = 0 limit $limit
+      where (DelegatedToUserRoleId = $userroleid or FromUserRoleId = $userroleid or (ToUserRoleId = $userroleid and DelegatedToUserRoleId is NULL)) and t.IsDeleted = 0 and t.IsCanceled = 0
+      and t.TaskState = 1)
+
+      UNION
+
+      (select
+      t.TaskId,
+      t.FromUserRoleId,
+      t.DelegatedToUserRoleId,
+      t.ToUserRoleId,
+      Date(t.StartDate) as StartDate,
+      t.TaskState,
+      Date(t.DueDate) as DueDate,
+      t.Title,
+      t.Content,
+      t.ToUserRoleId,
+      t.FromUserRoleId,
+      Concat(u1.FirstName, ' ', u1.LastName) as 'FromUserRole',
+      Concat(u2.FirstName, ' ', u2.LastName) as 'ToUserRole',
+      Concat(u3.FirstName, ' ', u3.LastName) as 'DelegatedToUserRole'
+      from task t
+      left join userrole ur1 on ur1.UserRoleId = t.FromUserRoleId
+      left join user u1 on u1.UserId = ur1.UserId
+      left join userrole ur2 on ur2.UserRoleId = t.ToUserRoleId
+      left join user u2 on u2.UserId = ur2.UserId
+      left join userrole ur3 on ur3.UserRoleId = t.DelegatedToUserRoleId
+      left join user u3 on u3.UserId = ur3.UserId
+      where (DelegatedToUserRoleId = $userroleid or FromUserRoleId = $userroleid or (ToUserRoleId = $userroleid and DelegatedToUserRoleId is NULL)) and t.IsDeleted = 0 and t.IsCanceled = 0
+      and t.TaskState = 2)
+
+      UNION
+
+      (select
+      t.TaskId,
+      t.FromUserRoleId,
+      t.DelegatedToUserRoleId,
+      t.ToUserRoleId,
+      Date(t.StartDate) as StartDate,
+      t.TaskState,
+      Date(t.DueDate) as DueDate,
+      t.Title,
+      t.Content,
+      t.ToUserRoleId,
+      t.FromUserRoleId,
+      Concat(u1.FirstName, ' ', u1.LastName) as 'FromUserRole',
+      Concat(u2.FirstName, ' ', u2.LastName) as 'ToUserRole',
+      Concat(u3.FirstName, ' ', u3.LastName) as 'DelegatedToUserRole'
+      from task t
+      left join userrole ur1 on ur1.UserRoleId = t.FromUserRoleId
+      left join user u1 on u1.UserId = ur1.UserId
+      left join userrole ur2 on ur2.UserRoleId = t.ToUserRoleId
+      left join user u2 on u2.UserId = ur2.UserId
+      left join userrole ur3 on ur3.UserRoleId = t.DelegatedToUserRoleId
+      left join user u3 on u3.UserId = ur3.UserId
+      where (DelegatedToUserRoleId = $userroleid or FromUserRoleId = $userroleid or (ToUserRoleId = $userroleid and DelegatedToUserRoleId is NULL)) and t.IsDeleted = 0 and t.IsCanceled = 0
+      and t.TaskState = 3
+      limit $limit)
     ";
     $res = array();
     $rows = execute($q);

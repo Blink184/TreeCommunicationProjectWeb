@@ -65,4 +65,3 @@ function addTaskControl($name, $title, $content, $type, $status){
 </div>
 <?php include '_addTask.php';?>
 <?php include '_showTask.php';?>
-<?php include '_extraIncludes.php';?>

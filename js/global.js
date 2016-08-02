@@ -3,7 +3,6 @@ var EXPANDARROW = "&#10095;";
 var COLLAPSEARROW = "&#10094;";
 var DISPLAYNUMBERITEMS = 9;
 
-
 function getDateFormatted(){
     return new Date().toISOString().slice(0, 19).replace('T', ' ');
 }
@@ -224,4 +223,22 @@ String.prototype.replaceAll = function(search, replacement) {
 };
 String.prototype.startsWith = function (str) {
     return this.indexOf(str) == 0;
+};
+
+function setOnContentScrollingDown(callback){
+    jQuery(function($) {
+        $('#liContent').on('scroll', function() {
+            if($(this).scrollTop() + $(this).innerHeight() >= $(this)[0].scrollHeight - 20) {
+                callback();
+            }
+        })
+    });
+}
+
+function setLoading(visible){
+    if(visible){
+        displayObject('bottomLoading');
+    }else{
+        hideObject('bottomLoading');
+    }
 }
