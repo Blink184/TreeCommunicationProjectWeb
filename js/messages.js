@@ -2,11 +2,25 @@ var CONTACTS = [];
 var MESSAGES = [];
 var SEARCH = "";
 var SELECTEDCONTACT;
+var LOADING = false;
+var RELOADINTERVAL = 5000;
 
-window.onload = function () { setSelectedTab('tabMessage'); getContacts();};
+window.onload = function () {
+    setSelectedTab('tabMessage');
+    getContacts();
+    reload(getContacts);
+    reload(getMessages_reload)
+};
 function searchContacts(value){
     SEARCH = value.trim();
     filterContacts();
+}
+
+
+function reload(func) {
+    window.setInterval(function(){
+        func(false);
+    }, RELOADINTERVAL);
 }
 
 function contact(userRoleId, name, role, date, image, lastMessage, isRead, isSender){
@@ -42,8 +56,8 @@ function getContacts(){
         function(data, status){
             if(status == "success"){
                 if(jsonSuccess(data)) {
-                    getObject('ulMessages').innerHTML = "";
-                    getObject('messagesConversationControl').style.visibility = "hidden";
+                    //getObject('ulMessages').innerHTML = "";
+                    //getObject('messagesConversationControl').style.visibility = "hidden";
                     var res = jsonData(data);
                     CONTACTS = [];
                     for(var i = 0; i < res.length; i++){
@@ -61,7 +75,13 @@ function getContacts(){
     );
 }
 
-function getMessages(contactId, userFullName){
+function getMessages_reload(){
+    if(SELECTEDCONTACT != undefined){
+        getMessages(SELECTEDCONTACT.UserRoleId, SELECTEDCONTACT.Name, false)
+    }
+}
+
+function getMessages(contactId, userFullName, scrollToBottom){
     $.post("database/api/getMessages.php",
         {
             userroleid: LOGGEDUSERROLEID,
@@ -79,10 +99,11 @@ function getMessages(contactId, userFullName){
                             var o = res[i];
                             MESSAGES.push(message(o.MessageId, o.FromUserRoleId, o.ToUserRoleId, o.AttachmentId, o.Content, o.DateReceived, o.DateSent));
                         }
-                        getObject('messagesConversationControl_contactName').innerHTML = "Conversation with " + userFullName;
+                        getObject('messagesConversationControl_contactName').innerHTML = "Conversation with " + userFullName + "<img class='deleteConversation' onclick=\"deleteConversation("+contactId+");\" src='resources/images/employee/delete.svg'/>";
                         extractArrayMessages();
                         var ulMessages = getObject("ulMessages");
-                        ulMessages.scrollTop = ulMessages.scrollHeight;
+                        if(scrollToBottom)
+                            ulMessages.scrollTop = ulMessages.scrollHeight;
                     } else {
                         console.log(data)
                     }
@@ -129,6 +150,7 @@ function extractMessage(message) {
     + "</td>"
     + "<td id='messagesConversationControlRow_time'>"
     + "(" + message.DateSent + ")"
+    + "<img class='deleteMessage' onclick='deleteMessage("+message.MessageId+")' src='resources/images/employee/delete.svg'/>"
     + "</td>"
     + "</tr>"
     + "<tr>"
@@ -153,8 +175,12 @@ function extractContact(contact) {
         _new = "New";
         _dotPath = "unread_message_blue_dot.svg";
     }
+    var tmpSelected = "";
+    if(SELECTEDCONTACT != undefined && contact.UserRoleId == SELECTEDCONTACT.UserRoleId){
+        tmpSelected = " selectedRow";
+    }
 
-    return "<div class='messagesContactsControlRow "+_new+"' onclick='loadConversation(this, "+contact.UserRoleId+", \""+contact.Name+"\", \""+contact.Image+"\")' data-name='"+contact.Name+"'>"
+    return "<div class='messagesContactsControlRow "+_new +tmpSelected+"' onclick='loadConversation(this, "+contact.UserRoleId+", \""+contact.Name+"\", \""+contact.Image+"\")' data-name='"+contact.Name+"'>"
                 + "<table>"
                     + "<tr>"
                         + "<td rowspan='2' id='messagesContactsControlRow_picture'>"
@@ -178,12 +204,54 @@ function extractContact(contact) {
 
 }
 
+function deleteMessage(messageId){
+    $.post("database/api/deleteMessage.php",
+        {
+            userroleid: LOGGEDUSERROLEID,
+            messageid: messageId
+        },
+        function(data, status){
+            if (status == "success") {
+                if (jsonSuccess(data)) {
+                    getMessages(SELECTEDCONTACT.UserRoleId, SELECTEDCONTACT.Name, false);
+                } else {
+                    console.log(data)
+                }
+            } else {
+                console.log(status)
+            }
+        }
+    );
+}
+
+function deleteConversation(withUserRoleId){
+    $.post("database/api/deleteConversation.php",
+        {
+            userroleid: LOGGEDUSERROLEID,
+            withuserroleid: withUserRoleId
+        },
+        function(data, status){
+            if (status == "success") {
+                if (jsonSuccess(data)) {
+                    getObject('ulMessages').innerHTML = "";
+                    getObject('messagesConversationControl').style.visibility = "hidden";
+                    getContacts();
+                } else {
+                    console.log(data)
+                }
+            } else {
+                console.log(status)
+            }
+        }
+    );
+}
+
 function loadConversation(sender, userRoleId, userFullName, userImage){
     setSelectedContactStyle(sender);
     getObject('messagesConversationControl').style.visibility = "visible";
     getObject('messagesConversationControl_contactName').innerHTML = "<i>Loading...</i>";
     SELECTEDCONTACT = {UserRoleId: userRoleId, Image: userImage, Name: userFullName};
-    getMessages(userRoleId, userFullName);
+    getMessages(userRoleId, userFullName, true);
 }
 
 function setSelectedContactStyle(contact){
@@ -223,7 +291,7 @@ function replyToContact(){
 
 function onReplyToContact(){
     clearValue('messagesConversationControl_textArea');
-    getMessages(SELECTEDCONTACT.UserRoleId, SELECTEDCONTACT.Name);
+    getMessages(SELECTEDCONTACT.UserRoleId, SELECTEDCONTACT.Name, true);
 }
 
 

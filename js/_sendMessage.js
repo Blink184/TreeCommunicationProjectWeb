@@ -40,6 +40,7 @@ function sendMessage(from, to, content, onSuccess){
                 if (jsonSuccess(data)) {
                     onSuccess();
                     enable('sendMessage_submitButton');
+
                 } else {
                     console.log(data)
                 }

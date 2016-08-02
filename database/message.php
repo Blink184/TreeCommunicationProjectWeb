@@ -13,6 +13,7 @@ function getMessages($userRoleId, $contactId){
     WHERE ((ToUserRoleId = $userRoleId AND FromUserRoleId = $contactId)
             OR (ToUserRoleId = $contactId AND FromUserRoleId = $userRoleId))
           AND m.IsDeleted = 0
+          AND ((m.IsDeletedBySender = 0 AND FromUserRoleId = $userRoleId) OR (m.IsDeletedByReceiver = 0 AND ToUserRoleId = $userRoleId))
     ";
     $res = array();
     $rows = execute($q);
@@ -55,6 +56,7 @@ function getLastMessagePerContact($userRoleId){
                           (select max(m3.DateSent) from message m3
                             where (m3.ToUserRoleId = m.ToUserRoleId and m3.FromUserRoleId = m.FromUserRoleId)
                              or (m3.ToUserRoleId = m.FromUserRoleId and m3.FromUserRoleId = m.ToUserRoleId)))
+      AND ((m.IsDeletedBySender = 0 AND FromUserRoleId = $userRoleId) OR (m.IsDeletedByReceiver = 0 AND ToUserRoleId = $userRoleId))
     ORDER BY m.DateSent DESC
     ";
     $res = array();
@@ -65,3 +67,19 @@ function getLastMessagePerContact($userRoleId){
     return encode(true, $res);
 }
 
+
+function deleteMessage($userRoleId, $messageId){
+    $q = "UPDATE message
+          SET IsDeletedBySender = CASE WHEN FromUserRoleId = $userRoleId THEN 1 ELSE IsDeletedBySender END,
+              IsDeletedByReceiver = CASE WHEN ToUserRoleId = $userRoleId THEN 1 ELSE IsDeletedByReceiver END
+          WHERE MessageId = $messageId";
+    return encode(execute($q), '');
+}
+function deleteConversation($byUserRoleId, $withUserRoleId){
+    $q = "UPDATE message
+          SET IsDeletedBySender = CASE WHEN FromUserRoleId = $byUserRoleId THEN 1 ELSE IsDeletedBySender END,
+              IsDeletedByReceiver = CASE WHEN ToUserRoleId = $byUserRoleId THEN 1 ELSE IsDeletedByReceiver END
+          WHERE ((ToUserRoleId = $byUserRoleId AND FromUserRoleId = $withUserRoleId)
+            OR (ToUserRoleId = $withUserRoleId AND FromUserRoleId = $byUserRoleId))";
+    return encode(execute($q), '');
+}
