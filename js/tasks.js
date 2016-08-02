@@ -11,18 +11,33 @@ var SELECTEDTYPE;
 var SEARCH;
 var TASKS = [];
 
+var RELOADINTERVAL = 5000;
+var LOADING = false;
 var TSLIMIT = DISPLAYNUMBERITEMS;
 
 window.onload = function () {
     setSelectedTab('tabTask');
-    loadTasks();
+    loadTasks(true);
     setDateTimePicker('.datetimepicker');
+    reload(loadTasks);
+    setOnContentScrollingDown(onContentScrollingDown);
 
     SELECTEDTYPE = MYTASK;
     SELECTEDSTATUS = ALL;
     SEARCH = "";
-
 };
+
+
+function onContentScrollingDown(){
+    TSLIMIT += TSLIMIT;
+    loadTasks(true);
+}
+
+function reload(func) {
+    window.setInterval(function(){
+        func(false);
+    }, RELOADINTERVAL);
+}
 
 function search(value){
     SEARCH = value.trim();
@@ -117,57 +132,65 @@ function task (taskid, toUserRole, toUserRoleId, fromUserRole, fromUserRoleId, d
 function onAddTaskPopupClosed(){
     loadTasks();
 }
-function loadTasks() {
-    getTasks();
+function loadTasks(showLoading) {
+    getTasks(showLoading);
 }
 
-function getTasks() {
-    var res = [];
-    $.post("database/api/getTasks.php",
-        {
-            userroleid: LOGGEDUSERROLEID,
-            limit: TSLIMIT
-        },
-        function(data, status){
-            if(status == "success"){
-                if(jsonSuccess(data)) {
-                    res = jsonData(data);
-                    TASKS = [];
-                    for(var i = 0; i < res.length; i++){
-                        var o = res[i];
+function getTasks(showLoading) {
+    if(!LOADING) {
+        if (showLoading)
+            setLoading(true);
+        LOADING = true;
+        var res = [];
+        $.post("database/api/getTasks.php",
+            {
+                userroleid: LOGGEDUSERROLEID,
+                limit: TSLIMIT
+            },
+            function (data, status) {
+                if (status == "success") {
+                    if (jsonSuccess(data)) {
+                        res = jsonData(data);
+                        TASKS = [];
+                        for (var i = 0; i < res.length; i++) {
+                            var o = res[i];
 
-                        var type;
-                        if(o.DelegatedToUserRoleId != null && o.FromUserRoleId == LOGGEDUSERROLEID){
-                            type = SENTREQUEST;
-                        }
-                        else if(o.FromUserRoleId == o.ToUserRoleId){
-                            type = MYTASK;
-                        }else if(o.FromUserRoleId == LOGGEDUSERROLEID){
-                            type = SENTREQUEST;
-                        }else {
-                            type = RECEIVEDREQUEST;
-                        }
+                            var type;
+                            if (o.DelegatedToUserRoleId != null && o.FromUserRoleId == LOGGEDUSERROLEID) {
+                                type = SENTREQUEST;
+                            }
+                            else if (o.FromUserRoleId == o.ToUserRoleId) {
+                                type = MYTASK;
+                            } else if (o.FromUserRoleId == LOGGEDUSERROLEID) {
+                                type = SENTREQUEST;
+                            } else {
+                                type = RECEIVEDREQUEST;
+                            }
 
-                        var status;
-                        if(o.TaskState == 1){
-                            status = NEW;
-                        }else if(o.TaskState == 2){
-                            status = INPROGRESS;
-                        }else if(o.TaskState == 3){
-                            status = FINISHED;
-                        }
+                            var status;
+                            if (o.TaskState == 1) {
+                                status = NEW;
+                            } else if (o.TaskState == 2) {
+                                status = INPROGRESS;
+                            } else if (o.TaskState == 3) {
+                                status = FINISHED;
+                            }
 
-                        TASKS.push(task(o.TaskId, o.ToUserRole, o.ToUserRoleId, o.FromUserRole, o.FromUserRoleId, o.DelegatedToUserRole, o.DelegatedToUserRoleId, o.Title, o.Content, type, status, o.StartDate, o.DueDate));
+                            TASKS.push(task(o.TaskId, o.ToUserRole, o.ToUserRoleId, o.FromUserRole, o.FromUserRoleId, o.DelegatedToUserRole, o.DelegatedToUserRoleId, o.Title, o.Content, type, status, o.StartDate, o.DueDate));
+                        }
+                        extractArrayTasks();
+                    } else {
+                        console.log(data)
                     }
-                    extractArrayTasks();
                 } else {
-                    console.log(data)
+                    console.log(status)
                 }
-            }else{
-                console.log(status)
+                LOADING = false;
+                if (showLoading)
+                    setLoading(false);
             }
-        }
-    );
+        );
+    }
 }
 
 

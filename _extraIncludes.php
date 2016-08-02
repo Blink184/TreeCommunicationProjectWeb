@@ -6,4 +6,12 @@
  * Time: 7:35 PM
  */
 
-include '_confirmDialog.php';?>
+include '_confirmDialog.php';
+
+
+?>
+<div id="bottomLoading">
+    <div id="bottomLoadingChild">
+        Loading
+    </div>
+</div>

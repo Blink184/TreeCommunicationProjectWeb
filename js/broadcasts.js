@@ -5,17 +5,24 @@ var BRLIMIT = DISPLAYNUMBERITEMS;
 var SELECTEDTYPE;
 var BROADCASTS = [];
 var RELOADINTERVAL = 5000;
+var LOADING = false;
 
 window.onload = function () {
     setSelectedTab('tabBroadcast');
     SELECTEDTYPE = RECEIVEDBROADCAST;
-    getBroadcasts();
+    getBroadcasts(true);
     reload(getBroadcasts);
+    setOnContentScrollingDown(onContentScrollingDown);
 };
+
+function onContentScrollingDown(){
+    BRLIMIT += BRLIMIT;
+    getBroadcasts(true);
+}
 
 function reload(func) {
     window.setInterval(function(){
-        func();
+        func(false);
     }, RELOADINTERVAL);
 }
 
@@ -45,11 +52,12 @@ function filterBroadcasts() {
     }
 }
 
-function broadcast(firstname, lastname, roledescription, userroletitle, broadcastId, fromUserRoleId, title, content, dateSent, isSender) {
+function broadcast(firstname, lastname, image, roledescription, userroletitle, broadcastId, fromUserRoleId, title, content, dateSent, isSender) {
     var broadcast = {
         FirstName: firstname,
         LastName: lastname,
         FullName: firstname + ' ' + lastname,
+        Image: image,
         RoleDescription: roledescription,
         UserRoleTitle: userroletitle,
         BroadcastId: broadcastId,
@@ -63,34 +71,42 @@ function broadcast(firstname, lastname, roledescription, userroletitle, broadcas
     return broadcast;
 }
 
-function getBroadcasts() {
-    var res = [];
-    //this is an ajax post
-    $.post("database/api/getBroadcasts.php",
-        {
-            userroleid: LOGGEDUSERROLEID,
-            limit: BRLIMIT
-        },
-        function(data, status){
-            if(status == "success"){
-                if(jsonSuccess(data)) {
-                    res = jsonData(data);
-                    BROADCASTS = [];
-                    for(var i = 0; i < res.length; i++) {
-                        var o = res[i];
+function getBroadcasts(showLoading) {
+    if(!LOADING) {
+        if(showLoading)
+            setLoading(true);
+        LOADING = true;
+        var res = [];
+        //this is an ajax post
+        $.post("database/api/getBroadcasts.php",
+            {
+                userroleid: LOGGEDUSERROLEID,
+                limit: BRLIMIT
+            },
+            function (data, status) {
+                if (status == "success") {
+                    if (jsonSuccess(data)) {
+                        res = jsonData(data);
+                        BROADCASTS = [];
+                        for (var i = 0; i < res.length; i++) {
+                            var o = res[i];
 
-                        BROADCASTS.push(broadcast(o.FirstName, o.LastName, o.Role, o.RoleTitle, o.BroadcastId, o.UserRoleId, o.Title, o.Content, o.DateSent, o.IsSender));
+                            BROADCASTS.push(broadcast(o.FirstName, o.LastName, o.Image, o.Role, o.RoleTitle, o.BroadcastId, o.UserRoleId, o.Title, o.Content, o.DateSent, o.IsSender));
+                        }
+                        extractArrayBroadcasts();
+
+                    } else {
+                        console.log(data)
                     }
-                    extractArrayBroadcasts();
-
                 } else {
-                    console.log(data)
+                    console.log(status)
                 }
-            }else{
-                console.log(status)
+                if(showLoading)
+                    setLoading(false);
+                LOADING = false;
             }
-        }
-    );
+        );
+    }
 }
 
 function extractArrayBroadcasts() {
@@ -132,7 +148,7 @@ function parseBroadcast(broadcast) {
             +')">'
             +'<div id="top">'
             +'<div id="theImg">'
-            +'<img id="profPicBrd"/>'
+            +'<img src="resources/images/employee/users/'+broadcast.Image+'" id="profPicBrd"/>'
             +'</div>'
             +'<div id="empName">'
             +broadcast.FullName

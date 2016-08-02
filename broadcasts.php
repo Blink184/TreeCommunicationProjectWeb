@@ -28,5 +28,6 @@
                 </ul>
             </li>
         </ul>
+        <?php include '_extraIncludes.php';?>
     </body>
 </html>
