@@ -2,39 +2,75 @@
 
 require_once 'connection.php';
 
+
+//insertBroadcast(1, 1, 'all', "t", 'c\\\\', date('Y/m/d H:i:s'), 0);
 function insertBroadcast($from, $to, $totype, $title, $content, $sentDate, $isDeleted){
-    $brQ = "insert into broadcast(FromUserRoleId, Title, Content, DateSent, IsDeleted) VALUES ($from, '$title', '$content', '$sentDate', $isDeleted)";
-    execute($brQ);
-    $selectLast = "SELECT * FROM broadcast where FromUserRoleId = $from ORDER BY BroadcastId DESC LIMIT 1";
-    $lastRow = FirstRow(execute($selectLast));
+    $d = 0;
+    $conn = connect();
+    $stmt = $conn->prepare("insert into broadcast (FromUserRoleId, Title, Content, DateSent, IsDeleted) VALUES (?, ?, ?, ?, ?)");
+
+    $stmt->bind_param("isssi", $from, $title, $content, $sentDate, $isDeleted);
+    $stmt->execute();
+    $stmt->close();
+
+    $stmt = $conn->prepare("select BroadcastId from broadcast where FromUserRoleId = ? ORDER BY BroadcastId DESC LIMIT 1");
+    $stmt->bind_param("i", $from);
+    $stmt->execute();
+    $stmt->bind_result($broadcastid);
+    $stmt->fetch();
+    $stmt->close();
 
     if ($totype == 'all') {
         //send to all
-        $all = execute("select * from userrole where IsDeleted = 0 and UserRoleId <> $from");
         $users = array();
-        while ($r = $all->fetch_assoc()) {
-            array_push($users, $r);
+
+        if ($stmt = $conn->prepare("select UserRoleId from userrole where IsDeleted = 0 and UserRoleId <> ?")) {
+            $stmt->bind_param("s", $from);
+            $stmt->execute();
+            $res = $stmt->get_result();
+            $stmt->close();
+
+            while ($row = $res->fetch_array()) {
+                array_push($users, $row);
+            }
+
+            foreach ($users as $row) {
+                $stmt = $conn->prepare("insert into broadcastline (BroadcastId, ToUserRoleId, IsReceived) values (?, ?, ?)");
+                $ur = $row['UserRoleId'];
+                $stmt->bind_param("iii", $broadcastid, $ur, $d);
+                $stmt->execute();
+                $stmt->close();
+            }
+        } else {
+            return encode(false, $conn->error);
         }
-        foreach ($users as $row) {
-            $q = "insert into broadcastline (BroadcastId, ToUserRoleId, IsReceived) values ($lastRow[BroadcastId], $row[UserRoleId], 0)";
-            execute($q);
-        }
+
     } else if ($totype == 'children') {
         //to children only
-        $all = execute("select * from userrole where IsDeleted = 0 and UserRoleId in (select UserRoleChildId from userrolehierarchy where UserRoleParentId = $from and IsDeleted = 0)");
-        $users = array();
-        while ($r = $all->fetch_assoc()) {
-            array_push($users, $r);
-        }
-        foreach ($users as $row) {
-            $q = "insert into broadcastline (BroadcastId, ToUserRoleId, IsReceived) values ($lastRow[BroadcastId], $row[UserRoleId], 0)";
-            execute($q);
+        if ($stmt = $conn->prepare("select * from userrole where IsDeleted = ? and UserRoleId in (select UserRoleChildId from userrolehierarchy where UserRoleParentId = ? and IsDeleted = ?)")) {
+            $stmt->bind_param("iii", $d, $from, $d);
+            $stmt->execute();
+            $res = $stmt->get_result();
+            $users = array();
+
+            while ($row = $res->fetch_array()) {
+                array_push($users, $row);
+            }
+            foreach ($users as $row) {
+                $stmt = $conn->prepare("insert into broadcastline (BroadcastId, ToUserRoleId, IsReceived) values (?, ?, ?)");
+                $ur = $row['UserRoleId'];
+                $stmt->bind_param("iii", $broadcastid, $ur, $d);
+                $stmt->execute();
+                $stmt->close();
+            }
+        } else {
+            return encode(false, var_dump($conn->error));
         }
     } else {
         //to custom
         $toIds = explode(',', $to);
         foreach ($toIds as $ur) {
-            $q = "insert into broadcastline (BroadcastId, ToUserRoleId, IsReceived) values ($lastRow[BroadcastId], $ur, 0)";
+            $q = "insert into broadcastline (BroadcastId, ToUserRoleId, IsReceived) values ($broadcastid, $ur, 0)";
             execute($q);
         }
     }
@@ -44,8 +80,7 @@ function insertBroadcast($from, $to, $totype, $title, $content, $sentDate, $isDe
 
 
 function getBroadcasts($userroleid, $limit) {
-//    $q = "select DISTINCT (b.BroadcastId), u.FirstName, u.LastName, r.Description as Description, ur.Title as RoleTitle, b.FromUserRoleId, b.Title, b.Content, b.DateSent from role r, userrole ur,broadcast b, broadcastline br, user u where (b.FromUserRoleId = $userroleid or br.ToUserRoleId = $userroleid) and b.IsDeleted = 0 and (ur.UserRoleId = $userroleid and ur.UserId = u.UserId and r.RoleId = ur.RoleId)";
-
+    $conn = connect();
     $q = "select  b.BroadcastId,
                   u.FirstName,
                   u.LastName,
@@ -58,7 +93,7 @@ function getBroadcasts($userroleid, $limit) {
                   b.DateSent,
                   1 as IsSender
           from broadcast b, userrole ur, role r, user u
-          where b.FromUserRoleId = $userroleid
+          where b.FromUserRoleId = ?
                 and b.IsDeleted = 0
                 and ur.UserRoleId = b.FromUserRoleId
                 and ur.RoleId = r.RoleId
@@ -78,19 +113,25 @@ function getBroadcasts($userroleid, $limit) {
                   b.DateSent,
                   0 as IsSender
           from broadcast b, userrole ur, role r, user u, broadcastline bl
-          where bl.ToUserRoleId = $userroleid
+          where bl.ToUserRoleId = ?
                 and bl.BroadcastId = b.BroadcastId
                 and b.IsDeleted = 0
                 and ur.UserRoleId = b.FromUserRoleId
                 and ur.RoleId = r.RoleId
                 and ur.UserId = u.UserId
-          order by DateSent desc limit $limit";
+          order by DateSent desc limit ?";
 
-    $res = array();
-    $rows = execute($q);
+    if ($stmt = $conn->prepare($q)) {
+        $stmt->bind_param("iii", $userroleid, $userroleid, $limit);
+        $stmt->execute();
+        $res = array();
+        $rows = $stmt->get_result();
 
-    while ($row = $rows->fetch_assoc()) {
-        array_push($res, $row);
+        while ($row = $rows->fetch_assoc()) {
+            array_push($res, $row);
+        }
+    } else {
+        return encode(false, $conn->error);
     }
 
     return encode(true, $res);

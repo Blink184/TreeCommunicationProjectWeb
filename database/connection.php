@@ -13,4 +13,13 @@ function execute($query){
     return $result;
 }
 
+function prepare($query) {
+    $conn = connect();
+    if ($stmt = $conn->prepare($query)) {
+        return $stmt;
+    } else {
+        return false;
+    }
+}
+
 ?>

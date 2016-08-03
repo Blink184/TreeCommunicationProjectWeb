@@ -4,7 +4,7 @@ var BRLIMIT = DISPLAYNUMBERITEMS;
 
 var SELECTEDTYPE;
 var BROADCASTS = [];
-var RELOADINTERVAL = 5000;
+var RELOADINTERVAL = 50000;
 var LOADING = false;
 
 window.onload = function () {
