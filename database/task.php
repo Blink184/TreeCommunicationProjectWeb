@@ -3,17 +3,30 @@
 require_once 'connection.php';
 
 function insertTask($from, $to, $title, $content, $duedate, $startdate){
-    $q = "INSERT INTO task (FromUserRoleId, ToUserRoleId, Title, Content, TaskState, DueDate, StartDate, IsDeleted) VALUES ($from, $to, '$title', '$content', 1, '$duedate', '$startdate', 0)";
-    return encode(execute($q), '');
+    $conn = connect();
+    $true = 1;
+    $false = 0;
+    if ($stmt = $conn->prepare("INSERT INTO task (FromUserRoleId, ToUserRoleId, Title, Content, TaskState, DueDate, StartDate, IsDeleted) VALUES (?, ?, ?, ?, ?, ?, ?, ?)")) {
+        $stmt->bind_param("iississi", $from, $to, $title, $content, $true, $duedate, $startdate, $false);
+        return encode($stmt->execute(), '');
+    } else {
+        return encode(false, var_dump($conn->error));
+    }
 }
 
 function delegateTask($taskid, $delegatetouserroleid) {
-    $q = "update task set DelegatedToUserRoleId = $delegatetouserroleid where TaskId = $taskid";
-    return encode(execute($q), '');
+    $conn = connect();
+    if ($stmt = $conn->prepare("update task set DelegatedToUserRoleId = ? where TaskId = ?")) {
+        $stmt->bind_param("ii", $delegatetouserroleid, $taskid);
+        return encode($stmt->execute(), '');
+    } else {
+        return encode(false, var_dump($conn->error));
+    }
 }
 
 function getTasks($userroleid, $limit) {
-    $q = "
+    $conn = connect();
+    if ($stmt = $conn->prepare("\"
     (select
       t.TaskId,
       t.FromUserRoleId,
@@ -36,7 +49,7 @@ function getTasks($userroleid, $limit) {
       left join user u2 on u2.UserId = ur2.UserId
       left join userrole ur3 on ur3.UserRoleId = t.DelegatedToUserRoleId
       left join user u3 on u3.UserId = ur3.UserId
-      where (DelegatedToUserRoleId = $userroleid or FromUserRoleId = $userroleid or (ToUserRoleId = $userroleid and DelegatedToUserRoleId is NULL)) and t.IsDeleted = 0 and t.IsCanceled = 0
+      where (DelegatedToUserRoleId = ? or FromUserRoleId = ? or (ToUserRoleId = ? and DelegatedToUserRoleId is NULL)) and t.IsDeleted = 0 and t.IsCanceled = 0
       and t.TaskState = 1)
 
       UNION
@@ -63,7 +76,7 @@ function getTasks($userroleid, $limit) {
       left join user u2 on u2.UserId = ur2.UserId
       left join userrole ur3 on ur3.UserRoleId = t.DelegatedToUserRoleId
       left join user u3 on u3.UserId = ur3.UserId
-      where (DelegatedToUserRoleId = $userroleid or FromUserRoleId = $userroleid or (ToUserRoleId = $userroleid and DelegatedToUserRoleId is NULL)) and t.IsDeleted = 0 and t.IsCanceled = 0
+      where (DelegatedToUserRoleId = ? or FromUserRoleId = ? or (ToUserRoleId = ? and DelegatedToUserRoleId is NULL)) and t.IsDeleted = 0 and t.IsCanceled = 0
       and t.TaskState = 2)
 
       UNION
@@ -90,29 +103,53 @@ function getTasks($userroleid, $limit) {
       left join user u2 on u2.UserId = ur2.UserId
       left join userrole ur3 on ur3.UserRoleId = t.DelegatedToUserRoleId
       left join user u3 on u3.UserId = ur3.UserId
-      where (DelegatedToUserRoleId = $userroleid or FromUserRoleId = $userroleid or (ToUserRoleId = $userroleid and DelegatedToUserRoleId is NULL)) and t.IsDeleted = 0 and t.IsCanceled = 0
+      where (DelegatedToUserRoleId = ? or FromUserRoleId = ? or (ToUserRoleId = ? and DelegatedToUserRoleId is NULL)) and t.IsDeleted = 0 and t.IsCanceled = 0
       and t.TaskState = 3
-      limit $limit)
-    ";
-    $res = array();
-    $rows = execute($q);
-    while ($row = $rows->fetch_assoc()) {
-        array_push($res, $row);
+      limit ?)
+    ")) {
+        $stmt->bind_param("iiiiiiiiii", $userroleid, $userroleid, $userroleid, $userroleid, $userroleid, $userroleid, $userroleid, $userroleid, $userroleid, $limit);
+        $stmt->execute();
+        $res = array();
+        $rows = $stmt->get_result();
+        while ($row = $rows->fetch_assoc()) {
+            array_push($res, $row);
+        }
+        return encode(true, json_encode($res));
+    } else {
+        return encode(false, var_dump($conn->error));
     }
-    return encode(true, $res);
+
 }
 
 function acceptTask($taskId, $date){
-    $q = "UPDATE task SET AcceptedDate = '$date', TaskState = 2 where TaskId = $taskId";
-    return encode(execute($q), '');
+    $conn = connect();
+    $taskstate = 2;
+    if ($stmt = $conn->prepare("UPDATE task SET AcceptedDate = ?, TaskState = ? where TaskId = ?")) {
+        $stmt->bind_param("sii", $date, $taskstate, $taskId);
+        return encode($stmt->execute(), '');
+    } else {
+        return encode(false, var_dump($conn->error));
+    }
 }
 
 function finishTask($taskId, $date){
-    $q = "UPDATE task SET DoneDate = '$date', TaskState = 3 where TaskId = $taskId";
-    return encode(execute($q), '');
+    $conn = connect();
+    $taskstate = 3;
+    if ($stmt = $conn->prepare("UPDATE task SET DoneDate = ?, TaskState = ? where TaskId = ?")) {
+        $stmt->bind_param("sii", $date, $taskstate, $taskId);
+        return encode($stmt->execute(), '');
+    } else {
+        return encode(false, var_dump($conn->error));
+    }
 }
 
 function cancelTask($taskId, $date){
-    $q = "UPDATE task SET IsCanceled = 1 where TaskId = $taskId";
-    return encode(execute($q), '');
+    $conn = connect();
+    $true = 1;
+    if ($stmt = $conn->prepare("UPDATE task SET IsCanceled = ?, CancelDate = ? where TaskId = ?")) {
+        $stmt->bind_param("isi", $true, $date, $taskId);
+        return encode($stmt->execute(), '');
+    } else {
+        return encode(false, var_dump($conn->error));
+    }
 }
