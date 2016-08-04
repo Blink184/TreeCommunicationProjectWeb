@@ -5,7 +5,7 @@ require_once 'connection.php';
 
 //insertBroadcast(1, 1, 'all', "t", 'c\\\\', date('Y/m/d H:i:s'), 0);
 function insertBroadcast($from, $to, $totype, $title, $content, $sentDate, $isDeleted){
-    $d = 0;
+    $false = 0;
     $conn = connect();
     $stmt = $conn->prepare("insert into broadcast (FromUserRoleId, Title, Content, DateSent, IsDeleted) VALUES (?, ?, ?, ?, ?)");
 
@@ -37,7 +37,7 @@ function insertBroadcast($from, $to, $totype, $title, $content, $sentDate, $isDe
             foreach ($users as $row) {
                 $stmt = $conn->prepare("insert into broadcastline (BroadcastId, ToUserRoleId, IsReceived) values (?, ?, ?)");
                 $ur = $row['UserRoleId'];
-                $stmt->bind_param("iii", $broadcastid, $ur, $d);
+                $stmt->bind_param("iii", $broadcastid, $ur, $false);
                 $stmt->execute();
                 $stmt->close();
             }
@@ -48,7 +48,7 @@ function insertBroadcast($from, $to, $totype, $title, $content, $sentDate, $isDe
     } else if ($totype == 'children') {
         //to children only
         if ($stmt = $conn->prepare("select * from userrole where IsDeleted = ? and UserRoleId in (select UserRoleChildId from userrolehierarchy where UserRoleParentId = ? and IsDeleted = ?)")) {
-            $stmt->bind_param("iii", $d, $from, $d);
+            $stmt->bind_param("iii", $false, $from, $false);
             $stmt->execute();
             $res = $stmt->get_result();
             $users = array();
@@ -59,7 +59,7 @@ function insertBroadcast($from, $to, $totype, $title, $content, $sentDate, $isDe
             foreach ($users as $row) {
                 $stmt = $conn->prepare("insert into broadcastline (BroadcastId, ToUserRoleId, IsReceived) values (?, ?, ?)");
                 $ur = $row['UserRoleId'];
-                $stmt->bind_param("iii", $broadcastid, $ur, $d);
+                $stmt->bind_param("iii", $broadcastid, $ur, $false);
                 $stmt->execute();
                 $stmt->close();
             }
@@ -68,10 +68,15 @@ function insertBroadcast($from, $to, $totype, $title, $content, $sentDate, $isDe
         }
     } else {
         //to custom
-        $toIds = explode(',', $to);
-        foreach ($toIds as $ur) {
-            $q = "insert into broadcastline (BroadcastId, ToUserRoleId, IsReceived) values ($broadcastid, $ur, 0)";
-            execute($q);
+        if ($stmt = $conn->prepare("insert into broadcastline (BroadcastId, ToUserRoleId, IsReceived) values (?, ?, ?)")) {
+            $toIds = explode(',', $to);
+            foreach ($toIds as $ur) {
+                $stmt->bind_param("iii", $broadcastid, $ur, $false);
+                $stmt->execute();
+            }
+            $stmt->close();
+        } else {
+            return encode(false, var_dump($conn->error));
         }
     }
 
