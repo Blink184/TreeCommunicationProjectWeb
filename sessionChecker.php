@@ -2,11 +2,12 @@
     date_default_timezone_set('Asia/Beirut');
 
     session_start();
-    if(isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn'] == '1'){
+    if(isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn'] == '1') {
 
         $LOGGED_IN_USER_ROLE_ID = $_SESSION['userRoleId'];
 
-        $LOGGED_IN_USER_ROLE_ID = 1;
+
+//        $LOGGED_IN_USER_ROLE_ID = 1;
 
         require_once 'database/userRole.php';
 
@@ -27,6 +28,7 @@
     }else{
         header('Location: login.php');
     }
+
 
 
 ?>

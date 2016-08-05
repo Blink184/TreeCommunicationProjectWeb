@@ -150,11 +150,11 @@ function getTasks(showLoading) {
             function (data, status) {
                 if (status == "success") {
                     if (jsonSuccess(data)) {
-                        res = jsonData(data);
+                        res = jsonArrayData(data);
                         TASKS = [];
+
                         for (var i = 0; i < res.length; i++) {
                             var o = res[i];
-
                             var type;
                             if (o.DelegatedToUserRoleId != null && o.FromUserRoleId == LOGGEDUSERROLEID) {
                                 type = SENTREQUEST;

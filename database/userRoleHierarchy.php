@@ -23,7 +23,9 @@ function getUserRoleHierarchy($parentId, $childId){
     $q = "select * from UserRoleHierarchy where UserRoleParentId = ? and UserRoleChildId = ?";
     if ($stmt = $conn->prepare($q)) {
         $stmt->bind_param("ii", $parentId, $childId);
-        return encode($stmt->execute(), '');
+        $stmt->execute();
+        $res = $stmt->get_result();
+        return $res;
     } else {
         return encode(false, var_dump($conn->error));
     }

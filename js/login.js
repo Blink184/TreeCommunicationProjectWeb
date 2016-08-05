@@ -12,7 +12,6 @@ $(document).ready(function(){
 
 
 function goToEmployeesPage(user) {
-    //1LOGGEDUSERROLEID =
     window.location="employees.php"
 }
 

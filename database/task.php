@@ -114,7 +114,6 @@ function getTasks($userroleid, $limit) {
         while ($row = $rows->fetch_assoc()) {
             array_push($res, $row);
         }
-        
         return encode(true, json_encode($res));
     } else {
         return encode(false, var_dump($conn->error));

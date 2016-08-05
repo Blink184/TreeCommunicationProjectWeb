@@ -49,7 +49,7 @@
                         <li>
                             <ul>
                                 <li><label for="addUser_password">Password</label></li>
-                                <li><input id="addUser_password" name="addUser_password" type="text"></li>
+                                <li><input id="addUser_password" name="addUser_password" type="password"></li>
                             </ul>
                         </li>
                     </ul>
