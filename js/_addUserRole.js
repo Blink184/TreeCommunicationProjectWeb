@@ -14,6 +14,7 @@ function addUserRole(parentId){
     getObject("addUserRole_popupTitle").innerHTML = "Add";
     CurrentUserRoleParentId = parentId;
     MODE = ADD;
+    setInnerHtml("addUserRole_btnAdd", "Add");
     updateUsersList(-1);
     updateRolesList(-1);
 }
@@ -25,6 +26,7 @@ function editUserRole(userRoleId, userId, roleId, title){
     MODE = EDIT;
     updateUsersList(userId);
     updateRolesList(roleId);
+    setInnerHtml("addUserRole_btnAdd", "Save");
     setValue("addUserRole_title", title);
 }
 
@@ -128,6 +130,7 @@ function updateUserRole(userRoleId, roleId, userId, title){
             enable("addUserRole_btnAdd");
             var log = getObject("addUserRole_log");
             if(status == "success"){
+                console.log(data);
                 if(jsonSuccess(data)){
                     setSuccessLog(log, "Process completed");
                     clearAddUserRoleForm();

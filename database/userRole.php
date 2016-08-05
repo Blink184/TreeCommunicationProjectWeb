@@ -42,12 +42,10 @@ function getLastUserRole(){
     if ($stmt = $conn->prepare("select * from UserRole where IsDeleted = 0 order by UserRoleId desc limit 1")) {
         $stmt->execute();
         $res = $stmt->get_result();
-        return encode(true, ($res->fetch_assoc()));
+        return $res;
     } else {
         return encode(false, var_dump($conn->error));
     }
-//    $q = "select * from UserRole where IsDeleted = 0 order by UserRoleId desc limit 1";
-//    return execute($q);
 }
 
 function getUserRoleWithId($userRoleId, $userId, $roleId){
@@ -56,20 +54,19 @@ function getUserRoleWithId($userRoleId, $userId, $roleId){
         $stmt->bind_param("iii", $userId, $roleId, $userRoleId);
         $stmt->execute();
         $res = $stmt->get_result();
-        return encode(true, ($res->fetch_assoc()));
+        return $res;
     } else {
         return encode(false, var_dump($conn->error));
     }
-//    $q = "select * from UserRole where UserId = $userId and RoleId = $roleId and UserRoleId = $userRoleId and IsDeleted = 0";
-//    return execute($q);
 }
+
 function getUserRole($userId, $roleId){
     $conn = connect();
     if ($stmt = $conn->prepare("select * from UserRole where UserId = ? and RoleId = ? and IsDeleted = 0")) {
         $stmt->bind_param("ii", $userId, $roleId);
         $stmt->execute();
         $res = $stmt->get_result();
-        return encode(true, ($res->fetch_assoc()));
+        return $res;
     } else {
         return encode(false, var_dump($conn->error));
     }
@@ -77,7 +74,6 @@ function getUserRole($userId, $roleId){
 //    return execute($q);
 }
 
-//getUserRoleById(1);
 function getUserRoleById($userRoleId){
     $conn = connect();
     if ($stmt = $conn->prepare("select * from userrole ur, user u, role r where u.UserId = ur.UserId and r.RoleId = ur.RoleId and UserRoleId = ?")) {
@@ -96,6 +92,7 @@ function getUserRoleById($userRoleId){
 function userRoleExists($userId, $roleId){
     return any(getUserRole($userId, $roleId));
 }
+
 function userRoleExistsWithId($userRoleId, $userId, $roleId){
     return any(getUserRoleWithId($userRoleId, $userId, $roleId));
 }

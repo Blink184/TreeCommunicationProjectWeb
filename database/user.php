@@ -4,7 +4,6 @@ require_once 'connection.php';
 
 function insertUser($firstname, $lastname, $username, $password, $phone, $address, $email, $isAdmin, $lastActiveDate, $isLoggedIn, $isBanned, $isDeleted){
     $conn = connect();
-    $true = 1;
     if(!usernameExists($username)) {
         if ($stmt = $conn->prepare("INSERT INTO user (FirstName, LastName, Username, Password, Phone, Address, Email, IsAdmin, LastActiveDate, IsLoggedIn, IsBanned, IsDeleted) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)")) {
             $stmt->bind_param("sssssssisiii", $firstname, $lastname, $username, $password, $phone, $address, $email, $isAdmin, $lastActiveDate, $isLoggedIn, $isBanned, $isDeleted);
@@ -25,7 +24,7 @@ function validateUser($username, $password) {
         $stmt->execute();
         $res = $stmt->get_result();
         if ($res->num_rows > 0) {
-            return encode(true, $res);
+            return encode(true, $res->fetch_assoc());
         } else {
             return encode(false, 'invalid username/password');
         }
@@ -79,16 +78,18 @@ function getUserByUsername($username){
     $conn = connect();
     $false = 0;
     if ($stmt = $conn->prepare("select * from user where Username = ? and IsDeleted = ?")) {
-        $stmt->bind_param("i", $username, $false);
+        $stmt->bind_param("si", $username, $false);
         $stmt->execute();
-        return encode(true, firstRow($stmt->get_result()));
+        $res = $stmt->get_result();
+        return $res;
     } else {
         return encode(false, var_dump($conn->error));
     }
 }
 
 function usernameExists($username){
-    return any(getUserByUsername($username));
+    $res = getUserByUsername($username);
+    return any($res);
 }
 
 function updateUser($userId, $firstname, $lastname, $phone, $address, $username, $password){
@@ -101,7 +102,6 @@ function updateUser($userId, $firstname, $lastname, $phone, $address, $username,
     }
 }
 
-//checkUsernameAvailability(1, 'ah');
 function checkUsernameAvailability($userId, $username){
     $conn = connect();
     if ($stmt = $conn->prepare("select * from user where UserId <> ? and Username = ?")) {

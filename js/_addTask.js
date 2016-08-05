@@ -14,9 +14,10 @@ function loadUserRoles(){
         function(data, status){
             if(status == "success"){
                 if(jsonSuccess(data)){
-                    var users = jsonData(data);
+                    var users = jsonArrayData(data);
                     var tmp = '';
-                    for(var i = 0; i < users.length; i++){
+                    for(var i = 0; i < users.length; i++)
+                    {
                         if(SELECTEDTARGET !== undefined && users[i].UserRoleId == SELECTEDTARGET){
                             tmp += '<option selected value="'+users[i].UserRoleId+'">'+users[i].FirstName + ' ' + users[i].LastName + ' (' + users[i].Role + ')'+'</option>';
                         }else{

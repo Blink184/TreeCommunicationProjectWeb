@@ -6,7 +6,7 @@ function insertRole($description, $isMaster, $isDeleted){
     $conn = connect();
     if(!roleExists($description)){
         if ($stmt = $conn->prepare("INSERT INTO role (Description, IsMaster, IsDeleted) VALUES (?, ?, ?)")) {
-            $stmt->bind_param("", $description, $isMaster, $isDeleted);
+            $stmt->bind_param("sii", $description, $isMaster, $isDeleted);
             return encode($stmt->execute(), '');
         } else {
             return encode(false, var_dump($conn->error));
@@ -46,7 +46,9 @@ function getRoleByDescription($description){
     $false = 0;
     if ($stmt = $conn->prepare("select * from role where Description = ? and IsDeleted = ?")) {
         $stmt->bind_param("si", $description, $false);
-        return encode($stmt->execute(), '');
+        $stmt->execute();
+        $res = $stmt->get_result();
+        return $res;
     } else {
         return encode(false, var_dump($conn->error));
     }
