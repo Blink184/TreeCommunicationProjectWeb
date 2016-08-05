@@ -141,3 +141,19 @@ function getBroadcasts($userroleid, $limit) {
 
     return encode(true, $res);
 }
+
+
+function getUnreadBroadcasts($userRoleId){
+    $conn = connect();
+    $q = "select count(*) from broadcastline bl, broadcast b where b.BroadcastId = bl.BroadcastId and b.IsDeleted = 0 and bl.ToUserRoleId = ? and bl.IsReceived = 0";
+    if ($stmt = $conn->prepare($q)) {
+        $stmt->bind_param("i", $userRoleId);
+        $stmt->execute();
+        $stmt->bind_result($res);
+        $stmt->fetch();
+        $stmt->close();
+        echo $res;
+    }else{
+        echo '0';
+    }
+}

@@ -116,3 +116,20 @@ function deleteConversation($byUserRoleId, $withUserRoleId){
         return encode(false, var_dump($conn->error));
     }
 }
+
+
+
+function getUnreadMessages($userRoleId){
+    $conn = connect();
+    $q = "select count(*) from message m where m.IsDeleted = 0 and m.DateReceived is null and m.ToUserRoleId = ?";
+    if ($stmt = $conn->prepare($q)) {
+        $stmt->bind_param("i", $userRoleId);
+        $stmt->execute();
+        $stmt->bind_result($res);
+        $stmt->fetch();
+        $stmt->close();
+        echo $res;
+    }else{
+        echo '0';
+    }
+}

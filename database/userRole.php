@@ -159,7 +159,7 @@ function getUserRoleTree($id){
         $o['Children'] = getUserRoleChildren($o['Children'], $o['UserRoleId']);
 
         $conn->close();
-        return encode(true, $o);
+        echo encode(true, $o);
     } else {
         return encode(false, var_dump($conn->error));
     }
@@ -169,15 +169,14 @@ function getUserRoleTree($id){
 function getUserRoleChildren($children, $parentId) {
     $conn = connect();
     $q="SELECT *, (select count(*) from UserRoleHierarchy where UserRoleChildId = ur.UserRoleId and IsDeleted = 0) as NumberOfParents FROM Role r, UserRole ur LEFT JOIN User u ON u.UserId = ur.UserId WHERE ur.RoleId = r.RoleId and ur.UserRoleId in (select UserRoleChildId from UserRoleHierarchy where UserRoleParentId = ? and IsDeleted = 0) and ur.IsDeleted = 0";
-    if ($stmt = $conn->prepare($q)) {
+    if ($stmt1 = $conn->prepare($q)) {
         $children = array();
-        $stmt->bind_param("i", $parentId);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        $stmt->close();
-        $conn->close();
+        $stmt1->bind_param("i", $parentId);
+        $stmt1->execute();
+        $result = $stmt1->get_result();
+        $stmt1->close();
         if ($result->num_rows > 0) {
-            foreach ($result->fetch_assoc() as $row)
+            while ($row = $result->fetch_assoc())
             {
                 $o['UserRoleId'] = $row['UserRoleId'];
                 $o['FirstName'] = $row['FirstName'];
@@ -197,12 +196,13 @@ function getUserRoleChildren($children, $parentId) {
                 $o['RoleId'] = $row['RoleId'];
                 $o['Children'] = array();
                 $o['Children'] = getUserRoleChildren($o['Children'], $o['UserRoleId']);
-                array_push($children, $row);
+                array_push($children, $o);
             }
             return $children;
         } else {
-            return null;
+            return [];
         }
+        $conn->close();
     } else {
         return null;
     }
