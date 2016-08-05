@@ -24,10 +24,10 @@ function delegateTask($taskid, $delegatetouserroleid) {
     }
 }
 
+getTasks(1, 9);
 function getTasks($userroleid, $limit) {
     $conn = connect();
-    if ($stmt = $conn->prepare("\"
-    (select
+    if ($stmt = $conn->prepare("(select
       t.TaskId,
       t.FromUserRoleId,
       t.DelegatedToUserRoleId,
@@ -114,6 +114,7 @@ function getTasks($userroleid, $limit) {
         while ($row = $rows->fetch_assoc()) {
             array_push($res, $row);
         }
+        
         return encode(true, json_encode($res));
     } else {
         return encode(false, var_dump($conn->error));
