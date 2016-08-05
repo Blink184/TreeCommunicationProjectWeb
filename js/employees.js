@@ -59,9 +59,11 @@ function addChildToTree(userrole){
 
 function getChildrenObjects(userrole){
     var arr = [];
-    for(var i = 0; i < userrole.Children.length; i++){
-        var tmp = userrole.Children[i];
-        arr.push(extractUserRole(tmp));
+    if(userrole.Children != null){
+        for(var i = 0; i < userrole.Children.length; i++){
+            var tmp = userrole.Children[i];
+            arr.push(extractUserRole(tmp));
+        }
     }
     return arr;
 }
