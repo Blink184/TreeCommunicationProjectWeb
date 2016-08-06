@@ -5,11 +5,15 @@
     if(isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn'] == '1') {
 
         $LOGGED_IN_USER_ROLE_ID = $_SESSION['userRoleId'];
-
-
-//        $LOGGED_IN_USER_ROLE_ID = 1;
-
         require_once 'database/userRole.php';
+
+
+
+        if(isset($_REQUEST['updateUserForm'])){
+            include 'database/user.php';
+            include 'database/api/updateUser.php';
+        }
+
 
         $res = json_decode(getUserRoleById($LOGGED_IN_USER_ROLE_ID));
 
