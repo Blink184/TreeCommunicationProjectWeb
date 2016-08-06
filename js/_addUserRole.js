@@ -7,6 +7,7 @@ var CurrentUserRoleId;
 
 function cancelAddUserRole(){
     getObject("addUserRole").style.display = "none";
+    setInnerHtml("addUserRole_log", '');
 }
 
 function addUserRole(parentId){

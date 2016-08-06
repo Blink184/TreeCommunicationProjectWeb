@@ -2,6 +2,7 @@ var SELECTEDTARGET;
 
 function cancelAddTask(){
     document.getElementById("addTask").style.display = "none";
+    setInnerHtml("addTask_log", '');
     onAddTaskPopupClosed();
 }
 function setAddTaskTarget(target){

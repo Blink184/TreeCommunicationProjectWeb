@@ -1,6 +1,7 @@
 var ROLES = [];
 
 function cancelAddRole(){
+    setInnerHtml("addRole_log", '');
     getObject("addRole").style.display = "none";
 }
 

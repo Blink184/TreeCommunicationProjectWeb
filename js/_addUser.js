@@ -2,6 +2,7 @@ var USERS = [];
 
 function cancelAddUser(){
     getObject("addUser").style.display = "none";
+    setInnerHtml("addUser_log", '');
 }
 
 function addUser(){
