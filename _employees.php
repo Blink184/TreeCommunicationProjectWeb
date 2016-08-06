@@ -8,7 +8,6 @@
 </div>
 <?php include '_addTask.php';?>
 <?php include '_sendMessage.php';?>
-<?php include '_showEmployeeProfile.php';?>
 <?php include '_addUser.php';?>
 <?php include '_addRole.php';?>
 <?php include '_showUsers.php';?>

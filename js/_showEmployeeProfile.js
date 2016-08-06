@@ -1,13 +1,14 @@
 function cancelShowEmployeeProfile(){
     document.getElementById("showEmployeeProfile").style.display = "none";
 }
-function displayEmployeeProfile(userId, firstName, lastName, username, phone, address, image){
+function displayEmployeeProfile(userId, firstName, lastName, username, phone, address, image, lastActiveDate){
     setValue("showEmployeeProfile_firstName", firstName);
     setValue("showEmployeeProfile_lastName", lastName);
     setValue("showEmployeeProfile_phone", phone);
     setValue("showEmployeeProfile_address", address);
     setValue("showEmployeeProfile_userId", userId);
     setValue("showEmployeeProfile_username", username);
+    setValue("showEmployeeProfile_lastActiveDate", lastActiveDate);
     getObject("showEmployeeProfile_image").src = 'resources/images/employee/users/' + image;
     hideObject('showEmployeeProfile_liOldPassword');
     clearValue('showEmployeeProfile_oldPassword');
