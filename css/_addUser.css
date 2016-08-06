@@ -54,6 +54,7 @@
     border-radius:5px;
     display: inline-block;
     height:30px;
+    padding-left: 7px;
 }
 #addUser ul{
     padding:0;
@@ -69,7 +70,7 @@
 }
 
 #addUser #footer button{
-    width:75px;
+    width:70px;
     padding:5px;
     color: white;
     border:0;
