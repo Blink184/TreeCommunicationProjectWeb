@@ -128,8 +128,8 @@ function getUnreadMessages($userRoleId){
         $stmt->bind_result($res);
         $stmt->fetch();
         $stmt->close();
-        echo $res;
+        return $res;
     }else{
-        echo '0';
+        return 0;
     }
 }

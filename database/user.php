@@ -18,7 +18,7 @@ function insertUser($firstname, $lastname, $username, $password, $phone, $addres
 
 function validateUser($username, $password) {
     $conn = connect();
-    $q = "select u.*, ur.UserRoleId, r.IsMaster from user u, userrole ur, role r where ur.UserId = u.UserId and ur.RoleId = r.RoleId and u.Username = ? and BINARY u.Password = ?";
+    $q = "select u.*, ur.UserRoleId, r.IsMaster from user u, userrole ur, role r where ur.UserId = u.UserId and ur.RoleId = r.RoleId and ur.IsDeleted = 0 and u.Username = ? and BINARY u.Password = ?";
     if ($stmt = $conn->prepare($q)) {
         $stmt->bind_param("ss", $username, $password);
         $stmt->execute();

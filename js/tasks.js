@@ -21,6 +21,7 @@ window.onload = function () {
     setDateTimePicker('.datetimepicker');
     reload(loadTasks);
     setOnContentScrollingDown(onContentScrollingDown);
+    getNotifications();
 
     SELECTEDTYPE = MYTASK;
     SELECTEDSTATUS = ALL;

@@ -117,7 +117,7 @@ function profile(){
 }
 
 function settings(){
-
+    displayEmployeeProfile(LOGGEDUSERID, LOGGEDUSERFIRSTNAME, LOGGEDUSERLASTNAME, LOGGEDUSERUSERNAME, LOGGEDUSERPHONE, LOGGEDUSERADDRESS, LOGGEDUSERROLEIMAGE);
 }
 
 function confirmAction(f, value) {
@@ -224,6 +224,9 @@ String.prototype.replaceAll = function(search, replacement) {
 String.prototype.startsWith = function (str) {
     return this.indexOf(str) == 0;
 };
+String.prototype.safeQuotes = function (str) {
+    return this.replaceAll('\'', '\\\'').replaceAll('"', "&quot;");
+};
 
 function setOnContentScrollingDown(callback){
     jQuery(function($) {
@@ -241,4 +244,33 @@ function setLoading(visible){
     }else{
         hideObject('bottomLoading');
     }
+}
+
+function getNotifications(){
+    $.post("database/api/getNotifications.php",
+        {
+            userroleid: LOGGEDUSERROLEID
+        },
+        function(data, status){
+            if(status == "success"){
+                if(jsonSuccess(data)){
+                    console.log();
+                    var res = jsonData(data);
+                    if(res.b > 0){
+                        notify("+"+res.b+" Broadcast(s)", BROADCAST);
+                    }
+                    if(res.m > 0){
+                        notify("+"+res.m+" Message(s)", MESSAGE);
+                    }
+                    if(res.t > 0){
+                        notify("+"+res.t+" Task(s)", TASK);
+                    }
+                }else{
+                    console.log(data);
+                }
+            }else{
+                console.log(status);
+            }
+        }
+    );
 }
