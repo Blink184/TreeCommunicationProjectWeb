@@ -75,12 +75,12 @@ function getUserRole($userId, $roleId){
 }
 
 function getUserRoleById($userRoleId){
+    updateUserLastActiveDate($userRoleId, date('Y/m/d H:i:s'));
     $conn = connect();
     if ($stmt = $conn->prepare("select * from userrole ur, user u, role r where u.UserId = ur.UserId and r.RoleId = ur.RoleId and UserRoleId = ?")) {
         $stmt->bind_param("i", $userRoleId);
         $stmt->execute();
         $res = $stmt->get_result();
-        updateUserLastActiveDate($userRoleId, date('Y/m/d H:i:s'));
         return encode(true, ($res->fetch_assoc()));
     } else {
         return encode(false, var_dump($conn->error));
