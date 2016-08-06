@@ -133,6 +133,7 @@ function task (taskid, toUserRole, toUserRoleId, fromUserRole, fromUserRoleId, d
 function onAddTaskPopupClosed(){
     loadTasks();
 }
+
 function loadTasks(showLoading) {
     getTasks(showLoading);
 }
