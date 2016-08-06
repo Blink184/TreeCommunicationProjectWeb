@@ -80,6 +80,7 @@ function getUserRoleById($userRoleId){
         $stmt->bind_param("i", $userRoleId);
         $stmt->execute();
         $res = $stmt->get_result();
+        updateUserLastActiveDate($userRoleId, date('Y/m/d H:i:s'));
         return encode(true, ($res->fetch_assoc()));
     } else {
         return encode(false, var_dump($conn->error));
@@ -87,6 +88,14 @@ function getUserRoleById($userRoleId){
 //    $q = "select * from userrole ur, user u, role r where u.UserId = ur.UserId and r.RoleId = ur.RoleId and UserRoleId = $userRoleId";
 //    print_r(firstRow(execute($q)));
 //    return encode(true, firstRow(execute($q)));
+}
+
+function updateUserLastActiveDate($userRoleId, $date){
+    $conn = connect();
+    if ($stmt = $conn->prepare("UPDATE user set LastActiveDate = ? where UserId = (select UserId from userrole where UserRoleId = ? limit 1)")) {
+        $stmt->bind_param("si", $date, $userRoleId);
+        $stmt->execute();
+    }
 }
 
 function userRoleExists($userId, $roleId){

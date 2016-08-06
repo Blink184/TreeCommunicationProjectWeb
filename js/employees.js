@@ -1,5 +1,4 @@
 var TREE;
-var VIEW = 1;
 
 window.onload = function () {
     setSelectedTab('tabEmployee');
@@ -110,12 +109,12 @@ function generateDataFor(employee){
     }
 
     return '<li><div class="divEmployeeControl" data-employeeId="'+employee.UserRoleId+'">'
-        + '<div class="hexagon" onclick="displayEmployeeProfile('+employee.UserId+', \''+employee.FirstName+'\', \''+employee.LastName+'\', \''+employee.Username+'\',\''+employee.Phone+'\', \''+employee.Address+'\', \''+employee.Image+'\')">'
+        + '<div class="hexagon" onclick="displayEmployeeProfile('+employee.UserId+', \''+employee.FirstName+'\', \''+employee.LastName+'\', \''+employee.Username+'\',\''+employee.Phone+'\', \''+employee.Address+'\', \''+employee.Image+'\', \''+employee.LastActiveDate+'\')">'
         + '<img src="resources/images/employee/users/'+employee.Image+'"/>'
         + '<img src="resources/images/employee/hexagon.svg  "/>'
         + '</div>'
         + '<div class="divBody">'
-        + '<div class="divName" id="divNameOfUserRole'+employee.UserRoleId+'" onclick="displayEmployeeProfile('+employee.UserId+', \''+employee.FirstName+'\', \''+employee.LastName+'\', \''+employee.Username+'\',\''+employee.Phone+'\', \''+employee.Address+'\', \''+employee.Image+'\')">'+employee.Name+'</div>'
+        + '<div class="divName" id="divNameOfUserRole'+employee.UserRoleId+'" onclick="displayEmployeeProfile('+employee.UserId+', \''+employee.FirstName+'\', \''+employee.LastName+'\', \''+employee.Username+'\',\''+employee.Phone+'\', \''+employee.Address+'\', \''+employee.Image+'\', \''+employee.LastActiveDate+'\')">'+employee.Name+'</div>'
         + '<div class="divTitle">'+ title +'</div>'
         + '<div class="divActions">'
         + '<img title="Assign Task" src="resources/images/employee/add_task.svg" onclick="addTask(' + employee.UserRoleId + ');"/> '
