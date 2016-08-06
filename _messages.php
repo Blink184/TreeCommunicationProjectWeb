@@ -8,3 +8,4 @@
     </div>
 </div>
 <?php include '_sendMessage.php';?>
+<?php include '_showEmployeeProfile.php';?>

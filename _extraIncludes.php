@@ -7,7 +7,6 @@
  */
 
 include '_confirmDialog.php';
-include '_showEmployeeProfile.php';
 
 
 ?>
