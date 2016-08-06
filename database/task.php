@@ -24,7 +24,6 @@ function delegateTask($taskid, $delegatetouserroleid) {
     }
 }
 
-getTasks(1, 9);
 function getTasks($userroleid, $limit) {
     $conn = connect();
     if ($stmt = $conn->prepare("(select
@@ -114,6 +113,8 @@ function getTasks($userroleid, $limit) {
         while ($row = $rows->fetch_assoc()) {
             array_push($res, $row);
         }
+
+        setTasksAsRead($userroleid);
         return encode(true, json_encode($res));
     } else {
         return encode(false, var_dump($conn->error));
@@ -148,6 +149,32 @@ function cancelTask($taskId, $date){
     $true = 1;
     if ($stmt = $conn->prepare("UPDATE task SET IsCanceled = ?, CancelDate = ? where TaskId = ?")) {
         $stmt->bind_param("isi", $true, $date, $taskId);
+        return encode($stmt->execute(), '');
+    } else {
+        return encode(false, var_dump($conn->error));
+    }
+}
+
+
+function getUnreadTasks($userRoleId){
+    $conn = connect();
+    $q = "select count(*) from task t where t.IsDeleted = 0 and t.IsCanceled = 0 and t.DateReceived is null and t.ToUserRoleId = ? and t.TaskState = 1";
+    if ($stmt = $conn->prepare($q)) {
+        $stmt->bind_param("i", $userRoleId);
+        $stmt->execute();
+        $stmt->bind_result($res);
+        $stmt->fetch();
+        $stmt->close();
+        return $res;
+    }else{
+        return 0;
+    }
+}
+
+function setTasksAsRead($userRoleId){
+    $conn = connect();
+    if ($stmt = $conn->prepare("UPDATE task SET DateReceived = NOW() WHERE (ToUserRoleId = ? or DelegatedToUserRoleId = ?) and DateReceived is null")) {
+        $stmt->bind_param("ii", $userRoleId, $userRoleId);
         return encode($stmt->execute(), '');
     } else {
         return encode(false, var_dump($conn->error));

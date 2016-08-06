@@ -5,10 +5,7 @@ window.onload = function () {
     setSelectedTab('tabEmployee');
     loadTree();
     setDateTimePicker('.datetimepicker');
-    notify("New Message from Ahmad Hammoud", MESSAGE);
-    notify("New Broadcast from Ahmad Hammoud", BROADCAST);
-    notify("New Task from Ahmad Hammoud", TASK);
-
+    getNotifications();
 };
 
 function employee(userRoleId, userId, roleId, firstName, lastName, username, phone, address, lastActiveDate, role, title, image, children){
@@ -96,6 +93,13 @@ function getData(employee){
 function generateDataFor(employee){
     var title = employee.Role;
     var tmpView = '';
+
+    employee.FirstName = employee.FirstName.safeQuotes();
+    employee.LastName = employee.LastName.safeQuotes();
+    employee.Phone = employee.Phone.safeQuotes();
+    employee.Address = employee.Address.safeQuotes();
+    employee.Username = employee.Username.safeQuotes();
+
     if(employee.Title.length > 0) {
         title += ' / ' + employee.Title;
     }

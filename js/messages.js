@@ -10,6 +10,7 @@ window.onload = function () {
     getContacts();
     reload(getContacts);
     reload(getMessages_reload)
+    getNotifications();
 };
 function searchContacts(value){
     SEARCH = value.trim();
@@ -180,7 +181,9 @@ function extractContact(contact) {
         tmpSelected = " selectedRow";
     }
 
-    return "<div class='messagesContactsControlRow "+_new +tmpSelected+"' onclick='loadConversation(this, "+contact.UserRoleId+", \""+contact.Name+"\", \""+contact.Image+"\")' data-name='"+contact.Name+"'>"
+    contact.Name = contact.Name.safeQuotes();
+
+    return '<div class="messagesContactsControlRow '+_new +tmpSelected+'" onclick="loadConversation(this, '+contact.UserRoleId+', \''+contact.Name+'\', \''+contact.Image+'\')" data-name="'+contact.Name+'">'
                 + "<table>"
                     + "<tr>"
                         + "<td rowspan='2' id='messagesContactsControlRow_picture'>"

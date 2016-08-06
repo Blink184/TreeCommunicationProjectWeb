@@ -81,7 +81,7 @@ function loadUserRoles(){
         function(data, status){
             if(status == "success"){
                 if(jsonSuccess(data)){
-                    var users = jsonData(data);
+                    var users = jsonArrayData(data);
                     var tmp = '';
                     for(var i = 0; i < users.length; i++){
                         if(users[i].UserRoleId != LOGGEDUSERROLEID){

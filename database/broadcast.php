@@ -138,10 +138,20 @@ function getBroadcasts($userroleid, $limit) {
     } else {
         return encode(false, $conn->error);
     }
-
+    setBroadcastsAsRead($userroleid);
     return encode(true, $res);
 }
 
+
+function setBroadcastsAsRead($userRoleId){
+    $conn = connect();
+    if ($stmt = $conn->prepare("UPDATE broadcastline SET DateReceived = NOW(), IsReceived = 1 where ToUserRoleId = ? and IsReceived = 0")) {
+        $stmt->bind_param("i", $userRoleId);
+        return encode($stmt->execute(), '');
+    } else {
+        return encode(false, var_dump($conn->error));
+    }
+}
 
 function getUnreadBroadcasts($userRoleId){
     $conn = connect();
@@ -152,8 +162,8 @@ function getUnreadBroadcasts($userRoleId){
         $stmt->bind_result($res);
         $stmt->fetch();
         $stmt->close();
-        echo $res;
+        return $res;
     }else{
-        echo '0';
+        return 0;
     }
 }
