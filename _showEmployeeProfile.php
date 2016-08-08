@@ -10,7 +10,7 @@
                             <img id="showEmployeeProfile_image" src="resources/images/1.jpg"/>
                         </label>
                         <br>
-                        <input style="color:black" id="file-input" name="file-input" type="file"/>
+                        <input style="color:black; max-width:270px;" id="file-input" name="file-input" type="file"/>
                     </div>
                     <div id="body">
                         <span id="showEmployeeProfile_log"></span>

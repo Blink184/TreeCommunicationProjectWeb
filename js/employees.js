@@ -73,6 +73,7 @@ function extractArray(){
     var data = '<ol class="tree">' + getData(TREE) + '</ol>';
     employeeControlContainer.innerHTML = data;
     editTree();
+    editTree();
 }
 
 function getData(employee){
@@ -103,9 +104,16 @@ function generateDataFor(employee){
         title += ' / ' + employee.Title;
     }
     if(VIEW == 1){
-        tmpView = '<img class="showOnTreeEdit" title="Add Child" src="resources/images/employee/add.png" onclick="addUserRole(' + employee.UserRoleId + ');" height="18" width="18"/> '
-        + '<img class="showOnTreeEdit" title="Delete User Role" src="resources/images/employee/delete.png" onclick="confirmAction(deleteUserRole, ' + employee.UserRoleId + ');" width="18" height="18"/> '
-        + '<img class="showOnTreeEdit" title="Edit User Role" src="resources/images/employee/edit.png" onclick="editUserRole(' + employee.UserRoleId + ', ' + employee.UserId + ', ' + employee.RoleId + ', \'' + employee.Title + '\');" width="18" height="18"/> ';
+        tmpView = '<img class="showOnTreeEdit" title="Add Child" src="resources/images/employee/add.png" onclick="addUserRole(' + employee.UserRoleId + ');" height="18" width="18"/> ';
+        if(LOGGEDUSERROLEID != employee.UserRoleId) {
+            //so that the logged in employee cant delete or edit himself.
+            tmpView += '<img class="showOnTreeEdit" title="Delete User Role" src="resources/images/employee/delete.png" onclick="confirmAction(deleteUserRole, ' + employee.UserRoleId + ');" width="18" height="18"/> ';
+            tmpView += '<img class="showOnTreeEdit" title="Edit User Role" src="resources/images/employee/edit.png" onclick="editUserRole(' + employee.UserRoleId + ', ' + employee.UserId + ', ' + employee.RoleId + ', \'' + employee.Title + '\');" width="18" height="18"/> ';
+        }
+    }
+    var tmpMessage = '';
+    if(LOGGEDUSERROLEID != employee.UserRoleId){
+        tmpMessage = '<img title="Send Message" src="resources/images/employee/message.svg" onclick="composeNewMessage(' + employee.UserRoleId + ');"/> ';
     }
 
     return '<li><div class="divEmployeeControl" data-employeeId="'+employee.UserRoleId+'">'
@@ -118,7 +126,7 @@ function generateDataFor(employee){
         + '<div class="divTitle">'+ title +'</div>'
         + '<div class="divActions">'
         + '<img title="Assign Task" src="resources/images/employee/add_task.svg" onclick="addTask(' + employee.UserRoleId + ');"/> '
-        + '<img title="Send Message" src="resources/images/employee/message.svg" onclick="composeNewMessage(' + employee.UserRoleId + ');"/> '
+        + tmpMessage
         + tmpView
         + '</div>'
         + '</div>'

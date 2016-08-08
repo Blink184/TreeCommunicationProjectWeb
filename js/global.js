@@ -255,7 +255,6 @@ function getNotifications(){
         function(data, status){
             if(status == "success"){
                 if(jsonSuccess(data)){
-                    console.log();
                     var res = jsonData(data);
                     if(res.b > 0){
                         notify("+"+res.b+" Broadcast(s)", BROADCAST);
