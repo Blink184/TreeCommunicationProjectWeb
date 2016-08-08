@@ -8,11 +8,11 @@ function showRoles(){
 }
 
 function getUnusedRoles() {
-    $.post("database/api/getUnusedRoles.php",
+    $.post("database/api/getRolesWithUsageStatus.php",
         function(data, status){
             if(status == "success"){
                 if(jsonSuccess(data)){
-                    fillUnusedRolesTable(jsonArrayData(data));
+                    fillRolesTable(jsonArrayData(data));
                 }else{
                     console.log(jsonData(data));
                 }
@@ -23,14 +23,26 @@ function getUnusedRoles() {
     );
 }
 
-function fillUnusedRolesTable(a){
+function fillRolesTable(a){
     var tmp = "";
     if(a !== undefined) {
         for (var i = 0; i < a.length; i++) {
-            tmp += '<tr><td>' + a[i].Description + '</td><td><button onclick="confirmAction(deleteRole, ' + a[i].RoleId + ')">Delete</button></td></tr>';
+            var tmpDesc = a[i].Description.safeQuotes();
+            if(a[i].RoleId == 1){
+                tmp += '<tr><td>' + a[i].Description + '</td><td></td><td></td></tr>';
+            }else if(a[i].Usage != 0){
+                tmp += '<tr><td>' + a[i].Description + '</td><td><button onclick="show_editRole('+a[i].RoleId+', \''+tmpDesc+'\', \''+a[i].IsMaster+'\')">Edit</button></td><td></td></tr>';
+            }else{
+                tmp += '<tr><td>' + a[i].Description + '</td><td><button onclick="show_editRole('+a[i].RoleId+', \''+tmpDesc+'\', \''+a[i].IsMaster+'\')">Edit</button></td><td><button onclick="confirmAction(deleteRole, ' + a[i].RoleId + ')">Delete</button></td></tr>';
+            }
         }
     }
     getObject('unusedRoles').innerHTML = tmp;
+}
+
+function show_editRole(roleId, description, isMaster){
+    editRole(roleId, description, isMaster == 1);
+    closeShowRoles();
 }
 
 function deleteRole(roleId) {

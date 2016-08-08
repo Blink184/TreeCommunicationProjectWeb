@@ -158,10 +158,11 @@ function getTasks(showLoading) {
                         for (var i = 0; i < res.length; i++) {
                             var o = res[i];
                             var type;
-                            if (o.DelegatedToUserRoleId != null && o.FromUserRoleId == LOGGEDUSERROLEID) {
+                            if (o.DelegatedToUserRoleId != null && o.ToUserRoleId == LOGGEDUSERROLEID) {
                                 type = SENTREQUEST;
-                            }
-                            else if (o.FromUserRoleId == o.ToUserRoleId) {
+                            } else if (o.DelegatedToUserRoleId != null && o.FromUserRoleId == LOGGEDUSERROLEID) {
+                                type = SENTREQUEST;
+                            } else if (o.FromUserRoleId == o.ToUserRoleId) {
                                 type = MYTASK;
                             } else if (o.FromUserRoleId == LOGGEDUSERROLEID) {
                                 type = SENTREQUEST;

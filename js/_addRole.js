@@ -1,5 +1,5 @@
 var ROLES = [];
-
+var EDITEDROLEID = null;
 function cancelAddRole(){
     setInnerHtml("addRole_log", '');
     getObject("addRole").style.display = "none";
@@ -7,6 +7,14 @@ function cancelAddRole(){
 
 function addRole(){
     getObject('addRole').style.display = 'block';
+    clearAddRoleForm();
+}
+function editRole(roleId, description, isMaster){
+    getObject('addRole').style.display = 'block';
+    getObject("addRole_btnAdd").innerHTML = "Update"
+    EDITEDROLEID = roleId;
+    setValue('addRole_description', description);
+    setChecked('addRole_isMaster', isMaster);
 }
 
 function updateRolesList(selectedRole){
@@ -37,7 +45,11 @@ function submitAddRole(){
     if(notEmpty(desc)){
         disable("addRole_btnAdd");
         setProcessingLog(log);
-        insertRole(desc, isMaster);
+        if(EDITEDROLEID == null){
+            insertRole(desc, isMaster);
+        }else{
+            updateRole(EDITEDROLEID, desc, isMaster);
+        }
     }else{
         setFailureLog(log, "Please fill all the fields");
     }
@@ -70,7 +82,34 @@ function insertRole(description, isMaster){
     );
 }
 
+function updateRole(roleId, description, isMaster){
+    $.post("database/api/updateRole.php",
+        {
+            roleid: roleId,
+            description: description,
+            ismaster: isMaster
+        },
+        function(data, status){
+            console.log(data);
+            enable("addRole_btnAdd");
+            var log = getObject("addRole_log");
+            if(status == "success"){
+                if(jsonSuccess(data)){
+                    setSuccessLog(log, "Process completed");
+                    clearAddRoleForm();
+                }else{
+                    setFailureLog(log, jsonData(data));
+                }
+            }else{
+                setFailureLog(log, status);
+            }
+        }
+    );
+}
+
 function clearAddRoleForm(){
+    EDITEDROLEID = null;
     clearValue("addRole_description");
     clearChecked("addRole_isMaster");
+    getObject("addRole_btnAdd").innerHTML = "Add"
 }

@@ -10,22 +10,22 @@ function closeShowTask(){
 
 function submitBtnEvent() {
     if (CURRENTTASKTYPE == SENTREQUEST) {
-        cancelTask(CURRENTTASKID, getDateFormatted());
+        confirmAction(cancelTask, CURRENTTASKID);
     } else {
         if (CURRENTTASKSTATUS == NEW) {
-            acceptTask(CURRENTTASKID, getDateFormatted());
+            acceptTask(CURRENTTASKID);
         } else if (CURRENTTASKSTATUS == INPROGRESS) {
-            finishTask(CURRENTTASKID, getDateFormatted());
+            finishTask(CURRENTTASKID);
         }
     }
 }
 
 
-function cancelTask(taskid, date) {
+function cancelTask(taskid) {
     $.post("database/api/cancelTask.php",
         {
             taskid: taskid,
-            date: date
+            date: getDateFormatted()
         },
         function(data, status){
             if(status == "success"){
@@ -42,11 +42,11 @@ function cancelTask(taskid, date) {
     );
 }
 
-function finishTask(taskid, date){
+function finishTask(taskid){
     $.post("database/api/finishTask.php",
         {
             taskid: taskid,
-            date: date
+            date: getDateFormatted()
         },
         function(data, status){
             if(status == "success"){
@@ -63,11 +63,11 @@ function finishTask(taskid, date){
     );
 }
 
-function acceptTask(taskid, date){
+function acceptTask(taskid){
     $.post("database/api/acceptTask.php",
         {
             taskid: taskid,
-            date: date
+            date: getDateFormatted()
         },
         function(data, status){
             if(status == "success"){

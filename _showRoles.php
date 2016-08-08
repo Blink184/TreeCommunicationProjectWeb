@@ -5,7 +5,7 @@
         <div class="middle">
             <div class="inner">
                 <div id="header">
-                    <h2>All Unused Roles</h2>
+                    <h2>All Roles</h2>
                 </div>
                 <div id="body">
                     <table id="unusedRoles">
