@@ -12,6 +12,7 @@ if(empty($_REQUEST['userId'])
 $userid = $_REQUEST['userId'];
 $firstname = $_REQUEST['firstName'];
 $lastname = $_REQUEST['lastName'];
+$email = $_REQUEST['email'];
 $address = $_REQUEST['address'];
 $phone = $_REQUEST['phone'];
 $username = $_REQUEST['username'];
@@ -32,9 +33,9 @@ if(checkUsernameAvailability($userid, $username)){
         echo '<script>alert("Wrong password");</script>';
     }else{
         if($change_password){
-            $user_updated = updateUser($userid, $firstname, $lastname, $phone, $address, $username, $_REQUEST['password']);
+            $user_updated = updateUser($userid, $firstname, $lastname, $phone, $email, $address, $username, $_REQUEST['password']);
         } else{
-            $user_updated = updateUser($userid, $firstname, $lastname, $phone, $address, $username, $real_old_pass);
+            $user_updated = updateUser($userid, $firstname, $lastname, $phone, $email, $address, $username, $real_old_pass);
         }
         if($user_updated)
             echo '<script>console.log("User updated");</script>';

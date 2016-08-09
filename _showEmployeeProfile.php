@@ -30,14 +30,20 @@
                             </li>
                             <li>
                                 <ul>
-                                    <li><label for="showEmployeeProfile_address">Address</label></li>
-                                    <li><input type="text" id="showEmployeeProfile_address" name="address"/></li>
+                                    <li><label for="showEmployeeProfile_phone">Number</label></li>
+                                    <li><input type="text" id="showEmployeeProfile_phone" name="phone"/></li>
                                 </ul>
                             </li>
                             <li>
                                 <ul>
-                                    <li><label for="showEmployeeProfile_phone">Number</label></li>
-                                    <li><input type="text" id="showEmployeeProfile_phone" name="phone"/></li>
+                                    <li><label for="showEmployeeProfile_email">Email</label></li>
+                                    <li><input type="text" id="showEmployeeProfile_email" name="email"/></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <ul>
+                                    <li><label for="showEmployeeProfile_address">Address</label></li>
+                                    <li><input type="text" id="showEmployeeProfile_address" name="address"/></li>
                                 </ul>
                             </li>
                             <li>
