@@ -7,7 +7,7 @@ window.onload = function () {
     getNotifications();
 };
 
-function employee(userRoleId, userId, roleId, firstName, lastName, username, phone, address, lastActiveDate, role, title, image, children){
+function employee(userRoleId, userId, roleId, firstName, lastName, username, phone, email, address, lastActiveDate, role, title, image, children){
     var employee = {
         UserRoleId: userRoleId,
         UserId: userId,
@@ -17,6 +17,7 @@ function employee(userRoleId, userId, roleId, firstName, lastName, username, pho
         Name: firstName + ' ' + lastName,
         Username: username,
         Phone: phone,
+        Email: email,
         Address: address,
         LastActiveDate: lastActiveDate,
         Role: role,
@@ -64,7 +65,7 @@ function getChildrenObjects(userrole){
     return arr;
 }
 function extractUserRole(userrole){
-    return employee(userrole.UserRoleId, userrole.UserId, userrole.RoleId, userrole.FirstName, userrole.LastName, userrole.Username, userrole.Phone, userrole.Address, userrole.LastActiveDate, userrole.Role, userrole.Title, userrole.Image, getChildrenObjects(userrole));
+    return employee(userrole.UserRoleId, userrole.UserId, userrole.RoleId, userrole.FirstName, userrole.LastName, userrole.Username, userrole.Phone, userrole.Email, userrole.Address, userrole.LastActiveDate, userrole.Role, userrole.Title, userrole.Image, getChildrenObjects(userrole));
 }
 
 
@@ -96,6 +97,7 @@ function generateDataFor(employee){
 
     employee.FirstName = employee.FirstName.safeQuotes();
     employee.LastName = employee.LastName.safeQuotes();
+    employee.Email = employee.Email.safeQuotes();
     employee.Phone = employee.Phone.safeQuotes();
     employee.Address = employee.Address.safeQuotes();
     employee.Username = employee.Username.safeQuotes();
@@ -117,12 +119,12 @@ function generateDataFor(employee){
     }
 
     return '<li><div class="divEmployeeControl" data-employeeId="'+employee.UserRoleId+'">'
-        + '<div class="hexagon" onclick="displayEmployeeProfile('+employee.UserId+', \''+employee.FirstName+'\', \''+employee.LastName+'\', \''+employee.Username+'\',\''+employee.Phone+'\', \''+employee.Address+'\', \''+employee.Image+'\', \''+employee.LastActiveDate+'\')">'
+        + '<div class="hexagon" onclick="displayEmployeeProfile('+employee.UserId+', \''+employee.FirstName+'\', \''+employee.LastName+'\', \''+employee.Username+'\',\''+employee.Phone+'\', \''+employee.Address+'\', \''+employee.Email+'\', \''+employee.Image+'\', \''+employee.LastActiveDate+'\')">'
         + '<img src="resources/images/employee/users/'+employee.Image+'"/>'
         + '<img src="resources/images/employee/hexagon.svg  "/>'
         + '</div>'
         + '<div class="divBody">'
-        + '<div class="divName" id="divNameOfUserRole'+employee.UserRoleId+'" onclick="displayEmployeeProfile('+employee.UserId+', \''+employee.FirstName+'\', \''+employee.LastName+'\', \''+employee.Username+'\',\''+employee.Phone+'\', \''+employee.Address+'\', \''+employee.Image+'\', \''+employee.LastActiveDate+'\')">'+employee.Name+'</div>'
+        + '<div class="divName" id="divNameOfUserRole'+employee.UserRoleId+'" onclick="displayEmployeeProfile('+employee.UserId+', \''+employee.FirstName+'\', \''+employee.LastName+'\', \''+employee.Username+'\',\''+employee.Phone+'\', \''+employee.Address+'\', \''+employee.Email+'\', \''+employee.Image+'\', \''+employee.LastActiveDate+'\')">'+employee.Name+'</div>'
         + '<div class="divTitle">'+ title +'</div>'
         + '<div class="divActions">'
         + '<img title="Assign Task" src="resources/images/employee/add_task.svg" onclick="addTask(' + employee.UserRoleId + ');"/> '

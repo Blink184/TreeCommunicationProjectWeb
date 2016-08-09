@@ -35,7 +35,7 @@ function validateUser($username, $password) {
 
 function getUsers(){
     $conn = connect();
-    if ($stmt = $conn->prepare("select * from user where IsDeleted = 0 and IsAdmin = 0 ORDER BY FirstName, LastName")) {
+    if ($stmt = $conn->prepare("select *, (select count(*) from userrole ur where ur.UserId = u.UserId and ur.IsDeleted = 0) as 'Usage' from user u where u.IsDeleted = 0 and u.IsAdmin = 0 ORDER BY u.FirstName, u.LastName")) {
         $stmt->execute();
         $rows = $stmt->get_result();
         $users = array();
@@ -92,10 +92,10 @@ function usernameExists($username){
     return any($res);
 }
 
-function updateUser($userId, $firstname, $lastname, $phone, $address, $username, $password){
+function updateUser($userId, $firstname, $lastname, $phone, $email, $address, $username, $password){
     $conn = connect();
-    if ($stmt = $conn->prepare("update user set FirstName = ?, LastName = ?, Phone = ?, Password = ?, Username = ?, Address = ? where UserId = ?")) {
-        $stmt->bind_param("ssssssi", $firstname, $lastname, $phone, $password, $username, $address, $userId);
+    if ($stmt = $conn->prepare("update user set FirstName = ?, LastName = ?, Phone = ?, Password = ?, Username = ?, Address = ?, Email = ? where UserId = ?")) {
+        $stmt->bind_param("sssssssi", $firstname, $lastname, $phone, $password, $username, $address, $email, $userId);
         return encode($stmt->execute(), '');
     } else {
         return encode(false, var_dump($conn->error));

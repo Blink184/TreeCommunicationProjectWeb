@@ -1,11 +1,12 @@
 function cancelShowEmployeeProfile(){
     document.getElementById("showEmployeeProfile").style.display = "none";
 }
-function displayEmployeeProfile(userId, firstName, lastName, username, phone, address, image, lastActiveDate){
+function displayEmployeeProfile(userId, firstName, lastName, username, phone, address, email, image, lastActiveDate){
     setValue("showEmployeeProfile_firstName", firstName);
     setValue("showEmployeeProfile_lastName", lastName);
     setValue("showEmployeeProfile_phone", phone);
     setValue("showEmployeeProfile_address", address);
+    setValue("showEmployeeProfile_email", email);
     setValue("showEmployeeProfile_userId", userId);
     setValue("showEmployeeProfile_username", username);
     setValue("showEmployeeProfile_lastActiveDate", lastActiveDate);

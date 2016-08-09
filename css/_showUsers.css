@@ -48,9 +48,12 @@
     width: 100%;
 }
 #showUsers table tr td{
-    width: 40%;
+    width: 30%;
 }
 #showUsers table tr td:nth-child(3){
+    width: 20%;
+}
+#showUsers table tr td:nth-child(4){
     width: 20%;
 }
 

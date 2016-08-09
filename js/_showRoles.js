@@ -4,10 +4,10 @@ function closeShowRoles(){
 
 function showRoles(){
     getObject('showRoles').style.display = 'block';
-    getUnusedRoles();
+    getRoles();
 }
 
-function getUnusedRoles() {
+function getRoles() {
     $.post("database/api/getRolesWithUsageStatus.php",
         function(data, status){
             if(status == "success"){
@@ -53,7 +53,7 @@ function deleteRole(roleId) {
         function(data, status){
             if(status == "success"){
                 if(jsonSuccess(data)){
-                    getUnusedRoles();
+                    getRoles();
                 }else{
                     console.log(jsonData(data));
                 }
