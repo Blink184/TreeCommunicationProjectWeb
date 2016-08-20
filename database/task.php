@@ -115,7 +115,7 @@ function getTasks($userroleid, $limit) {
         }
 
         setTasksAsRead($userroleid);
-        return encode(true, json_encode($res));
+        return encode(true, $res);
     } else {
         return encode(false, var_dump($conn->error));
     }
