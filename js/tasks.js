@@ -152,7 +152,7 @@ function getTasks(showLoading) {
             function (data, status) {
                 if (status == "success") {
                     if (jsonSuccess(data)) {
-                        res = jsonArrayData(data);
+                        res = jsonData(data);
                         TASKS = [];
 
                         for (var i = 0; i < res.length; i++) {
