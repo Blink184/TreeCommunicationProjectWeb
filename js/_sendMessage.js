@@ -56,7 +56,7 @@ function getUserRoles(selectedUserRole){
         function(data, status){
             if (status == "success") {
                 if (jsonSuccess(data)) {
-                    var obj = jsonArrayData(data);
+                    var obj = jsonData(data);
                     USERROLES = [];
                     for(var i = 0; i < obj.length; i++){
                         USERROLES.push(obj[i]);
