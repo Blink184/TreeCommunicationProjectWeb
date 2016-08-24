@@ -39,7 +39,6 @@ function sendMessage(from, to, content, onSuccess){
             if (status == "success") {
                 if (jsonSuccess(data)) {
                     onSuccess();
-                    enable('sendMessage_submitButton');
 
                 } else {
                     console.log(data)
@@ -47,6 +46,7 @@ function sendMessage(from, to, content, onSuccess){
             } else {
                 console.log(status)
             }
+            enable('sendMessage_submitButton');
         }
     );
 }
