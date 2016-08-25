@@ -77,9 +77,9 @@ function updateUserRolesComboBox(selectedUserRole){
     var tmp = "";
     for(var i = 0; i < USERROLES.length; i++){
         if(USERROLES[i].UserRoleId == selectedUserRole){
-            tmp += "<option selected value='"+USERROLES[i].UserRoleId+"'>"+USERROLES[i].FirstName+ ' ' +USERROLES[i].LastName+"</option>";
+            tmp += "<option selected value='"+USERROLES[i].UserRoleId+"'>"+USERROLES[i].FirstName+ ' ' +USERROLES[i].LastName + ' (' + USERROLES[i].Role + ')' +"</option>";
         }else{
-            tmp += "<option value='"+USERROLES[i].UserRoleId+"'>"+USERROLES[i].FirstName+ ' ' +USERROLES[i].LastName+"</option>";
+            tmp += "<option value='"+USERROLES[i].UserRoleId+"'>"+USERROLES[i].FirstName+ ' ' +USERROLES[i].LastName + ' (' + USERROLES[i].Role + ')' +"</option>";
         }
     }
     cmb.innerHTML = tmp;
