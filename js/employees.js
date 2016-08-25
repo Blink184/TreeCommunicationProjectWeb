@@ -106,16 +106,16 @@ function generateDataFor(employee){
         title += ' / ' + employee.Title;
     }
     if(VIEW == 1){
-        tmpView = '<img class="showOnTreeEdit" title="Add Child" src="resources/images/employee/add.png" onclick="addUserRole(' + employee.UserRoleId + ');" height="18" width="18"/> ';
+        tmpView = '<img class="showOnTreeEdit" title="Add Child" src="resources/images/employee/add.png" onclick="addUserRole(' + employee.UserRoleId + ');" height="20" width="20"/> ';
         if(LOGGEDUSERROLEID != employee.UserRoleId) {
             //so that the logged in employee cant delete or edit himself.
-            tmpView += '<img class="showOnTreeEdit" title="Delete User Role" src="resources/images/employee/delete.png" onclick="confirmAction(deleteUserRole, ' + employee.UserRoleId + ');" width="18" height="18"/> ';
-            tmpView += '<img class="showOnTreeEdit" title="Edit User Role" src="resources/images/employee/edit.png" onclick="editUserRole(' + employee.UserRoleId + ', ' + employee.UserId + ', ' + employee.RoleId + ', \'' + employee.Title + '\');" width="18" height="18"/> ';
+            tmpView += '<img class="showOnTreeEdit" title="Delete User Role" src="resources/images/employee/delete.png" onclick="confirmAction(deleteUserRole, ' + employee.UserRoleId + ');" width="20" height="20"/> ';
+            tmpView += '<img class="showOnTreeEdit" title="Edit User Role" src="resources/images/employee/edit.png" onclick="editUserRole(' + employee.UserRoleId + ', ' + employee.UserId + ', ' + employee.RoleId + ', \'' + employee.Title + '\');" width="20" height="20"/> ';
         }
     }
     var tmpMessage = '';
     if(LOGGEDUSERROLEID != employee.UserRoleId){
-        tmpMessage = '<img title="Send Message" src="resources/images/employee/message.svg" onclick="composeNewMessage(' + employee.UserRoleId + ');"/> ';
+        tmpMessage = '<img title="Send Message" width="18px" height="12px" src="resources/images/employee/message.svg" onclick="composeNewMessage(' + employee.UserRoleId + ');"/> ';
     }
 
     return '<li><div class="divEmployeeControl" data-employeeId="'+employee.UserRoleId+'">'
@@ -127,7 +127,7 @@ function generateDataFor(employee){
         + '<div class="divName" id="divNameOfUserRole'+employee.UserRoleId+'" onclick="displayEmployeeProfile('+employee.UserId+', \''+employee.FirstName+'\', \''+employee.LastName+'\', \''+employee.Username+'\',\''+employee.Phone+'\', \''+employee.Address+'\', \''+employee.Email+'\', \''+employee.Image+'\', \''+employee.LastActiveDate+'\')">'+employee.Name+'</div>'
         + '<div class="divTitle">'+ title +'</div>'
         + '<div class="divActions">'
-        + '<img title="Assign Task" src="resources/images/employee/add_task.svg" onclick="addTask(' + employee.UserRoleId + ');"/> '
+        + '<img title="Assign Task" width="18px" height="20px" src="resources/images/employee/add_task.svg" onclick="addTask(' + employee.UserRoleId + ');"/> '
         + tmpMessage
         + tmpView
         + '</div>'
@@ -142,6 +142,7 @@ function fileSelected(obj){
 
 var btnEditTreeActivated = false;
 function editTree(){
+    console.log(1);
     var value = btnEditTreeActivated ? "visible" : "hidden";
     var elmnts = document.getElementsByClassName("showOnTreeEdit");
     for(var i = 0; i < elmnts.length; i++){
